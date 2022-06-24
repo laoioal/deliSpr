@@ -1,0 +1,23 @@
+
+
+# beforPay 페이지 보기 요청
+요청내용	:	/deli/payment/beforePay.dlv
+파라미터	:	무
+컨트롤러	:	com.githrd.deli.controller.pay.BeforePay
+뷰			:	/WEB-INF/views/payment/beforePay.jsp
+----------------------------------------------------------------------------------
+# 결제 처리 요청
+요청내용	:	/deli/payment/payProc.dlv
+파라미터	:	무
+컨트롤러	:	com.githrd.deli.controller.pay.PayProc
+뷰			:	
+				성공시 )	/deli/payment/beforePay.dlv
+				실패시 )  /deli/payment/afterPay.dlv
+					    
+----------------------------------------------------------------------------------
+# afterPay 페이지 보기 요청
+요청내용	:	/deli/payment/afterPay.dlv
+파라미터	:	무
+컨트롤러	:	com.githrd.deli.controller.pay.AfterPay
+뷰			:	/WEB-INF/views/payment/afterPay.jsp
+----------------------------------------------------------------------------------

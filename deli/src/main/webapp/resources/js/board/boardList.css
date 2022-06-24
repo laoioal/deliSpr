@@ -1,0 +1,38 @@
+/**
+ * @author	이용현
+ * @since	2022/05/27
+ * @version	v.1.0
+ * 
+ * 			작업이력 ]
+ * 				2022.05.27	-	클래스제작
+ * 								담당자 : 이용현
+ */
+.mxw980 {
+	max-width: 980px;
+	min-width: 980px;
+}
+.w33 {
+	width: 14.285%;
+}
+.h500 {
+	height: 500px;
+	padding-left: 10px;
+	padding-right: 10px;
+	overflow: auto;
+}
+.member {
+	font-size: 8px;
+	border: 0px;
+	background-color: white;
+}
+.w230 {
+	width: 230px;
+	margin-bottom: 3px;
+}
+textarea {
+	resize: none;
+	height: 500px;
+}
+.citytitle {
+	width: 9.09%!important;
+}

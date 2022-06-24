@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans 
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+						https://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/context
+						https://www.springframework.org/schema/context/spring-context.xsd">
+						
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	<context:annotation-config />
+
+	<bean id="eDao" class="com.githrd.deli.dao.EunbeeDao"/>
+	<bean id="paDao" class="com.githrd.deli.dao.PayDao"/>
+	<bean id="pcDao" class="com.githrd.deli.dao.PcsDao"/>
+	<bean id="yDao" class="com.githrd.deli.dao.YonghyunDao"/>
+	
+	<bean id = "MemberDao" class = "com.githrd.deli.dao.MemberDao"/>
+	<bean id = "PlaceDao" class = "com.githrd.deli.dao.PlaceDao"/>
+	<bean id = "CategoryDao" class = "com.githrd.deli.dao.CategoryDao"/>
+	
+	
+	
+	
+	
+	<bean id="ySrvc" class="com.githrd.deli.service.YonghyunService" />
+	
+	<bean id="CalculatorService" class="com.githrd.deli.service.CalculatorService" />
+	<bean id="MemberService" class="com.githrd.deli.service.MemberService" />
+	
+	
+	
+</beans>

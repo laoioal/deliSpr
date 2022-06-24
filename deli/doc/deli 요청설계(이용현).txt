@@ -1,0 +1,96 @@
+# main 페이지 보기 요청
+요청내용	:	/deli/main.dlv
+파라미터	:	무
+컨트롤러	:	com.githrd.deli.controller.MainController
+처리함수	:	getMain()
+뷰			:	/WEB-INF/views/main.jsp
+----------------------------------------------------------------------------------
+# 게시판 리스트 보기 요청
+요청내용	:	/deli/board/boardList.dlv
+파라미터	:	city
+컨트롤러	:	com.githrd.deli.controller.YonghyunController
+처리함수	:	getBoardList()
+뷰			:	/WEB-INF/views/board/boardList.jsp
+----------------------------------------------------------------------------------
+# 게시판 내용 보기 요청
+요청내용	:	/deli/board/boardForm.dlv
+파라미터	:	bno, nowPage[, city, search, check]
+컨트롤러	:	com.githrd.deli.controller.YonghyunController
+처리함수	:	getBoard()
+뷰			:	/WEB-INF/views/board/boardForm.jsp
+----------------------------------------------------------------------------------
+# 게시판 공구 신청 접수 처리 요청
+요청내용	:	/deli/board/applyProc.dlv
+파라미터	:	bno, nowPage[, city, search, check], res
+컨트롤러	:	com.githrd.deli.controller.YonghyunController
+처리함수	:	regiMem()
+뷰			:	성공 / 실패 ] redirect 사용하여 본래 게시글로 이동
+----------------------------------------------------------------------------------
+# 게시판 공구 신청 취소 처리 요청
+요청내용	:	/deli/board/cancleProc.dlv
+파라미터	:	bno, nowPage[, city, search, check], res
+컨트롤러	:	com.githrd.deli.controller.YonghyunController
+처리함수	:	regiMem()
+뷰			:	성공 / 실패 ] redirect 사용하여 본래 게시글로 이동
+----------------------------------------------------------------------------------
+# 친구 추가 신청
+요청내용	:	/deli/board/friend.dlv
+파라미터	:	mno
+컨트롤러	:	com.githrd.deli.controller.YonghyunController
+처리함수	:	upFriend()
+뷰			:	ajax
+----------------------------------------------------------------------------------
+
+
+
+# 친구 추가 신청
+요청내용	:	/deli/board/friend.dlv
+파라미터	:	mno
+컨트롤러	:	com.githrd.deli.controller.YonghyunController
+처리함수	:	upFriend()
+뷰			:	ajax
+----------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+# 메인페이지에서 친구 삭제 요청
+요청내용	:	/deli/frienddel.dlv
+파라미터	:	fmno
+컨트롤러	:	com.githrd.deli.controller.board.FriendDelProc
+뷰			:	-
+----------------------------------------------------------------------------------
+# 메인페이지에서 친구요청 수락
+요청내용	:	/deli/friendagr.dlv
+파라미터	:	fmno
+컨트롤러	:	com.githrd.deli.controller.board.FriendAgrProc
+뷰			:	-
+----------------------------------------------------------------------------------
+# 메인페이지에서 친구요청 거절
+요청내용	:	/deli/friendcan.dlv
+파라미터	:	fmno
+컨트롤러	:	com.githrd.deli.controller.board.FriendCanProc
+뷰			:	-
+----------------------------------------------------------------------------------
+# 메세지 리스트보기 요청
+요청내용	:	/deli/message.dlv
+파라미터	:	-
+컨트롤러	:	com.githrd.deli.controller.board.Message
+뷰			:	/WEB-INF/views/board/message.jsp
+----------------------------------------------------------------------------------
+# 메세지 작성 폼보기 요청
+요청내용	:	/deli/msform.dlv
+파라미터	:	-
+컨트롤러	:	com.githrd.deli.controller.board.MessageForm
+뷰			:	/WEB-INF/views/board/messageForm.jsp
+----------------------------------------------------------------------------------
+# 메세지 전송 처리 요청
+요청내용	:	/deli/msProc.dlv
+파라미터	:	title, body
+컨트롤러	:	com.githrd.deli.controller.board.MessageProc
+뷰			:	-
+----------------------------------------------------------------------------------

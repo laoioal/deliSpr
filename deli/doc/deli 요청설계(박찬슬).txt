@@ -1,0 +1,89 @@
+--------------------------------------------------------------
+# 회원가입 폼보기 요청 
+요청내용	: 	/deli/member/join.dlv
+파라미터	:	무
+컨트롤러	: 	com.githrd.deli.controller.PcsController
+처리함수	:	joinForm()
+뷰			:	/WEB-INF/views/deli/member/join.jsp
+기타		: 	로그인 된 경우 ]
+					redirect : /deli/main.dlv
+--------------------------------------------------------------
+# 회원가입 처리 요청 
+요청내용	: 	/deli/member/joinProc.dlv
+파라미터	:	무
+컨트롤러	: 	com.githrd.deli.controller.PcsController
+처리함수	:	joinProc()
+뷰			:	redirect
+--------------------------------------------------------------
+# 로그인 폼보기 요청
+요청내용	: 	/deli/member/login.dlv
+파라미터	:	무 
+컨트롤러	: 	com.githrd.deli.controller.PcsController
+처리함수	:	loginForm()
+뷰			:	/WEB-INF/views/deli/member/login.jsp
+기타		: 	로그인 된 경우 ]
+					redirect : /deli/main.dlv
+--------------------------------------------------------------
+# 로그인 처리 요청 
+요청내용	: 	/deli/member/loginProc.dlv
+파라미터	:	무
+컨트롤러	: 	com.githrd.deli.controller.PcsController
+처리함수	:	loginProc()
+뷰			:	
+				redirect ]
+					성공 : /deli/main.dlv
+					실패 : /deli/member/login.dlv
+--------------------------------------------------------------
+# 로그아웃 처리 요청 
+요청내용	: 	/deli/member/logout.dlv
+파라미터	:	무
+컨트롤러	: 	com.githrd.deli.controller.PcsController
+처리함수	:	logout()
+뷰			:	
+				redirect ] /deli/main.dlv
+--------------------------------------------------------------
+# 임시 내정보 폼보기 요청 
+요청내용	: 	/deli/member/myInfo.dlv
+파라미터	:	무
+컨트롤러	: 	com.githrd.deli.controller.PcsController
+처리함수	:	InfoFrom()
+뷰			:	/WEB-INF/views/deli/member/myInfo.jsp
+--------------------------------------------------------------
+# 내정보 폼보기 요청 
+요청내용	: 	/deli/main.dlv
+파라미터	:	무
+컨트롤러	: 	com.githrd.deli.controller.PcsController
+뷰			:	/WEB-INF/views/deli/mein.jsp
+--------------------------------------------------------------
+# 회원 탈퇴 처리 요청 
+요청내용	: 	/deli/member/delMember.dlv
+파라미터	:	무
+컨트롤러	: 	com.githrd.deli.controller.PcsController
+처리함수	: 	delInfo()
+뷰			:	redirect ] 
+					성공 :	/deli/main.dlv
+					실패 :	/deli/member/myInfo.dlv
+--------------------------------------------------------------
+# 내정보 수정 폼보기 요청 
+요청내용	: 	/deli/member/editInfo.dlv
+파라미터	:	무
+컨트롤러	: 	com.githrd.deli.controller.PcsController
+처리함수	:	editInfo()
+뷰			:	/WEB-INF/views/deli/member/editInfo.jsp
+--------------------------------------------------------------
+# 회원 수정 처리 요청 
+요청내용	: 	/deli/member/editProc.dlv
+파라미터	:	mno, pw, mail, tel, ano 
+컨트롤러	: 	com.githrd.deli.controller.PcsController
+뷰			:	
+				redirect ]
+					성공 :	/deli/member/myInfo.dlv
+					실패 :  /deli/member/editInfo.dlv
+--------------------------------------------------------------
+# 아이디체크 처리 요청 
+요청내용	: 	/deli/member/idCheck.dlv
+파라미터	:	id
+컨트롤러	: 	com.githrd.deli.controller.PcsController
+처리함수	:	idCheck()
+뷰			:	json
+--------------------------------------------------------------

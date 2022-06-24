@@ -1,0 +1,75 @@
+# 아이디 찾기 페이지 보기 요청
+요청내용	:	/deli/find/idFind.dlv
+파라미터	:	무
+컨트롤러	:	com.githrd.deli.controller.EbFind
+처리함수	:	idFind()
+뷰			:	/WEB-INF/views/find/idFind.jsp
+기타		: 	로그인 된 경우 ]
+					redirect : /deli/main.dlv
+----------------------------------------------------------------------------------
+# 아이디 찾기 결과 페이지 보기 요청
+요청내용	:	/deli/find/idFindResult.dlv
+파라미터	:	mail
+컨트롤러	:	com.githrd.deli.controller.eunbee.IdFindResult
+뷰			:	/WEB-INF/views/find/idFindResult.jsp
+기타		: 	로그인 된 경우 ]
+					redirect : /deli/main.dlv
+----------------------------------------------------------------------------------
+# 비밀번호 찾기 페이지 보기 요청
+요청내용	:	/deli/find/pwFind.dlv
+파라미터	:	무
+컨트롤러	:	com.githrd.deli.controller.eunbee.PwFind
+뷰			:	/WEB-INF/views/find/pwFind.jsp
+기타		: 	로그인 된 경우 ]
+					redirect : /deli/main.dlv
+----------------------------------------------------------------------------------
+# 비밀번호 찾기 페이지 보기 요청
+요청내용	:	/deli/find/pwFindResult.dlv
+파라미터	:	id, mail
+컨트롤러	:	com.githrd.deli.controller.eunbee.PwFindResult
+뷰			:	/WEB-INF/views/find/pwFindResult.jsp
+기타		: 	로그인 된 경우 ]
+					redirect : /deli/main.dlv
+----------------------------------------------------------------------------------
+# 후기 작성 대기 리스트 보기 요청
+요청내용	:	/deli/review/rvList.dlv
+파라미터	:	무
+컨트롤러	:	com.githrd.deli.controller.eunbee.RvList
+뷰			:	/WEB-INF/views/review/rvList.jsp
+기타		: 	로그인 안 된 경우 ]
+					redirect : /deli/member/login.dlv
+----------------------------------------------------------------------------------
+# 후기 작성 페이지 보기 요청
+요청내용	:	/deli/review/rvWrite.dlv
+파라미터	:	무
+컨트롤러	:	com.githrd.deli.controller.eunbee.RvWrite
+뷰			:	/WEB-INF/views/review/rvWrite.jsp
+기타		: 	로그인 안 된 경우 ]
+					redirect : /deli/member/login.dlv
+----------------------------------------------------------------------------------
+# 후기 제출 처리 요청
+요청내용	:	/deli/review/rvWriteProc.dlv
+파라미터	:	bno, ida, idb, nesti
+컨트롤러	:	com.githrd.deli.controller.eunbee.RvWriteProc
+뷰			:	
+			 	redirect ]
+					성공 : /deli/review/estiProc.dlv
+					실패 : /deli/review/rvWrite.dlv
+기타		: 	로그인 안 된 경우 ]
+					redirect : /deli/member/login.dlv
+----------------------------------------------------------------------------------
+# 평가 반영 처리 요청
+요청내용	:	/deli/review/estiProc.dlv
+파라미터	:	bno, ida, idb, nesti
+컨트롤러	:	com.githrd.deli.controller.eunbee.EstiProc
+뷰			:	redirect ]
+					성공 : /deli/main.dlv
+					실패 : /deli/review/rvWrite.dlv
+기타		: 	로그인 안 된 경우 ]
+					redirect : /deli/member/login.dlv
+
+
+
+
+
+
