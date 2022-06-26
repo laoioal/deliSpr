@@ -27,3 +27,15 @@ Insert into PICKUP (NAME,ADDRESS,PICKUPLAT,PICKUPLON) values ('약수역','서�
 Insert into PICKUP (NAME,ADDRESS,PICKUPLAT,PICKUPLON) values ('장원중학교','서울 중구 동호로15길 93-34',37.55365335367,127.00627186623);
 Insert into PICKUP (NAME,ADDRESS,PICKUPLAT,PICKUPLON) values ('정부청사','서울 종로구 세종대로 209',36.4383354,126.9018892);
 Insert into PICKUP (NAME,ADDRESS,PICKUPLAT,PICKUPLON) values ('후암초등학교','서울 용산구 두텁바위로 140',37.551405239218,126.98159679014);
+Insert into PICKUP (NAME,ADDRESS,PICKUPLAT,PICKUPLON) values ('신길3동주민센터','서울특별시 영등포구 신길로41라길 13-8',37.507263,126.9077281);
+Insert into PICKUP (NAME,ADDRESS,PICKUPLAT,PICKUPLON) values ('우신초등학교','서울특별시 영등포구 신길로 190',37.5092628,126.9117832);
+Insert into PICKUP (NAME,ADDRESS,PICKUPLAT,PICKUPLON) values ('해군중앙교회','서울특별시 영등포구 신길동 1795-1',37.5047635,126.9163939);
+Insert into PICKUP (NAME,ADDRESS,PICKUPLAT,PICKUPLON) values ('소공동 주민센터','서울특별시 중구 남대문로1길 31-5',37.5623964,126.9770253);
+Insert into PICKUP (NAME,ADDRESS,PICKUPLAT,PICKUPLON) values ('서울시립미술관','서울특별시 중구 덕수궁길 61',37.5640625,126.9738125);
+Insert into PICKUP (NAME,ADDRESS,PICKUPLAT,PICKUPLON) values ('을지로입구역','서울특별시 중구 을지로동 42',37.566065,126.982679);
+Insert into PICKUP (NAME,ADDRESS,PICKUPLAT,PICKUPLON) values ('명동역','서울특별시 중구 충무로2가',37.5609892,126.9861868);
+Insert into PICKUP (NAME,ADDRESS,PICKUPLAT,PICKUPLON) values ('후암동우체국','서울특별시 용산구 후암동 22',37.5510955,126.9773096);
+Insert into PICKUP (NAME,ADDRESS,PICKUPLAT,PICKUPLON) values ('쉐라톤 조선 서울역','서울특별시 용산구 한강대로 366 포 포인츠 바이 쉐라톤 조선 서울역',37.5509795,126.9727511);
+Insert into PICKUP (NAME,ADDRESS,PICKUPLAT,PICKUPLON) values ('용산고등학교','서울특별시 용산구 두텁바위로 60',37.5509795,126.9727511);
+Insert into PICKUP (NAME,ADDRESS,PICKUPLAT,PICKUPLON) values ('독립문역','서울특별시 종로구 통일로 지하 247',37.574463,126.957936);
+Insert into PICKUP (NAME,ADDRESS,PICKUPLAT,PICKUPLON) values ('약수동 주민센터','서울특별시 중구 다산로 92',37.552549,127.0089535);
