@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+			"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="RDao">
+
+	<select id="selectRname" resultType="restaurantVO" parameterType="string">
+	select restno,rname,cname,addr,mcode from restaurant where rname = #{rname}
+	</select>
+	
+	<select id="selectCname" resultType="restaurantVO" parameterType="int">
+	select restno,rname,cname,addr,mcode from restaurant where cname = #{cname}
+	</select>
+	
+	<select id="selectAddr" resultType="restaurantVO" parameterType="string">
+	select restno,rname,cname,addr,mcode from restaurant where addr = #{addr}
+	</select>
+	<select id = "selectRestno" resultType="restaurantVO" parameterType="int">
+	select restno,rname,cname,addr,mcode from restaurant where restno = #{restno}
+	</select>
+	
+	
+    <select id="selectAll" resultType="restaurantVO">
+    select restno,rname,cname,addr,mcode from restaurant
+	</select>
+	
+    <select id="selectList" resultType="restaurantVO" parameterType="java.util.Map">
+    select restno,rname,cname,addr,mcode from restaurant where cname = #{cname} and mcode = #{mcode}
+	</select>
+	
+	
+	
+	
+</mapper>
+
+
