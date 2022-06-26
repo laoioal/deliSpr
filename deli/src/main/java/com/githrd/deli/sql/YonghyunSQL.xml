@@ -196,44 +196,6 @@
 		    AND id = #{id}
 		    AND member.isshow = 'Y'
 	</select>
-		
-	<!-- 내 친구 불러오는 함수  -->
-	<select id="myFrined" resultType="yVO" parameterType="string">
-		SELECT
-		    name, id, kakaoid kid, SUBSTR(addr, instr(addr,' ', -1, 1) + 1) marea, oriname aid, (esti * 100 / 5) pesti, esti
-		FROM
-		    member, imgfile
-		WHERE
-		    mno = amno
-		    AND mno IN (SELECT
-		                    frino frino
-		                FROM
-		                    friend
-		                WHERE
-		                    myno = (SELECT mno FROM member WHERE id = #{id})
-		                    AND isshow = 'Y'
-		                    AND AGREE = 'Y')
-		    AND member.isshow = 'Y'
-	</select>
-	
-	<!-- 친구신청 수락대기인원 불러오기 -->
-	<select id="aplFrined" resultType="yVO" parameterType="string">
-		SELECT
-		    name, id, kakaoid kid, SUBSTR(addr, instr(addr,' ', -1, 1) + 1) marea, oriname aid, (esti * 100 / 5) pesti, esti
-		FROM
-		    member, imgfile
-		WHERE
-		    mno = amno
-		    AND mno IN (SELECT
-		                    frino frino
-		                FROM
-		                    friend
-		                WHERE
-		                    myno = (SELECT mno FROM member WHERE id = #{id})
-		                    AND isshow = 'Y'
-		                    AND AGREE = 'N')
-		    AND member.isshow = 'Y'
-	</select>
 	
 	<!-- 조회수 top 5 게시물 조회 -->
 	<select id="topBoard" resultType="yVO">
@@ -257,4 +219,82 @@
 		WHERE
 		    rno BETWEEN 1 AND 5
 	</select>
+			
+	<!-- 내 친구 불러오는 함수  -->
+	<select id="myFrined" resultType="yVO" parameterType="string">
+		SELECT
+		    name, id, kakaoid kid, SUBSTR(addr, instr(addr,' ', -1, 1) + 1) marea, oriname aid, (esti * 100 / 5) pesti, esti
+		FROM
+		    member, imgfile
+		WHERE
+		    mno = amno
+		    AND mno IN (SELECT
+		                    frino frino
+		                FROM
+		                    friend
+		                WHERE
+		                    myno = (SELECT mno FROM member WHERE id = #{id})
+		                    AND isshow = 'Y'
+		                    AND AGREE = 'Y')
+		    AND member.isshow = 'Y'
+	</select>
+	
+	<!-- 친구신청 수락대기인원 불러오기 -->
+	<select id="aplFrined" resultType="yVO" parameterType="string">
+		SELECT
+		    name, id, kakaoid kid, SUBSTR(addr, instr(addr,' ', -1, 1) + 1) marea, oriname aid, (esti * 100 / 5) pesti, esti, mno
+		FROM
+		    member, imgfile
+		WHERE
+		    mno = amno
+		    AND mno IN (SELECT
+		                    myno
+		                FROM
+		                    friend
+		                WHERE
+		                    frino = (SELECT mno FROM member WHERE id = #{id})
+		                    AND isshow = 'Y'
+		                    AND AGREE = 'N')
+		    AND member.isshow = 'Y'
+	</select>
+
+	<!-- 친구추가 수락시 친구 추가 -->
+	<insert id="inFriend" parameterType="yVO">
+		<selectKey keyProperty="fno" resultType="int" order="BEFORE">
+			SELECT
+				NVL(MAX(fno) +1, 1)
+			FROM
+				friend
+		</selectKey>
+		INSERT INTO
+		    friend(fno, myno, frino, agree, adate)
+		VALUES(
+		    #{fno}, (SELECT mno FROM member WHERE id = #{id}), #{mno}, 'Y', sysdate
+		)<!-- myno에 내아이디, frino에 친구번호 -->
+	</insert>
+	
+	<!-- 친구추가 수락시 수락으로 상태변경 -->
+	<update id="apFriend" parameterType="yVO">
+		UPDATE
+		    friend
+		SET
+		    agree = 'Y',
+		    adate = sysdate
+		WHERE
+		    myno = #{mno}
+		    AND frino = (SELECT mno FROM member WHERE id = #{id})<!-- 수락 누른 사람의 아이디 -->
+	</update>
+	
+	<!-- 친구수락 거절 -->
+	<update id="denyFriend" parameterType="yVO">
+		UPDATE
+		    friend
+		SET
+		    isshow = 'N',
+		    ddate = sysdate
+		WHERE
+		    myno = #{mno}
+		    AND frino = (SELECT mno FROM member WHERE id = #{id} )
+		    AND agree = 'N'	
+	</update>
 </mapper>

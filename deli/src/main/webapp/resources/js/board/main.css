@@ -68,3 +68,6 @@ small {
 	cursor:pointer;
 	background-color: white;
 }
+#id01{
+	display: block;
+}

@@ -146,5 +146,39 @@ public class YonghyunController {
 		return result;
 	}
 	
-	
+	// 친구추가 수락 함수
+	@RequestMapping("/apFriend.dlv")
+	public ModelAndView apFriend(ModelAndView mv, YonghyunVO yVO, HttpSession session) {
+		yVO.setId((String) session.getAttribute("SID"));
+		String view = "/deli/main.dlv";
+
+		try {
+			ySrvc.acceptFriend(yVO);
+			mv.addObject("RESULT", "친구 수락에 성공했습니다.");
+		} catch(Exception e) {
+			mv.addObject("RESULT", "친구 수락에 실패했습니다.");
+		}
+
+		mv.addObject("VIEW", view);
+		mv.setViewName("board/redirect");
+		return mv;
+	}
+// 여기서부터 테스트 필요	
+	// 친구추가 거절 함수
+	@RequestMapping("/denyFriend.dlv")
+	public ModelAndView denyFriend(ModelAndView mv, YonghyunVO yVO, HttpSession session) {
+		yVO.setId((String) session.getAttribute("SID"));
+		String view = "/deli/main.dlv";
+		int cnt = yDao.denyFriend(yVO);
+		if(cnt == 1) {
+			// 친구거절 성공
+			mv.addObject("RESULT", "친구 추가가 거절되었습니다.");
+		} else {
+			// 친구거절 실패
+			mv.addObject("RESULT", "친구 추가 거절이 실패하였습니다.");
+		}
+		mv.addObject("VIEW", view);
+		mv.setViewName("board/redirect");
+		return mv;
+	}
 }

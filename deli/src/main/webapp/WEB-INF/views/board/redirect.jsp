@@ -1,17 +1,16 @@
 <%-- 
 
 /**
- * @author	ÀÌ¿ëÇö
+ * @author	ì´ìš©í˜„
  * @since	2022/05/28
  * @version	v.1.0
  * 
- * 			ÀÛ¾÷ÀÌ·Â ]
- * 				2022.05.28	-	Å¬·¡½ºÁ¦ÀÛ
- * 								´ã´çÀÚ : ÀÌ¿ëÇö
+ * 			ìž‘ì—…ì´ë ¥ ]
+ * 				2022.05.28	-	í´ëž˜ìŠ¤ì œìž‘
+ * 								ë‹´ë‹¹ìž : ì´ìš©í˜„
  */
  --%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>

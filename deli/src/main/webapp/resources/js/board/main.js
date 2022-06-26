@@ -9,6 +9,9 @@
  */
 
 $(document).ready(function(){
+
+
+
 	$('.ctiybtn').click(function(){
 		var city = $(this).val();
 		$('#city').val(city);
@@ -82,7 +85,18 @@ $(document).ready(function(){
 		$(location).attr('href', '#contact');
 	});
 	
+	$('.apbtn').click(function(){
+		var mno = $(this).attr('id');
+		$('#frimno').val(mno);
+		$('#friendfrm').submit();
+	});
 	
+	$('.debtn').click(function(){
+		var mno = $(this).attr('id');
+		$('#frimno').val(mno);
+		$('#friendfrm').attr('action', '/deli/board/denyFriend.blp');
+		$('#friendfrm').submit();
+	});
 	
 	
 	

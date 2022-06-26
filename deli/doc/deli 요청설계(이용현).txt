@@ -40,9 +40,6 @@
 처리함수	:	upFriend()
 뷰			:	ajax
 ----------------------------------------------------------------------------------
-
-
-
 # 친구 추가 신청
 요청내용	:	/deli/board/friend.dlv
 파라미터	:	mno
@@ -50,8 +47,20 @@
 처리함수	:	upFriend()
 뷰			:	ajax
 ----------------------------------------------------------------------------------
-
-
+# 메인페이지에서 친구요청 수락
+요청내용	:	/deli/board/apFriend.dlv
+파라미터	:	mno
+컨트롤러	:	com.githrd.deli.controller.YonghyunController
+처리함수	:	apFriend()
+뷰			:	/WEB-INF/views/board/redirct.jsp
+----------------------------------------------------------------------------------
+# 메인페이지에서 친구요청 거절
+요청내용	:	/deli/board/denyFriend.dlv
+파라미터	:	mno
+컨트롤러	:	com.githrd.deli.controller.YonghyunController
+처리함수	:	denyFriend()
+뷰			:	/WEB-INF/views/board/redirct.jsp
+----------------------------------------------------------------------------------
 
 
 
@@ -64,18 +73,7 @@
 컨트롤러	:	com.githrd.deli.controller.board.FriendDelProc
 뷰			:	-
 ----------------------------------------------------------------------------------
-# 메인페이지에서 친구요청 수락
-요청내용	:	/deli/friendagr.dlv
-파라미터	:	fmno
-컨트롤러	:	com.githrd.deli.controller.board.FriendAgrProc
-뷰			:	-
-----------------------------------------------------------------------------------
-# 메인페이지에서 친구요청 거절
-요청내용	:	/deli/friendcan.dlv
-파라미터	:	fmno
-컨트롤러	:	com.githrd.deli.controller.board.FriendCanProc
-뷰			:	-
-----------------------------------------------------------------------------------
+
 # 메세지 리스트보기 요청
 요청내용	:	/deli/message.dlv
 파라미터	:	-

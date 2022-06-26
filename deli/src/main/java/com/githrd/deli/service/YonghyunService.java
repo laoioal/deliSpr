@@ -3,6 +3,7 @@ package com.githrd.deli.service;
 import javax.servlet.http.*;
 
 import org.springframework.beans.factory.annotation.*;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.githrd.deli.dao.*;
 import com.githrd.deli.vo.*;
@@ -39,5 +40,10 @@ public class YonghyunService {
 		return buff.toString();
 	}
 	
+	@Transactional
+	public void acceptFriend(YonghyunVO yVO) {
+		yDao.inFriend(yVO);
+		yDao.apFriend(yVO);
+	}
 	
 }

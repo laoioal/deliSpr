@@ -88,4 +88,19 @@ public class YonghyunDao {
 	public List<YonghyunVO> topBoard(){
 		return sqlSession.selectList("ySQL.topBoard");
 	}
+	
+	// 친구추가 수락시 친구 추가시키는 함수
+	public int inFriend(YonghyunVO yVO) {
+		return sqlSession.insert("ySQL.inFriend", yVO);
+	}
+	
+	// 친구추가 수락시 수락상태로 변경하는 함수
+	public int apFriend(YonghyunVO yVO) {
+		return sqlSession.update("ySQL.apFriend", yVO);
+	}
+	
+	// 친구추가 거절 함수
+	public int denyFriend(YonghyunVO yVO) {
+		return sqlSession.update("ySQL.denyFriend", yVO);
+	}
 }

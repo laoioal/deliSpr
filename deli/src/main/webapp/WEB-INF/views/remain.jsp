@@ -251,8 +251,8 @@
 			<p class="w3-opacity">평가</p>
 			<div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:${list.pesti}%">${list.pesti}%</div>
 			<div>
-				<p class="w3-col m6"><button class="w3-button w3-light-grey w3-block">수락</button></p>
-				<p class="w3-col m6"><button class="w3-button w3-light-grey w3-block">거절</button></p>
+				<p class="w3-col m6"><button class="w3-button w3-light-grey w3-block apbtn" id="${list.mno}">수락</button></p>
+				<p class="w3-col m6"><button class="w3-button w3-light-grey w3-block debtn" id="${list.mno}">거절</button></p>
 			</div>
 		 </div>
 	</c:forEach>    
@@ -260,70 +260,36 @@
 </c:if>
 
 		<div class="w3-container w3-padding-32" id="contact">
-		<h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Contact</h3>
+			<h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Contact</h3>
 			<form action="/action_page.php" target="_blank">
 				<input class="w3-input w3-section w3-border" id="Email" type="text" placeholder="ID" required name="ID">
 				<input class="w3-input w3-section w3-border" type="text" placeholder="Title" required name="Title">
-				<textarea class="w3-input w3-section w3-border" placeholder="Comment" required name="Comment"></textarea>
+				<input class="w3-input w3-section w3-border" placeholder="Comment" required name="Comment">
 				<button class="w3-button w3-black w3-section" type="submit">
 				<i class="fa fa-paper-plane"></i> SEND MESSAGE
 			</button>
 			</form>
 		</div>
+	</div>
 
-</div>	
 	
 	
-	 <form method="POST" action="" id="delfrm" name="delfrm">
-	 	<input type="hidden" name="mno" id="delmno">
-	 	<input type="hidden" name="id" id="delid">
+	 <form method="POST" action="/deli/board/apFriend.dlv" id="friendfrm" name="friendfrm">
+	 	<input type="hidden" name="mno" id="frimno">
+	 	<input type="hidden" id="result" value="${param.result}">
 	 </form>
-
-<div class="w3-container">
-		<!-- 회원정보 버튼 -->
-
- 	<div id="id01" class="w3-modal">
-		<div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:500px">
-			
-			<div class="w3-center"><br>
-        		<span class="w3-button w3-xlarge w3-transparent w3-display-topright" id="x" title="Close Modal">×</span>
-        		<img src="/deli${DATA.dir}/${DATA.oriname}" alt="profile" style="width:30%" class="w3-circle w3-margin-top w3-border">
-      		</div>
-      
+<c:if test="${not empty param.result}">
+	<div id="id01" class="w3-modal">
+		<div class="w3-modal-content w3-animate-top w3-card-4">
+			<header class="w3-container w3-teal"> 
+				<span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+				<h2>친구추가 결과</h2>
+			</header>
 			<div class="w3-container">
-	        	<div class="w3-section">
-					<h3 class="w3-center" id="infoid">${DATA.id}</h3>
-					<h5 class="w3-center">추천도 : <span><span id="spoon">🥄</span>${DATA.esti} / 5</span></h5>
-					<h5 class="w3-center" style="display: none;"><span id="infomno">${DATA.mno}</span></h5>
-					<h5 class="w3-center">이메일 : <span>${DATA.mail}</span></h5>
-					<h5 class="w3-center">카카오아이디 : <span>${DATA.kakaoid}</span></h5>
-					<h5 class="w3-center">전화번호 : <span>${DATA.tel}</span></h5>	
-					<div class="w3-col w3-margin-bottom">				
-						<button class="m2 w3-button w3-blue" id="ebtn">회원정보 수정</button>
-						<button class="m2 w3-button w3-red w3-right" id="dbtn">회원 탈퇴</button>
-					</div>
-				</div>
+				<p>${param.result}</p>
 			</div>
-	
-			<div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
-				<button id="cbth" type="button" class="w3-button w3-black">Cancel</button>
-			</div>
-	
 		</div>
 	</div>
-</div>
-
-<div class="w3-center">
-	<form action="/deli/mapplace.dlv" method="POST" id="mapsearch">
-		<input type="hidden" name="cusid" id="cusid">
-	</form>
-</div>
-
-<c:if test="${not empty CHATLOG}" >
-	<c:forEach var="chatlog" items="${CHATLOG}">
-		<input type="hidden" class="chatlog" value="${chatlog.body}">
-		<input type="hidden" class="chatlogid" value="${chatlog.id}">
-	</c:forEach>
 </c:if>
 	
 	
