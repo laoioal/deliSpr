@@ -14,7 +14,7 @@
 <center>
 <ul>픽업장소 : ${place.name}<br></ul>
 <ul>카테고리 : ${category.foodtype}<br></ul>
-<ul>식당명 : ${restaurantName}<br></ul>
+<ul>식당명 : ${restaurant.rname}(${restaurant.addr})<br></ul>
 
 <a href = "#"><button>확인</button></a>
 <a href = "#"><button>뒤로</button></a>

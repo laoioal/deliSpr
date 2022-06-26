@@ -29,6 +29,10 @@ public class calculatorVO {
 	public void setDistance(double distance) {
 		this.distance = distance;
 	}
+	@Override
+	public String toString() {
+		return "calculatorVO [name=" + name + ", address=" + address + ", distance=" + distance + "]";
+	}
 	
 	
 }

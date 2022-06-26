@@ -63,18 +63,19 @@ public class MemberController {
 	//등록된 pickup정보를 바탕으로 거리 계산하고 이를 view(placeView)에 뿌려주는 기능
 	@GetMapping("/placeView.dlv")
 	public String mapSearh(Model model, @Param("lat")double lat, @Param("lon")double lon) {
-		List<placeVO> list = mapper.selectList();	//픽업 리스트
-		System.out.println("list : "+list);
-		List<calculatorVO> cal = new ArrayList<>(list.size()); 
-		for(int i = 0; i<list.size();i++) {
-			double distance = calculator.disCal(lon, lat, list.get(i).getPickuplat(), list.get(i).getPickuplon());
+		List<placeVO> place = mapper.selectList();	//픽업 리스트
+		System.out.println("리스트 : "+place);
+		List<calculatorVO> cal = new ArrayList<>(place.size()); 
+		
+		for(int i = 0; i<place.size();i++) {
+			double distance = calculator.disCal(lon, lat, place.get(i).getPickuplat(), place.get(i).getPickuplon());
 			if(distance<1000) {
-			calculatorVO calculat = new calculatorVO(list.get(i).getName(),list.get(i).getAddress(),distance);
+			calculatorVO calculat = new calculatorVO(place.get(i).getName(),place.get(i).getAddress(),distance);
 			cal.add(calculat);
 			}
 		}
 		placeVO myPlace = new placeVO(member.getId(),member.getAddr(),lon,lat);	//마커 표시를 위해 회원 정보도 list에 넣어줌
-		list.add(myPlace);
+		place.add(myPlace);
 		
 		//가까운거리순으로 정렬
 		Collections.sort(cal,new Comparator<calculatorVO>() {
@@ -84,7 +85,9 @@ public class MemberController {
 					return -1;
 				}
 				return 1;}});
-		model.addAttribute("list",list);
+		model.addAttribute("lat",lat);
+		model.addAttribute("lon",lon);
+		model.addAttribute("place",place);
 		model.addAttribute("cal",cal);
 		return "search/2.SelectPlace/pickUpPlaceChoose";
 	}

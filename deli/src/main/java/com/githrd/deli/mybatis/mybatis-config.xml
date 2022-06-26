@@ -16,11 +16,14 @@
 		<typeAlias alias="pcVO" type="com.githrd.deli.vo.PcsVO"/>
 		<typeAlias alias="yVO" type="com.githrd.deli.vo.YonghyunVO"/>
 
+		
 		<typeAlias alias="memberVO" type="com.githrd.deli.vo.memberVO"/>
 		<typeAlias alias="placeVO" type="com.githrd.deli.vo.placeVO"/>
 		<typeAlias alias="guestVO" type="com.githrd.deli.vo.guestVO"/>
 		<typeAlias alias="calculatorVO" type="com.githrd.deli.vo.calculatorVO"/>
 		<typeAlias alias="categoryVO" type="com.githrd.deli.vo.categoryVO"/>
+		<typeAlias alias="restaurantVO" type="com.githrd.deli.vo.restaurantVO"/>
+		<typeAlias alias="middleareaVO" type="com.githrd.deli.vo.middleareaVO"/>
 
 		<typeAlias alias="page" type="com.githrd.deli.util.PageUtil"/>
 		<typeAlias alias="file" type="com.githrd.deli.util.FileUtil"/>
@@ -35,5 +38,7 @@
 		<mapper resource="com/githrd/deli/sql/memberSQL.xml"/>
 		<mapper resource="com/githrd/deli/sql/placeSQL.xml"/>
 		<mapper resource="com/githrd/deli/sql/categorySQL.xml"/>
+		<mapper resource="com/githrd/deli/sql/restaurantSQL.xml"/>
+		<mapper resource="com/githrd/deli/sql/middleareaSQL.xml"/>
 	</mappers>
 </configuration>

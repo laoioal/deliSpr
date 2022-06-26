@@ -27,6 +27,11 @@ public class guestVO {
 	public void setError(String error) {
 		this.error = error;
 	}
+
+	@Override
+	public String toString() {
+		return "guestVO [id=" + id + ", addr=" + addr + ", error=" + error + "]";
+	}
 	
 
 

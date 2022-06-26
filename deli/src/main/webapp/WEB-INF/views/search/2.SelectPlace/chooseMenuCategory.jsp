@@ -20,12 +20,11 @@
 					     <br>
 					<c:forEach items="${category}" var="category" >
 					     	
-					     
 					
-					<input type="radio" name="foodtype" value="${category.foodtype}">${category.foodtype}<br>
+					<input type="radio" name="code" value="${category.code}">${category.foodtype}<br>
 					</c:forEach>
 					<br>
-					<input type = "submit" value="선택" onclick="close_window()"/>
+					<input type = "submit" value="선택" />
 		</center>
 		
 	</body>	

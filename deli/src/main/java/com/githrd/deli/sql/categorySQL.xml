@@ -7,7 +7,7 @@
 	<select id="selectOne" resultType="categoryVO" parameterType="string">
 	select foodtype , code from menucategory where foodtype = #{foodtype}
 	</select>
-	<select id="selectNum" resultType="categoryVO" parameterType="string">
+	<select id="selectNum" resultType="categoryVO" parameterType="int">
 	select foodtype , code from menucategory where code = #{code}
 	</select>
 	

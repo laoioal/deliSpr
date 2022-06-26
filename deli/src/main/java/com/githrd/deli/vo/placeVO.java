@@ -38,6 +38,11 @@ public class placeVO {
 	public void setPickuplon(double pickuplon) {
 		this.pickuplon = pickuplon;
 	}
+	@Override
+	public String toString() {
+		return "placeVO [name=" + name + ", address=" + address + ", pickuplat=" + pickuplat + ", pickuplon="
+				+ pickuplon + "]";
+	}
 	
 	
 	

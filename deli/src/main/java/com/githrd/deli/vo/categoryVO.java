@@ -29,6 +29,11 @@ public class categoryVO {
 	public void setFoodtype(String foodtype) {
 		this.foodtype = foodtype;
 	}
+
+	@Override
+	public String toString() {
+		return "categoryVO [code=" + code + ", foodtype=" + foodtype + "]";
+	}
 	
 	
 	
