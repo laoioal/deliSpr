@@ -103,4 +103,9 @@ public class YonghyunDao {
 	public int denyFriend(YonghyunVO yVO) {
 		return sqlSession.update("ySQL.denyFriend", yVO);
 	}
+	
+	// 친구삭제 함수
+	public int delFriend(YonghyunVO yVO) {
+		return sqlSession.update("ySQL.delFriend", yVO);
+	}
 }

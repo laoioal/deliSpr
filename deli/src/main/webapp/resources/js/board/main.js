@@ -94,7 +94,7 @@ $(document).ready(function(){
 	$('.debtn').click(function(){
 		var mno = $(this).attr('id');
 		$('#frimno').val(mno);
-		$('#friendfrm').attr('action', '/deli/board/denyFriend.blp');
+		$('#friendfrm').attr('action', '/deli/board/denyFriend.dlv');
 		$('#friendfrm').submit();
 	});
 	

@@ -13,11 +13,10 @@ $(document).ready(function(){
 		alert('메세지 전송 실패')
 	}
 	
-	$('.w33').click(function(){
-		
+	$('.citytitle').click(function(){
+		$('#search').val('');
 		var city = $(this).val();
-		$('#city').val(city);
-		
+		$('#maincity').val(city);
 		$('#frm').submit();
 	});
 	
@@ -30,10 +29,10 @@ $(document).ready(function(){
 	});
 	
 	$('#mymess').click(function(){
-		$(location).attr('href', '/deli/message.dlv');
+		$(location).attr('href', '/deli/board/messageList.dlv');
 	})
 	$('#send').click(function(){
-		$(location).attr('href', '/deli/msform.dlv');
+		$(location).attr('href', '/deli/board/msForm.dlv');
 	});
 	
 	$('#sendmessage').click(function(){

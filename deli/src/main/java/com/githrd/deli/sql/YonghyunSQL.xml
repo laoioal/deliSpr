@@ -297,4 +297,17 @@
 		    AND frino = (SELECT mno FROM member WHERE id = #{id} )
 		    AND agree = 'N'	
 	</update>
+	
+	<!-- 친구삭제 -->
+	<update id="delFriend" parameterType="yVO">
+		UPDATE
+		    friend
+		SET
+		    ddate = sysdate,
+		    isshow = 'N',
+		    agree = 'N'
+		WHERE
+		    myno = (SELECT mno FROM member WHERE id = #{id})
+		    AND frino = #{mno}
+	</update>
 </mapper>

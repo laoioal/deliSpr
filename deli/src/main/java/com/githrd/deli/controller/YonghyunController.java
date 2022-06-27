@@ -141,7 +141,7 @@ public class YonghyunController {
 	@RequestMapping("/friend.dlv")
 	@ResponseBody
 	public String upFriend(YonghyunVO yVO, HttpSession session) {
-		String id = (String) session.getAttribute("SID");	
+		String id = (String) session.getAttribute("SID");
 		String result = ySrvc.selFriend(yVO, id);
 		return result;
 	}
@@ -149,7 +149,7 @@ public class YonghyunController {
 	// 친구추가 수락 함수
 	@RequestMapping("/apFriend.dlv")
 	public ModelAndView apFriend(ModelAndView mv, YonghyunVO yVO, HttpSession session) {
-		yVO.setId((String) session.getAttribute("SID"));
+		
 		String view = "/deli/main.dlv";
 
 		try {
@@ -163,11 +163,11 @@ public class YonghyunController {
 		mv.setViewName("board/redirect");
 		return mv;
 	}
-// 여기서부터 테스트 필요	
+	
 	// 친구추가 거절 함수
 	@RequestMapping("/denyFriend.dlv")
 	public ModelAndView denyFriend(ModelAndView mv, YonghyunVO yVO, HttpSession session) {
-		yVO.setId((String) session.getAttribute("SID"));
+		
 		String view = "/deli/main.dlv";
 		int cnt = yDao.denyFriend(yVO);
 		if(cnt == 1) {
@@ -179,6 +179,40 @@ public class YonghyunController {
 		}
 		mv.addObject("VIEW", view);
 		mv.setViewName("board/redirect");
+		return mv;
+	}
+// 여기서부터 테스트 필요	
+	// 친구 삭제 함수
+	@RequestMapping("/delFriend.dlv")
+	public ModelAndView delFriend(ModelAndView mv, YonghyunVO yVO) {
+		String view = "/deli/main.dlv";
+		int cnt = yDao.delFriend(yVO);
+		if(cnt == 1) {
+			// 친구삭제 성공
+			mv.addObject("RESULT", "친구 삭제가 성공하였습니다.");
+		} else {
+			// 친구삭제 실패
+			mv.addObject("RESULT", "친구 삭제가 실패하였습니다.");
+		}
+		
+		mv.addObject("VIEW", view);
+		mv.setViewName("board/redirect");
+		return mv;
+	}
+	
+	// 메세지 리스트페이지 보기 함수
+	@RequestMapping("/messageList.dlv")
+	public ModelAndView messageList(ModelAndView mv) {
+		
+		mv.setViewName("board/message");
+		return mv;
+	}
+	
+	// 메세지 전송 폼보기 요청
+	@RequestMapping("/msForm.dlv")
+	public ModelAndView messageForm(ModelAndView mv) {
+		
+		mv.setViewName("board/messageForm");
 		return mv;
 	}
 }

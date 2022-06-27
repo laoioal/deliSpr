@@ -178,7 +178,7 @@
 	<c:if test="${MYINFO.ck le 100 }">          
 							<div class="w3-round-xlarge w3-teal" style="height:24px;width:${MYINFO.ck}%">${MYINFO.res}명</div>
 	</c:if>
-	<c:if test="${MYINFO.ck gt 100 }">          
+	<c:if test="${MYINFO.ck gt 100 }">       
 							<div class="w3-round-xlarge w3-teal" style="height:24px;width:100%">${MYINFO.res}명</div>
 	</c:if>         
 						</div>
@@ -225,9 +225,9 @@
 		<div class="w3-col l3 m6 w3-margin-bottom">
 			<img src="/deli/img/avatar/${list.aid}" style="width:100%">
 			<h3>${list.id}</h3>
-			<p>평점 : ${list.esti}</p>
 			<hr>
-			<p class="w3-opacity">평가</p>
+			<p>매너점수 : ${list.esti}</p>
+			<!-- <p class="w3-opacity">매너점수</p> -->
 			<div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:${list.pesti}%">${list.pesti}%</div>
 			<p><button class="w3-button w3-light-grey w3-block" id="mail">Contact</button></p>
 		</div>
@@ -246,9 +246,9 @@
 		<div class="w3-col l3 m6 w3-margin-bottom">
 			<img src="/deli/img/avatar/${list.aid}" style="width:100%">
 			<h3>${list.id}</h3>
-			<p>평점 : ${list.esti}</p>
 			<hr>
-			<p class="w3-opacity">평가</p>
+			<p>매너점수 : ${list.esti}</p>
+			<!-- <p class="w3-opacity">매너점수</p> -->
 			<div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:${list.pesti}%">${list.pesti}%</div>
 			<div>
 				<p class="w3-col m6"><button class="w3-button w3-light-grey w3-block apbtn" id="${list.mno}">수락</button></p>
@@ -277,6 +277,7 @@
 	 <form method="POST" action="/deli/board/apFriend.dlv" id="friendfrm" name="friendfrm">
 	 	<input type="hidden" name="mno" id="frimno">
 	 	<input type="hidden" id="result" value="${param.result}">
+	 	<input type="hidden" name="id" value="${SID}">
 	 </form>
 <c:if test="${not empty param.result}">
 	<div id="id01" class="w3-modal">

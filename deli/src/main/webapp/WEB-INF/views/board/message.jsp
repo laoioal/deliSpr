@@ -24,7 +24,7 @@
 <link rel="stylesheet" type="text/css" href="/deli/resources/css/base.css">
 <link rel="stylesheet" type="text/css" href="/deli/resources/css/user.css">
 <link rel="stylesheet" type="text/css" href="/deli/resources/css/w3.css">
-<script type="text/javascript" src="/deli/resources/message.js"></script>
+<script type="text/javascript" src="/deli/resources/js/board/message.js"></script>
 <style type="text/css">
 
 </style>
@@ -35,21 +35,29 @@
 <c:if test="${not empty SID}">
 		<button class="w3-right-align mg0 w3-right mg0 pdAll0 w3-button mgt10 member" id="obtn">로그아웃</button>
 </c:if>
-		<form method="POST" action="/deli/boardList.dlv" id="frm" name="frm">
-			<input type="hidden" id="city" name="city" value="">
+<c:if test="${empty SID}">
+		<button class="w3-right-align mg0 w3-right mg0 pdAll0 w3-button mgt10 member" id="lbtn">로그인</button>
+		<button class="w3-right member mg0 w3-button mgt10" id="jbtn">회원가입</button>
+</c:if>
+		<form method="POST" action="/deli/board/boardList.dlv" id="frm" name="frm">
+			<input type="hidden" id="maincity" name="city" value="${param.city}">
 		
-			<div class="w3-col mgt0">
-				<h1 class="mgb10 w3-border pdAll10"><strong>Delivery Project</strong></h1>
-				<hr>
-				<button class="w3-button w3-left w33" id="sbtn" value="seoul">서울</button>
-				<button class="w3-button w3-left w33" value="gyeonggi">경기도</button>
-				<button class="w3-button w3-left w33" disabled value="gangwon">강원도</button>
-				<button class="w3-button w3-left w33" disabled value="chungcheong">충청도</button>
-				<button class="w3-button w3-left w33" value="gyeongsang">경상도</button>
-				<button class="w3-button w3-left w33" disabled value="jeolla">전라도</button>
-				<button class="w3-button w3-left w33" disabled value="jeju">제주도</button>
-			<hr class="w3-col mg0 w3-card-2">
-			</div>
+		<div class="w3-col mgt0">
+			<h1 class="mgb10 w3-border pdAll10"><strong>Delivery Project</strong></h1>
+			<hr>
+			<button class="w3-col w3-button w3-left citytitle" value="서울특별시">서울</button>
+			<button class="w3-col w3-button w3-left citytitle" value="경기도">경기도</button>
+			<button class="w3-col w3-button w3-left citytitle" value="강원도">강원도</button>
+			<button class="w3-col w3-button w3-left citytitle" value="충청남도">충청남도</button>
+			<button class="w3-col w3-button w3-left citytitle" value="충청북도">충청북도</button>
+			<button class="w3-col w3-button w3-left citytitle" value="경상남도">경상남도</button>
+			<button class="w3-col w3-button w3-left citytitle" value="경상북도">경상북도</button>
+			<button class="w3-col w3-button w3-left citytitle" value="전라남도">전라남도</button>
+			<button class="w3-col w3-button w3-left citytitle" value="전라북도">전라북도</button>
+			<button class="w3-col w3-button w3-left citytitle" value="제주도">제주도</button>
+			<button class="w3-col w3-button w3-left citytitle" value="">전체</button>
+		<hr class="w3-col mg0 w3-card-2">
+		</div>
 		</form>
 		
 		
