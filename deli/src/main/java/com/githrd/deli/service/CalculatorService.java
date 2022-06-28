@@ -1,8 +1,11 @@
 package com.githrd.deli.service;
 
 import java.text.NumberFormat;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
-import org.springframework.stereotype.Service;
+import com.githrd.deli.vo.calculatorVO;
 
 
 
@@ -40,7 +43,15 @@ public class CalculatorService {
 		public double rad2deg(double rad) {
 			return (rad * 180 / Math.PI);
 		};
-	
-
-}
+	//calculatorVO
+		public void sortList(List<calculatorVO> obj){
+			Collections.sort(obj,new Comparator<calculatorVO>() {
+				@Override
+				public int compare(calculatorVO o1, calculatorVO o2) {
+					if(o1.getDistance()<o2.getDistance()) {
+						return -1;
+					}
+					return 1;}});
 		
+		}
+}
