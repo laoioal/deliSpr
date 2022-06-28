@@ -6,6 +6,16 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script>
+
+	let resno;
+	function radioClick(restno){
+		resno = restno;
+		document.getElementsById('no').value = restno;
+		
+	}
+
+</script>
 <meta charset="utf-8">
 <title>키워드로 장소검색하기</title>
 </head>
@@ -25,15 +35,16 @@
 					</tr>
 					<tr>
                         <c:forEach items="${restaurant}" var="restaurant">
-                        <form action="<c:url value='/place/restaurant/selectfinish.dlv'/>">
-                             <th><input type="radio" name = "restno" value="${restaurant.restno}"/></th>
+                     
+                     <form name = "parentForm2" action="<c:url value='/place/restaurant/selectfinish.dlv'/>">
+                             <th><input type="radio" name = "restno" value="${restaurant.restno}" onclick = "radioClick('${restaurant.restno}')"/></th>
                             <th>${restaurant.rname}</th>
                              <th>${restaurant.addr}</th>
                     </tr>
              		   	</c:forEach>
                 </table>
-                
-                	<input type="hidden" name = "place_name" value="${place.name}"/>
+                			<input type="hidden" name = "place_name" value='${place.name}'/>
+                			<input type="hidden" id ="no" values=""/>
                             <input type="submit" value="확인"/>
                             </form>
                 <script>
@@ -83,6 +94,12 @@
 	      
 	      
 	      
+        
+              function setChildText(){
+                  openWin.document.getElementById("cInput").value = document.getElementById("pInput").value;
+                 }
+             
+             
 	      
 	      
 	      
@@ -98,15 +115,5 @@
 </form>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
 
 
