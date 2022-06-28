@@ -82,14 +82,10 @@
 처리함수	:	messageForm()
 뷰			:	/WEB-INF/views/board/messageForm.jsp
 ----------------------------------------------------------------------------------
-
-
-
-
-
 # 메세지 전송 처리 요청
-요청내용	:	/deli/msProc.dlv
+요청내용	:	/deli/board/msProc.dlv
 파라미터	:	title, body
-컨트롤러	:	com.githrd.deli.controller.board.MessageProc
-뷰			:	-
+컨트롤러	:	com.githrd.deli.controller.YonghyunController
+처리함수	:	sendMessage()
+뷰			:	/WEB-INF/views/board/message.jsp
 ----------------------------------------------------------------------------------

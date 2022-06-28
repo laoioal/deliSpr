@@ -69,7 +69,7 @@
 			<div class="w3-col w3-border w3-padding m9 w3-margin-top">
 				<div class="w3-col w3-margin-top w3-right">
 					<div class="w3-col m2">받는사람</div>
-					<input class="w3-col m9" name="fid">
+					<input class="w3-col m9" name="kid">
 				</div>
 				<div class="w3-col w3-margin-top w3-right">
 					<div class="w3-col m2">제목</div>

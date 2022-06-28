@@ -215,4 +215,21 @@ public class YonghyunController {
 		mv.setViewName("board/messageForm");
 		return mv;
 	}
+	
+	// 메세지 전송 처리 함수
+	@RequestMapping("/msProc.dlv")
+	public ModelAndView sendMessage(ModelAndView mv, YonghyunVO yVO, HttpSession session) {
+		yVO.setId((String) session.getAttribute("SID"));
+		String view = "/deli/board/messageList.dlv";
+		int cnt = yDao.sendMessage(yVO);
+		mv.addObject("RESULT", "메세지 전송 성공");
+		if(cnt != 1) {
+			view = "/deli/board/msForm.dlv";
+			mv.addObject("RESULT", "메세지 전송 실패");
+		}
+		
+		mv.addObject("VIEW", view);
+		mv.setViewName("board/redirect");
+		return mv;
+	}
 }

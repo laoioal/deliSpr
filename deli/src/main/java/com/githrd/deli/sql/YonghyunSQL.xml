@@ -310,4 +310,16 @@
 		    myno = (SELECT mno FROM member WHERE id = #{id})
 		    AND frino = #{mno}
 	</update>
+	
+	<!-- 쪽지 전송 -->
+	<insert id="sendMessage" parameterType="yVO">
+		INSERT INTO
+		    message(msno, writerno, myno, mstitle, msbody)
+		VALUES(
+		    (SELECT NVL(MAX(msno) + 1, 1) FROM message),
+		    (SELECT mno FROM member WHERE id = #{kid}),
+		    (SELECT mno FROM member WHERE id = #{id}),
+		    #{title}, #{body}
+		)
+	</insert>
 </mapper>

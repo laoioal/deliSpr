@@ -182,10 +182,9 @@
 							<div class="w3-round-xlarge w3-teal" style="height:24px;width:100%">${MYINFO.res}명</div>
 	</c:if>         
 						</div>
-						<p>회원정보수정</p>
-						<div class="w3-light-grey w3-round-xlarge">
-							<div class="w3-round-xlarge w3-teal" style="height:24px;width:25%"></div>
-						</div>
+						<p class="memText">쪽지보내기</p>
+						<p class="memText">쪽지보내기</p>
+						<p class="memText">회원정보수정</p>
 						<br>
 					</div>
 				</div>

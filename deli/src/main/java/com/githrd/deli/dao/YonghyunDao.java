@@ -108,4 +108,9 @@ public class YonghyunDao {
 	public int delFriend(YonghyunVO yVO) {
 		return sqlSession.update("ySQL.delFriend", yVO);
 	}
+	
+	// 메세지 전송 함수
+	public int sendMessage(YonghyunVO yVO) {
+		return sqlSession.insert("ySQL.sendMessage", yVO);
+	}
 }

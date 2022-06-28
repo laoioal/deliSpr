@@ -71,3 +71,6 @@ small {
 #id01{
 	display: block;
 }
+.memText {
+	color: light-gray;
+}
