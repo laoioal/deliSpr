@@ -453,10 +453,87 @@ INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((
 WHERE SUBSTR('서울 영등포구 여의대방로7길 13',INSTR('서울 영등포구 여의대방로7길 13', ' ',1,1)+1, INSTR('서울 영등포구 여의대방로7길 13',' ',1,2)-INSTR('서울 영등포구 여의대방로7길 13',' ',1,1)-1)= middlearea.city));
 INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'F 도시락',1014,'서울 영등포구 여의대방로29길 9','02-6020-0321','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
 WHERE SUBSTR('서울 영등포구 여의대방로29길 9',INSTR('서울 영등포구 여의대방로29길 9', ' ',1,1)+1, INSTR('서울 영등포구 여의대방로29길 9',' ',1,2)-INSTR('서울 영등포구 여의대방로29길 9',' ',1,1)-1)= middlearea.city));
-INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),,,'서울 영등포구 신길로39길 1','02-6020-0322','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
-WHERE SUBSTR('서울 영등포구 신길로39길 1',INSTR('서울 영등포구 신길로39길 1', ' ',1,1)+1, INSTR('서울 영등포구 신길로39길 1',' ',1,2)-INSTR('서울 영등포구 신길로39길 1',' ',1,1)-1)= middlearea.city));
-INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),,,'서울 영등포구 신길로39길 1','02-6020-0323','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
-WHERE SUBSTR('서울 영등포구 신길로39길 1',INSTR('서울 영등포구 신길로39길 1', ' ',1,1)+1, INSTR('서울 영등포구 신길로39길 1',' ',1,2)-INSTR('서울 영등포구 신길로39길 1',' ',1,1)-1)= middlearea.city));
-INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),,,'서울 영등포구 신길로39길 1','02-6020-0324','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
-WHERE SUBSTR('서울 영등포구 신길로39길 1',INSTR('서울 영등포구 신길로39길 1', ' ',1,1)+1, INSTR('서울 영등포구 신길로39길 1',' ',1,2)-INSTR('서울 영등포구 신길로39길 1',' ',1,1)-1)= middlearea.city));
-
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'A 일식집',1001,'서울특별시 중구 북창동 14-5','02-6020-0322','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 중구 북창동 14-5',INSTR('서울특별시 중구 북창동 14-5', ' ',1,1)+1, INSTR('서울특별시 중구 북창동 14-5',' ',1,2)-INSTR('서울특별시 중구 북창동 14-5',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'B 일식집',1001,'서울특별시 중구 순화동 151','02-6020-0323','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 중구 순화동 151',INSTR('서울특별시 중구 순화동 151', ' ',1,1)+1, INSTR('서울특별시 중구 순화동 151',' ',1,2)-INSTR('서울특별시 중구 순화동 151',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'C 일식집',1001,'서울특별시 중구 서소문동 57-1','02-6020-0324','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 중구 서소문동 57-1',INSTR('서울특별시 중구 서소문동 57-1', ' ',1,1)+1, INSTR('서울특별시 중구 서소문동 57-1',' ',1,2)-INSTR('서울특별시 중구 서소문동 57-1',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'A 중식',1002,'서울특별시 중구 남대문로5가 177','02-6020-0325','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 중구 남대문로5가 177',INSTR('서울특별시 중구 남대문로5가 177', ' ',1,1)+1, INSTR('서울특별시 중구 남대문로5가 177',' ',1,2)-INSTR('서울특별시 중구 남대문로5가 177',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'B 중식',1002,'서울특별시 중구 태평로1가','02-6020-0326','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 중구 태평로1가',INSTR('서울특별시 중구 태평로1가', ' ',1,1)+1, INSTR('서울특별시 중구 태평로1가',' ',1,2)-INSTR('서울특별시 중구 태평로1가',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'C 중식',1002,'서울특별시 중구 소공동 63','02-6020-0327','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 중구 소공동 63',INSTR('서울특별시 중구 소공동 63', ' ',1,1)+1, INSTR('서울특별시 중구 소공동 63',' ',1,2)-INSTR('서울특별시 중구 소공동 63',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'A 치킨',1003,'서울특별시 중구 소공로 106','02-6020-0328','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 중구 소공로 106',INSTR('서울특별시 중구 소공로 106', ' ',1,1)+1, INSTR('서울특별시 중구 소공로 106',' ',1,2)-INSTR('서울특별시 중구 소공로 106',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'B 치킨',1003,'서울특별시 중구 세종대로14길 6-2','02-6020-0329','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 중구 세종대로14길 6-2',INSTR('서울특별시 중구 세종대로14길 6-2', ' ',1,1)+1, INSTR('서울특별시 중구 세종대로14길 6-2',' ',1,2)-INSTR('서울특별시 중구 세종대로14길 6-2',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'C 치킨',1003,'서울특별시 중구 북창동 11-2','02-6020-0330','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 중구 북창동 11-2',INSTR('서울특별시 중구 북창동 11-2', ' ',1,1)+1, INSTR('서울특별시 중구 북창동 11-2',' ',1,2)-INSTR('서울특별시 중구 북창동 11-2',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'A 백반',1004,'서울특별시 중구 남대문시장길 73-3','02-6020-0331','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 중구 남대문시장길 73-3',INSTR('서울특별시 중구 남대문시장길 73-3', ' ',1,1)+1, INSTR('서울특별시 중구 남대문시장길 73-3',' ',1,2)-INSTR('서울특별시 중구 남대문시장길 73-3',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'B 백반',1004,'서울특별시 종로구 신문로2가 12-5','02-6020-0332','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 종로구 신문로2가 12-5',INSTR('서울특별시 종로구 신문로2가 12-5', ' ',1,1)+1, INSTR('서울특별시 종로구 신문로2가 12-5',' ',1,2)-INSTR('서울특별시 종로구 신문로2가 12-5',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'C 백반',1004,'서울특별시 중구 덕수궁길 7','02-6020-0333','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 중구 덕수궁길 7',INSTR('서울특별시 중구 덕수궁길 7', ' ',1,1)+1, INSTR('서울특별시 중구 덕수궁길 7',' ',1,2)-INSTR('서울특별시 중구 덕수궁길 7',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'A 카페',1005,'서울특별시 중구 퇴계로 42-2 2층','02-6020-0334','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 중구 퇴계로 42-2 2층',INSTR('서울특별시 중구 퇴계로 42-2 2층', ' ',1,1)+1, INSTR('서울특별시 중구 퇴계로 42-2 2층',' ',1,2)-INSTR('서울특별시 중구 퇴계로 42-2 2층',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'B 카페',1005,'서울특별시 중구 퇴계로 67 레스케이프 호텔 6F','02-6020-0335','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 중구 퇴계로 67 레스케이프 호텔 6F',INSTR('서울특별시 중구 퇴계로 67 레스케이프 호텔 6F', ' ',1,1)+1, INSTR('서울특별시 중구 퇴계로 67 레스케이프 호텔 6F',' ',1,2)-INSTR('서울특별시 중구 퇴계로 67 레스케이프 호텔 6F',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'C 카페',1005,'서울특별시 중구 회현동1가 100-123 번지 하 1층','02-6020-0336','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 중구 회현동1가 100-123 번지 하 1층',INSTR('서울특별시 중구 회현동1가 100-123 번지 하 1층', ' ',1,1)+1, INSTR('서울특별시 중구 회현동1가 100-123 번지 하 1층',' ',1,2)-INSTR('서울특별시 중구 회현동1가 100-123 번지 하 1층',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'A 분식',1006,'서울특별시 중구 소공동 소공로 96','02-6020-0337','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 중구 소공동 소공로 96',INSTR('서울특별시 중구 소공동 소공로 96', ' ',1,1)+1, INSTR('서울특별시 중구 소공동 소공로 96',' ',1,2)-INSTR('서울특별시 중구 소공동 소공로 96',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'B 분식',1006,'서울특별시 중구 남대문로4가 71-1','02-6020-0338','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 중구 남대문로4가 71-1',INSTR('서울특별시 중구 남대문로4가 71-1', ' ',1,1)+1, INSTR('서울특별시 중구 남대문로4가 71-1',' ',1,2)-INSTR('서울특별시 중구 남대문로4가 71-1',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'C 분식',1006,'서울특별시 중구 유원빌딩 1706호','02-6020-0339','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 중구 유원빌딩 1706호',INSTR('서울특별시 중구 유원빌딩 1706호', ' ',1,1)+1, INSTR('서울특별시 중구 유원빌딩 1706호',' ',1,2)-INSTR('서울특별시 중구 유원빌딩 1706호',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'A 찌개집',1007,'서울특별시 중구 소공동 소공로 112','02-6020-0340','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 중구 소공동 소공로 112',INSTR('서울특별시 중구 소공동 소공로 112', ' ',1,1)+1, INSTR('서울특별시 중구 소공동 소공로 112',' ',1,2)-INSTR('서울특별시 중구 소공동 소공로 112',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'B 찌개집',1007,'서울특별시 중구 남대문로7길 16','02-6020-0341','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 중구 남대문로7길 16',INSTR('서울특별시 중구 남대문로7길 16', ' ',1,1)+1, INSTR('서울특별시 중구 남대문로7길 16',' ',1,2)-INSTR('서울특별시 중구 남대문로7길 16',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'C 찌개집',1007,'서울특별시 중구 남대문로4가 45번지 1층','02-6020-0342','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 중구 남대문로4가 45번지 1층',INSTR('서울특별시 중구 남대문로4가 45번지 1층', ' ',1,1)+1, INSTR('서울특별시 중구 남대문로4가 45번지 1층',' ',1,2)-INSTR('서울특별시 중구 남대문로4가 45번지 1층',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'A 피자',1008,'서울특별시 중구 덕수궁길 5','02-6020-0343','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 중구 덕수궁길 5',INSTR('서울특별시 중구 덕수궁길 5', ' ',1,1)+1, INSTR('서울특별시 중구 덕수궁길 5',' ',1,2)-INSTR('서울특별시 중구 덕수궁길 5',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'B 피자',1008,'서울특별시 중구 충무로1가 1','02-6020-0344','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 중구 충무로1가 1',INSTR('서울특별시 중구 충무로1가 1', ' ',1,1)+1, INSTR('서울특별시 중구 충무로1가 1',' ',1,2)-INSTR('서울특별시 중구 충무로1가 1',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'C 피자',1008,'서울특별시 중구 중림동 청파로 464','02-6020-0345','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 중구 중림동 청파로 464',INSTR('서울특별시 중구 중림동 청파로 464', ' ',1,1)+1, INSTR('서울특별시 중구 중림동 청파로 464',' ',1,2)-INSTR('서울특별시 중구 중림동 청파로 464',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'A 양식',1009,'서울특별시 중구 소공동 세종대로 82','02-6020-0346','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 중구 소공동 세종대로 82',INSTR('서울특별시 중구 소공동 세종대로 82', ' ',1,1)+1, INSTR('서울특별시 중구 소공동 세종대로 82',' ',1,2)-INSTR('서울특별시 중구 소공동 세종대로 82',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'B 양식',1009,'서울특별시 중구 충무로2가 7-1','02-6020-0347','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 중구 충무로2가 7-1',INSTR('서울특별시 중구 충무로2가 7-1', ' ',1,1)+1, INSTR('서울특별시 중구 충무로2가 7-1',' ',1,2)-INSTR('서울특별시 중구 충무로2가 7-1',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'C 양식',1009,'서울특별시 중구 퇴계로 18','02-6020-0348','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 중구 퇴계로 18',INSTR('서울특별시 중구 퇴계로 18', ' ',1,1)+1, INSTR('서울특별시 중구 퇴계로 18',' ',1,2)-INSTR('서울특별시 중구 퇴계로 18',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'A 고기집',1010,'서울특별시 중구 남대문로5가 21-2','02-6020-0349','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 중구 남대문로5가 21-2',INSTR('서울특별시 중구 남대문로5가 21-2', ' ',1,1)+1, INSTR('서울특별시 중구 남대문로5가 21-2',' ',1,2)-INSTR('서울특별시 중구 남대문로5가 21-2',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'B 고기집',1010,'서울특별시 중구 세종대로2길 6-1','02-6020-0350','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 중구 세종대로2길 6-1',INSTR('서울특별시 중구 세종대로2길 6-1', ' ',1,1)+1, INSTR('서울특별시 중구 세종대로2길 6-1',' ',1,2)-INSTR('서울특별시 중구 세종대로2길 6-1',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'C 고기집',1010,'서울특별시 중구 서소문동 134-6','02-6020-0351','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 중구 서소문동 134-6',INSTR('서울특별시 중구 서소문동 134-6', ' ',1,1)+1, INSTR('서울특별시 중구 서소문동 134-6',' ',1,2)-INSTR('서울특별시 중구 서소문동 134-6',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'A 보쌈집',1011,'서울특별시 중구 남대문로4가 남대문로 2-3','02-6020-0352','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 중구 남대문로4가 남대문로 2-3',INSTR('서울특별시 중구 남대문로4가 남대문로 2-3', ' ',1,1)+1, INSTR('서울특별시 중구 남대문로4가 남대문로 2-3',' ',1,2)-INSTR('서울특별시 중구 남대문로4가 남대문로 2-3',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'B 보쌈집',1011,'서울특별시 중구 을지로 30 롯데백화점 본점 지하 1층','02-6020-0353','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 중구 을지로 30 롯데백화점 본점 지하 1층',INSTR('서울특별시 중구 을지로 30 롯데백화점 본점 지하 1층', ' ',1,1)+1, INSTR('서울특별시 중구 을지로 30 롯데백화점 본점 지하 1층',' ',1,2)-INSTR('서울특별시 중구 을지로 30 롯데백화점 본점 지하 1층',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'C 보쌈집',1011,'서울특별시 중구 태평로2가 333','02-6020-0354','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 중구 태평로2가 333',INSTR('서울특별시 중구 태평로2가 333', ' ',1,1)+1, INSTR('서울특별시 중구 태평로2가 333',' ',1,2)-INSTR('서울특별시 중구 태평로2가 333',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'A 태국음식집',1012,'서울특별시 중구 무교로 12','02-6020-0355','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 중구 무교로 12',INSTR('서울특별시 중구 무교로 12', ' ',1,1)+1, INSTR('서울특별시 중구 무교로 12',' ',1,2)-INSTR('서울특별시 중구 무교로 12',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'B 태국음식집',1012,'서울특별시 중구 명동2가','02-6020-0356','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 중구 명동2가',INSTR('서울특별시 중구 명동2가', ' ',1,1)+1, INSTR('서울특별시 중구 명동2가',' ',1,2)-INSTR('서울특별시 중구 명동2가',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'C 태국음식집',1012,'서울특별시 중구 퇴계로 116-1','02-6020-0357','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 중구 퇴계로 116-1',INSTR('서울특별시 중구 퇴계로 116-1', ' ',1,1)+1, INSTR('서울특별시 중구 퇴계로 116-1',' ',1,2)-INSTR('서울특별시 중구 퇴계로 116-1',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'A 패스트푸드',1013,'서울특별시 중구 서소문로11길 2-1','02-6020-0358','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 중구 서소문로11길 2-1',INSTR('서울특별시 중구 서소문로11길 2-1', ' ',1,1)+1, INSTR('서울특별시 중구 서소문로11길 2-1',' ',1,2)-INSTR('서울특별시 중구 서소문로11길 2-1',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'B 패스트푸드',1013,'서울특별시 중구 소공동 남대문로 81','02-6020-0359','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 중구 소공동 남대문로 81',INSTR('서울특별시 중구 소공동 남대문로 81', ' ',1,1)+1, INSTR('서울특별시 중구 소공동 남대문로 81',' ',1,2)-INSTR('서울특별시 중구 소공동 남대문로 81',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'C 패스트푸드',1013,'서울특별시 중구 세종대로 76,'02-6020-0360','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 중구 세종대로 76,INSTR('서울특별시 중구 세종대로 76, ' ',1,1)+1, INSTR('서울특별시 중구 세종대로 76,' ',1,2)-INSTR('서울특별시 중구 세종대로 76,' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'A 도시락',1014,'서울특별시 중구 세종대로14길 22-3,'02-6020-0361','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 중구 세종대로14길 22-3,INSTR('서울특별시 중구 세종대로14길 22-3, ' ',1,1)+1, INSTR('서울특별시 중구 세종대로14길 22-3,' ',1,2)-INSTR('서울특별시 중구 세종대로14길 22-3,' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'B 도시락',1014,'서울특별시 중구 북창동 세종대로14길 28-3','02-6020-0362','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 중구 북창동 세종대로14길 28-3',INSTR('서울특별시 중구 북창동 세종대로14길 28-3', ' ',1,1)+1, INSTR('서울특별시 중구 북창동 세종대로14길 28-3',' ',1,2)-INSTR('서울특별시 중구 북창동 세종대로14길 28-3',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'C 도시락',1014,'서울특별시 중구 정동 11-5','02-6020-0363','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 중구 정동 11-5',INSTR('서울특별시 중구 정동 11-5', ' ',1,1)+1, INSTR('서울특별시 중구 정동 11-5',' ',1,2)-INSTR('서울특별시 중구 정동 11-5',' ',1,1)-1)= middlearea.city));
