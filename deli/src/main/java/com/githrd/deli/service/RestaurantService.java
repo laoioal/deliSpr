@@ -30,13 +30,11 @@ public class RestaurantService {
 		}
 		//담았던 list를 토대로 map에 넣어줌
 		map.put(mcode, sortList);
-		System.out.println("===================================");
 		return map;
 	}
 	
 	public List<restaurantVO> sortList(List<restaurantVO> list){
 	
-		System.out.println("****************************************");
 		return new ArrayList<>(list);
 	}
 	
