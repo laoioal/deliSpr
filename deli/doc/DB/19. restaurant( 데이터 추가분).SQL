@@ -589,3 +589,89 @@ INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((
 WHERE SUBSTR('서울특별시 중구 북창동 세종대로14길 28-3',INSTR('서울특별시 중구 북창동 세종대로14길 28-3', ' ',1,1)+1, INSTR('서울특별시 중구 북창동 세종대로14길 28-3',' ',1,2)-INSTR('서울특별시 중구 북창동 세종대로14길 28-3',' ',1,1)-1)= middlearea.city));
 INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'C 도시락',1014,'서울특별시 중구 정동 11-5','02-6020-0363','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
 WHERE SUBSTR('서울특별시 중구 정동 11-5',INSTR('서울특별시 중구 정동 11-5', ' ',1,1)+1, INSTR('서울특별시 중구 정동 11-5',' ',1,2)-INSTR('서울특별시 중구 정동 11-5',' ',1,1)-1)= middlearea.city));
+
+
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'A 일식집',1001,'서울특별시 용산구 후암로48길 1','02-6020-0364','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 용산구 후암로48길 1',INSTR('서울특별시 용산구 후암로48길 1', ' ',1,1)+1, INSTR('서울특별시 용산구 후암로48길 1',' ',1,2)-INSTR('서울특별시 용산구 후암로48길 1',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'B 일식집',1001,'서울특별시 용산구 후암로 8-1 1층','02-6020-0365','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 용산구 후암로 8-1 1층',INSTR('서울특별시 용산구 후암로 8-1 1층', ' ',1,1)+1, INSTR('서울특별시 용산구 후암로 8-1 1층',' ',1,2)-INSTR('서울특별시 용산구 후암로 8-1 1층',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'C 일식집',1001,'서울특별시 용산구 후암로 66-1','02-6020-0366','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 용산구 후암로 66-1',INSTR('서울특별시 용산구 후암로 66-1', ' ',1,1)+1, INSTR('서울특별시 용산구 후암로 66-1',' ',1,2)-INSTR('서울특별시 용산구 후암로 66-1',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'A 중식',1002,'서울특별시 용산구 후암로 31','02-6020-0367','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 용산구 후암로 31',INSTR('서울특별시 용산구 후암로 31', ' ',1,1)+1, INSTR('서울특별시 용산구 후암로 31',' ',1,2)-INSTR('서울특별시 용산구 후암로 31',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'B 중식',1002,'서울특별시 용산구 후암동 458','02-6020-0368','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 용산구 후암동 458',INSTR('서울특별시 용산구 후암동 458', ' ',1,1)+1, INSTR('서울특별시 용산구 후암동 458',' ',1,2)-INSTR('서울특별시 용산구 후암동 458',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'C 중식',1002,'서울특별시 용산구 후암동 65-1','02-6020-0369','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 용산구 후암동 65-1',INSTR('서울특별시 용산구 후암동 65-1', ' ',1,1)+1, INSTR('서울특별시 용산구 후암동 65-1',' ',1,2)-INSTR('서울특별시 용산구 후암동 65-1',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'A 치킨',1003,'서울특별시 용산구 소월로2길 7','02-6020-0370','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 용산구 소월로2길 7',INSTR('서울특별시 용산구 소월로2길 7', ' ',1,1)+1, INSTR('서울특별시 용산구 소월로2길 7',' ',1,2)-INSTR('서울특별시 용산구 소월로2길 7',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'B 치킨',1003,'서울특별시 용산구 후암동 105-165','02-6020-0371','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 용산구 후암동 105-165',INSTR('서울특별시 용산구 후암동 105-165', ' ',1,1)+1, INSTR('서울특별시 용산구 후암동 105-165',' ',1,2)-INSTR('서울특별시 용산구 후암동 105-165',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'C 치킨',1003,'서울특별시 용산구 후암동 103-10번지 2층','02-6020-0372','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 용산구 후암동 103-10번지 2층',INSTR('서울특별시 용산구 후암동 103-10번지 2층', ' ',1,1)+1, INSTR('서울특별시 용산구 후암동 103-10번지 2층',' ',1,2)-INSTR('서울특별시 용산구 후암동 103-10번지 2층',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'A 백반',1004,'서울특별시 용산구 후암동 103-11','02-6020-0373','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 용산구 후암동 103-11',INSTR('서울특별시 용산구 후암동 103-11', ' ',1,1)+1, INSTR('서울특별시 용산구 후암동 103-11',' ',1,2)-INSTR('서울특별시 용산구 후암동 103-11',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'B 백반',1004,'서울특별시 용산구 후암동 후암로28길 10','02-6020-0374','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 용산구 후암동 후암로28길 10',INSTR('서울특별시 용산구 후암동 후암로28길 10', ' ',1,1)+1, INSTR('서울특별시 용산구 후암동 후암로28길 10',' ',1,2)-INSTR('서울특별시 용산구 후암동 후암로28길 10',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'C 백반',1004,'서울특별시 용산구 한강대로104길60','02-6020-0375','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 용산구 한강대로104길60',INSTR('서울특별시 용산구 한강대로104길60', ' ',1,1)+1, INSTR('서울특별시 용산구 한강대로104길60',' ',1,2)-INSTR('서울특별시 용산구 한강대로104길60',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'A 카페',1005,'서울특별시 용산구 후암동 439','02-6020-0376','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 용산구 후암동 439',INSTR('서울특별시 용산구 후암동 439', ' ',1,1)+1, INSTR('서울특별시 용산구 후암동 439',' ',1,2)-INSTR('서울특별시 용산구 후암동 439',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'B 카페',1005,'t서울특별시 용산구 후암동 244-72번지 1층','02-6020-0377','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('t서울특별시 용산구 후암동 244-72번지 1층',INSTR('t서울특별시 용산구 후암동 244-72번지 1층', ' ',1,1)+1, INSTR('t서울특별시 용산구 후암동 244-72번지 1층',' ',1,2)-INSTR('t서울특별시 용산구 후암동 244-72번지 1층',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'C 카페',1005,'서울특별시 용산구 후암동 후암로 42-1','02-6020-0378','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 용산구 후암동 후암로 42-1',INSTR('서울특별시 용산구 후암동 후암로 42-1', ' ',1,1)+1, INSTR('서울특별시 용산구 후암동 후암로 42-1',' ',1,2)-INSTR('서울특별시 용산구 후암동 후암로 42-1',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'A 분식',1006,'서울특별시 용산구 후암동 후암로28길 7','02-6020-0379','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 용산구 후암동 후암로28길 7',INSTR('서울특별시 용산구 후암동 후암로28길 7', ' ',1,1)+1, INSTR('서울특별시 용산구 후암동 후암로28길 7',' ',1,2)-INSTR('서울특별시 용산구 후암동 후암로28길 7',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'B 분식',1006,'서울특별시 용산구 후암동 254-35','02-6020-0380','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 용산구 후암동 254-35',INSTR('서울특별시 용산구 후암동 254-35', ' ',1,1)+1, INSTR('서울특별시 용산구 후암동 254-35',' ',1,2)-INSTR('서울특별시 용산구 후암동 254-35',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'C 분식',1006,'서울특별시 용산구 후암동 한강대로104길 60','02-6020-0381','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 용산구 후암동 한강대로104길 60',INSTR('서울특별시 용산구 후암동 한강대로104길 60', ' ',1,1)+1, INSTR('서울특별시 용산구 후암동 한강대로104길 60',' ',1,2)-INSTR('서울특별시 용산구 후암동 한강대로104길 60',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'A 찌개집',1007,'서울특별시 용산구 후암동 후암로48길 1','02-6020-0382','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 용산구 후암동 후암로48길 1',INSTR('서울특별시 용산구 후암동 후암로48길 1', ' ',1,1)+1, INSTR('서울특별시 용산구 후암동 후암로48길 1',' ',1,2)-INSTR('서울특별시 용산구 후암동 후암로48길 1',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'B 찌개집',1007,'서울특별시 용산구 후암동 259-8','02-6020-0383','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 용산구 후암동 259-8',INSTR('서울특별시 용산구 후암동 259-8', ' ',1,1)+1, INSTR('서울특별시 용산구 후암동 259-8',' ',1,2)-INSTR('서울특별시 용산구 후암동 259-8',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'C 찌개집',1007,'서울특별시 용산구 후암동 102-44번지 1층','02-6020-0384','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 용산구 후암동 102-44번지 1층',INSTR('서울특별시 용산구 후암동 102-44번지 1층', ' ',1,1)+1, INSTR('서울특별시 용산구 후암동 102-44번지 1층',' ',1,2)-INSTR('서울특별시 용산구 후암동 102-44번지 1층',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'A 피자',1008,'서울특별시 용산구 후암동 194-7','02-6020-0385','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 용산구 후암동 194-7',INSTR('서울특별시 용산구 후암동 194-7', ' ',1,1)+1, INSTR('서울특별시 용산구 후암동 194-7',' ',1,2)-INSTR('서울특별시 용산구 후암동 194-7',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'B 피자',1008,'서울특별시 용산구 후암동 신흥로36길 4','02-6020-0386','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 용산구 후암동 신흥로36길 4',INSTR('서울특별시 용산구 후암동 신흥로36길 4', ' ',1,1)+1, INSTR('서울특별시 용산구 후암동 신흥로36길 4',' ',1,2)-INSTR('서울특별시 용산구 후암동 신흥로36길 4',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'C 피자',1008,'서울특별시 용산구 소월로2길 5','02-6020-0387','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 용산구 소월로2길 5',INSTR('서울특별시 용산구 소월로2길 5', ' ',1,1)+1, INSTR('서울특별시 용산구 소월로2길 5',' ',1,2)-INSTR('서울특별시 용산구 소월로2길 5',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'A 양식',1009,'서울특별시 용산구 후암로57길 35-15','02-6020-0388','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 용산구 후암로57길 35-15',INSTR('서울특별시 용산구 후암로57길 35-15', ' ',1,1)+1, INSTR('서울특별시 용산구 후암로57길 35-15',' ',1,2)-INSTR('서울특별시 용산구 후암로57길 35-15',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'B 양식',1009,'서울특별시 용산구 후암동 236-9번지 1층','02-6020-0389','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 용산구 후암동 236-9번지 1층',INSTR('서울특별시 용산구 후암동 236-9번지 1층', ' ',1,1)+1, INSTR('서울특별시 용산구 후암동 236-9번지 1층',' ',1,2)-INSTR('서울특별시 용산구 후암동 236-9번지 1층',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'C 양식',1009,'서울특별시 용산구 소월로 56','02-6020-0390','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 용산구 소월로 56',INSTR('서울특별시 용산구 소월로 56', ' ',1,1)+1, INSTR('서울특별시 용산구 소월로 56',' ',1,2)-INSTR('서울특별시 용산구 소월로 56',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'A 고기집',1010,'서울특별시 용산구 후암동 105-122','02-6020-0391','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 용산구 후암동 105-122',INSTR('서울특별시 용산구 후암동 105-122', ' ',1,1)+1, INSTR('서울특별시 용산구 후암동 105-122',' ',1,2)-INSTR('서울특별시 용산구 후암동 105-122',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'B 고기집',1010,'서울특별시 용산구 후암동 한강대로104길 85','02-6020-0392','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 용산구 후암동 한강대로104길 85',INSTR('서울특별시 용산구 후암동 한강대로104길 85', ' ',1,1)+1, INSTR('서울특별시 용산구 후암동 한강대로104길 85',' ',1,2)-INSTR('서울특별시 용산구 후암동 한강대로104길 85',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'C 고기집',1010,'서울특별시 용산구 소월로2길 27','02-6020-0393','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 용산구 소월로2길 27',INSTR('서울특별시 용산구 소월로2길 27', ' ',1,1)+1, INSTR('서울특별시 용산구 소월로2길 27',' ',1,2)-INSTR('서울특별시 용산구 소월로2길 27',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'A 보쌈집',1011,'서울특별시 용산구 소월로2길 11','02-6020-0394','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 용산구 소월로2길 11',INSTR('서울특별시 용산구 소월로2길 11', ' ',1,1)+1, INSTR('서울특별시 용산구 소월로2길 11',' ',1,2)-INSTR('서울특별시 용산구 소월로2길 11',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'B 보쌈집',1011,'서울특별시 용산구 동자동 19-55번지 1층','02-6020-0395','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 용산구 동자동 19-55번지 1층',INSTR('서울특별시 용산구 동자동 19-55번지 1층', ' ',1,1)+1, INSTR('서울특별시 용산구 동자동 19-55번지 1층',' ',1,2)-INSTR('서울특별시 용산구 동자동 19-55번지 1층',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'C 보쌈집',1011,'서울특별시 용산구 소월로2나길 6-1','02-6020-0396','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 용산구 소월로2나길 6-1',INSTR('서울특별시 용산구 소월로2나길 6-1', ' ',1,1)+1, INSTR('서울특별시 용산구 소월로2나길 6-1',' ',1,2)-INSTR('서울특별시 용산구 소월로2나길 6-1',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'A 태국음식집',1012,'서울특별시 용산구 동자동 9','02-6020-0397','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 용산구 동자동 9',INSTR('서울특별시 용산구 동자동 9', ' ',1,1)+1, INSTR('서울특별시 용산구 동자동 9',' ',1,2)-INSTR('서울특별시 용산구 동자동 9',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'B 태국음식집',1012,'서울특별시 용산구 후암동 102-56','02-6020-0398','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 용산구 후암동 102-56',INSTR('서울특별시 용산구 후암동 102-56', ' ',1,1)+1, INSTR('서울특별시 용산구 후암동 102-56',' ',1,2)-INSTR('서울특별시 용산구 후암동 102-56',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'C 태국음식집',1012,'서울특별시 용산구 동자동 2-5','02-6020-0399','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 용산구 동자동 2-5',INSTR('서울특별시 용산구 동자동 2-5', ' ',1,1)+1, INSTR('서울특별시 용산구 동자동 2-5',' ',1,2)-INSTR('서울특별시 용산구 동자동 2-5',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'A 패스트푸드',1013,'서울특별시 용산구 동자동 한강대로104길 50','02-6020-0400','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 용산구 동자동 한강대로104길 50',INSTR('서울특별시 용산구 동자동 한강대로104길 50', ' ',1,1)+1, INSTR('서울특별시 용산구 동자동 한강대로104길 50',' ',1,2)-INSTR('서울특별시 용산구 동자동 한강대로104길 50',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'B 패스트푸드',1013,'서울특별시 용산구 동자동 11','02-6020-0401','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 용산구 동자동 11',INSTR('서울특별시 용산구 동자동 11', ' ',1,1)+1, INSTR('서울특별시 용산구 동자동 11',' ',1,2)-INSTR('서울특별시 용산구 동자동 11',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'C 패스트푸드',1013,'서울특별시 용산구 동자동 9-14 후암로57길 13','02-6020-0402','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 용산구 동자동 9-14 후암로57길 13',INSTR('서울특별시 용산구 동자동 9-14 후암로57길 13', ' ',1,1)+1, INSTR('서울특별시 용산구 동자동 9-14 후암로57길 13',' ',1,2)-INSTR('서울특별시 용산구 동자동 9-14 후암로57길 13',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'A 도시락',1014,'서울특별시 용산구 동자동 10-4','02-6020-0403','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 용산구 동자동 10-4',INSTR('서울특별시 용산구 동자동 10-4', ' ',1,1)+1, INSTR('서울특별시 용산구 동자동 10-4',' ',1,2)-INSTR('서울특별시 용산구 동자동 10-4',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'B 도시락',1014,'서울특별시 용산구 동자동 후암로57길 3-14','02-6020-0404','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 용산구 동자동 후암로57길 3-14',INSTR('서울특별시 용산구 동자동 후암로57길 3-14', ' ',1,1)+1, INSTR('서울특별시 용산구 동자동 후암로57길 3-14',' ',1,2)-INSTR('서울특별시 용산구 동자동 후암로57길 3-14',' ',1,1)-1)= middlearea.city));
+INSERT INTO RESTAURANT(restno,rname,cname,addr,tel,rotime,rctime,mcode) VALUES((SELECT NVL(MAX(RESTNO)+1,1) FROM RESTAURANT),'C 도시락',1014,'서울특별시 용산구 두텁바위로38길 29-17','02-6020-0405','10:00','21:00', (SELECT CODE FROM MIDDLEAREA 
+WHERE SUBSTR('서울특별시 용산구 두텁바위로38길 29-17',INSTR('서울특별시 용산구 두텁바위로38길 29-17', ' ',1,1)+1, INSTR('서울특별시 용산구 두텁바위로38길 29-17',' ',1,2)-INSTR('서울특별시 용산구 두텁바위로38길 29-17',' ',1,1)-1)= middlearea.city));
