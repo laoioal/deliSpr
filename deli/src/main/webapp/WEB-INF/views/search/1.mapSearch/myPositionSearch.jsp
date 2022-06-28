@@ -12,7 +12,7 @@
 </head>
 <body>
    <center>
-      <div id="map" style="width: 600px; height: 500px;"></div>
+      <div id="map" style="width: 1000px; height: 700px;"></div>
 
       <script type="text/javascript"
          src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8800e7024fb23ec08385f1384cbd3f73&libraries=services"></script>
