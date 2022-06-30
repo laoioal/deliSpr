@@ -2,13 +2,33 @@ package com.githrd.deli.vo;
 
 import java.text.*;
 import java.sql.Time;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
 
 public class PcsVO {
 	private int mno;
 	private double esti;
 	private String id, name, kakaoid, pw, mail, tel, addr, sdate, oriname, dir, savename;
 	private Date jdate;
+	private MultipartFile[] file;
+	private List<FileVO> list;
+	
+	
+	public MultipartFile[] getFile() {
+		return file;
+	}
+	public void setFile(MultipartFile[] file) {
+		this.file = file;
+	}
+	public List<FileVO> getList() {
+		return list;
+	}
+	public void setList(List<FileVO> list) {
+		this.list = list;
+	}
 	public int getMno() {
 		return mno;
 	}
@@ -102,7 +122,9 @@ public class PcsVO {
 	public String toString() {
 		return "PcsVO [mno=" + mno + ", esti=" + esti + ", id=" + id + ", name=" + name + ", kakaoid=" + kakaoid
 				+ ", pw=" + pw + ", mail=" + mail + ", tel=" + tel + ", addr=" + addr + ", sdate=" + sdate
-				+ ", oriname=" + oriname + ", dir=" + dir + ", savename=" + savename + ", jdate=" + jdate + "]";
+				+ ", oriname=" + oriname + ", dir=" + dir + ", savename=" + savename + ", jdate=" + jdate + ", file="
+				+ Arrays.toString(file) + ", list=" + list + "]";
 	}
+
 
 }

@@ -86,4 +86,5 @@
 컨트롤러	: 	com.githrd.deli.controller.PcsController
 처리함수	:	idCheck()
 뷰			:	json
+
 --------------------------------------------------------------

@@ -35,10 +35,10 @@ nhn.husky.SE2M_AttachQuickPhoto = jindo.$Class({
 		this.htPopupOption.sProperties = "left=0,top=0,width=403,height=359,scrollbars=no,location=no,status=0,resizable=no";
 
 		this.oPopupWindow = this.oPopupMgr.openWindow(this.htPopupOption);
-		
+
 		// 처음 로딩하고 IE에서 커서가 전혀 없는 경우
 		// 복수 업로드시에 순서가 바뀜	
-		this.oApp.exec('FOCUS');
+		this.oApp.exec('FOCUS'); // 일단 이게 뭔지 알아야될듯
 		return (!!this.oPopupWindow ? true : false);
 	},
 	
@@ -47,7 +47,7 @@ nhn.husky.SE2M_AttachQuickPhoto = jindo.$Class({
 	 * nhn.husky.SE2M_AttachQuickPhoto.prototype.makePopupURL로 덮어써서 사용하시면 됨.
 	 */
 	makePopupURL : function(){
-		var sPopupUrl = "./photo_uploader/popup/photo_uploader.html";
+		var sPopupUrl = "/deli/resources/static/libs/smarteditor/photo_uploader/popup/photo_uploader.jsp";
 		
 		return sPopupUrl;
 	},

@@ -1,26 +1,33 @@
 package com.githrd.deli.vo;
 
-import java.sql.Time;
-import java.util.Date;
+import java.util.*;
+
+import org.springframework.web.multipart.MultipartFile;
+
 import java.text.*;
 
+/**
+ * @author	박찬슬
+ * @since	2022/05/24
+ * @version	v.1.0
+ * 
+ * 			작업이력 ]
+ * 				2022.06.24	-	클래스제작
+ * 								담당자 : 박찬슬
+ */
+
 public class FileVO {
-	private int bno, fno, mno, rno, cnt;
+	private int ano, fno, amno, rno, cnt;
 	private long len;
-	private String id, oriname, savename, dir, sdate, stime;
+	private String id, oriname, savename, dir, sdate;
 	private Date wdate;
-	private Time wtime;
-	public int getBno() {
-		return bno;
+	private MultipartFile[] file;
+	private List<FileVO> list;
+	public int getAno() {
+		return ano;
 	}
-	public void setBno(int bno) {
-		this.bno = bno;
-	}
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
+	public void setAno(int ano) {
+		this.ano = ano;
 	}
 	public int getFno() {
 		return fno;
@@ -28,11 +35,11 @@ public class FileVO {
 	public void setFno(int fno) {
 		this.fno = fno;
 	}
-	public int getMno() {
-		return mno;
+	public int getAmno() {
+		return amno;
 	}
-	public void setMno(int mno) {
-		this.mno = mno;
+	public void setAmno(int amno) {
+		this.amno = amno;
 	}
 	public int getRno() {
 		return rno;
@@ -51,6 +58,12 @@ public class FileVO {
 	}
 	public void setLen(long len) {
 		this.len = len;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
 	}
 	public String getOriname() {
 		return oriname;
@@ -73,47 +86,37 @@ public class FileVO {
 	public String getSdate() {
 		return sdate;
 	}
-	public void setSdate() {
-		SimpleDateFormat form = new SimpleDateFormat("yyyy년 MM월 dd일");
-		sdate = form.format(wdate);
-	}
 	public void setSdate(String sdate) {
 		this.sdate = sdate;
 	}
-	public String getStime() {
-		return stime;
-	}
-	public void setStime() {
-		SimpleDateFormat form = new SimpleDateFormat("HH24:mm:ss");
-		stime = form.format(wtime);
-	}
-	public void setStime(String stime) {
-		this.stime = stime;
+	public void setSdate() {
+		SimpleDateFormat form = new SimpleDateFormat("yyyy년 MM월 dd일 HH24:mm:ss");
+		sdate = form.format(wdate);
 	}
 	public Date getWdate() {
 		return wdate;
 	}
 	public void setWdate(Date wdate) {
 		this.wdate = wdate;
-		setSdate();
 	}
-	public Time getWtime() {
-		return wtime;
+	public MultipartFile[] getFile() {
+		return file;
 	}
-	public void setWtime(Time wtime) {
-		this.wtime = wtime;
-		setStime();
+	public void setFile(MultipartFile[] file) {
+		this.file = file;
+	}
+	public List<FileVO> getList() {
+		return list;
+	}
+	public void setList(List<FileVO> list) {
+		this.list = list;
 	}
 	@Override
 	public String toString() {
-		return "FileVO [fno=" + fno + ", mno=" + mno + ", rno=" + rno + ", cnt=" + cnt + ", len=" + len + ", oriname="
-				+ oriname + ", savename=" + savename + ", dir=" + dir + ", sdate=" + sdate + ", stime=" + stime
-				+ ", wdate=" + wdate + ", wtime=" + wtime + ", getFno()=" + getFno() + ", getMno()=" + getMno()
-				+ ", getRno()=" + getRno() + ", getCnt()=" + getCnt() + ", getLen()=" + getLen() + ", getOriname()="
-				+ getOriname() + ", getSavename()=" + getSavename() + ", getDir()=" + getDir() + ", getSdate()="
-				+ getSdate() + ", getStime()=" + getStime() + ", getWdate()=" + getWdate() + ", getWtime()="
-				+ getWtime() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()="
-				+ super.toString() + "]";
+		return "FileVO [ano=" + ano + ", fno=" + fno + ", amno=" + amno + ", rno=" + rno + ", cnt=" + cnt + ", len="
+				+ len + ", id=" + id + ", oriname=" + oriname + ", savename=" + savename + ", dir=" + dir + ", sdate="
+				+ sdate + ", wdate=" + wdate + ", file=" + Arrays.toString(file) + ", list=" + list + "]";
 	}
 	
+
 }

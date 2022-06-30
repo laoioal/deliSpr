@@ -55,4 +55,14 @@ public class PcsDao {
 	public int addProfile(FileVO fVO) {
 		return sqlSession.insert("pcSQL.addProfile", fVO);
 	}
+	
+	// 회원정보 수정 처리
+	public int editMember(PcsVO pcVO) {
+		return sqlSession.update("pcSQL.editMember", pcVO);
+	}
+	
+	// 프로필사진 수정 처리
+	public int editProfile(FileVO fVO) {
+		return sqlSession.update("pcSQL.editProfile", fVO);
+	}
 }

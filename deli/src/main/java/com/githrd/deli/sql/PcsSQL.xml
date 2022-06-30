@@ -51,7 +51,7 @@
  	<!-- 회원가입 처리 질의명령 -->
  	<insert id="addMember" parameterType="pcVO">
  		<selectKey keyProperty="mno" resultType="int" order="BEFORE">
- 			SELECT NVL(max(ano) + 1, 100000) FROM member
+ 			SELECT NVL(max(mno) + 1, 1001) FROM member
  		</selectKey>
  		INSERT INTO
  			MEMBER(mno, name, id, kakaoid, pw, mail, tel, addr)
@@ -67,9 +67,48 @@
  		</selectKey>
  		INSERT INTO
  			imgfile(ano, amno, oriname, savename, dir)
- 		VALUES
- 			#{ano}, 
- 			(SELECT mno FROM member WHERE id = #{id}),
+ 		VALUES(
+ 			#{ano},
+ 			#{amno},
  			#{oriname}, #{savename}, #{dir}
+ 		)
  	</insert>
+ 	
+ 	<update id="editMember" parameterType="pcVO">
+ 		UPDATE
+ 			member
+		<set>
+			<if test="pw neq null">
+				pw = #{pw},
+			</if>
+			<if test="mail neq null">
+				mail = #{mail},
+			</if>
+			<if test="tel neq null">
+				tel = #{tel},
+			</if>
+			<if test="addr neq null">
+				addr = #{addr}
+			</if>
+		</set>
+ 		WHERE
+ 			isshow = 'Y'
+ 			AND mno = #{mno}
+ 	</update>
+ 	
+ 	<update id="editProfile" parameterType="fVO">
+ 		UPDATE
+ 			imgfile
+ 		<set>
+ 			<if test="oriname neq null">
+ 				oriname = #{oriname},
+ 			</if>
+ 			<if test="savename neq null">
+ 				savename = #{savename}
+ 			</if>
+ 		</set>		
+ 		WHERE
+ 			isshow = 'Y'
+ 			AND amno = #{amno}
+ 	</update>
 </mapper>

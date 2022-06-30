@@ -55,7 +55,7 @@ h1{color:#333;font-size:14px;letter-spacing:-1px}
 <div id="pop_wrap">
 	<!-- header -->
     <div id="pop_header">
-        <h1>사진 첨부하기</h1>
+        <h1>사진 첨부하기1111</h1>
     </div>
     <!-- //header -->
     <!-- container -->
