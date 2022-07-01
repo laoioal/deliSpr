@@ -67,10 +67,18 @@
 		</div>
 		<form method="POST" action="/deli/msProc.dlv" id="mesfrm" name="mesfrm">
 			<div class="w3-col w3-border w3-padding m9 w3-margin-top">
+<c:if test="${not empty ID}">				
+				<div class="w3-col w3-margin-top w3-right">
+					<div class="w3-col m2">받는사람</div>
+					<input class="w3-col m9" name="kid" value="${ID}">
+				</div>
+</c:if>
+<c:if test="${empty ID}">
 				<div class="w3-col w3-margin-top w3-right">
 					<div class="w3-col m2">받는사람</div>
 					<input class="w3-col m9" name="kid">
 				</div>
+</c:if>
 				<div class="w3-col w3-margin-top w3-right">
 					<div class="w3-col m2">제목</div>
 					<input class="w3-col m9" name="title">
@@ -79,7 +87,7 @@
 					<div class="w3-col m2">내용</div>
 					<textarea class="w3-col m9" rows="6" name="body"></textarea>
 				</div>
-				<div class="w3-col w3-button w3-right w3-margin-top" id="sendmessage">전송</div>
+				<div class="w3-col w3-button w3-right w3-margin-top w3-border" id="sendmessage">전송</div>
 			</div>
 		</form>
 		

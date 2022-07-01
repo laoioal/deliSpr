@@ -169,9 +169,9 @@
 						
 						
 						<p class="w3-large w3-text-theme"><b><i class="fa fa-globe fa-fw w3-margin-right w3-text-teal"></i>회원관리</b></p>
-						<p>받은쪽지함</p>
+						<p class="mainBtn msList">받은쪽지함</p>
 						<div class="w3-light-grey w3-round-xlarge">
-							<div class="w3-round-xlarge w3-teal" style="height:24px;width:100%">77건</div>
+							<div class="w3-round-xlarge w3-teal msList mainBtn" style="height:24px;width:100%">77건</div>
 						</div>
 						<p>친구 신청 대기</p>
 						<div class="w3-light-grey w3-round-xlarge">
@@ -182,7 +182,7 @@
 							<div class="w3-round-xlarge w3-teal" style="height:24px;width:100%">${MYINFO.res}명</div>
 	</c:if>         
 						</div>
-						<p class="memText">쪽지보내기</p>
+						<p class="memText mainBtn" id="msgbtn">쪽지보내기</p>
 						<p class="memText">쪽지보내기</p>
 						<p class="memText">회원정보수정</p>
 						<br>

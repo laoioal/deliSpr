@@ -210,7 +210,11 @@ public class YonghyunController {
 	
 	// 메세지 전송 폼보기 요청
 	@RequestMapping("/msForm.dlv")
-	public ModelAndView messageForm(ModelAndView mv) {
+	public ModelAndView messageForm(ModelAndView mv, String id) {
+		
+		if(id != null) {
+			mv.addObject("ID", id);
+		}
 		
 		mv.setViewName("board/messageForm");
 		return mv;

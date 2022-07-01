@@ -98,7 +98,13 @@ $(document).ready(function(){
 		$('#friendfrm').submit();
 	});
 	
+	$('#msgbtn').click(function(){
+		$(location).attr('href', '/deli/board/msForm.dlv');
+	});
 	
+	$('.msList').click(function(){
+		$(location).attr('href', '/deli/board/messageList.dlv');
+	});
 	
 /*	
 	
@@ -190,9 +196,7 @@ $(document).ready(function(){
 		$(location).attr('href', '/deli/review/rvList.dlv');
 	})
 	
-	$('#msgbtn').click(function(){
-		$(location).attr('href', '/deli/message.dlv');
-	});
+
 	$('#locbtn').click(function(){
 		var k = $('#memberid').html();
 		$('#cusid').val(k);
