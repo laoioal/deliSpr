@@ -65,32 +65,42 @@
 			<div class="w3-button w3-border-bottom" id="mymess">받은 쪽지</div>
 			<div class="w3-button" id="send">쪽지 보내기</div>
 		</div>
-		<form method="POST" action="/deli/msProc.dlv" id="mesfrm" name="mesfrm">
-			<div class="w3-col w3-border w3-padding m9 w3-margin-top">
-<c:if test="${not empty ID}">				
-				<div class="w3-col w3-margin-top w3-right">
-					<div class="w3-col m2">받는사람</div>
-					<input class="w3-col m9" name="kid" value="${ID}">
-				</div>
+		<form method="POST" action="/deli/board/msProc.dlv" id="mesfrm" name="mesfrm">
+		<div class="w3-col w3-border w3-padding m9 w3-margin-top">
+<c:if test="${not empty ID}">
+			<div class="w3-col w3-margin-top w3-right">
+				<div class="w3-col m2">받는사람</div>
+				<input class="w3-col m9" name="kid" value="${ID}">
+			</div>
 </c:if>
 <c:if test="${empty ID}">
-				<div class="w3-col w3-margin-top w3-right">
-					<div class="w3-col m2">받는사람</div>
-					<input class="w3-col m9" name="kid">
-				</div>
-</c:if>
-				<div class="w3-col w3-margin-top w3-right">
-					<div class="w3-col m2">제목</div>
-					<input class="w3-col m9" name="title">
-				</div>
-				<div class="w3-col w3-margin-top w3-right">
-					<div class="w3-col m2">내용</div>
-					<textarea class="w3-col m9" rows="6" name="body"></textarea>
-				</div>
-				<div class="w3-col w3-button w3-right w3-margin-top w3-border" id="sendmessage">전송</div>
+			<div class="w3-col w3-margin-top w3-right">
+				<div class="w3-col m2">받는사람</div>
+				<input class="w3-col m9" name="kid" id="kid">
 			</div>
+</c:if>
+			<div class="w3-col w3-margin-top w3-right">
+				<div class="w3-col m2">제목</div>
+				<input class="w3-col m9" name="title" id="title">
+			</div>
+			<div class="w3-col w3-margin-top w3-right">
+				<div class="w3-col m2">내용</div>
+				<textarea class="w3-col m9" rows="6" name="body" id="body"></textarea>
+			</div>
+			<button class="w3-col w3-button w3-right w3-margin-top w3-border" id="sendmessage">전송</button>
+		</div>
 		</form>
-		
+		<div id="id01" class="w3-modal">
+			<div class="w3-modal-content w3-animate-top w3-card-4">
+				<header class="w3-container w3-teal"> 
+					<span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+					<h2>메세지 전송 결과</h2>
+				</header>
+				<div class="w3-container">
+					<p id="mesResult"></p>
+				</div>
+			</div>
+		</div>
 	</div>
 </body>
 </html>

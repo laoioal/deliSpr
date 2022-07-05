@@ -13,6 +13,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<% pageContext.setAttribute("replaceChar", "\n"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,7 +28,12 @@
 <link rel="stylesheet" type="text/css" href="/deli/resources/css/w3.css">
 <script type="text/javascript" src="/deli/resources/js/board/message.js"></script>
 <style type="text/css">
-
+#body{
+	word-break:break-all;
+	white-space: pre-line;
+	line-height: 30px;
+	text-align: left;
+}
 </style>
 </head>
 <body>
@@ -72,11 +79,24 @@
 				<div class="w3-col m4 w3-border-right">내용</div>
 				<div class="w3-col m4">보낸날짜</div>
 			</div>
-<c:forEach var="data" items="${MESSAGE}">			
+<c:forEach var="data" items="${MESSAGE}">
+
 			<div class="w3-col m9 w3-right w3-border-right w3-border-left w3-border-bottom w3-button messbtn" id="${data.id}">
 				<div class="w3-col m1 w3-border-right">${data.id}</div>
-				<div class="w3-col m3 w3-border-right">${data.title}</div>
-				<div class="w3-col m4 w3-border-right">${data.body}</div>
+	<c:if test="${data.title eq data.larea}">	
+				<div class="w3-col m3 w3-border-right w3-left-align pdl10">${data.title}</div>
+	</c:if>
+	<c:if test="${data.title ne data.larea}">
+				<div class="w3-col m3 w3-border-right w3-left-align pdl10">${data.larea}...</div>
+	</c:if>
+	<c:if test="${data.body eq data.marea}">		
+				<div class="w3-col m4 w3-border-right w3-left-align pdl10">${data.body}</div>
+	</c:if>
+	<c:if test="${data.body ne data.marea}">
+				<div class="w3-col m4 w3-border-right w3-left-align pdl10">${data.marea}...</div>	
+	</c:if>
+				<input type="hidden" value="${data.title}" id="dtitle">
+				<input type="hidden" value="${data.body}" id="dbody">
 				<div class="w3-col m4">${data.sdate}</div>
 			</div>
 </c:forEach>
@@ -87,7 +107,7 @@
 				<div class="w3-container">
 					<span onclick="document.getElementById('message').style.display='none'" class="w3-button w3-display-topright">&times;</span>
 					<h1 class="w3-center-align">받은쪽지</h1>
-					<div class="w3-col w3-border">
+					<div class="w3-col w3-border w3-margin-bottom">
 						<div class="w3-col w3-border-bottom">
 							<div class="w3-col m4 w3-border-right">보낸사람</div>
 							<div class="w3-col m8" id="writer"></div>
@@ -102,7 +122,7 @@
 						</div>
 						<div class="w3-col">
 							<div class="w3-col m4 w3-border-right bodybox">받은내용</div>
-							<div class="w3-col m8 bodybox" id="body"></div>
+							<div class="w3-col m8 bodybox w3-padding" id="body"></div>
 						</div>
 					</div>
 				</div>

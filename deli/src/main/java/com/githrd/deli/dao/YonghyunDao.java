@@ -113,4 +113,9 @@ public class YonghyunDao {
 	public int sendMessage(YonghyunVO yVO) {
 		return sqlSession.insert("ySQL.sendMessage", yVO);
 	}
+	
+	// 받은 메세지 리스트 조회 함수
+	public List<YonghyunVO> messageList(String id){
+		return sqlSession.selectList("ySQL.messageList", id);
+	}
 }

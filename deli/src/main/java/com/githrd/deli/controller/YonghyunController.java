@@ -202,8 +202,11 @@ public class YonghyunController {
 	
 	// 메세지 리스트페이지 보기 함수
 	@RequestMapping("/messageList.dlv")
-	public ModelAndView messageList(ModelAndView mv) {
+	public ModelAndView messageList(ModelAndView mv, HttpSession session) {
+		String id = (String) session.getAttribute("SID");
+		List<YonghyunVO> list = yDao.messageList(id);
 		
+		mv.addObject("MESSAGE", list);
 		mv.setViewName("board/message");
 		return mv;
 	}

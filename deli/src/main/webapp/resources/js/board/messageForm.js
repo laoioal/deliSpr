@@ -36,6 +36,35 @@ $(document).ready(function(){
 	});
 	
 	$('#sendmessage').click(function(){
-		$('#mesfrm').submit();
+		var id = $('#kid').val();
+		id = $.trim(id);
+		var title = $('#title').val();
+		title = $.trim(title);
+		var body = $('#body').val();
+		body = $.trim(body);
+		
+		if(!id) {
+			$('#mesResult').text('받는사람을 입력해주세요');
+			$('#id01').css('display', 'block');
+			return;
+		} else if(title.length > 30) {
+			$('#mesResult').text('제목은 30글자를 넘길 수 없습니다.');
+			$('#id01').css('display', 'block');
+			return;
+		} else if(!title) {
+			$('#mesResult').text('제목을 입력해주세요');
+			$('#id01').css('display', 'block');
+			return;
+		} else if(body.length > 1000) {
+			$('#mesResult').text('본문은 1000글자를 넘길 수 없습니다.');
+			$('#id01').css('display', 'block');
+			return;
+		} else if(!body) {
+			$('#mesResult').text('내용을 입력해주세요');
+			$('#id01').css('display', 'block');
+			return;
+		} else {
+			$('#mesfrm').submit();
+		}
 	});
 });

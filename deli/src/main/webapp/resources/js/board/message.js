@@ -42,11 +42,9 @@ $(document).ready(function(){
 	});
 	$('.messbtn').click(function(){
 		var id = $(this).find('div:first-child').text();
-		var title = $(this).find('div:nth-child(2)').text();
-		var body = $(this).find('div:nth-child(3)').text();
 		var date = $(this).find('div:last-child').text();
-		
-		alert(body.length);
+		var title = $(this).find('input:nth-child(4)').val();
+		var body = $(this).find('input:nth-child(5)').val();
 		
 		
 		$('#writer').text(id);
