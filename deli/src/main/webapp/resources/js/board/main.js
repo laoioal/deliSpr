@@ -31,7 +31,8 @@ $(document).ready(function(){
 	
 
 
-	var webSocket = new WebSocket('ws://180.228.75.2/deli/main.dlv');
+	//var webSocket = new WebSocket('ws://180.228.75.2/deli/main.dlv');
+	var webSocket = new WebSocket('ws://192.168.0.107/deli/main.dlv');
 	var chatbox = document.getElementById('chatbox');
 	
 
@@ -65,19 +66,30 @@ $(document).ready(function(){
 		chatbox.value += chat.data + '\n';
 	};
 
-	$('#sendbtn').click(function sendMessage() {
+	$('#sendbtn').click(function() {
 		if(!$('#id').val()){
 			alert('로그인이 필요합니다.');
 			return;
 		} else {
-		var id = document.getElementById('id');
-		var chat = document.getElementById('textMessage');
-		
-		chatbox.value += id.value + '(나의 메세지) ' + chat.value + '\n';
-		webSocket.send('{{' + id.value + '}}' + chat.value);
-		chat.value = '';
-		$('#chatbox').scrollTop($('#chatbox').prop('scrollHeight'));
-	}
+			var id = document.getElementById('id');
+			var chat = document.getElementById('textMessage');
+			
+			chatbox.value += id.value + '(나의 메세지) ' + chat.value + '\n';
+			webSocket.send('{{' + id.value + '}}' + chat.value);
+			
+			$.ajax({
+				url: '/deli/board/chatLog.dlv',
+				type: 'post',
+				dataType: 'json',
+				data: {
+					id : id.value,
+					body: chat.value
+				}
+			});
+			chat.value = '';
+			
+			//$('#chatbox').scrollTop($('#chatbox').prop('scrollHeight'));
+		}
 
 	});
 	

@@ -2,6 +2,7 @@
 <!DOCTYPE mapper
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+			
 <mapper namespace="ySQL">
  	<!-- 게시물 리스트 -->
 	<select id="boardList" resultType="yVO" parameterType="page">
@@ -21,7 +22,7 @@
 			            AND b.sarea = s.code
 			            AND b.isshow = 'Y'
 			            AND bmno = mno
-		            <if test="!city.equals('')">
+		            <if test="city neq ''">
 			            AND LAREA = (
 			                        SELECT
 			                            code
@@ -31,16 +32,16 @@
 			                            city = #{city}
 			                        )
 		            </if>
-		            <if test="ccheck neq null and ccheck.equals('title')">
+		            <if test="ccheck neq null and ccheck eq 'title'">
 			            AND title LIKE #{search}
 		            </if>
-		            <if test="ccheck neq null and ccheck.equals('body')">
+		            <if test="ccheck neq null and ccheck eq 'body'">
 		            	AND body LIKE #{search}
 		            </if>
-		            <if test="ccheck neq null and ccheck.equals('writer')">
+		            <if test="ccheck neq null and ccheck eq 'writer'">
 		            	AND bmno = (SELECT mno FROM member WHERE id = #{search})
 		            </if>
-		            <if test="ccheck neq null and ccheck.equals('city')">
+		            <if test="ccheck neq null and ccheck eq 'city'">
 		            	AND marea = (SELECT code FROM middlearea WHERE city LIKE #{search})
 		            </if>
 					ORDER BY
@@ -317,8 +318,8 @@
 		    message(msno, writerno, myno, mstitle, msbody)
 		VALUES(
 		    (SELECT NVL(MAX(msno) + 1, 1) FROM message),
-		    (SELECT mno FROM member WHERE id = #{kid}),
 		    (SELECT mno FROM member WHERE id = #{id}),
+		    (SELECT mno FROM member WHERE id = #{kid}),
 		    #{title}, #{body}
 		)
 	</insert>
@@ -326,7 +327,7 @@
 	<!-- 받은 메세지 조회 -->
 	<select id="messageList" resultType="yVO" parameterType="string">
 		SELECT
-		    msno, id, mstitle title, msbody body, wdate, substr(mstitle, 0, 10) larea, substr(msbody, 0, 15) marea
+		    msno, id, mstitle title, msbody body, wdate, substr(mstitle, 0, 10) larea, substr(msbody, 0, 15) marea, mscheck sarea
 		FROM
 		    message, member
 		WHERE
@@ -335,5 +336,45 @@
 		    AND message.isshow = 'Y'
 		ORDER BY
    			wdate DESC
+	</select>
+	
+	<!-- 메인페이지 받은 쪽지 개수 확인 -->
+	<select id="messageCnt" resultType="int" parameterType="string">
+		SELECT
+		    count(*)
+		FROM
+		    message
+		WHERE
+		    myno = (SELECT mno FROM member WHERE id = #{id})
+		    AND mscheck = 'N'
+	</select>
+	
+	<!-- 채팅로그 저장 -->
+	<insert id="recordLog" parameterType="yVO">
+		<selectKey keyProperty="mno" resultType="int" order="BEFORE">
+			SELECT 
+				mno 
+			FROM 
+				member 
+			WHERE 
+				id = #{id} 
+		</selectKey>
+		INSERT INTO
+		    chat(cno, cmno, cbody)
+		VALUES(
+		    (SELECT NVL(MAX(cno) + 1, 1) FROM chat),
+		    #{mno}, #{body}
+		)
+	</insert>
+	
+	<!-- 채팅 로그 가져오는 함수 -->
+	<select id="getChat">
+		SELECT
+		    id, cbody
+		FROM
+		    chat, member
+		WHERE
+		    mno = cmno
+		    AND cdate > sysdate - (1/24)
 	</select>
 </mapper>

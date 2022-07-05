@@ -34,9 +34,12 @@ public class MainController {
 			YonghyunVO yVO = yDao.myInfo(id);
 			List<YonghyunVO> list = yDao.myFrined(id);
 			List<YonghyunVO> alist = yDao.aplFrined(id);
+			int msNum = yDao.messageCnt(id);
 			mv.addObject("MYINFO", yVO);
 			mv.addObject("MYFRIEND", list);
 			mv.addObject("AFRIEND", alist);
+			mv.addObject("MSCNT", msNum);
+			
 		}
 		mv.setViewName("remain");
 		return mv;

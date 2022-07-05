@@ -263,11 +263,4 @@ public class YonghyunVO {
 				+ ", search=" + search + ", check=" + check + ", aid=" + aid + ", kid=" + kid + ", name=" + name
 				+ ", wdate=" + wdate + ", wenddate=" + wenddate + "]";
 	}
-
-
-
-
-
-	
-	
 }

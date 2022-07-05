@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.githrd.deli.util.PageUtil;
+import com.githrd.deli.vo.ChatVO;
 import com.githrd.deli.vo.YonghyunVO;
 
 /**
@@ -117,5 +118,17 @@ public class YonghyunDao {
 	// 받은 메세지 리스트 조회 함수
 	public List<YonghyunVO> messageList(String id){
 		return sqlSession.selectList("ySQL.messageList", id);
+	}
+	
+	// 메인페이지 받은 메세지 개수 조회 함수
+	public int messageCnt(String id) {
+		return sqlSession.selectOne("ySQL.messageCnt", id);
+	}
+	
+	// 쪽지 로그 저장 함수
+	public int recordLog(YonghyunVO yVO) {
+		System.out.println("###############################");
+		System.out.println("########## yVO : " + yVO);
+		return sqlSession.insert("ySQL.recordLog", yVO);
 	}
 }

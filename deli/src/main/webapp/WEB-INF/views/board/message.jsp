@@ -73,14 +73,14 @@
 				<div class="w3-button w3-border-bottom" id="mymess">받은 쪽지</div>
 				<div class="w3-button" id="send">쪽지 보내기</div>
 			</div>
-			<div class="w3-col m9 w3-margin-top w3-border w3-right w3-light-gray">
+			<div class="w3-col m9 w3-margin-top w3-border w3-right w3-dark-gray">
 				<div class="w3-col m1 w3-border-right">보낸사람</div>
 				<div class="w3-col m3 w3-border-right">제목</div>
 				<div class="w3-col m4 w3-border-right">내용</div>
 				<div class="w3-col m4">보낸날짜</div>
 			</div>
 <c:forEach var="data" items="${MESSAGE}">
-
+<c:if test="${data.sarea eq 'N'}">
 			<div class="w3-col m9 w3-right w3-border-right w3-border-left w3-border-bottom w3-button messbtn" id="${data.id}">
 				<div class="w3-col m1 w3-border-right">${data.id}</div>
 	<c:if test="${data.title eq data.larea}">	
@@ -99,6 +99,27 @@
 				<input type="hidden" value="${data.body}" id="dbody">
 				<div class="w3-col m4">${data.sdate}</div>
 			</div>
+</c:if>
+<c:if test="${data.sarea ne 'N'}">
+			<div class="w3-col m9 w3-right w3-border-right w3-border-left w3-border-bottom w3-button messbtn w3-light-gray" id="${data.id}">
+				<div class="w3-col m1 w3-border-right">${data.id}</div>
+	<c:if test="${data.title eq data.larea}">	
+				<div class="w3-col m3 w3-border-right w3-left-align pdl10">${data.title}</div>
+	</c:if>
+	<c:if test="${data.title ne data.larea}">
+				<div class="w3-col m3 w3-border-right w3-left-align pdl10">${data.larea}...</div>
+	</c:if>
+	<c:if test="${data.body eq data.marea}">		
+				<div class="w3-col m4 w3-border-right w3-left-align pdl10">${data.body}</div>
+	</c:if>
+	<c:if test="${data.body ne data.marea}">
+				<div class="w3-col m4 w3-border-right w3-left-align pdl10">${data.marea}...</div>	
+	</c:if>
+				<input type="hidden" value="${data.title}" id="dtitle">
+				<input type="hidden" value="${data.body}" id="dbody">
+				<div class="w3-col m4">${data.sdate}</div>
+			</div>
+</c:if>
 </c:forEach>
 		</div>
 		

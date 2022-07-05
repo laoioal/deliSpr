@@ -169,9 +169,11 @@
 						
 						
 						<p class="w3-large w3-text-theme"><b><i class="fa fa-globe fa-fw w3-margin-right w3-text-teal"></i>회원관리</b></p>
-						<p class="mainBtn msList">받은쪽지함</p>
-						<div class="w3-light-grey w3-round-xlarge">
-							<div class="w3-round-xlarge w3-teal msList mainBtn" style="height:24px;width:100%">77건</div>
+						<div class="msList">
+							<p class="mainBtn ">받은쪽지함</p>
+							<div class="w3-light-grey w3-round-xlarge">
+								<div class="w3-round-xlarge w3-teal mainBtn" style="height:24px;width:100%">${MSCNT}건</div>
+							</div>
 						</div>
 						<p>친구 신청 대기</p>
 						<div class="w3-light-grey w3-round-xlarge">
@@ -182,8 +184,7 @@
 							<div class="w3-round-xlarge w3-teal" style="height:24px;width:100%">${MYINFO.res}명</div>
 	</c:if>         
 						</div>
-						<p class="memText mainBtn" id="msgbtn">쪽지보내기</p>
-						<p class="memText">쪽지보내기</p>
+						<p class="memText mainBtn" id="msgbtn">쪽지보내기</p>			
 						<p class="memText">회원정보수정</p>
 						<br>
 					</div>
@@ -257,18 +258,6 @@
 	</c:forEach>    
 	</div>
 </c:if>
-
-		<div class="w3-container w3-padding-32" id="contact">
-			<h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Contact</h3>
-			<form action="/action_page.php" target="_blank">
-				<input class="w3-input w3-section w3-border" id="Email" type="text" placeholder="ID" required name="ID">
-				<input class="w3-input w3-section w3-border" type="text" placeholder="Title" required name="Title">
-				<input class="w3-input w3-section w3-border" placeholder="Comment" required name="Comment">
-				<button class="w3-button w3-black w3-section" type="submit">
-				<i class="fa fa-paper-plane"></i> SEND MESSAGE
-			</button>
-			</form>
-		</div>
 	</div>
 
 	

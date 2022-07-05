@@ -1,5 +1,7 @@
 package com.githrd.deli.controller;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -238,5 +240,20 @@ public class YonghyunController {
 		mv.addObject("VIEW", view);
 		mv.setViewName("board/redirect");
 		return mv;
+	}
+	
+	// 채팅 로그 저장 함수
+	@RequestMapping("/chatLog.dlv")
+	@ResponseBody
+	public Map<String, String> recordLog(YonghyunVO yVO) {
+		
+		Map<String, String> map = new HashMap<String, String>();
+		//yVO.setId((String) session.getAttribute("SID"));
+		int cnt = yDao.recordLog(yVO);
+		if(cnt == 1) {
+			map.put("result", "OK");
+		}
+		
+		return map;
 	}
 }
