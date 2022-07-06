@@ -38,7 +38,7 @@ public class MemberController {
 		return "/search/1.mapSearch/insertId";
 	}
 	
-	//id 존재 여부 확인 : 아이디 값이 있으면 그 다음 페이지로 넘어가지만, 존재하지 않으면 하단에 경고 메세지 표시
+	//id 존재 여부 확인 : 아이디 값이 있으면 그 다음 페이지로 넘어가지만, 존재하지 않으면 경고 메세지 표시
 	@PostMapping("/insertId.dlv")
 	public String insertId(Model model, guestVO guest) {
 		String error =null;
