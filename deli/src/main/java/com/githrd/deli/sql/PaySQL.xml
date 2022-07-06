@@ -19,20 +19,23 @@
 			(SELECT NVL(MAX(olno) +1, 1) FROM orderlist),
 			#{ono}, #{rno}, #{oprice}, #{paym}, #{requests}
 		)
-		
+		 
 	</insert>
 	
-	<insert id="insertOdm" parameterType="paVO">
+	<insert id="insertOdm" parameterType="java.util.Map">
 	<selectKey keyProperty="omno" resultType="int" order="BEFORE">
 		SELECT NVL(MAX(omno) + 1, 1) FROM ordermenu
 	</selectKey>
 		INSERT INTO
 			ordermenu(omno, olno, omenu, omprice, quantity, ono)
-		VALUES(
+		VALUES
+		<foreach collection="list" item="item" separator=" , ">
+		(
 			#{omno},
 			(SELECT olno FROM orderlist WHERE ono = #{ono}),
-			#{omenu}, #{omprice}, #{quantity}, #{ono}
+			#{item.omenu}, #{item.omprice}, #{item.quantity}, #{ono}
 		)
+		</foreach>
 	</insert>
 	
 	<select id="selPays" parameterType="int" resultType="paVO">
@@ -80,4 +83,35 @@
 			 AND ol.olno = om.olno
 			 AND bno = #{bno}
 	</select>
+	
+	<select id="selMenuMno" parameterType="paVO" resultType="paVO">
+		SELECT
+		    mno
+		FROM
+		    menu
+		WHERE
+		  isshow = 'Y'
+		  AND mname = #{mname}
+		  AND rno = (
+				        SELECT
+				            restno
+				        FROM
+				            restaurant
+				        WHERE
+				            rname = #{rname}
+				    )
+	</select>
+	
+	<select id="selMenu" parameterType="int" resultType="paVO">
+		SELECT
+			mno, rno, mname, mprice
+		FROM
+			menu
+		WHERE
+			isshow = 'Y'
+			AND mno = #{mno}
+	</select>
+	
+	
+	
 </mapper>

@@ -3,11 +3,50 @@ package com.githrd.deli.vo;
 import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 public class PayVO {
 	private int membmno, mno, rno, mimg, mprice, mino, olno,  oprice, omprice, quantity, esti, cname, omno, gorder, delpay, cnt, mtprice, myprice, bno, restno;
-	private String membname, membmail, mname, mintro, miname, sname, dir, omenu, rname, addr, tel, stime, ono, sdate, paym, request, amname, id, membaddr, membtel;
-	public String getMembname() {
+	private String result, membname, membmail, mname, mintro, miname, sname, dir, omenu, rname, addr, tel, stime, ono, sdate, paym, request, amname, id, membaddr, membtel;
+	private List<PayVO> menu;
+	
+	private List<PayVO>[] mmenu;
+	
+	private int[] orprice;
+	private String[] ormname;
+	private int[] orq;
+	
+	public int[] getOrprice() {
+		return orprice;
+	}
+	public void setOrprice(int[] orprice) {
+		this.orprice = orprice;
+	}
+	public String[] getOrmname() {
+		return ormname;
+	}
+	public void setOrmname(String[] ormname) {
+		this.ormname = ormname;
+	}
+	public int[] getOrq() {
+		return orq;
+	}
+	public void setOrq(int[] orq) {
+		this.orq = orq;
+	}
+	public String getResult() {
+		return result;
+	}
+	public void setResult(String result) {
+		this.result = result;
+	}
+	public List<PayVO> getMenu() {
+		return menu;
+	}
+	public void setMenu(List<PayVO> menu) {
+		this.menu = menu;
+	}
+	public String getMembname() { 
 		return membname;
 	}
 	public void setMembname(String membname) {
@@ -20,6 +59,16 @@ public class PayVO {
 		this.membmail = membmail;
 	}
     
+	
+
+	public List<PayVO>[] getMmenu() {
+		return mmenu;
+	}
+	public void setMmenu(List<PayVO>[] mmenu) {
+		this.mmenu = mmenu;
+	}
+
+
 
 	private Time rtime;
 	private Date rdate;

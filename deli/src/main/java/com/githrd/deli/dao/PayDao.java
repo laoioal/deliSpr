@@ -31,10 +31,10 @@ public class PayDao {
 	}
 	
 	//	odermenu 채우기 전담 처리 함수
-	public int insertOdm(PayVO paVO) {
-		return sqlSession.insert("paSQL.insertOdm", paVO);
+	public int insertOdm(java.util.Map map) {
+		return sqlSession.insert("paSQL.insertOdm", map);
 	}
-	
+	 
 	//	비용 조회 전담 처리 함수
 	public PayVO selPays(int bno) {
 		return sqlSession.selectOne("paSQL.selPays", bno);
@@ -48,6 +48,16 @@ public class PayDao {
 	//	식당 조회 전담 처리 함수
 	public PayVO selRest(int bno) {
 		return sqlSession.selectOne("paSQL.selRest", bno);
+	}
+	
+	//	식당 이름과 메뉴이름으로 메뉴번호 찾기
+	public PayVO selMenuMno(PayVO paVO) {
+		return sqlSession.selectOne("paSQL.selMenuMno", paVO);
+	}
+	
+	//	메뉴번호로 메뉴 정보 찾기
+	public PayVO selMenu(int mno) {
+		return sqlSession.selectOne("paSQL.selMenu", mno);
 	}
 }
 

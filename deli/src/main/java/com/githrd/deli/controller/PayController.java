@@ -1,5 +1,7 @@
 package com.githrd.deli.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,18 +18,42 @@ import com.githrd.deli.vo.YonghyunVO;
 @RequestMapping("/payment")
 public class PayController {
 	@Autowired
-	PayDao pDao;
+	PayDao paDao;
 	@Autowired
 	YonghyunDao yDao;
 	
-	@RequestMapping("beforePay")
-	public ModelAndView beforePay(ModelAndView mv, HttpSession session, PayVO pVO, YonghyunVO yVO) {
+	//	결제전 페이지 폼 보기 처리함수
+	@RequestMapping("beforePay.dlv")
+	public ModelAndView beforePay(ModelAndView mv, HttpSession session, PayVO paVO, YonghyunVO yVO) {
 		String sid = (String) session.getAttribute("SID");
 		
+		paVO = paDao.selMinfo(paVO);
+		paVO = paDao.selPays(paVO.getBno());
 		
+		List<YonghyunVO> mVO = yDao.getMenu(yVO);
 		
 		return mv;
 	}
 	
+	@RequestMapping("payProc.dlv")
+	public ModelAndView payProc(ModelAndView mv, HttpSession session, PayVO paVO, YonghyunVO yVO) {
+		
+		String view = "/";
+		
+		 
+		
+		return mv;
+	}
 	
+	@RequestMapping("afterPay.dlv")
+	public ModelAndView afterPay(ModelAndView mv, HttpSession session, PayVO paVO, YonghyunVO yVO) {
+		String sid = (String) session.getAttribute("SID");
+		
+		paVO = paDao.selMinfo(paVO);
+		paVO = paDao.selPays(paVO.getBno());
+		
+		List<YonghyunVO> mVO = yDao.getMenu(yVO);
+		
+		return mv;
+	}
 }
