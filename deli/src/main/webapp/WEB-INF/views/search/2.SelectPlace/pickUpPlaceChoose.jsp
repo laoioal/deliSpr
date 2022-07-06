@@ -56,8 +56,8 @@ label {margin-bottom: 96px;}
                 </table>
                       
                             <input type="hidden" id = "url" value=""/>
-                      		<h2 style="margin-top:300px;position:absolute;left:1070px">픽업 장소 선택 
-                            <input type="submit" value="확인" name="check" onclick="onClick()"/></h2>
+                      		<h2 style="margin-top:380px;position:absolute;left:1070px">픽업 장소 
+                            <input type="submit" value="선택" name="check" style="margin-top:0px" onclick="onClick()"/></h2>
                             
                <script type = "text/javascript">
                
