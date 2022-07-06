@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.githrd.deli.vo.memberVO;
 
-@Mapper
 public class MemberDao{
 	
 	@Autowired

@@ -12,7 +12,8 @@
 </head>
 <body>
    <center>
-      <div id="map" style="width: 1000px; height: 700px;"></div>
+  
+      <div id="map" style="width: 1000px; height: 650px;"></div>
 
       <script type="text/javascript"
          src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8800e7024fb23ec08385f1384cbd3f73&libraries=services"></script>
@@ -44,9 +45,13 @@
                      position: coords
                  });
 
+                
+                 
+                 
                  // 인포윈도우로 장소에 대한 설명을 표시합니다
                  var infowindow = new kakao.maps.InfoWindow({
-                     content: '<div style="width:150px;text-align:center;padding:6px 0;">나의 위치</div>'
+                     content:  '<div style="width:150px;text-align:center;padding:6px 0;background-color:#ffd400;color:black;font-weight: bold;border-radius: 10px;font-size:11px">나의 위치</div>'
+                    	
                  });
                  infowindow.open(map, marker);
                 
@@ -62,14 +67,16 @@
         
          
 		</script>
-		
-      주소 : ${member.addr}
-      
-      <form action="<c:url value='/member/placeView.dlv'/>">
-         <input type="hidden" name="lat" id="lat" value="" readonly /> 
-         <input type="hidden" name="lon" id="lon" value="" readonly /> 
-         <input type="submit" id = "pickup" value='픽업가능 위치' />
-      </form>
+		    <span style="position:absolute;left:260px;top:600px;border-radius: 2px;background:#fff;background:rgba(255,255,255,0.8);z-index:1;padding:5px;width:1000px;">
+	      <form action="<c:url value='/member/placeView.dlv'/>">
+	         <input type="hidden" name="lat" id="lat" value="" readonly /> 
+	         <input type="hidden" name="lon" id="lon" value="" readonly /> 
+      	<span style="display:block;margin-top:2px;font-weight: normal;">주소 : ${member.addr}
+	         <input type="submit" id = "pickup" value='픽업가능 위치' />
+	      </form>
+      	</span>
+      </span>
+ 
    </center>
 </body>
 </html>

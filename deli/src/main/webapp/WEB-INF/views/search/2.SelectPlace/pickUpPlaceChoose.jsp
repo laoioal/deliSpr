@@ -32,34 +32,32 @@ label {margin-bottom: 96px;}
 </head>
 
 <body>
-   <center>
-              <h2>픽업 장소 선택</h2>    
                
-             <div id="map" style="width:1000px;height:500px;"></div>
-                
+             <div id="map" style="width:800px;height:600px;float:left; margin-left:100px; margin-top:20px"></div>
                     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8800e7024fb23ec08385f1384cbd3f73&libraries=services"></script>
-                 <br>
-                  
-                  <table id="tableInfo" border = "1px">
-                  <tr>
+                  <table id="tableInfo" style="position:absolute;margin-top:200px;margin-left:920px; width:30%; border-top: 1px solid #dddddd;border-collapse: collapse">
+                                                             	 <tr style="border-bottom: 2px solid #dddddd;  padding: 10px"/>
+                                
+                  <tr style="border-bottom: 1px solid #dddddd;  padding: 10px">
                         <th>선택</th>                    
                         <th>장소</th>
-                        <th>주소</th>
                         <th>거리</th>
+                        <th>주소</th>
                	 </tr>
               	 <tr>
                         <c:forEach items="${cal}" var="cal">
                             <th><input type="radio" name = "name" value="${cal.name}" id = "name" onclick="openChild('${cal.name}')"/></th>
                             <th>${cal.name}</th>
-                             <th>${cal.address}</th>
                             <th>${cal.distance}</th>
+                             <th style="font-size:12px">${cal.address}</th>
                   </tr>
                          </c:forEach>
-                            
+                       <tr style="border-bottom: 2px solid #dddddd;  padding: 10px"/>
                 </table>
+                      
                             <input type="hidden" id = "url" value=""/>
-                            <input type="submit" value="확인" name="check" onclick="onClick()"/>
-                            </form>
+                      		<h2 style="margin-top:300px;position:absolute;left:1070px">픽업 장소 선택 
+                            <input type="submit" value="확인" name="check" onclick="onClick()"/></h2>
                             
                <script type = "text/javascript">
                
@@ -81,24 +79,36 @@ label {margin-bottom: 96px;}
                 name.push("${place.name}"); //식당이름 관련 위치값을 배열에 담기
                 </c:forEach>
              	let idx = name.length;
+				let idx2 = idx-1;
 
-             
              
              address.forEach(function(addr,idx){
                 geocoder.addressSearch(addr,function(result,status){
                    if(status===kakao.maps.services.Status.OK){
                       let coords = new kakao.maps.LatLng(result[0].y,result[0].x);
-                      
+                      	if(idx==idx2){
                       let marker = new kakao.maps.Marker({
                          map:map,
                             position:coords
                       });
                       let infowindow = new kakao.maps.InfoWindow({
-                         content : '<div class ="label">' + name[idx] + '</div>',
+                              content : '<div style="width:150px;text-align:center;padding:6px 0;background-color:#ffd400;color:black;font-weight: bold;border-radius: 10px;font-size:11px">' + name[idx] + '</div>',
                               disableAutoPan: true
-                      });
+                    	  });
                       infowindow.open(map,marker);
-                      
+                      	}
+                      	else{
+                      	  let marker = new kakao.maps.Marker({
+                              map:map,
+                                 position:coords
+                           });
+                   	
+                           let infowindow = new kakao.maps.InfoWindow({
+                                   content : '<div style="width:150px;text-align:center;padding:6px 0;background-color:black;color:white;border-radius: 5px;font-size:10px">' + name[idx] + '</div>',
+                                   disableAutoPan: true
+                         	  });
+                           infowindow.open(map,marker);
+                      	}
                    }
                 }) 
              })
@@ -112,6 +122,5 @@ label {margin-bottom: 96px;}
           
             
             
-    </center>
     </body>
 </html>

@@ -9,12 +9,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.context.request.WebRequest;
 
 import com.githrd.deli.dao.CategoryDao;
 import com.githrd.deli.dao.PlaceDao;
 import com.githrd.deli.dao.RestaurantDao;
-import com.githrd.deli.service.CalculatorService;
 import com.githrd.deli.service.PlaceService;
 import com.githrd.deli.service.RestaurantService;
 import com.githrd.deli.vo.categoryVO;

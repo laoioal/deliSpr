@@ -53,7 +53,7 @@
                </c:forEach>
                <br>
                <input type="hidden" id="choose" value=""/>
-               <input type = "submit" value="선택" onclick= "window.close()" />
+               <input type = "submit" value="선택" />
       </center>
       
    </body>   

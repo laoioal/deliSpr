@@ -35,10 +35,15 @@
 		<mapper resource="com/githrd/deli/sql/PaySQL.xml"/>
 		<mapper resource="com/githrd/deli/sql/PcsSQL.xml"/>
 		<mapper resource="com/githrd/deli/sql/YonghyunSQL.xml"/>
+		
+		
+		
 		<mapper resource="com/githrd/deli/sql/memberSQL.xml"/>
 		<mapper resource="com/githrd/deli/sql/placeSQL.xml"/>
 		<mapper resource="com/githrd/deli/sql/categorySQL.xml"/>
 		<mapper resource="com/githrd/deli/sql/restaurantSQL.xml"/>
 		<mapper resource="com/githrd/deli/sql/middleareaSQL.xml"/>
+		
+		
 	</mappers>
 </configuration>
