@@ -9,12 +9,10 @@
  */
 
 $(document).ready(function(){
-
-
-
-	$('.ctiybtn').click(function(){
+	$('.citytitle').click(function(){
+		$('#search').val('');
 		var city = $(this).val();
-		$('#city').val(city);
+		$('#maincity').val(city);
 		$('#frm').submit();
 	});
 	
@@ -31,8 +29,8 @@ $(document).ready(function(){
 	
 
 
-	//var webSocket = new WebSocket('ws://180.228.75.2/deli/main.dlv');
-	var webSocket = new WebSocket('ws://192.168.0.107/deli/main.dlv');
+	var webSocket = new WebSocket('ws://180.228.75.2/deli/main.dlv');
+	//var webSocket = new WebSocket('ws://192.168.0.107/deli/main.dlv');
 	var chatbox = document.getElementById('chatbox');
 	
 
@@ -117,6 +115,14 @@ $(document).ready(function(){
 	$('.msList').click(function(){
 		$(location).attr('href', '/deli/board/messageList.dlv');
 	});
+	
+	$('#friList').click(function(){
+		$('.myfriblock').css('display', 'block');
+		$('#myfriblock').focus();
+	});
+	
+	
+	
 	
 /*	
 	

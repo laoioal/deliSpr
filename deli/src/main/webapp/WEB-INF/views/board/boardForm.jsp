@@ -115,7 +115,8 @@
 </c:forEach>	
 					
 					<input type="hidden" id="price" name="price">
-				</div>				
+				</div>			
+				<div>댓글</div>
 			</div>
 		</div>
 
@@ -171,6 +172,9 @@
 			<div class="w3-col">${MAIN.body}</div>
 		</div>
 </c:if>		
+		<div class="w3-col w3-border w3-">
+			<div class="w3-col">댓글</div>
+		</div>
 	</div>
 	
 	<form method="POST" action="/deli/board/applyProc.dlv" id="pageFrm" name="pageFrm">

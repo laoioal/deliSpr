@@ -45,13 +45,27 @@ $(document).ready(function(){
 		var date = $(this).find('div:last-child').text();
 		var title = $(this).find('input:nth-child(4)').val();
 		var body = $(this).find('input:nth-child(5)').val();
+		var bno = $(this).attr('id');
 		
 		
 		$('#writer').text(id);
 		$('#date').text(date);
 		$('#title').text(title);
 		$('#body').text(body);
-		
 		$('#message').css('display', 'block');
+		
+		
+		$.ajax({
+			url: '/deli/board/msRead.dlv',
+			type: 'post',
+			dataType: 'json',
+			data: {
+				bno: bno
+			}
+		});
 	});
+	$('#mslist').click(function(){
+		$(location).attr('href', '/deli/board/messageList.dlv');
+	});
+	
 });

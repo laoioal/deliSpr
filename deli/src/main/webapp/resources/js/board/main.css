@@ -77,3 +77,10 @@ small {
 .mainBtn{
 	cursor: pointer;
 }
+.citytitle {
+	width: 8.33%!important;
+	text-align: center;
+}
+.myfriblock, .apfriblock{
+	display: none;
+}

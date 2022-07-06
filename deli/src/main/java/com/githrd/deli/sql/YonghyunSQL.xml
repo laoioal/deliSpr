@@ -188,7 +188,7 @@
 		                        FROM
 		                            friend
 		                        WHERE
-		                            myno = (SELECT mno FROM member WHERE id = #{id})
+		                            frino = (SELECT mno FROM member WHERE id = #{id})
 		                            AND isshow = 'Y'
 		                            AND AGREE = 'N'
 		                      )
@@ -324,10 +324,10 @@
 		)
 	</insert>
 	
-	<!-- 받은 메세지 조회 -->
+	<!-- 받은 쪽지 조회 -->
 	<select id="messageList" resultType="yVO" parameterType="string">
 		SELECT
-		    msno, id, mstitle title, msbody body, wdate, substr(mstitle, 0, 10) larea, substr(msbody, 0, 15) marea, mscheck sarea
+		    msno bno, id, mstitle title, msbody body, wdate, substr(mstitle, 0, 10) larea, substr(msbody, 0, 15) marea, mscheck sarea
 		FROM
 		    message, member
 		WHERE
@@ -339,15 +339,27 @@
 	</select>
 	
 	<!-- 메인페이지 받은 쪽지 개수 확인 -->
-	<select id="messageCnt" resultType="int" parameterType="string">
+	<select id="messageCnt" resultType="yVO" parameterType="string">
 		SELECT
-		    count(*)
+		    count(*) ck, (count(*) * 20) res
 		FROM
 		    message
 		WHERE
 		    myno = (SELECT mno FROM member WHERE id = #{id})
 		    AND mscheck = 'N'
 	</select>
+	
+	<!-- 쪽지 읽음처리 -->
+	<update id="messageRead" parameterType="yVO">
+		UPDATE
+		    message
+		SET
+		    mscheck = 'Y'
+		WHERE
+		    msno = #{bno}
+		    AND myno = (SELECT mno FROM member WHERE id = #{id})
+	
+	</update>
 	
 	<!-- 채팅로그 저장 -->
 	<insert id="recordLog" parameterType="yVO">
@@ -368,9 +380,9 @@
 	</insert>
 	
 	<!-- 채팅 로그 가져오는 함수 -->
-	<select id="getChat">
+	<select id="getChatRecord" resultType="yVO">
 		SELECT
-		    id, cbody
+		    id, cbody body
 		FROM
 		    chat, member
 		WHERE

@@ -242,13 +242,19 @@ public class YonghyunController {
 		return mv;
 	}
 	
+	// 메세지 읽음처리 함수
+	@RequestMapping("/msRead.dlv")
+	@ResponseBody
+	public void msRead(YonghyunVO yVO, HttpSession session) {
+		yVO.setId((String) session.getAttribute("SID"));
+		yDao.messageRead(yVO);
+	}
+	
 	// 채팅 로그 저장 함수
 	@RequestMapping("/chatLog.dlv")
 	@ResponseBody
 	public Map<String, String> recordLog(YonghyunVO yVO) {
-		
 		Map<String, String> map = new HashMap<String, String>();
-		//yVO.setId((String) session.getAttribute("SID"));
 		int cnt = yDao.recordLog(yVO);
 		if(cnt == 1) {
 			map.put("result", "OK");

@@ -81,7 +81,7 @@
 			</div>
 <c:forEach var="data" items="${MESSAGE}">
 <c:if test="${data.sarea eq 'N'}">
-			<div class="w3-col m9 w3-right w3-border-right w3-border-left w3-border-bottom w3-button messbtn" id="${data.id}">
+			<div class="w3-col m9 w3-right w3-border-right w3-border-left w3-border-bottom w3-button messbtn" id="${data.bno}">
 				<div class="w3-col m1 w3-border-right">${data.id}</div>
 	<c:if test="${data.title eq data.larea}">	
 				<div class="w3-col m3 w3-border-right w3-left-align pdl10">${data.title}</div>
@@ -101,7 +101,7 @@
 			</div>
 </c:if>
 <c:if test="${data.sarea ne 'N'}">
-			<div class="w3-col m9 w3-right w3-border-right w3-border-left w3-border-bottom w3-button messbtn w3-light-gray" id="${data.id}">
+			<div class="w3-col m9 w3-right w3-border-right w3-border-left w3-border-bottom w3-button messbtn w3-light-gray" id="${data.bno}">
 				<div class="w3-col m1 w3-border-right">${data.id}</div>
 	<c:if test="${data.title eq data.larea}">	
 				<div class="w3-col m3 w3-border-right w3-left-align pdl10">${data.title}</div>
@@ -126,7 +126,7 @@
 		<div id="message" class="w3-modal">
 			<div class="w3-modal-content w3-padding">
 				<div class="w3-container">
-					<span onclick="document.getElementById('message').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+					<span id="mslist" class="w3-button w3-display-topright">&times;</span>
 					<h1 class="w3-center-align">받은쪽지</h1>
 					<div class="w3-col w3-border w3-margin-bottom">
 						<div class="w3-col w3-border-bottom">

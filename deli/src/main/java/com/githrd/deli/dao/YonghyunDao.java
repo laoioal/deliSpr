@@ -121,14 +121,24 @@ public class YonghyunDao {
 	}
 	
 	// 메인페이지 받은 메세지 개수 조회 함수
-	public int messageCnt(String id) {
+	public YonghyunVO messageCnt(String id) {
 		return sqlSession.selectOne("ySQL.messageCnt", id);
 	}
 	
-	// 쪽지 로그 저장 함수
+	// 쪽지 읽음처리 함수
+	public int messageRead(YonghyunVO yVO) {
+		return sqlSession.update("ySQL.messageRead", yVO);
+	}
+	
+	// 채팅 로그 저장 함수
 	public int recordLog(YonghyunVO yVO) {
-		System.out.println("###############################");
-		System.out.println("########## yVO : " + yVO);
 		return sqlSession.insert("ySQL.recordLog", yVO);
 	}
+	
+	// 채팅기록 불러오는 함수
+	public List<YonghyunVO> getChatRecord(){
+		return sqlSession.selectList("ySQL.getChatRecord");
+	}
+	
+	
 }

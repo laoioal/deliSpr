@@ -45,93 +45,26 @@
 		<button class="w3-right member mg0 w3-button mgt10" id="jbtn">회원가입</button>
 </c:if>
 		<form method="POST" action="/deli/board/boardList.dlv" id="frm" name="frm">
-			<input type="hidden" id="city" name="city" value="">
+			<input type="hidden" id="maincity" name="city" value="">
 		
  
-			<div class="w3-col mgt0">
-				<h1 class="mgb10 w3-border pdAll10 w3-card-4"><strong>Delivery Project</strong></h1>
-			</div>
-
-			  <div class="w3-row-padding">
-			    <div class="w3-col l3 m6 w3-margin-bottom ">
-			      <div class="w3-display-container">
-			        <div class="w3-display-topleft w3-blue-grey">Seoul</div>
-			        <button class="ctiybtn" value="서울특별시"><img src="/deli/img/board/seoul.JPG" style="width:100%; height:160px;"></button>
-			      </div>
-			    </div>
-			    <div class="w3-col l3 m6 w3-margin-bottom">
-			      <div class="w3-display-container">
-			        <div class="w3-display-topleft w3-cyan">Gyeonggi-do</div>
-			        <button class="ctiybtn" value="경기도"><img src="/deli/img/board/Gyeonggi.png" style="width:100%; height:160px;"></button>
-			      </div>
-			    </div>
-			    <div class="w3-col l3 m6 w3-margin-bottom">
-			      <div class="w3-display-container">
-			        <div class="w3-display-topleft w3-red">Gangwon-do</div>
-			        <button class="ctiybtn" value="강원도"><img src="/deli/img/board/Gangwon.png" style="width:100%; height:160px;"></button>
-			      </div>
-			    </div>
-			    <div class="w3-col l3 m6 w3-margin-bottom">
-			      <div class="w3-display-container">
-			        <div class="w3-display-topleft w3-orange">Chungcheongnam-do</div>
-			        <button class="ctiybtn" value="충청남도"><img src="/deli/img/board/Chungcheongnam.png" style="width:100%; height:160px;"></button>
-			      </div>
-			    </div>
-			  </div>
-			
-			  <div class="w3-row-padding">
-			    <div class="w3-col l3 m6 w3-margin-bottom">
-			      <div class="w3-display-container">
-			        <div class="w3-display-topleft w3-blue">Chungcheongbuk-do</div>
-			        <button class="ctiybtn" value="충청북도"><img src="/deli/img/board/Chungcheongbuk.png" style="width:99%; height:160px;"></button>
-			      </div>
-			    </div>
-			    <div class="w3-col l3 m6 w3-margin-bottom">
-			      <div class="w3-display-container">
-			        <div class="w3-display-topleft w3-light-grey">Gyeongsangnam-do</div>
-			        <button class="ctiybtn" value="경상남도"><img src="/deli/img/board/Gyeongsangnam.png" style="width:99%; height:160px;"></button>
-			      </div>
-			    </div>
-			    <div class="w3-col l3 m6 w3-margin-bottom">
-			      <div class="w3-display-container">
-			        <div class="w3-display-topleft w3-yellow">Gyeongsangbuk-do</div>
-			        <button class="ctiybtn" value="경상북도"><img src="/deli/img/board/Gyeongsangbuk.png" style="width:99%; height:160px;"></button>
-			      </div>
-			    </div>
-			    <div class="w3-col l3 m6 w3-margin-bottom">
-			      <div class="w3-display-container">
-			        <div class="w3-display-topleft w3-teal">Jeollanam-do</div>
-			        <button class="ctiybtn" value="전라남도"><img src="/deli/img/board/Jeollanam.png" style="width:99%; height:160px;"></button>
-			      </div>
-			    </div>
-			  </div>
-			  
-			  <div class="w3-row-padding">
-			    <div class="w3-col l3 m6 w3-margin-bottom">
-			      <div class="w3-display-container">
-			        <div class="w3-display-topleft w3-sand">Jeollabuk-do</div>
-			        <button class="ctiybtn" value="전라북도"><img src="/deli/img/board/Jeollabuk.png" style="width:99%; height:160px;"></button>
-			      </div>
-			    </div>
-			    <div class="w3-col l3 m6 w3-margin-bottom">
-			      <div class="w3-display-container">
-			        <div class="w3-display-topleft w3-deep-purple">Jeju</div>
-			        <button class="ctiybtn" value="제주도"><img src="/deli/img/board/jeju.jpg" style="width:99%; height:160px;"></button>
-			      </div>
-			    </div>
-			    <div class="w3-col l3 m6 w3-margin-bottom">
-			      <div class="w3-display-container">
-			        <div class="w3-display-topleft w3-black">전체글보기</div>
-			        <button class="ctiybtn" value=""><img src="/deli/img/board/total.jpg" style="width:99%; height:160px;"></button>
-			      </div>
-			    </div>
-			    <div class="w3-col l3 m6 w3-margin-bottom">
-			      <div class="w3-display-container">
-			        <div class="w3-display-topleft w3-black">FAQ</div>
-			        <button class="ctiybtn" value="faq"><img src="/deli/img/board/faq2.JPG" style="width:99%; height:160px;"></button>
-			      </div>
-			    </div>
-			  </div>
+	<div class="w3-col mgt0">
+			<h1 class="mgb10 w3-border pdAll10"><strong>Delivery Project</strong></h1>
+			<hr>
+			<button class="w3-col w3-button citytitle w3-center-align" value="서울특별시">서울</button>
+			<button class="w3-col w3-button citytitle w3-center-align" value="경기도">경기도</button>
+			<button class="w3-col w3-button citytitle w3-center-align" value="강원도">강원도</button>
+			<button class="w3-col w3-button citytitle w3-center-align" value="충청남도">충청남도</button>
+			<button class="w3-col w3-button citytitle w3-center-align" value="충청북도">충청북도</button>
+			<button class="w3-col w3-button citytitle w3-center-align" value="경상남도">경상남도</button>
+			<button class="w3-col w3-button citytitle w3-center-align" value="경상북도">경상북도</button>
+			<button class="w3-col w3-button citytitle w3-center-align" value="전라남도">전라남도</button>
+			<button class="w3-col w3-button citytitle w3-center-align" value="전라북도">전라북도</button>
+			<button class="w3-col w3-button citytitle w3-center-align" value="제주도">제주도</button>
+			<button class="w3-col w3-button citytitle w3-center-align" value="">전체</button>
+			<button class="w3-col w3-button citytitle w3-center-align" value="">FAQ</button>
+		<hr class="w3-col mg0 w3-card-2">
+		</div>
 		</form>
 		
 		<div class="w3-col w3-center mgt20">
@@ -169,22 +102,38 @@
 						
 						
 						<p class="w3-large w3-text-theme"><b><i class="fa fa-globe fa-fw w3-margin-right w3-text-teal"></i>회원관리</b></p>
-						<div class="msList">
-							<p class="mainBtn ">받은쪽지함</p>
+						<p class="memText mainBtn" id="msgbtn">쪽지보내기</p>
+						<hr>
+						<div class="msList mainBtn">
+							<p class="mainBtn">받은쪽지함</p>
+							
 							<div class="w3-light-grey w3-round-xlarge">
-								<div class="w3-round-xlarge w3-teal mainBtn" style="height:24px;width:100%">${MSCNT}건</div>
+	<c:if test="${MSCNT.ck ne 0}">
+								<div class="w3-round-xlarge w3-teal mainBtn" style="height:24px;width:${MSCNT.res}%">${MSCNT.ck}건</div>
+	</c:if>
+	<c:if test="${MSCNT.ck eq 0}">
+								<div class="w3-round-xlarge w3-text-black mainBtn" style="height:24px;">${MSCNT.ck}건</div>
+	</c:if>
 							</div>
 						</div>
+						<hr>
+						<p class="mainBtn" id="friList">친구목록</p><
+						<hr>
 						<p>친구 신청 대기</p>
 						<div class="w3-light-grey w3-round-xlarge">
-	<c:if test="${MYINFO.ck le 100 }">          
+	<c:if test="${MYINFO.ck le 100 }">
+		<c:if test="${MYINFO.res ne 0}">         
 							<div class="w3-round-xlarge w3-teal" style="height:24px;width:${MYINFO.ck}%">${MYINFO.res}명</div>
+		</c:if>
+		<c:if test="${MYINFO.res eq 0}">         
+							<div class="w3-round-xlarge w3-text-black w3-center-align" style="height:24px;">${MYINFO.res}명</div>
+		</c:if>
 	</c:if>
 	<c:if test="${MYINFO.ck gt 100 }">       
 							<div class="w3-round-xlarge w3-teal" style="height:24px;width:100%">${MYINFO.res}명</div>
 	</c:if>         
 						</div>
-						<p class="memText mainBtn" id="msgbtn">쪽지보내기</p>			
+						<hr>	
 						<p class="memText">회원정보수정</p>
 						<br>
 					</div>
@@ -213,51 +162,53 @@
 			</div>
 		</div>
 	
-	
+		<div class="myfriblock" id="myfriblock">
+			<div class="w3-container w3-padding-32" id="about">
+				<h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">내 친구목록<input type="hidden" id="myfriblock"></h3>
+			 </div>
 <c:if test="${not empty SID}">	
-	<div class="w3-container w3-padding-32" id="about">
-		<h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">내 친구목록</h3>
-	 </div>
-	
-	 <div class="w3-row-padding w3-grayscale">
-	 
+			
+			 <div class="w3-row-padding w3-grayscale">
+			 
 	<c:forEach var="list" items="${MYFRIEND}"> 
-		<div class="w3-col l3 m6 w3-margin-bottom">
-			<img src="/deli/img/avatar/${list.aid}" style="width:100%">
-			<h3>${list.id}</h3>
-			<hr>
-			<p>매너점수 : ${list.esti}</p>
-			<!-- <p class="w3-opacity">매너점수</p> -->
-			<div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:${list.pesti}%">${list.pesti}%</div>
-			<p><button class="w3-button w3-light-grey w3-block" id="mail">Contact</button></p>
-		</div>
+				<div class="w3-col l3 m6 w3-margin-bottom">
+					<img src="/deli/img/avatar/${list.aid}" style="width:100%">
+					<h3>${list.id}</h3>
+					<hr>
+					<p>매너점수 : ${list.esti}</p>
+					<!-- <p class="w3-opacity">매너점수</p> -->
+					<div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:${list.pesti}%">${list.pesti}%</div>
+					<p><button class="w3-button w3-light-grey w3-block" id="mail">Contact</button></p>
+				</div>
 	</c:forEach>    
-	</div>
-</c:if>
-
-<c:if test="${not empty SID}">	
-	<div class="w3-container w3-padding-32" id="about">
-		<h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">친구 수락 대기</h3>
-	</div>
-	
-	 <div class="w3-row-padding w3-grayscale">
-	 
-	<c:forEach var="list" items="${AFRIEND}"> 
-		<div class="w3-col l3 m6 w3-margin-bottom">
-			<img src="/deli/img/avatar/${list.aid}" style="width:100%">
-			<h3>${list.id}</h3>
-			<hr>
-			<p>매너점수 : ${list.esti}</p>
-			<!-- <p class="w3-opacity">매너점수</p> -->
-			<div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:${list.pesti}%">${list.pesti}%</div>
-			<div>
-				<p class="w3-col m6"><button class="w3-button w3-light-grey w3-block apbtn" id="${list.mno}">수락</button></p>
-				<p class="w3-col m6"><button class="w3-button w3-light-grey w3-block debtn" id="${list.mno}">거절</button></p>
 			</div>
-		 </div>
-	</c:forEach>    
-	</div>
 </c:if>
+		</div>
+		<div class="apfriblock">
+<c:if test="${not empty SID}">	
+		<div class="w3-container w3-padding-32" id="about">
+			<h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">친구 수락 대기</h3>
+		</div>
+		
+		 <div class="w3-row-padding w3-grayscale">
+		 
+	<c:forEach var="list" items="${AFRIEND}"> 
+			<div class="w3-col l3 m6 w3-margin-bottom">
+				<img src="/deli/img/avatar/${list.aid}" style="width:100%">
+				<h3>${list.id}</h3>
+				<hr>
+				<p>매너점수 : ${list.esti}</p>
+				<!-- <p class="w3-opacity">매너점수</p> -->
+				<div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:${list.pesti}%">${list.pesti}%</div>
+				<div>
+					<p class="w3-col m6"><button class="w3-button w3-light-grey w3-block apbtn" id="${list.mno}">수락</button></p>
+					<p class="w3-col m6"><button class="w3-button w3-light-grey w3-block debtn" id="${list.mno}">거절</button></p>
+				</div>
+			 </div>
+	</c:forEach>    
+		</div>
+</c:if>
+		</div>
 	</div>
 
 	
@@ -267,6 +218,15 @@
 	 	<input type="hidden" id="result" value="${param.result}">
 	 	<input type="hidden" name="id" value="${SID}">
 	 </form>
+<c:if test="${not empty CHATLOG}" >
+	<c:forEach var="chatlog" items="${CHATLOG}">
+		<input type="hidden" class="chatlog" value="${chatlog.body}">
+		<input type="hidden" class="chatlogid" value="${chatlog.id}">
+	</c:forEach>
+</c:if>
+	 
+	 
+	 
 <c:if test="${not empty param.result}">
 	<div id="id01" class="w3-modal">
 		<div class="w3-modal-content w3-animate-top w3-card-4">
