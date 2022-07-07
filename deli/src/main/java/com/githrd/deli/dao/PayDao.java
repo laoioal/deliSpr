@@ -32,9 +32,14 @@ public class PayDao {
 	} 
 	
 	//	odermenu 채우기 전담 처리 함수
+	public int insertOdm(PayVO paVO) {
+		return sqlSession.insert("paSQL.insertOdm", paVO);
+	}
+	/*
 	public int insertOdm(java.util.Map map) {
 		return sqlSession.insert("paSQL.insertOdm", map);
 	}
+	*/ 
 	 
 	//	비용 조회 전담 처리 함수
 	public PayVO selPays(PayVO paVO) {

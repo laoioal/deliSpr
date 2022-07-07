@@ -17,11 +17,12 @@
 			orderlist(olno, ono, rno, oprice, paym, requests)
 		VALUES(
 			(SELECT NVL(MAX(olno) +1, 1) FROM orderlist),
-			#{ono}, #{rno}, #{oprice}, #{paym}, #{request}
+			#{ono}, #{rno}, #{oprice}, #{paym}, NVL(#{request}, '없음')
 		)
 		 
 	</insert>
 	
+	<!-- 추후 수정 예정
 	<insert id="insertOdm" parameterType="java.util.Map">
 	<selectKey keyProperty="omno" resultType="int" order="BEFORE">
 		SELECT NVL(MAX(omno) + 1, 1) FROM ordermenu
@@ -36,6 +37,22 @@
 			#{item.omenu}, #{item.omprice}, #{item.quantity}, #{ono}
 		)
 		</foreach>
+	</insert>
+	 -->
+	
+	<insert id="insertOdm" parameterType="paVO">
+	<selectKey keyProperty="omno" resultType="int" order="BEFORE">
+		SELECT NVL(MAX(omno) + 1, 1) FROM ordermenu
+	</selectKey>
+		INSERT INTO
+			ordermenu(omno, olno, omenu, omprice, quantity, ono)
+		VALUES(
+			#{omno},
+			(SELECT olno FROM orderlist WHERE ono = #{ono}),
+			#{omenu}, #{omprice}, 
+			NVL(#{quantity}, 1), 
+			#{ono}
+		)
 	</insert>
 	
 	<select id="selPays" parameterType="paVO" resultType="paVO">
