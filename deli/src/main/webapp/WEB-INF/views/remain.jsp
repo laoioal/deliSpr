@@ -183,6 +183,9 @@
 					<!-- <p class="w3-opacity">매너점수</p> -->
 					<div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:${list.pesti}%">${list.pesti}%</div>
 					<p><button class="w3-button w3-light-grey w3-block" id="mail">Contact</button></p>
+					<form method="post" action="/deli/board/msForm.dlv" name="mesfrm" id="mesfrm">
+						<input type="hidden" name="mesid" value="${list.id}">
+					</form>
 				</div>
 	</c:forEach>    
 			</div>

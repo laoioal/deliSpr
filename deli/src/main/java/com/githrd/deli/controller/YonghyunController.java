@@ -183,7 +183,7 @@ public class YonghyunController {
 		mv.setViewName("board/redirect");
 		return mv;
 	}
-// 여기서부터 테스트 필요	
+
 	// 친구 삭제 함수
 	@RequestMapping("/delFriend.dlv")
 	public ModelAndView delFriend(ModelAndView mv, YonghyunVO yVO) {
@@ -215,16 +215,11 @@ public class YonghyunController {
 	
 	// 메세지 전송 폼보기 요청
 	@RequestMapping("/msForm.dlv")
-	public ModelAndView messageForm(ModelAndView mv, String id) {
-		
-		if(id != null) {
-			mv.addObject("ID", id);
-		}
+	public ModelAndView messageForm(ModelAndView mv) {
 		
 		mv.setViewName("board/messageForm");
 		return mv;
 	}
-	
 	// 메세지 전송 처리 함수
 	@RequestMapping("/msProc.dlv")
 	public ModelAndView sendMessage(ModelAndView mv, YonghyunVO yVO, HttpSession session) {

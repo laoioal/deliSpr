@@ -140,5 +140,9 @@ $(document).ready(function(){
 		var bno = $(this).attr('id');
 		$('#bno').val(bno);
 		$('#frm1').submit();
-	})
+	});
+	
+	$('#mail').click(function(){
+		$('#mesfrm').submit();
+	});
 });

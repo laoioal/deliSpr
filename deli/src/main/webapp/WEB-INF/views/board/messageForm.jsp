@@ -67,13 +67,13 @@
 		</div>
 		<form method="POST" action="/deli/board/msProc.dlv" id="mesfrm" name="mesfrm">
 		<div class="w3-col w3-border w3-padding m9 w3-margin-top">
-<c:if test="${not empty ID}">
+<c:if test="${not empty param.mesid}">
 			<div class="w3-col w3-margin-top w3-right">
 				<div class="w3-col m2">받는사람</div>
-				<input class="w3-col m9" name="kid" value="${ID}">
+				<input class="w3-col m9" name="kid" value="${param.mesid}">
 			</div>
 </c:if>
-<c:if test="${empty ID}">
+<c:if test="${empty param.mesid}">
 			<div class="w3-col w3-margin-top w3-right">
 				<div class="w3-col m2">받는사람</div>
 				<input class="w3-col m9" name="kid" id="kid">
