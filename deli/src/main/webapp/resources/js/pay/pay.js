@@ -35,9 +35,9 @@ $(document).ready(function(){
 				if (rsp.success) {
 					var msg = '결제가 완료되었습니다.';
 					let payVo = {
-						m_email: m_email, r_rno : rno, s_id: s_id, ono: rsp.merchant_uid,
+						m_email: m_email, rno : rno, s_id: s_id, ono: rsp.merchant_uid,
 						oprice: rsp.paid_amount, ompirce : omprice, paym: rsp.pay_method,
-						m_mno : mno, omenu : omenu,quantity : quantity, request : request
+						mno : mno, omenu : omenu,quantity : quantity, request : request
 						}
 					// 컨트롤러에 데이터를 전달하여 DB에 입력하는 로직
 	               			$.ajax({

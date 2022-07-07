@@ -2,12 +2,13 @@ package com.githrd.deli.vo;
 
 import java.sql.Time;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
 public class PayVO {
 	private int membmno, mno, rno, mimg, mprice, mino, olno,  oprice, omprice, quantity, esti, cname, omno, gorder, delpay, cnt, mtprice, myprice, bno, restno;
-	private String result, membname, membmail, mname, mintro, miname, sname, dir, omenu, rname, addr, tel, stime, ono, sdate, paym, request, amname, id, membaddr, membtel;
+	private String mname1, result, membname, membmail, mname, mintro, miname, sname, dir, omenu, rname, addr, tel, stime, ono, sdate, paym, request, amname, id, membaddr, membtel;
 	private List<PayVO> menu;
 	
 	private List<PayVO>[] mmenu;
@@ -16,6 +17,13 @@ public class PayVO {
 	private String[] ormname;
 	private int[] orq;
 	
+	
+	public String getMname1() {
+		return mname1;
+	}
+	public void setMname1(String mname1) {
+		this.mname1 = mname1;
+	}
 	public int[] getOrprice() {
 		return orprice;
 	}
@@ -340,15 +348,21 @@ public class PayVO {
 				+ ", mino=" + mino + ", olno=" + olno + ", oprice=" + oprice + ", omprice=" + omprice + ", quantity="
 				+ quantity + ", esti=" + esti + ", cname=" + cname + ", omno=" + omno + ", gorder=" + gorder
 				+ ", delpay=" + delpay + ", cnt=" + cnt + ", mtprice=" + mtprice + ", myprice=" + myprice + ", bno="
-				+ bno + ", restno=" + restno + ", membmail=" + membmail + ", mname=" + mname + ", mintro=" + mintro
-				+ ", miname=" + miname + ", sname=" + sname + ", dir=" + dir + ", omenu=" + omenu + ", rname=" + rname
-				+ ", addr=" + addr + ", tel=" + tel + ", stime=" + stime + ", ono=" + ono + ", sdate=" + sdate
-				+ ", paym=" + paym + ", request=" + request + ", amname=" + amname + ", id=" + id + ", membaddr="
-				+ membaddr + ", membtel=" + membtel + ", rtime=" + rtime + ", rdate=" + rdate + ", getMembmail()="
-				+ getMembmail() + ", getMno()=" + getMno() + ", getRno()=" + getRno() + ", getMimg()=" + getMimg()
-				+ ", getMprice()=" + getMprice() + ", getMino()=" + getMino() + ", getMembmno()=" + getMembmno()
-				+ ", getMembaddr()=" + getMembaddr() + ", getMembtel()=" + getMembtel() + ", getId()=" + getId()
-				+ ", getRestno()=" + getRestno() + ", getOlno()=" + getOlno() + ", getOno()=" + getOno()
+				+ bno + ", restno=" + restno + ", mname1=" + mname1 + ", result=" + result + ", membname=" + membname
+				+ ", membmail=" + membmail + ", mname=" + mname + ", mintro=" + mintro + ", miname=" + miname
+				+ ", sname=" + sname + ", dir=" + dir + ", omenu=" + omenu + ", rname=" + rname + ", addr=" + addr
+				+ ", tel=" + tel + ", stime=" + stime + ", ono=" + ono + ", sdate=" + sdate + ", paym=" + paym
+				+ ", request=" + request + ", amname=" + amname + ", id=" + id + ", membaddr=" + membaddr + ", membtel="
+				+ membtel + ", menu=" + menu + ", mmenu=" + Arrays.toString(mmenu) + ", orprice="
+				+ Arrays.toString(orprice) + ", ormname=" + Arrays.toString(ormname) + ", orq=" + Arrays.toString(orq)
+				+ ", rtime=" + rtime + ", rdate=" + rdate + ", getMname1()=" + getMname1() + ", getOrprice()="
+				+ Arrays.toString(getOrprice()) + ", getOrmname()=" + Arrays.toString(getOrmname()) + ", getOrq()="
+				+ Arrays.toString(getOrq()) + ", getResult()=" + getResult() + ", getMenu()=" + getMenu()
+				+ ", getMembname()=" + getMembname() + ", getMembmail()=" + getMembmail() + ", getMmenu()="
+				+ Arrays.toString(getMmenu()) + ", getMno()=" + getMno() + ", getRno()=" + getRno() + ", getMimg()="
+				+ getMimg() + ", getMprice()=" + getMprice() + ", getMino()=" + getMino() + ", getMembmno()="
+				+ getMembmno() + ", getMembaddr()=" + getMembaddr() + ", getMembtel()=" + getMembtel() + ", getId()="
+				+ getId() + ", getRestno()=" + getRestno() + ", getOlno()=" + getOlno() + ", getOno()=" + getOno()
 				+ ", getOprice()=" + getOprice() + ", getOmprice()=" + getOmprice() + ", getQuantity()=" + getQuantity()
 				+ ", getEsti()=" + getEsti() + ", getCname()=" + getCname() + ", getMname()=" + getMname()
 				+ ", getMintro()=" + getMintro() + ", getMiname()=" + getMiname() + ", getSname()=" + getSname()

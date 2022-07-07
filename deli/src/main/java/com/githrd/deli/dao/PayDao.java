@@ -3,6 +3,7 @@ package com.githrd.deli.dao;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.githrd.deli.vo.MembVO;
 import com.githrd.deli.vo.PayVO;
 
 /**
@@ -36,13 +37,13 @@ public class PayDao {
 	}
 	 
 	//	비용 조회 전담 처리 함수
-	public PayVO selPays(int bno) {
-		return sqlSession.selectOne("paSQL.selPays", bno);
+	public PayVO selPays(PayVO paVO) {
+		return sqlSession.selectOne("paSQL.selPays", paVO);
 	}
 	
 	//	사용자 조회 전담 처리 함수
-	public PayVO selMinfo(PayVO paVO) {
-		return sqlSession.selectOne("paSQL.selMinfo", paVO);
+	public MembVO selMinfo(String sid) {
+		return sqlSession.selectOne("paSQL.selMinfo", sid);
 	}
 	
 	//	식당 조회 전담 처리 함수

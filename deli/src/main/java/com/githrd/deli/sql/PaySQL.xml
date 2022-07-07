@@ -17,7 +17,7 @@
 			orderlist(olno, ono, rno, oprice, paym, requests)
 		VALUES(
 			(SELECT NVL(MAX(olno) +1, 1) FROM orderlist),
-			#{ono}, #{rno}, #{oprice}, #{paym}, #{requests}
+			#{ono}, #{rno}, #{oprice}, #{paym}, #{request}
 		)
 		 
 	</insert>
@@ -38,9 +38,9 @@
 		</foreach>
 	</insert>
 	
-	<select id="selPays" parameterType="int" resultType="paVO">
+	<select id="selPays" parameterType="paVO" resultType="paVO">
 		SELECT
-			restno, delpay, mprice, mname, rname
+			DISTINCT restno, delpay, rname, bno
 		FROM
 			board b, restaurant r, menu m
 		WHERE
@@ -48,17 +48,18 @@
 			 AND r.isshow = 'Y'
 			 AND m.isshow = 'Y'
 			 AND m.rno = r.restno
+			 AND b.rest = r.restno
 			 AND bno = #{bno}
 	</select>
 	
-	<select id="selMinfo" parameterType="paVO" resultType="paVO">
+	<select id="selMinfo" parameterType="string" resultType="membVO">
 		SELECT
 			mno, id, tel, addr, mail, name
 		FROM
 			member 
 		WHERE
 			 isshow = 'Y'
-			 AND id = #{id}
+			 AND id = #{sid}
 	</select>
 	
 	<select id="abnoCnt" parameterType="int" resultType="int">
