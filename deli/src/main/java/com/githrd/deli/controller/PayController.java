@@ -69,7 +69,7 @@ public class PayController {
 		int odtcnt = paDao.insertOdt(paVO);
 		int odlcnt = paDao.insertOdl(paVO);
 		System.out.println("odtcnt" + odtcnt);
-		System.out.println("odlcnt" + odtcnt);
+		System.out.println("odlcnt" + odtcnt); 
 		
 		
 	}

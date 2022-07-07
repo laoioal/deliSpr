@@ -8,7 +8,7 @@
 			ordertask(ono, mno)
 		VALUES(
 			#{ono}, #{mno}		
-		)
+		) 
 	</insert>
 	
 	<insert id="insertOdl" parameterType="paVO">

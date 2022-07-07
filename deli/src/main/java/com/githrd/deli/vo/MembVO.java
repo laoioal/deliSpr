@@ -8,7 +8,7 @@ public class MembVO {
 	private String name, id, kakaoid, pw, mail, tel, addr, sdate;
 	private Date jdate;
 	public int getMno() {
-		return mno;
+		return mno; 
 	}
 	public void setMno(int mno) {
 		this.mno = mno;

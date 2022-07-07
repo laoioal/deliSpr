@@ -30,7 +30,7 @@
 <script type="text/javascript">
 $(document).ready(function(){
 });
-</script>
+</script> 
 </head>
 <body>
 	<div class="mxw700 w3-content w3-center">

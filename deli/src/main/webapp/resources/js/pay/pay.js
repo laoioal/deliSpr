@@ -34,7 +34,7 @@ $(document).ready(function(){
 				console.log(rsp);
 				if (rsp.success) {
 					var msg = '결제가 완료되었습니다.';
-					let payVo = {
+					let payVo = { 
 						m_email: m_email, rno : rno, s_id: s_id, ono: rsp.merchant_uid,
 						oprice: rsp.paid_amount, ompirce : omprice, paym: rsp.pay_method,
 						mno : mno, omenu : omenu,quantity : quantity, request : request

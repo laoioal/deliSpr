@@ -29,7 +29,7 @@ public class PayDao {
 	//	oderlist 채우기 전담 처리 함수
 	public int insertOdl(PayVO paVO) {
 		return sqlSession.insert("paSQL.insertOdl", paVO);
-	}
+	} 
 	
 	//	odermenu 채우기 전담 처리 함수
 	public int insertOdm(java.util.Map map) {
