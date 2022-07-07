@@ -36,7 +36,7 @@
 </style>
 </head>
 <body>
-	<div class="mxw800 w3-content w3-center">
+	<div class="mxw800 w3-content w3-center w3-margin-bottom">
 <c:if test="${not empty SID}">
 		<button class="w3-right-align mg0 w3-right mg0 pdAll0 w3-button mgt10 member" id="obtn">로그아웃</button>
 </c:if>
@@ -51,18 +51,18 @@
 	<div class="w3-col mgt0">
 			<h1 class="mgb10 w3-border pdAll10"><strong>Delivery Project</strong></h1>
 			<hr>
-			<button class="w3-col w3-button citytitle w3-center-align" value="서울특별시">서울</button>
-			<button class="w3-col w3-button citytitle w3-center-align" value="경기도">경기도</button>
-			<button class="w3-col w3-button citytitle w3-center-align" value="강원도">강원도</button>
-			<button class="w3-col w3-button citytitle w3-center-align" value="충청남도">충청남도</button>
-			<button class="w3-col w3-button citytitle w3-center-align" value="충청북도">충청북도</button>
-			<button class="w3-col w3-button citytitle w3-center-align" value="경상남도">경상남도</button>
-			<button class="w3-col w3-button citytitle w3-center-align" value="경상북도">경상북도</button>
-			<button class="w3-col w3-button citytitle w3-center-align" value="전라남도">전라남도</button>
-			<button class="w3-col w3-button citytitle w3-center-align" value="전라북도">전라북도</button>
-			<button class="w3-col w3-button citytitle w3-center-align" value="제주도">제주도</button>
-			<button class="w3-col w3-button citytitle w3-center-align" value="">전체</button>
-			<button class="w3-col w3-button citytitle w3-center-align" value="">FAQ</button>
+			<button class="w3-col w3-button citytitle" value="서울특별시">서울</button>
+			<button class="w3-col w3-button citytitle" value="경기도">경기도</button>
+			<button class="w3-col w3-button citytitle" value="강원도">강원도</button>
+			<button class="w3-col w3-button citytitle" value="충청남도">충청남도</button>
+			<button class="w3-col w3-button citytitle" value="충청북도">충청북도</button>
+			<button class="w3-col w3-button citytitle" value="경상남도">경상남도</button>
+			<button class="w3-col w3-button citytitle" value="경상북도">경상북도</button>
+			<button class="w3-col w3-button citytitle" value="전라남도">전라남도</button>
+			<button class="w3-col w3-button citytitle" value="전라북도">전라북도</button>
+			<button class="w3-col w3-button citytitle" value="제주도">제주도</button>
+			<button class="w3-col w3-button citytitle" value="">전체</button>
+			<button class="w3-col w3-button citytitle" value="">FAQ</button>
 		<hr class="w3-col mg0 w3-card-2">
 		</div>
 		</form>
@@ -70,24 +70,41 @@
 		<div class="w3-col w3-center mgt20">
 <c:if test="${not empty SID }">
 			<div class="w3-col m9">
-				<textarea id="chatbox" rows="13" cols="75"></textarea>	
+				<textarea class="w3-card-4" id="chatbox" rows="13" cols="75" readonly></textarea>	
 				<form class="w3-margin-bottom">
 					<input id="id" type="text" value="${SID}" disabled>
 					<input id="textMessage" type="text">
 					<input value="Send" type="button" id="sendbtn">
 				</form>
+				
+				<h3>핫게시물</h3>
+				<div class="w3-col hotclick w3-border mgl10 w3-card-4" style="width:698px;">
+					<div class="w3-col">
+						<form method="POST" action="/deli/board/boardForm.dlv" id="frm1" name="frm1">
+							<input type=hidden id="bno" name="bno">
+	<c:forEach var="data" items="${TLIST}" varStatus="st">
+								<div class="w3-col w3-button hotbtn w3-left-align" id="${data.bno}">
+									<div><span class="w3-text-red">best. ${st.count}</span>
+										<div><small>&lt; ${data.city} &gt;</small></div>
+										<div class="titleFont">${data.title}</div>
+									</div>
+								</div>
+								<hr class="hotclickhr w3-col">		
+	</c:forEach>			
+						</form>		
+					</div>
+				</div>
 			</div>
-			
 			
 			<div class="w3-col m3">
 				<div class="w3-white w3-text-grey w3-card-4">
 					<div class="w3-display-container">
 						<img src="/deli/img/avatar/${MYINFO.aid}" style="width:100%" alt="Avatar">
 						<div class="w3-display-bottomleft w3-container w3-text-black">
-							<h2>${MYINFO.id}</h2>
 						</div>
 					</div>
 					<div class="w3-container">
+						<h2>${MYINFO.id}</h2>
 						<p><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-teal"></i>이름 : ${MYINFO.name}</p>
 						<p><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i>지역 : ${MYINFO.marea}</p>
 						<p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i>카카오ID : ${MYINFO.kid}</p>
@@ -117,21 +134,23 @@
 							</div>
 						</div>
 						<hr>
-						<p class="mainBtn" id="friList">친구목록</p><
+						<p class="mainBtn" id="friList">친구목록</p>
 						<hr>
-						<p>친구 신청 대기</p>
-						<div class="w3-light-grey w3-round-xlarge">
+						<div class="mainBtn" id="apfriList">
+							<p>친구 신청 대기</p>
+							<div class="w3-light-grey w3-round-xlarge">
 	<c:if test="${MYINFO.ck le 100 }">
 		<c:if test="${MYINFO.res ne 0}">         
-							<div class="w3-round-xlarge w3-teal" style="height:24px;width:${MYINFO.ck}%">${MYINFO.res}명</div>
+								<div class="w3-round-xlarge w3-teal" style="height:24px;width:${MYINFO.ck}%">${MYINFO.res}명</div>
 		</c:if>
 		<c:if test="${MYINFO.res eq 0}">         
-							<div class="w3-round-xlarge w3-text-black w3-center-align" style="height:24px;">${MYINFO.res}명</div>
+								<div class="w3-round-xlarge w3-text-black w3-center-align" style="height:24px;">${MYINFO.res}명</div>
 		</c:if>
 	</c:if>
 	<c:if test="${MYINFO.ck gt 100 }">       
-							<div class="w3-round-xlarge w3-teal" style="height:24px;width:100%">${MYINFO.res}명</div>
+								<div class="w3-round-xlarge w3-teal" style="height:24px;width:100%">${MYINFO.res}명</div>
 	</c:if>         
+							</div>
 						</div>
 						<hr>	
 						<p class="memText">회원정보수정</p>
@@ -142,37 +161,22 @@
 </c:if>
 
 
-			<div class="w3-col m3 hotclick">
-				<div class="w3-col w3-margin-top">핫 게시물
-					<div class="w3-border w230 mgb10 w3-right w3-padding">
-						<form method="POST" action="/deli/boardForm.dlv" id="frm1" name="frm1">
-							<input type=hidden id="bno" name="bno">
-							
-<c:forEach var="data" items="${TLIST}">
-								<div class="w3-left-align w3-button w3-left hotbtn" id="${data.bno}">
-									<div><small>&lt; ${data.city} &gt;</small></div>
-									<div>${data.title}</div>
-								</div>
-								<hr class="hotclickhr w3-col">		
-</c:forEach>	
-							
-						</form>		
-					</div>
-				</div>
-			</div>
+
 		</div>
 	
-		<div class="myfriblock" id="myfriblock">
+		<div class="w3-col myfriblock" id="myfriblock">
 			<div class="w3-container w3-padding-32" id="about">
-				<h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">내 친구목록<input type="hidden" id="myfriblock"></h3>
+				<h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">내 친구목록<span class="w3-text-gray w3-button w3-center" id="fList">&nbsp;-&nbsp;</span></h3>
 			 </div>
 <c:if test="${not empty SID}">	
 			
-			 <div class="w3-row-padding w3-grayscale">
+			 <div class="w3-row-padding">
 			 
 	<c:forEach var="list" items="${MYFRIEND}"> 
 				<div class="w3-col l3 m6 w3-margin-bottom">
-					<img src="/deli/img/avatar/${list.aid}" style="width:100%">
+					<div class="w3-col">
+						<img src="/deli/img/avatar/${list.aid}" style="width:100%">
+					</div>
 					<h3>${list.id}</h3>
 					<hr>
 					<p>매너점수 : ${list.esti}</p>
@@ -184,13 +188,13 @@
 			</div>
 </c:if>
 		</div>
-		<div class="apfriblock">
-<c:if test="${not empty SID}">	
+		<div class="w3-col apfriblock" id="apfriblock">
+<c:if test="${not empty SID}">
 		<div class="w3-container w3-padding-32" id="about">
-			<h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">친구 수락 대기</h3>
+			<h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">친구 수락 대기<span class="w3-text-gray w3-button" id="afList">&nbsp;-&nbsp;</span></h3>
 		</div>
 		
-		 <div class="w3-row-padding w3-grayscale">
+		 <div class="w3-row-padding">
 		 
 	<c:forEach var="list" items="${AFRIEND}"> 
 			<div class="w3-col l3 m6 w3-margin-bottom">
@@ -209,6 +213,7 @@
 		</div>
 </c:if>
 		</div>
+		<div class="w3-col" style="height:10px;"> </div>
 	</div>
 
 	

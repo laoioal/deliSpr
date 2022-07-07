@@ -30,11 +30,10 @@ textarea {
 	resize: none;
 	height: 500px;
 }
-.hotclick {
-	overflow : hidden;
-}
+
 .hotclickhr {
 	margin-top : 0px;
+	margin-bottom : 0px;
 }
 small {
 	font-size: 7px;
@@ -80,7 +79,19 @@ small {
 .citytitle {
 	width: 8.33%!important;
 	text-align: center;
+	padding: 8px 12px!important;
 }
 .myfriblock, .apfriblock{
 	display: none;
+}
+#afList, #fList {
+	padding: 0px!important;
+	margin: 0px!important;
+}
+.titleFont{
+	font-size: 19px;
+}
+.fList, .afList{
+	position: relative;
+	top: 10px;
 }
