@@ -146,7 +146,6 @@
 					<option id="2" value="writer">작성자
 					<option id="3" value="city">지역
 				</select>
-			
 				<input type="text" class="w3-border w250" id="content" name="content">
 				<input type="hidden" name="nowPage" id="nowPage" value="${PAGE.nowPage}">
 				<input type="hidden" name="city" id="city" value="${param.city}">

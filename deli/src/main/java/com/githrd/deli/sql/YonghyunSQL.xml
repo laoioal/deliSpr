@@ -70,16 +70,16 @@
 		                    city = #{city}
 		                  )
 		    </if>
-            <if test="ccheck neq null and ccheck.equals('title')">
+            <if test="ccheck neq null and ccheck eq 'title'">
 	            AND title LIKE #{search}
             </if>
-            <if test="ccheck neq null and ccheck.equals('body')">
+            <if test="ccheck neq null and ccheck eq 'body'">
             	AND body LIKE #{search}
             </if>
-            <if test="ccheck neq null and ccheck.equals('writer')">
+            <if test="ccheck neq null and ccheck eq 'writer'">
             	AND bmno = (SELECT mno FROM member WHERE id = #{search})
             </if>
-            <if test="ccheck neq null and ccheck.equals('city')">
+            <if test="ccheck neq null and ccheck eq 'city'">
             	AND marea = (SELECT code FROM middlearea WHERE city LIKE #{search})
             </if>
 			
@@ -388,5 +388,48 @@
 		WHERE
 		    mno = cmno
 		    AND cdate > sysdate - (1/24)
+	</select>
+	
+	<!-- 게시판 댓글쓰기 -->
+	<insert id="upReboard" parameterType="yVO">
+		INSERT INTO
+		    reboard(rbno, brdno, rbmno, body
+		    <if test="upno neq 0">
+		    	, upno
+		    </if>
+		    )
+		VALUES(
+		    (SELECT NVL(MAX(rbno) + 1, 1) FROM reboard),
+		    #{bno}, (SELECT mno FROM member WHERE id = #{id}), #{body}
+		    <if test="upno neq 0">
+		    	, #{upno}
+		    </if>
+		)
+	</insert>
+	
+	<!-- 게시판 댓글 불러오기 -->
+	<select id="selReboard" resultType="yVO" parameterType="yVO">
+		SELECT
+		    rno, bno, id, mno, body, wdate, res
+		FROM
+		        (
+		        SELECT
+		            rownum rno, bno, id, mno, body, wdate, res
+		        FROM
+		                (
+		                SELECT
+		                    rbno bno, id, rbmno mno, body, wdate, (level - 1) res
+		                FROM
+		                    reboard, member
+		                WHERE
+		                    reboard.isshow = 'Y'
+                            AND rbmno = mno
+                            AND brdno = #{bno}
+		                START WITH
+		                    upno IS NULL
+		                CONNECT BY
+		                    PRIOR rbno = upno
+		                )
+		        )
 	</select>
 </mapper>

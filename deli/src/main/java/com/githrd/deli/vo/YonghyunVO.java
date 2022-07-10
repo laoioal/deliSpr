@@ -15,7 +15,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class YonghyunVO {
-	private int rno, bno, bmno, click, end, restno, mprice, fno, myno, frino, mno, nowPage, ck, res;
+	private int rno, bno, bmno, click, end, restno, mprice, fno, myno, frino, mno, nowPage, ck, res, upno;
 	private double endalert, esti, pesti;
 	private String title, body, sdate, larea, marea, sarea, category, id, endtime, rname, mname, city, area, search, check, aid, kid, name;
 	private Date wdate, wenddate;
@@ -102,6 +102,12 @@ public class YonghyunVO {
 	}
 	public void setCk(int ck) {
 		this.ck = ck;
+	}
+	public int getUpno() {
+		return upno;
+	}
+	public void setUpno(int upno) {
+		this.upno = upno;
 	}
 	public double getEsti() {
 		return esti;
@@ -256,11 +262,12 @@ public class YonghyunVO {
 	public String toString() {
 		return "YonghyunVO [rno=" + rno + ", bno=" + bno + ", bmno=" + bmno + ", click=" + click + ", end=" + end
 				+ ", restno=" + restno + ", mprice=" + mprice + ", fno=" + fno + ", myno=" + myno + ", frino=" + frino
-				+ ", mno=" + mno + ", nowPage=" + nowPage + ", ck=" + ck + ", res=" + res + ", endalert=" + endalert
-				+ ", esti=" + esti + ", pesti=" + pesti + ", title=" + title + ", body=" + body + ", sdate=" + sdate
-				+ ", larea=" + larea + ", marea=" + marea + ", sarea=" + sarea + ", category=" + category + ", id=" + id
-				+ ", endtime=" + endtime + ", rname=" + rname + ", mname=" + mname + ", city=" + city + ", area=" + area
-				+ ", search=" + search + ", check=" + check + ", aid=" + aid + ", kid=" + kid + ", name=" + name
-				+ ", wdate=" + wdate + ", wenddate=" + wenddate + "]";
+				+ ", mno=" + mno + ", nowPage=" + nowPage + ", ck=" + ck + ", res=" + res + ", upno=" + upno
+				+ ", endalert=" + endalert + ", esti=" + esti + ", pesti=" + pesti + ", title=" + title + ", body="
+				+ body + ", sdate=" + sdate + ", larea=" + larea + ", marea=" + marea + ", sarea=" + sarea
+				+ ", category=" + category + ", id=" + id + ", endtime=" + endtime + ", rname=" + rname + ", mname="
+				+ mname + ", city=" + city + ", area=" + area + ", search=" + search + ", check=" + check + ", aid="
+				+ aid + ", kid=" + kid + ", name=" + name + ", wdate=" + wdate + ", wenddate=" + wenddate + "]";
 	}
+
 }

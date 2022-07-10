@@ -170,8 +170,7 @@ $(document).ready(function(){
 	
 	
 	
-	
-// 친구추가 비동기 통신 확인 필요부분	
+
 	$('.fbtn').click(function(){
 		var fmno = $(this).attr('id');
 		$.ajax({
@@ -196,12 +195,6 @@ $(document).ready(function(){
 	})
 	
 
-
-
-
-
-
-
 	$('#paybtn').click(function(){
 		$('#1mname').val(menu);
 		$('#1price').val(subprice);
@@ -209,7 +202,29 @@ $(document).ready(function(){
 		$('#pageFrm').submit();
 	});
 
+	$('.reboard').click(function(){
+		$(this).parent().parent().next().find('textarea').val('');
 
+		var text = $(this).parent().parent().next().toggle(300);
+	});
 		
+	$('#reboardBtn').click(function(){
+		$('#res').prop('disabled', true);
+		$('#upno').prop('disabled', true);
+		var body = $('#reboardBody').val();
+		$('#body').val(body);
+		$('#pageFrm').attr('action', '/deli/board/reboard.dlv');
+		$('#pageFrm').submit();
+	});
+		
+	$('.regibtn').click(function(){
+		$('#res').prop('disabled', true);
+		var body = $(this).parent().find('textarea').val();
+		var upno = $(this).attr('id');
+		$('#upno').val(upno);
+		$('#body').val(body);
+		$('#pageFrm').attr('action', '/deli/board/reboard.dlv');
+		$('#pageFrm').submit();
+	});
 	
 });

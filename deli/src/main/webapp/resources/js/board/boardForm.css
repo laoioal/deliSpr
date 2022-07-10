@@ -78,3 +78,16 @@
 .citytitle {
 	width: 9.09%!important;
 }
+.wbtn{
+	padding: 0px!important;
+	position: relative;
+	top: -7px;
+	
+}
+.rebtn{
+	display: none;
+}
+
+.reboard{
+	padding: 0px!important;	
+}

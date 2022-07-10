@@ -84,11 +84,7 @@
 				<div class="w3-col maintext">${MAIN.id}</div>
 				<div class="w3-col maintext"><small>${MAIN.sdate}&nbsp;&nbsp;&nbsp;조회수 : ${MAIN.click}</small></div>
 			</div>
-
-			
 			<div class="w3-col w3-right m1 w3-margin-top" id="regimem">
-			
-			
 <c:forEach var="data" items="${MEMBER}">
 				<h6 class="w3-col regimember" id="${data.aid}">
 					<small id="alertmember">${data.aid}
@@ -99,9 +95,6 @@
 				</h6>
 </c:forEach>	
 			</div>
-			
-			
-			
 			<hr class="w3-col mgt0">
 			<div>
 				<div class="w3-col m8">${MAIN.body}</div>
@@ -113,10 +106,8 @@
 						<div class="mname w3-padding pricebtn" id="${menu.mname}">${menu.mname} : ${menu.mprice}<div class="w3-button w3-right pricebtn1" id="${menu.mprice}">-</div><input class="inputprice w3-right w3-center" type="text" disabled value="0"><div class="w3-button w3-right pricebtn2" id="${menu.mprice}">+</div></div>
 					</div>
 </c:forEach>	
-					
 					<input type="hidden" id="price" name="price">
 				</div>			
-				<div>댓글</div>
 			</div>
 		</div>
 
@@ -151,10 +142,7 @@
 				<div class="w3-col maintext">${MAIN.id}</div>
 				<div class="w3-col maintext"><small>${MAIN.sdate}&nbsp;&nbsp;&nbsp;조회수 : ${MAIN.click}</small></div>
 			</div>
-			
-			<div class="w3-col w3-right m1 w3-margin-top" id="regimem">
-			
-				
+			<div class="w3-col w3-right m1 w3-margin-top" id="regimem">	
 <c:forEach var="data" items="${MEMBER}">
 				<h6 class="w3-col regimember" id="${data.aid}">
 					<small id="alertmember">${data.aid}
@@ -163,20 +151,32 @@
 			</c:if>
 					</small>
 				</h6>
-</c:forEach>	
-						
+</c:forEach>		
 			</div>
-			
-			
 			<hr class="w3-col mgt0">
 			<div class="w3-col">${MAIN.body}</div>
 		</div>
 </c:if>		
-		<div class="w3-col w3-border w3-">
-			<div class="w3-col">댓글</div>
+		<div class="w3-col w3-border w3-margin-top w3-center w3-padding w3-card-4">
+<c:forEach var="data" items="${REBOARD}">
+			<div class="w3-col w3-left-align" style="padding-left: ${data.res * 70}px;">
+				<div class="w3-text-blue">${data.id}</div>
+				<div>${data.body}</div>
+				<div class="w3-text-gray"><small>${data.sdate} &nbsp;&nbsp;&nbsp;<span class="w3-button reboard">답글달기</span></small></div>
+				<div class="w3-center w3-padding rebtn">
+					<textarea class="w3-border w3-round" style="width:90%; resize: none;"></textarea>
+					<span class="w3-button wbtn regibtn" id="${data.bno}">등록</span>
+				</div>
+			<hr>
+		</div>
+</c:forEach>
+		<div class="w3-center w3-padding">
+			<textarea class="w3-border w3-round" id="reboardBody" style="width:90%; resize: none;"></textarea>
+			<span class="w3-button wbtn" id="reboardBtn">등록</span>
 		</div>
 	</div>
 	
+
 	<form method="POST" action="/deli/board/applyProc.dlv" id="pageFrm" name="pageFrm">
 		<input type="hidden" name="nowPage" id="nowPage" value="${param.nowPage}">
 		<input type="hidden" name="city" id="city" value="${param.city}">
@@ -185,6 +185,8 @@
 		<input type="hidden" name="bno" id="bno" value="${MAIN.bno}">
 		<input type="hidden" name="ck" value="1">
 		<input type="hidden" name="res" id="res">
+		<input type="hidden" name="upno" id="upno">
+		<input type="hidden" name="body" id="body">
 	</form>
 </body>
 </html>

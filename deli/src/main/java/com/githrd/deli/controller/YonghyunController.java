@@ -54,7 +54,7 @@ public class YonghyunController {
 	
 	// 게시판 세부내용 불러오는 함수
 	@RequestMapping("/boardForm.dlv")
-	public ModelAndView getBoard(ModelAndView mv, YonghyunVO yVO) {
+	public ModelAndView getBoard(ModelAndView mv, YonghyunVO yVO, HttpSession session) {
 
 		if(yVO.getCk() != 1) {
 			int cnt = yDao.upClick(yVO);
@@ -62,19 +62,29 @@ public class YonghyunController {
 				System.out.println("조회수 업데이트 실패");
 			}
 		}
+		
 	
 		yVO = yDao.getBoard(yVO);
 		List<YonghyunVO> kVO = yDao.selRegimem(yVO);
+		if(session.getAttribute("SID") != null) {
+			for(YonghyunVO i : kVO) {
+				if(session.getAttribute("SID").equals(i.getAid())) {
+					mv.addObject("PAY", "OK");
+				}
+			}
+		}
 		List<YonghyunVO> mVO = yDao.getMenu(yVO);
-
+		List<YonghyunVO> reboard = yDao.selReboard(yVO);
+		
 		mv.addObject("MAIN", yVO);
 		mv.addObject("MEMBER", kVO);
 		mv.addObject("MENU", mVO);
+		mv.addObject("REBOARD", reboard);
 		mv.setViewName("board/boardForm");
 		
 		return mv;
 	}
-	
+
 	// 게시판 공구신청 처리요청 함수
 	@RequestMapping("/applyProc.dlv")
 	public ModelAndView regiMem(ModelAndView mv, YonghyunVO yVO, HttpSession session) {
@@ -256,5 +266,19 @@ public class YonghyunController {
 		}
 		
 		return map;
+	}
+	
+	// 댓글 등록 처리 함수
+	@RequestMapping("/reboard.dlv")
+	public ModelAndView reboardProc(ModelAndView mv, YonghyunVO yVO, HttpSession session) {
+		String view = "/deli/board/boardForm.dlv";
+		yVO.setId((String) session.getAttribute("SID"));
+		int cnt = yDao.upReboard(yVO);
+		mv.addObject("VIEW", view);
+		mv.addObject("CITY", yVO.getCity());
+		mv.addObject("SEARCH", yVO.getSearch());
+		mv.addObject("CHECK", yVO.getCheck());
+		mv.setViewName("board/redirect");
+		return mv;
 	}
 }

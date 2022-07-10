@@ -140,5 +140,14 @@ public class YonghyunDao {
 		return sqlSession.selectList("ySQL.getChatRecord");
 	}
 	
+	// 게시판 댓글 달기 함수
+	public int upReboard(YonghyunVO yVO) {
+		return sqlSession.insert("ySQL.upReboard", yVO);
+	}
+	
+	// 게시판 댓글 불러오기 함수
+	public List<YonghyunVO> selReboard(YonghyunVO yVO){
+		return sqlSession.selectList("ySQL.selReboard", yVO);
+	}
 	
 }

@@ -89,3 +89,10 @@
 처리함수	:	sendMessage()
 뷰			:	/WEB-INF/views/board/message.jsp
 ----------------------------------------------------------------------------------
+# 게시판 댓글달기 처리 요청
+요청내용	:	/deli/board/reboard.dlv
+파라미터	:	bno, mno, body[, upno]
+컨트롤러	:	com.githrd.deli.controller.YonghyunController
+처리함수	:	reboardProc()
+뷰			:	/WEB-INF/views/board/boardForm.jsp
+----------------------------------------------------------------------------------
