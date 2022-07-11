@@ -8,15 +8,15 @@
 
 <meta charset="utf-8">
 <title>나의 위치 정보</title>
-
+	<link rel="stylesheet" type="text/css" href="<c:url value="/css/map/myPositionSearch.css"/>" >
 </head>
 <body>
    <center>
-  
-      <div id="map" style="width: 1000px; height: 650px;"></div>
-
+  <div>
+      <div id="map"></div>
       <script type="text/javascript"
          src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8800e7024fb23ec08385f1384cbd3f73&libraries=services"></script>
+     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8800e7024fb23ec08385f1384cbd3f73"></script>
      
       <script>
          var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
@@ -44,16 +44,13 @@
                      map: map,
                      position: coords
                  });
-
-                
-                 
-                 
+			var content='<div class ="label"><span class="left"></span><span class="center">나의 위치!</span><span class="right"></span></div>';
                  // 인포윈도우로 장소에 대한 설명을 표시합니다
-                 var infowindow = new kakao.maps.InfoWindow({
-                     content:  '<div style="width:150px;text-align:center;padding:6px 0;background-color:#ffd400;color:black;font-weight: bold;border-radius: 10px;font-size:11px">나의 위치</div>'
-                    	
-                 });
-                 infowindow.open(map, marker);
+              var customOverlay = new kakao.maps.CustomOverlay({
+ 				   position: coords,
+  			  		content: content   
+				});
+             	 customOverlay.setMap(map);
                 
                  document.getElementById('lat').value = coords.La;
                  document.getElementById('lon').value = coords.Ma;
@@ -66,17 +63,17 @@
          
         
          
-		</script>
-		    <span style="position:absolute;left:260px;top:600px;border-radius: 2px;background:#fff;background:rgba(255,255,255,0.8);z-index:1;padding:5px;width:1000px;">
+		</script>	
+		    <span  id="addrView">
 	      <form action="<c:url value='/member/placeView.dlv'/>">
 	         <input type="hidden" name="lat" id="lat" value="" readonly /> 
 	         <input type="hidden" name="lon" id="lon" value="" readonly /> 
-      	<span style="display:block;margin-top:2px;font-weight: normal;">주소 : ${member.addr}
+      			<span>주소 : ${member.addr}
 	         <input type="submit" id = "pickup" value='픽업가능 위치' />
 	      </form>
       	</span>
       </span>
- 
+ </div>
    </center>
 </body>
 </html>
