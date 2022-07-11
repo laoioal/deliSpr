@@ -5,40 +5,20 @@
 <head>
 <meta charset="UTF-8">
 <title>장소 선택</title>
- <script>
- 
- let place_name;
- function openChild(name){
+	<link rel="stylesheet" type="text/css" href="<c:url value="/css/map/pickUpPlaceChoose.css"/>" >
+	<script src="<c:url value="/js/map/pickUpPlaceChoose.js"/>" type="text/javascript"></script>
 
-	let url = document.getElementById('url').value;
-	 url = name;
-	 place_name=name;
-	}
- 
-  		function onClick(){
-  			let popupWidth = 500;
-  			let popupHeight = 600;
-  			let left = Math.ceil((window.screen.width-popupWidth)/2);
-  			let top = Math.ceil((window.screen.height-popupHeight)/2);;
-  			
- 		openWin = window.open("/deli/place/category.dlv?name="+place_name,"childForm","width="+popupWidth+",height="+popupHeight+",left="+left+",top="+top+"resizable=yes") 
- 		}
- 
- 
- </script>
-<style>
-label {margin-bottom: 96px;}
-</style>
 </head>
 
 <body>
                
-             <div id="map" style="width:800px;height:600px;float:left; margin-left:100px; margin-top:20px"></div>
+             <div id="map"></div>
                     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8800e7024fb23ec08385f1384cbd3f73&libraries=services"></script>
-                  <table id="tableInfo" style="position:absolute;margin-top:200px;margin-left:920px; width:30%; border-top: 1px solid #dddddd;border-collapse: collapse">
-                                                             	 <tr style="border-bottom: 2px solid #dddddd;  padding: 10px"/>
-                                
-                  <tr style="border-bottom: 1px solid #dddddd;  padding: 10px">
+                      <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8800e7024fb23ec08385f1384cbd3f73"></script>
+                 
+                  <table id="tableInfo">
+                  <tr class="trstyle"/>
+                  <tr class="trstyle"/>
                         <th>선택</th>                    
                         <th>장소</th>
                         <th>거리</th>
@@ -52,10 +32,11 @@ label {margin-bottom: 96px;}
                              <th style="font-size:12px">${cal.address}</th>
                   </tr>
                          </c:forEach>
-                       <tr style="border-bottom: 2px solid #dddddd;  padding: 10px"/>
-                </table>
-                      
+                      <tr class="trstyle"/>
                             <input type="hidden" id = "url" value=""/>
+                      		<h2 id="h2style">픽업 장소 
+                            <input type="submit" value="선택" name="check" onclick="onClick()"/></h2>
+                </table>
                       		<h2 style="margin-top:380px;position:absolute;left:1070px">픽업 장소 
                             <input type="submit" value="선택" name="check" style="margin-top:0px" onclick="onClick()"/></h2>
                             
@@ -87,37 +68,34 @@ label {margin-bottom: 96px;}
                    if(status===kakao.maps.services.Status.OK){
                       let coords = new kakao.maps.LatLng(result[0].y,result[0].x);
                       	if(idx==idx2){
-                      let marker = new kakao.maps.Marker({
-                         map:map,
-                            position:coords
-                      });
-                      let infowindow = new kakao.maps.InfoWindow({
-                              content : '<div style="width:150px;text-align:center;padding:6px 0;background-color:#ffd400;color:black;font-weight: bold;border-radius: 10px;font-size:11px">' + name[idx] + '</div>',
-                              disableAutoPan: true
-                    	  });
-                      infowindow.open(map,marker);
-                      	}
-                      	else{
                       	  let marker = new kakao.maps.Marker({
                               map:map,
-                                 position:coords
+                              position:coords
                            });
-                   	
-                           let infowindow = new kakao.maps.InfoWindow({
-                                   content : '<div style="width:150px;text-align:center;padding:6px 0;background-color:black;color:white;border-radius: 5px;font-size:10px">' + name[idx] + '</div>',
-                                   disableAutoPan: true
+                           let customOverlay = new kakao.maps.CustomOverlay({
+            				   		position: coords,
+                                   	content : '<div class ="label2"><span class="left2"></span><span class="center2">'+name[idx]+'</span><span class="right2"></span></div>'
                          	  });
-                           infowindow.open(map,marker);
+                        	 customOverlay.setMap(map);
+
                       	}
-                   }
+                      	else{
+                  	  let marker = new kakao.maps.Marker({
+                          map:map,
+                             position:coords
+                       });
+               	
+                       let customOverlay = new kakao.maps.CustomOverlay({
+        				   		position: coords,
+                               content : '<div class ="label"><span class="left"></span><span class="center">'+name[idx]+'</span><span class="right"></span></div>'
+
+                     	  });
+                  	 customOverlay.setMap(map);
+
+                   }}
                 }) 
              })
 
-             
-             
-             
-             
-                
               </script>
           
             
