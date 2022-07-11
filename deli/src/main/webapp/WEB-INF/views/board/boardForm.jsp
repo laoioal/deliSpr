@@ -164,18 +164,19 @@
 				<div>${data.body}</div>
 				<div class="w3-text-gray"><small>${data.sdate} &nbsp;&nbsp;&nbsp;<span class="w3-button reboard">답글달기</span></small></div>
 				<div class="w3-center w3-padding rebtn">
-					<textarea class="w3-border w3-round" style="width:90%; resize: none;"></textarea>
+					<textarea class="w3-border w3-round w3-padding" style="width:90%; resize: none;" placeholder="댓글을 입력해주세요"></textarea>
 					<span class="w3-button wbtn regibtn" id="${data.bno}">등록</span>
 				</div>
 			<hr>
-		</div>
+			</div>
 </c:forEach>
-		<div class="w3-center w3-padding">
-			<textarea class="w3-border w3-round" id="reboardBody" style="width:90%; resize: none;"></textarea>
-			<span class="w3-button wbtn" id="reboardBtn">등록</span>
+			<div class="w3-center w3-padding">
+				<textarea class="w3-border w3-round w3-padding" id="reboardBody" style="width:90%; resize: none;" placeholder="댓글을 입력해주세요"></textarea>
+				<span class="w3-button wbtn" id="reboardBtn">등록</span>
+			</div>
 		</div>
+		<div class="w3-col" style="height:20px;"> </div>
 	</div>
-	
 
 	<form method="POST" action="/deli/board/applyProc.dlv" id="pageFrm" name="pageFrm">
 		<input type="hidden" name="nowPage" id="nowPage" value="${param.nowPage}">

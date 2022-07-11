@@ -72,7 +72,7 @@
 			<div class="w3-col m9">
 				<textarea class="w3-card-4" id="chatbox" rows="13" cols="75" readonly></textarea>	
 				<form class="w3-margin-bottom">
-					<input id="id" type="text" value="${SID}" disabled>
+					<input id="chatid" type="text" value="${SID}" disabled>
 					<input id="textMessage" type="text">
 					<input value="Send" type="button" id="sendbtn">
 				</form>
@@ -216,7 +216,7 @@
 		</div>
 </c:if>
 		</div>
-		<div class="w3-col" style="height:10px;"> </div>
+		<div class="w3-col" style="height:20px;"> </div>
 	</div>
 
 	

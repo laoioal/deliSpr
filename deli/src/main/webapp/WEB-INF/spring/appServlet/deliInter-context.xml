@@ -9,11 +9,28 @@
 
 	<!-- 로그인 체크 인터셉터 빈처리 -->
 	<beans:bean id="loginRedirect" class="com.githrd.deli.interceptor.LoginInterceptor" />
+	<beans:bean id="YInter" class="com.githrd.deli.interceptor.YonghyunInterceptor" />
 	
 	<interceptors>
 		<interceptor>
 			<mapping path="" />
 			<beans:ref bean="loginRedirect" />
+		</interceptor>
+	</interceptors>
+	
+	<interceptors>
+		<interceptor>
+			<mapping path="/board/applyProc.dlv" />
+			<mapping path="/board/friend.dlv" />
+			<mapping path="/board/apFriend.dlv" />
+			<mapping path="/board/denyFriend.dlv" />
+			<mapping path="/board/delFriend.dlv" />
+			<mapping path="/board/messageList.dlv" />
+			<mapping path="/board/msForm.dlv" />
+			<mapping path="/board/msProc.dlv" />
+			<mapping path="/board/msRead.dlv" />
+			<mapping path="/board/reboard.dlv" />
+			<beans:ref bean="YInter" />
 		</interceptor>
 	</interceptors>
 </beans:beans>

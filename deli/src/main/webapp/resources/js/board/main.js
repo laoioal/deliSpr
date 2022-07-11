@@ -16,24 +16,21 @@ $(document).ready(function(){
 		$('#frm').submit();
 	});
 	
-	
 	$('#obtn').click(function(){
 		$(location).attr('href', '/deli/member/logout.dlv');
 	});
+	
 	$('#lbtn').click(function(){
 		$(location).attr('href', '/deli/member/login.dlv');
 	});
+	
 	$('#jbtn').click(function(){
 		$(location).attr('href', '/deli/member/join.dlv');
 	});
-	
 
-
-	var webSocket = new WebSocket('ws://180.228.75.2/deli/main.dlv');
-	//var webSocket = new WebSocket('ws://192.168.0.107/deli/main.dlv');
+//	var webSocket = new WebSocket('ws://180.228.75.2/deli/main.dlv');
+	var webSocket = new WebSocket('ws://192.168.0.107/deli/main.dlv');
 	var chatbox = document.getElementById('chatbox');
-	
-
 	
 	webSocket.onopen = function(chat) {
 		chatbox.value += '##### 채팅하실 수 있습니다.\n\n';
@@ -59,17 +56,16 @@ $(document).ready(function(){
 		chatbox.value += '에러발생\n';
 	};
 	
-
 	webSocket.onmessage = function(chat) {
 		chatbox.value += chat.data + '\n';
 	};
 
 	$('#sendbtn').click(function() {
-		if(!$('#id').val()){
+		if(!$('#chatid').val()){
 			alert('로그인이 필요합니다.');
 			return;
 		} else {
-			var id = document.getElementById('id');
+			var id = document.getElementById('chatid');
 			var chat = document.getElementById('textMessage');
 			
 			chatbox.value += id.value + '(나의 메세지) ' + chat.value + '\n';
@@ -86,9 +82,8 @@ $(document).ready(function(){
 			});
 			chat.value = '';
 			
-			//$('#chatbox').scrollTop($('#chatbox').prop('scrollHeight'));
+			$('#chatbox').scrollTop($('#chatbox').prop('scrollHeight'));
 		}
-
 	});
 	
 	$('#mail').click(function(){

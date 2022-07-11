@@ -31,13 +31,6 @@ $(document).ready(function(){
 		$(location).attr('href', '/deli/main.dlv');
 	});
 	
-	$('.pbtn').click(function(){
-		var pno = $(this).attr('id');
-		var pctiy = $('')
-		$('#nowPage').val(pno);
-		$('#pageFrm').submit();
-	});
-	
 	$('.citytitle').click(function(){
 		$('#search').val('');
 		var city = $(this).val();
@@ -93,11 +86,13 @@ $(document).ready(function(){
 	}
 
 	$('#subbtn').click(function(){
+		$('#upno').prop('disabled', true);
 		$('#res').val(0)
 		$('#pageFrm').submit();
 	});
 	
 	$('#canclebtn').click(function(){
+		$('#upno').prop('disabled', true);
 		$('#res').val(1)
 		$('#pageFrm').submit();
 	});
@@ -163,13 +158,8 @@ $(document).ready(function(){
 	         mprice = $(this).attr('id');
 	         subprice = subprice - (-mprice);
 			return i;
-			
 		}
 	});
-	
-	
-	
-	
 
 	$('.fbtn').click(function(){
 		var fmno = $(this).attr('id');
@@ -190,12 +180,13 @@ $(document).ready(function(){
 			error: function(){
 				alert('접속 에러');
 			}
-			
 		})
 	})
 	
 
 	$('#paybtn').click(function(){
+		$('#res').prop('disabled', true);
+		$('#upno').prop('disabled', true);
 		$('#1mname').val(menu);
 		$('#1price').val(subprice);
 		$('#pageFrm').attr('action','/deli/payment/beforePay.dlv');
@@ -204,7 +195,6 @@ $(document).ready(function(){
 
 	$('.reboard').click(function(){
 		$(this).parent().parent().next().find('textarea').val('');
-
 		var text = $(this).parent().parent().next().toggle(300);
 	});
 		
@@ -212,6 +202,12 @@ $(document).ready(function(){
 		$('#res').prop('disabled', true);
 		$('#upno').prop('disabled', true);
 		var body = $('#reboardBody').val();
+		body = body.trim();
+		if(!body) {
+			$('#reboardBody').val('');
+			$('#reboardBody').focus();
+			return;
+		}
 		$('#body').val(body);
 		$('#pageFrm').attr('action', '/deli/board/reboard.dlv');
 		$('#pageFrm').submit();
@@ -220,6 +216,12 @@ $(document).ready(function(){
 	$('.regibtn').click(function(){
 		$('#res').prop('disabled', true);
 		var body = $(this).parent().find('textarea').val();
+		body = body.trim();
+		if(!body) {
+			$(this).parent().find('textarea').val('');
+			$(this).parent().find('textarea').focus();
+			return;
+		}
 		var upno = $(this).attr('id');
 		$('#upno').val(upno);
 		$('#body').val(body);

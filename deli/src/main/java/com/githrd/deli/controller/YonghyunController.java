@@ -273,7 +273,7 @@ public class YonghyunController {
 	public ModelAndView reboardProc(ModelAndView mv, YonghyunVO yVO, HttpSession session) {
 		String view = "/deli/board/boardForm.dlv";
 		yVO.setId((String) session.getAttribute("SID"));
-		int cnt = yDao.upReboard(yVO);
+		yDao.upReboard(yVO);
 		mv.addObject("VIEW", view);
 		mv.addObject("CITY", yVO.getCity());
 		mv.addObject("SEARCH", yVO.getSearch());
