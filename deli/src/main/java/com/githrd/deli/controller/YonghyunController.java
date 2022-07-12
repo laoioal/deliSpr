@@ -281,4 +281,19 @@ public class YonghyunController {
 		mv.setViewName("board/redirect");
 		return mv;
 	}
+	
+	// 주변친구 추천
+	@RequestMapping("/arrfriend.dlv")
+	public ModelAndView friend(ModelAndView mv) {
+		
+		mv.setViewName("board/friend");
+		return mv;
+	}
+	// 주변친구 추천
+	@RequestMapping("/arrfriendtest.dlv")
+	public ModelAndView friendtest(ModelAndView mv) {
+		
+		mv.setViewName("board/friendtest");
+		return mv;
+	}
 }

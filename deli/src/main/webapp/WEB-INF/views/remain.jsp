@@ -68,7 +68,17 @@
 		</form>
 		
 		<div class="w3-col w3-center mgt20">
-<c:if test="${not empty SID }">
+<c:if test="${empty SID}">
+			<div class="w3-col">
+				<textarea class="w3-card-4" id="chatbox" rows="13" cols="75" readonly></textarea>	
+				<form class="w3-margin-bottom">
+					<input id="chatid" type="text" value="${SID}" disabled>
+					<input id="textMessage" type="text">
+					<input value="Send" type="button" id="sendbtn">
+				</form>
+			</div>
+</c:if>
+<c:if test="${not empty SID}">
 			<div class="w3-col m9">
 				<textarea class="w3-card-4" id="chatbox" rows="13" cols="75" readonly></textarea>	
 				<form class="w3-margin-bottom">

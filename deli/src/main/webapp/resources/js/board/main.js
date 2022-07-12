@@ -28,13 +28,16 @@ $(document).ready(function(){
 		$(location).attr('href', '/deli/member/join.dlv');
 	});
 
-//	var webSocket = new WebSocket('ws://180.228.75.2/deli/main.dlv');
-	var webSocket = new WebSocket('ws://192.168.0.107/deli/main.dlv');
+	var webSocket = new WebSocket('ws://180.228.75.2/deli/main.dlv');
+//	var webSocket = new WebSocket('ws://192.168.0.107/deli/main.dlv');
 	var chatbox = document.getElementById('chatbox');
 	
 	webSocket.onopen = function(chat) {
-		chatbox.value += '##### 채팅하실 수 있습니다.\n\n';
-		
+		if(!$('#chatid').val()){
+			chatbox.value += '##### 로그인후 이용 가능합니다.\n\n';
+		} else {
+			chatbox.value += '##### 채팅하실 수 있습니다.\n\n';
+		}
 		var el = document.getElementsByClassName('chatlog');
 		var logid = document.getElementsByClassName('chatlogid');
  
