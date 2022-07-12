@@ -130,6 +130,14 @@
 			AND mno = #{mno}
 	</select>
 	
-	
+	<select id="selAbnoCnt" parameterType="int" resultType="int">
+		SELECT
+		    COUNT(*) cnt
+		FROM
+		    regimem
+		WHERE
+		    isshow = 'Y'
+		    AND abno = #{bno}
+	</select>
 	
 </mapper>

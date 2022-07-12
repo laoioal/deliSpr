@@ -65,6 +65,11 @@ public class PayDao {
 	public PayVO selMenu(int mno) {
 		return sqlSession.selectOne("paSQL.selMenu", mno);
 	}
+	
+	//	모인 인원수 구하는 함수
+	public int abnoCnt(int abno) {
+		return sqlSession.selectOne("paSQL.selAbnoCnt", abno);
+	}
 }
 
 

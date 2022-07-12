@@ -41,14 +41,14 @@ $(document).ready(function(){
 						}
 					// 컨트롤러에 데이터를 전달하여 DB에 입력하는 로직
 	               			$.ajax({
-						url : "/www/payment/payProc.dlv",
+						url : "/deli/payment/payProc.dlv",
 						type : "post",
 						data : payVo,
 						dataType : "json",
 						success : function(result){
 							if(result.result == "y") {
 								alert('proc 성공!!!');
-								$('#pageFrm').attr('action','/www/payment/afterPay.dlv');
+								$('#pageFrm').attr('action','/deli/payment/afterPay.dlv');
 								$('#pageFrm').submit();
 							}else{ 
 								alert("디비입력실패" + result.result);
@@ -57,7 +57,7 @@ $(document).ready(function(){
 						},
 						error : function(){
 							alert('### 통신 실패 ###');
-							return "/www/payment/beforPay.dlv";
+							return "/deli/payment/beforPay.dlv";
 						}
 					});
 				} else {
@@ -69,6 +69,6 @@ $(document).ready(function(){
 	});
 	
 	$('#cbtn').click(function(){
-		$(location).attr('href','/www/');
+		$(location).attr('href','/deli/');
 	});
 });

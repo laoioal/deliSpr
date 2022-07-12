@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.githrd.deli.dao.PayDao;
 import com.githrd.deli.dao.YonghyunDao;
+import com.githrd.deli.service.PayService;
 import com.githrd.deli.vo.MembVO;
 import com.githrd.deli.vo.PayVO;
 import com.githrd.deli.vo.YonghyunVO;
@@ -26,6 +27,20 @@ public class PayController {
 	PayDao paDao;
 	@Autowired
 	YonghyunDao yDao;
+	@Autowired
+	PayService paSrvc;
+	
+	//	메뉴판 페이지 폼 보기 처리함수
+	@RequestMapping("menu.dlv")
+	public ModelAndView menu(ModelAndView mv) {
+		
+		
+		
+		mv.setViewName("/menu/menu");
+		
+		return mv;
+	}
+	
 	
 	//	결제전 페이지 폼 보기 처리함수
 	@RequestMapping("beforePay.dlv")
@@ -37,15 +52,24 @@ public class PayController {
 		int mtprice = Integer.parseInt(mmprice);
 		
 		paVO.setAmname(mname);
-		paVO.setMtprice(mtprice);
 		paVO.setMyprice(mtprice);
+		
+		
+		int cnt = paDao.abnoCnt(paVO.getBno());
+			
+		int delpay = (paVO.getDelpay() != 0) ? paVO.getDelpay() / cnt : 0;
+		paVO.setMtprice(mtprice + delpay);
 		
 		List<YonghyunVO> mVO = yDao.getMenu(yVO);
 		
+		List<YonghyunVO> kVO = yDao.selRegimem(yVO);
+		
 		MembVO membVO = paDao.selMinfo(sid);
+		mv.addObject("DLP", delpay);
 		mv.addObject("PO", paVO);
 		mv.addObject("MPO", membVO);
 		mv.addObject("MENU", mVO);
+		mv.addObject("MEMBER", kVO);		
 		
 		mv.setViewName("payment/beforePay");
 		
@@ -60,25 +84,12 @@ public class PayController {
 		
 		System.out.println(paVO);
 		
-		
-		int odtcnt = paDao.insertOdt(paVO);
-		int odlcnt = paDao.insertOdl(paVO);
-		int odmcnt = paDao.insertOdm(paVO);
-		if(odtcnt != 1) {
-			System.out.println("오더 태스크 문제");
-			System.out.println("odtcnt" + odtcnt); 
-			result.put("result", "n");
-		} else if(odlcnt != 1) {
-			System.out.println("오더 리스트 문제");
-			System.out.println("odlcnt" + odlcnt); 
-			result.put("result", "n");
-		} else if(odmcnt != 1) {
-			System.out.println("오더 메뉴 문제");
-			System.out.println("odmcnt" + odmcnt); 
+		try {
+			paSrvc.insertAllM(paVO);
+			result.put("result", "y");
+		} catch (Exception e) {
 			result.put("result", "n");
 		}
-		result.put("result", "y");
-
 		return result;
 	}
 	
@@ -87,20 +98,32 @@ public class PayController {
 		String sid = (String) session.getAttribute("SID");
 		paVO = paDao.selPays(paVO);
 		String amname = (String) req.getParameter("mymenu");
-		String mmprice = (String)req.getParameter("price1");
+		String mmprice = (String)req.getParameter("amount");
+		String rq = (String)req.getParameter("rq");
+		
 		int mtprice = Integer.parseInt(mmprice);
 		System.out.println("paVO" + paVO);
 		
 		paVO.setAmname(amname);
-		paVO.setMtprice(mtprice);
 		paVO.setMyprice(mtprice);
+		
+		int cnt = paDao.abnoCnt(paVO.getBno());
+		
+		int delpay = (paVO.getDelpay() != 0) ? paVO.getDelpay() / cnt : 0;
 		
 		List<YonghyunVO> mVO = yDao.getMenu(yVO);
 		
+		List<YonghyunVO> kVO = yDao.selRegimem(yVO);
+		
+		paVO.setMtprice(mtprice + delpay);
+		
 		MembVO membVO = paDao.selMinfo(sid);
+		mv.addObject("RQ", rq);
 		mv.addObject("PO", paVO);
 		mv.addObject("MPO", membVO);
 		mv.addObject("MENU", mVO);
+		mv.addObject("MEMBER", kVO);
+		mv.addObject("DLP", delpay);
 		
 		mv.setViewName("payment/afterPay");
 		
