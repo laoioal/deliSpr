@@ -150,4 +150,14 @@ public class YonghyunDao {
 		return sqlSession.selectList("ySQL.selReboard", yVO);
 	}
 	
+	// 내주소 불러오기 함수
+	public YonghyunVO myAddr(String id) {
+		return sqlSession.selectOne("ySQL.myAddr", id);
+	}
+	
+	// 친구주소 불러오기 함수
+	public List<YonghyunVO> arrFriend(YonghyunVO yVO) {
+		return sqlSession.selectList("ySQL.arrFriend", yVO);
+	}
+	
 }

@@ -432,4 +432,24 @@
 		                )
 		        )
 	</select>
+	
+	<!-- 내 상세주소 가져오기 -->
+	<select id="myAddr" resultType="yVO" parameterType="string">
+		SELECT
+		     substr(addr, 1, instr(addr,' ', 1, 2)) marea, SUBSTR(addr, instr(addr,' ', -1, 2) + 1) sarea
+		FROM
+		    member
+		WHERE
+		    id = #{id}
+	</select>
+	
+	<!-- 내주변친구 불러오기 -->
+	<select id="arrFriend" resultType="yVO" parameterType="yVO">
+		SELECT
+		    id, name, addr marea, SUBSTR(addr, instr(addr,' ', -1, 2) + 1) sarea
+		FROM
+		    member
+		WHERE
+		    substr(addr, 1, instr(addr,' ', 1, 2)) LIKE #{marea} || '%'
+	</select>
 </mapper>

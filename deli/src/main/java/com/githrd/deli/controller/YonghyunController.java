@@ -291,8 +291,12 @@ public class YonghyunController {
 	}
 	// 주변친구 추천
 	@RequestMapping("/arrfriendtest.dlv")
-	public ModelAndView friendtest(ModelAndView mv) {
-		
+	public ModelAndView friendtest(ModelAndView mv, HttpSession session) {
+		String id = (String) session.getAttribute("SID");
+		YonghyunVO yVO = yDao.myAddr(id);
+		List<YonghyunVO> list = yDao.arrFriend(yVO);
+		mv.addObject("MYADDR", yVO);
+		mv.addObject("LIST", list);
 		mv.setViewName("board/friendtest");
 		return mv;
 	}
