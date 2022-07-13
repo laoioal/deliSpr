@@ -1,6 +1,18 @@
 $(document).ready(function(){
 //	버튼 클릭하면 실행
+
 	$("#pbtn").click(function(){
+		var minPrice = $('#minPrice').val();
+		var Aprice = $('#Aprice').val();
+		var msg = '';
+		if(minPrice > Aprice){
+			msg = '최소주문 금액에 도달하지 못했습니다';
+			$('#id02').append('<p>'+ msg +'</p>');
+			$('#id01').slideDown(500);
+			
+			return;	
+		}
+		
 		
 		let m_email = $('#mail').val();
 		let s_name = $('#name').val();;
@@ -21,6 +33,7 @@ $(document).ready(function(){
 		IMP.init('imp64825572');	//아임포트 관리자계정
 	  	IMP.request_pay({
 	  		pg: 'kakaopay',	//	결제방식(카카오페이, 네이버 페이 등)
+	  		popup : true,
 			pay_method: 'card',	//	결제수단(카드, 포인트 등등)
 			merchant_uid: 'merchant_' + new Date().getTime(),	//	주문번호
 			name: menu,		
@@ -32,8 +45,19 @@ $(document).ready(function(){
 			m_redirect_url: '/payment/afterPay'
 			}, function (rsp) {
 				console.log(rsp);
-				if (rsp.success) {
-					var msg = '결제가 완료되었습니다.';
+				
+				$.ajax({
+	        	type : "POST",
+	        	url : "/deli/payment/complete.dlv",
+	        	data : {
+	        		"imp_uid" : rsp.imp_uid,
+				    "merchant_uid" : rsp.merchant_uid,
+				    "amount" : rsp.paid_amount
+				    }
+	        	}).done(function(data) {
+	        		console.log(data);
+				if (rsp.paid_amount == data) {
+					
 					let payVo = { 
 						m_email: m_email, rno : rno, s_id: s_id, ono: rsp.merchant_uid,
 						oprice: rsp.paid_amount, ompirce : omprice, paym: rsp.pay_method,
@@ -47,7 +71,6 @@ $(document).ready(function(){
 						dataType : "json",
 						success : function(result){
 							if(result.result == "y") {
-								alert('proc 성공!!!');
 								$('#pageFrm').attr('action','/deli/payment/afterPay.dlv');
 								$('#pageFrm').submit();
 							}else{ 
@@ -64,11 +87,13 @@ $(document).ready(function(){
 					var msg = '결제에 실패하였습니다.';
 					msg += '에러내용 : ' + rsp.error_msg;
 				}
-			alert(msg);
+			});
 		});
 	});
 	
 	$('#cbtn').click(function(){
 		$(location).attr('href','/deli/');
 	});
+	
+	
 });

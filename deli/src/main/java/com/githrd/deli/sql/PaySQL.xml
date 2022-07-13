@@ -57,7 +57,7 @@
 	
 	<select id="selPays" parameterType="paVO" resultType="paVO">
 		SELECT
-			DISTINCT restno, delpay, rname, bno
+			DISTINCT restno, delpay, rname, bno, minprice
 		FROM
 			board b, restaurant r, menu m
 		WHERE
