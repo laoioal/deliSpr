@@ -55,8 +55,7 @@ var geocoder = new kakao.maps.services.Geocoder();
 var addr = document.getElementById('search').value;
 var el = document.getElementsByClassName('address');
 
-
-geocoder.addressSearch('신풍로 77' , function(result, status) {
+ageocoder.addressSearch('신풍로 77' , function(result, status) {
 
     // 정상적으로 검색이 완료됐으면 
      if (status === kakao.maps.services.Status.OK) {
