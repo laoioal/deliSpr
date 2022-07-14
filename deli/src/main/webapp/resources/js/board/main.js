@@ -28,8 +28,8 @@ $(document).ready(function(){
 		$(location).attr('href', '/deli/member/join.dlv');
 	});
 
-//	var webSocket = new WebSocket('ws://180.228.75.2/deli/main.dlv');
-	var webSocket = new WebSocket('ws://192.168.0.107/deli/main.dlv');
+	var webSocket = new WebSocket('ws://180.228.75.2/deli/main.dlv');
+//	var webSocket = new WebSocket('ws://192.168.0.107/deli/main.dlv');
 	var chatbox = document.getElementById('chatbox');
 	
 	webSocket.onopen = function(chat) {

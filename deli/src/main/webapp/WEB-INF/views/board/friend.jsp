@@ -44,6 +44,8 @@ html, body {width:100%;height:100%;margin:0;padding:0;}
         </a>
     </em>
     <input type="hidden" class="addre" value="국사봉길1-2" id="search">
+    
+    
     <input type="hidden" class="address" value="상도동 323-25">
     <input type="hidden" class="name" value="이용현">
     <input type="hidden" class="address" value="신풍로 80">
@@ -69,6 +71,8 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
         level: 4 // 지도의 확대 레벨
     };  
 
+var circle;
+var markers = [];
 // 지도를 생성합니다    
 var map = new kakao.maps.Map(mapContainer, mapOption); 
 
@@ -77,6 +81,7 @@ var geocoder = new kakao.maps.services.Geocoder();
 
 // 주소로 좌표를 검색합니다
 var addr = document.getElementById('search').value;
+
 
 
 geocoder.addressSearch(addr , function(result, status) {
@@ -126,52 +131,85 @@ geocoder.addressSearch(addr , function(result, status) {
 
         // 원을 지도에 표시합니다
         circle.setMap(map);
-
-        map.setBounds(coords);
         
 
-        
-        
+        var bounds = map.getBounds();
+        var boundsStr = bounds.toString();
 
+      var markers = [37.4998834249745, 126.914864237946];
+  	  var center = coords;
+  	  var radius = circle.getRadius();
+  	  var line = new kakao.maps.Polyline();
         
         
 }
 
 });
-var el = document.getElementsByClassName('address');
-var el2 = document.getElementsByClassName('name');
 
-for(var i = 0; i < el.length; i++){
-	var city = el[i].value;
-	var name = el2[i].value;
 
-	alert('1city : ' + city);
-	alert('1name : ' + name);
-	geocoder.addressSearch(city , function(result, status) {
-    // 정상적으로 검색이 완료됐으면 
-     if (status === kakao.maps.services.Status.OK) {
 
-        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+	var el2 = document.getElementsByClassName('name');
 
-        // 결과값으로 받은 위치를 마커로 표시합니다
-        var marker = new kakao.maps.Marker({
-            map: map,
-            position: coords
-        });
-alert('2city : ' + city);
-alert('2name : ' + name);
-        var infowindow = new kakao.maps.InfoWindow({
-            //content: name
-             content: '<div style="width:150px;text-align:center;padding:6px 0;">' + name +'</div>'
-        });   
-            kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
-            kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
-      
-      // infowindow.open(map, marker);
-}
-  
-});
-}
+	var el = document.getElementsByClassName('address');
+	
+	for(var i = 0; i < el.length; i++){
+		var city = el[i].value;
+		var name = el2[i].value;
+		content = '<div>' + name + '/<div>';
+   	 
+//	alert('1city : ' + city);
+//	alert('1name : ' + name);
+		geocoder.addressSearch(city , function(result, status) {
+	    // 정상적으로 검색이 완료됐으면 
+	     if (status === kakao.maps.services.Status.OK) {
+	        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+	        // 결과값으로 받은 위치를 마커로 표시합니다
+	        markers.push(coords);
+	        console.log('markers' + [i] +' : ' + markers[i])
+//alert(coords);
+	        var marker = new kakao.maps.Marker({
+	            map: map,
+	            position: coords
+	        });
+		       
+//	alert('2city : ' + city);
+//	alert('2name : ' + name);
+	        var infowindow = new kakao.maps.InfoWindow({
+	            //content: name
+	             //content: '<div style="width:150px;text-align:center;padding:6px 0;">' + name +'</div>'
+	        	content: content
+	        }); 
+	        
+	       
+	        kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
+	        kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+	      
+	        infowindow.open(map, marker);
+			}
+	     
+		});
+	  markers.forEach(function(marker) {
+	      // 마커의 위치와 원의 중심을 경로로 하는 폴리라인 설정
+	      var path = [ marker.getPosition(), center ];
+	      line.setPath(path);
+	      
+	      // 마커와 원의 중심 사이의 거리
+	      var dist = line.getLength();
+
+	      // 이 거리가 원의 반지름보다 작거나 같다면
+	      if (dist <= radius) {
+	          // 해당 marker는 원 안에 있는 것
+	      }
+	  });	
+	
+	}
+
+
+
+	
+	
+	
+	
 
 //인포윈도우를 표시하는 클로저를 만드는 함수입니다 
 function makeOverListener(map, marker, infowindow) {

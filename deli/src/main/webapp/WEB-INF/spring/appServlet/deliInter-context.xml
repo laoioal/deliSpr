@@ -30,6 +30,7 @@
 			<mapping path="/board/msProc.dlv" />
 			<mapping path="/board/msRead.dlv" />
 			<mapping path="/board/reboard.dlv" />
+			<mapping path="/board/arrfriendtest.dlv" />
 			<beans:ref bean="YInter" />
 		</interceptor>
 	</interceptors>
