@@ -1,7 +1,9 @@
 package com.githrd.deli.controller;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,6 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -26,6 +30,10 @@ import com.githrd.deli.service.PaymentCheck;
 import com.githrd.deli.vo.MembVO;
 import com.githrd.deli.vo.PayVO;
 import com.githrd.deli.vo.YonghyunVO;
+import com.siot.IamportRestClient.IamportClient;
+import com.siot.IamportRestClient.exception.IamportResponseException;
+import com.siot.IamportRestClient.response.IamportResponse;
+import com.siot.IamportRestClient.response.Payment;
 
 
 
@@ -42,17 +50,16 @@ public class PayController {
 	@Autowired
 	ImportPay ipay;
 	
-	/*
-	//	메뉴판 페이지 폼 보기 처리함수
-	@RequestMapping("menu.dlv")
-	public ModelAndView menu(ModelAndView mv) {
-		
-		
-		mv.setViewName("/menu/menu");
-		
+	public IamportClient api;
+	
+	//	실험 페이지
+	@RequestMapping("payPay.dlv")
+	public ModelAndView payPay(ModelAndView mv, HttpServletRequest req) {
+		String pay = req.getParameter("짜장면");
+		System.out.println(pay);
 		return mv;
 	}
-	*/
+	
 	
 	//	결제전 페이지 폼 보기 처리함수
 	@RequestMapping("beforePay.dlv")
@@ -107,11 +114,7 @@ public class PayController {
 		String smount = paSrvc.getAmount(token, merchant_uid);
 		int amount = Integer.parseInt(smount);
 		paSrvc.setHackCheck(smount, merchant_uid, token);
-		
-		System.out.println(token);
-		System.out.println(smount);
-		System.out.println(amount);
-		
+		System.out.println(imp_uid);
 		return amount;
 	}
 	
@@ -167,5 +170,16 @@ public class PayController {
 		mv.setViewName("payment/afterPay");
 		
 		return mv;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/verifyIamport/{imp_uid}")
+	public IamportResponse<Payment> paymentByImpUid(
+			Model model
+			, Locale locale
+			, HttpSession session
+			, @PathVariable(value= "imp_uid") String imp_uid) throws IamportResponseException, IOException{	
+			this.api = new IamportClient("5781100875728352", "fa6925fe5a8c23bc192ea5840d57ebc7b71168fedaf51c45f0d6aaae3a5798b229699e7e7692d485");
+			return api.paymentByImpUid(imp_uid);
 	}
 }
