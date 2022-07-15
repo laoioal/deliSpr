@@ -295,6 +295,12 @@ public class YonghyunController {
 		mv.setViewName("board/test");
 		return mv;
 	}
+	@RequestMapping("/test02.dlv")
+	public ModelAndView test02(ModelAndView mv) {
+		
+		mv.setViewName("board/test02");
+		return mv;
+	}
 	// 주변친구 추천
 	@RequestMapping("/arrfriendtest.dlv")
 	public ModelAndView friendtest(ModelAndView mv, HttpSession session) {

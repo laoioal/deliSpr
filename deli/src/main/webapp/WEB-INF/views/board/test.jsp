@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="/deli/resources/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 
@@ -43,9 +44,96 @@ for(var i = 0; i < el.length; i++ ){
 }
 
 
+function mainaddr(){
+	new Promise(function(resolve,reject){
+		geocoder.addressSearch('신풍로 77' , function(result, status) {
+	
+		// 정상적으로 검색이 완료됐으면 
+		 if (status === kakao.maps.services.Status.OK) {
+		    var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+			alert(1);
+			cen = coords;
+		    // 결과값으로 받은 위치를 마커로 표시합니다
+		    var marker = new kakao.maps.Marker({
+		        map: map,
+		        position: coords
+		    });
+	
+		    // 인포윈도우로 장소에 대한 설명을 표시합니다
+		    var infowindow = new kakao.maps.InfoWindow({
+		        content: '<div style="width:150px;text-align:center;padding:6px 0;" class="mk">우리집</div>'
+		   });
+		   infowindow.open(map, marker);
+	
+		    // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+		    map.setCenter(coords);
+	
+		 }
+		});	
+		return resolve();
+	});
+
+	
+	
+	
+	
+	
+}
 
 
-var roundfri = function() {
+/*-------------------------------------------------------------------------------------------*/
+
+
+
+
+
+
+async function arraddr() {
+	setMaker();
+}
+
+function setMaker(){
+	new Promise(function(resolve,reject){
+		for(let i = 0; i < el.length; i++){
+		 	var name = el[i].value;
+			geocoder.addressSearch(name , function(result, status) {
+			    // 정상적으로 검색이 완료됐으면 
+			     if (status === kakao.maps.services.Status.OK) {
+			        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+					marker = coords;
+			        // 결과값으로 받은 위치를 마커로 표시합니다
+		      
+			        alert(2);
+			        markers.push(marker);
+			     //   alert('안쪽 ' + markers[0]);
+			        var marker = new kakao.maps.Marker({
+			            map: map,
+			            position: coords
+			        });
+				       
+			        var infowindow = new kakao.maps.InfoWindow({
+			            //content: name
+			             content: '<div style="width:150px;text-align:center;padding:6px 0;" class="fr">' + name +'</div>'
+			        	//content: '옆집'
+			        }); 
+			        
+			       
+			        kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
+			        kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+			      
+			        infowindow.open(map, marker);
+					}
+			}); 
+		}
+		return resolve();
+	});
+	//setTimeout(roundfri, 1000);
+}
+
+/*-------------------------------------------------------------------------------------------*/
+
+function roundfri() {
+ return new Promise(function(resolve,reject){
 	var circle = new kakao.maps.Circle({
 		map: map,
 	    center : new kakao.maps.LatLng(37.5004196071802, 126.911544544308),
@@ -59,14 +147,15 @@ var roundfri = function() {
 	    
 	    
 	});
+	alert(3);
 	var center = circle.getPosition();
 	var radius = circle.getRadius();
 
-
-
+	circle.setMap(map);
+/*
 
 	for(var i = 0; i < position.length; i++) {
-		alert(2);
+		alert(3);
 		var path = [containMarkers[i], center];
 		var line = new kakao.maps.Polyline({
 	    	path: path, // 선을 구성하는 좌표배열 입니다
@@ -96,99 +185,21 @@ var roundfri = function() {
 		}
 	}
 
-	}
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-for(var i = 0; i < el.length; i++){
- 	var name = el[i].value;
-	geocoder.addressSearch(name , function(result, status) {
-	    // 정상적으로 검색이 완료됐으면 
-	     if (status === kakao.maps.services.Status.OK) {
-	        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-			marker = coords;
-	        // 결과값으로 받은 위치를 마커로 표시합니다
-      
-	        
-	        markers.push(marker);
-	     //   alert('안쪽 ' + markers[0]);
-	        var marker = new kakao.maps.Marker({
-	            map: map,
-	            position: coords
-	        });
-		       
-	        var infowindow = new kakao.maps.InfoWindow({
-	            //content: name
-	             //content: '<div style="width:150px;text-align:center;padding:6px 0;">' + name +'</div>'
-	        	content: '옆집'
-	        }); 
-	        
-	       
-	        kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
-	        kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
-	      
-	        infowindow.open(map, marker);
-			}
-	});
-	    
-	}
-
-
-
 */
+	 resolve();
+ });
+}
 
 
 
 
 
+//setMaker();
+//roundfri();
+/*-------------------------------------------------------------------------------------------*/
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-geocoder.addressSearch('신풍로 77' , function(result, status) {
-
-// 정상적으로 검색이 완료됐으면 
- if (status === kakao.maps.services.Status.OK) {
-	 alert(3);
-    var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-	cen = coords;
-    // 결과값으로 받은 위치를 마커로 표시합니다
-    var marker = new kakao.maps.Marker({
-        map: map,
-        position: coords
-    });
-
-    // 인포윈도우로 장소에 대한 설명을 표시합니다
-    var infowindow = new kakao.maps.InfoWindow({
-        content: '<div style="width:150px;text-align:center;padding:6px 0;">우리집</div>'
-   });
-   infowindow.open(map, marker);
-
-    // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-    map.setCenter(coords);
-
-    
- }
 
 
 
@@ -208,9 +219,8 @@ var circle = new kakao.maps.Circle({
 
 circle.setMap(map);
 */
-}); 
-arrfri();
-roundfri();
+//}); 
+
 
 
 
@@ -238,16 +248,16 @@ roundfri();
  //var center = circle.getPosition();
  //var radius = circle.getRadius();
  
+/*
+ async function addr() {
+	 mainaddr();
+	 await arraddr();
+	 await roundfri();
+ }
 
  
- 
- 
- 
- 
- 
-	
- 
-
+addr();
+*/
 
 //인포윈도우를 표시하는 클로저를 만드는 함수입니다 
 function makeOverListener(map, marker, infowindow) {
@@ -270,6 +280,14 @@ function makeOutListener(infowindow) {
 function zoomOut() {
     map.setLevel(map.getLevel() + 1);
 }
+
+
+
+
+
+
+
+
 
 
 </script>
