@@ -1,0 +1,30 @@
+#faq {
+	margin-top:200px;
+	margin-left:400px;
+}
+#title {
+	margin-left:31px;
+	width: 500px;
+	height: 40px;
+	font-size: 20px;
+	margin-bottom:10px;
+}
+
+#content {
+	margin-left:31px;
+	width: 500px;
+	height: 300px;   
+	font-size: 20px;
+}
+
+.faqInsert{
+	margin-left:5px;
+	font-size:30px;
+}
+#btn{
+	margin-top:20px;
+	margin-left:300px;
+	width:80px;
+	height:30px;
+	font-size:15px;
+}

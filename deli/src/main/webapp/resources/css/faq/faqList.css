@@ -1,0 +1,65 @@
+#tableInfo {
+	width: 60%;
+	border-top: 2px solid #dddddd;
+	border-bottom: 2px solid #dddddd;
+	font-size: 12px;
+	border-radius: 2px;
+	background: #fff;
+	background: rgba(255, 255, 255, 0.8);
+	padding: 5px;
+	font-size: 20px;
+}
+#lineStyle{
+		border-bottom: 2px solid #dddddd;
+	
+}
+.no {
+	width: 8%;
+	font-size: 15px;
+}
+
+.title {
+	width: 25%;
+	font-size: 15px;
+}
+
+.content {
+	width: 50%;
+	font-size: 15px;
+}
+
+.wdate {
+	width: 20%;
+	font-size: 15px;
+}
+
+h1 {
+	margin-left: 25%;
+}
+
+#faq {
+	margin-top: 100px;
+	margin-left: 25%;
+}
+
+
+#logout{
+	width: 100px;
+	height: 30px;
+	font-size: 15px;
+	position: absolute;	
+	margin-top:-30px;
+	margin-left:50px;
+	float: left;
+}
+.btn {
+	width: 100px;
+	height: 30px;
+	font-size: 15px;
+	margin-left:-80px;
+}
+
+#buttonArea {
+	margin-left: 28%;
+	margin-top: 3%;
+}

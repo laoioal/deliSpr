@@ -1,0 +1,27 @@
+
+.btn{
+	margin-top:20px;
+	width:80px;
+	height:30px;
+	font-size:15px;
+}
+h1{
+	margin-top:20px;
+}
+
+#faq{
+	margin-left:25%;
+	text-align:center;
+	margin-top:50px;
+	width:800px;
+	height:700px;
+	border:solid;
+}
+ul{
+	margin-left:-30px;
+	font-size:20px;
+}
+
+#buttonArea{
+	margin-top:150px;
+}

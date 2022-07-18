@@ -1,0 +1,43 @@
+#faq{
+	text-align:center;
+	margin-top:5%;
+}
+h2{
+	font-size:50px;
+	margin-top:40px;
+}
+
+
+#id {
+	margin-left:20px;
+	width: 300px;
+	height: 40px;
+	font-size: 20px;
+	margin-bottom:10px;
+}
+
+#pw {
+	width: 300px;
+	height: 40px;
+	font-size: 20px;
+	margin-bottom:10px;
+
+}
+#submit{
+	width:50px;
+	height:30px;
+	font-size: 15px;
+	
+}
+
+.btn {
+	width:100px;
+	height:40px;
+	font-size: 20px;
+}
+.faqInsert{
+	font-size:20px;
+}
+#buttonArea{
+	margin-left:70px;
+}
