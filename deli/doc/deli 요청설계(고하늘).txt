@@ -1,3 +1,4 @@
+MAP
 # 회원 정보(아이디) 
 요청내용	:	/deli/member/insertId.dlv
 파라미터	:	유
@@ -30,3 +31,56 @@
 컨트롤러	:	com.githrd.deli.controller.PlaceController
 뷰		: 	/WEB-INF/views/search/3.SelectRestaurant/checkInfo.jsp(total 정보 제공 확인용)
 ----------------------------------------------------------------------------------
+
+
+FAQ
+# FAQ 리스트 조회
+요청내용	:	/deli/faq/board.dlv
+파라미터	:	
+컨트롤러	:	com.githrd.deli.controller.FaqController
+뷰		: 	/WEB-INF/views/faq/faqList.jsp(List 확인용)
+----------------------------------------------------------------------------------
+# FAQ 상세내용 요청
+요청내용	:	/deli/faq/board/detail.dlv
+파라미터	:	
+컨트롤러	:	com.githrd.deli.controller.FaqController
+뷰		: 	/WEB-INF/views/faq/faqDetail.jsp(faq 내용 확인용)
+----------------------------------------------------------------------------------
+# FAQ admin 로그인 요청
+요청내용	:	/deli/faq/admin/board/login.dlv
+파라미터	:	
+컨트롤러	:	com.githrd.deli.controller.FaqController
+뷰		: 	/WEB-INF/views/faq/admin/adminLogin.jsp(admin계정 로그인)
+----------------------------------------------------------------------------------
+# FAQ 신규등록 요청
+요청내용	:	/deli/faq/admin/board/insert.dlv
+파라미터	:	
+컨트롤러	:	com.githrd.deli.controller.FaqController
+뷰		: 	/WEB-INF/views/faq/admin/faqInsert.jsp(faq 내용 insert)
+----------------------------------------------------------------------------------
+# FAQ 글 삭제 요청
+요청내용	:	/deli/faq/admin/board/delete.dlv
+파라미터	:	
+컨트롤러	:	com.githrd.deli.controller.FaqController
+뷰		: 	redirect : /faq/board.dlv
+----------------------------------------------------------------------------------
+# FAQ 글 수정 요청
+요청내용	:	/deli/faq/admin/board/update.dlv
+파라미터	:	
+컨트롤러	:	com.githrd.deli.controller.FaqController
+뷰		: 	/WEB-INF/views/faq/admin/faqUpdate.jsp(faq update)
+----------------------------------------------------------------------------------
+# FAQ 글 수정 후 메인페이지 이동
+요청내용	:	/deli/faq/admin/board/update2.dlv
+파라미터	:	
+컨트롤러	:	com.githrd.deli.controller.FaqController
+뷰		: 	redirect : /faq/board.dlv
+----------------------------------------------------------------------------------
+# admin 계정 로그아웃
+요청내용	:	/deli/faq/admin/board/logout.dlv
+파라미터	:	
+컨트롤러	:	com.githrd.deli.controller.FaqController
+뷰		: 	/faq/board.dlv
+----------------------------------------------------------------------------------
+
+
