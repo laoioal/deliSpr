@@ -1,17 +1,41 @@
 package com.githrd.deli.service;
 
 import java.text.NumberFormat;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
 import com.githrd.deli.vo.calculatorVO;
+import com.githrd.deli.vo.placeVO;
 
 
 
 //위도, 경도 좌표 받아서 미터단위로 거리계산
 
 public class CalculatorService {
+	
+//	List<calculatorVO> cal = new ArrayList<>(place.size()); 
+//	for(int i = 0; i<place.size();i++) {
+//		double distance = calculator.disCal(lon, lat, place.get(i).getPickuplat(), place.get(i).getPickuplon());
+//		if(distance<1000) {
+//		calculatorVO calculat = new calculatorVO(place.get(i).getName(),place.get(i).getAddress(),distance);
+//		cal.add(calculat);
+//		}
+//	}
+	
+		public List<calculatorVO> setArray(List<placeVO> place, double lat, double lon){
+			List<calculatorVO> cal = new ArrayList<>(place.size());
+				for(int i = 0; i<place.size();i++) {
+				double distance = disCal(lon,lat,place.get(i).getPickuplat(),place.get(i).getPickuplon());
+				if(distance<1000) {
+				calculatorVO calculat = new calculatorVO(place.get(i).getName(),place.get(i).getAddress(),distance);
+				cal.add(calculat);
+				}
+				}
+				sortList(cal);//가까운 순으로 정렬하는 메소드
+			return cal;
+		}
 	
 		public double disCal(double lat1, double lon1, double lat2, double lon2) {
 
