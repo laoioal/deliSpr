@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,14 +10,13 @@
 </head>
 <body>
 
-    <input type="hidden" class="address" value="상도동 323-25">
-    <input type="hidden" class="name" value="이용현">
-    <input type="hidden" class="address" value="신풍로 80">
-    <input type="hidden" class="name" value="80">
-    <input type="hidden" class="address" value="신풍로 22">
-    <input type="hidden" class="name" value="신풍한의원">
-    <input type="hidden" class="address" value="신길로 89">
-    <input type="hidden" class="name" value="백악관">
+    <input type="hidden" id="myaddr" value="${MYADDR.sarea}">
+	
+<c:forEach var="data" items="${LIST}">
+    <input type="hidden" class="address" value="${data.sarea}">
+    <input type="hidden" class="name" value="${data.id}">
+</c:forEach>
+
 <div id="map" style="width:100%;height:350px;"></div>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d6fb471c69858a04f22e5ff56c302f30&libraries=services"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d6fb471c69858a04f22e5ff56c302f30"></script>
@@ -39,18 +39,18 @@
 	var geocoder = new kakao.maps.services.Geocoder();
 	
 	
-	var position = [];
+//	var position = [];
 	
 	var el = document.getElementsByClassName('address');
 	var el2 = document.getElementsByClassName('name');
-	for(var i = 0; i < el.length; i++ ){
-		var con = el[i].value;
-		var name = el2[i].value;
-		position.push({address: con, text: name});
-	}
-
+//	for(var i = 0; i < el.length; i++ ){
+//		var con = el[i].value;
+//		var name = el2[i].value;
+//		position.push({address: con, text: name});
+//	}
+	var myaddr = document.getElementById('myaddr').value;
 	const mainAddr = new Promise((resolve,reject) => {
-		geocoder.addressSearch('신풍로 77' , function(result, status) {
+		geocoder.addressSearch(myaddr , function(result, status) {
 			// 정상적으로 검색이 완료됐으면 
 			if (status === kakao.maps.services.Status.OK) {
 				var coords = new kakao.maps.LatLng(result[0].y, result[0].x);

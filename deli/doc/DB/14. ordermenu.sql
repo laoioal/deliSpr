@@ -16,3 +16,9 @@ CREATE TABLE ordermenu(
         CONSTRAINT OM_ONO_FK REFERENCES ordertask(ono)
 );
 
+
+alter table ordermenu add(
+    isshow CHAR(1) DEFAULT 'Y'
+    CONSTRAINT ODM_SHOW_CK CHECK (isshow IN('Y', 'N'))
+    CONSTRAINT ODM_SHOW_NN NOT NULL
+);

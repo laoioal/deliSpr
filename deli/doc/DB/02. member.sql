@@ -29,6 +29,12 @@ CREATE TABLE member(
     receive VARCHAR2(20 CHAR)
 );
 
+ALTER TABLE 
+    member
+ADD(
+    dti_addr VARCHAR2(4000)
+);
+
 INSERT INTO
     member(mno, name, id, kakaoid, pw, mail, tel, addr)
 VALUES(

@@ -287,6 +287,7 @@ public class YonghyunController {
 	public ModelAndView friendtest(ModelAndView mv, HttpSession session) {
 		String id = (String) session.getAttribute("SID");
 		YonghyunVO yVO = yDao.myAddr(id);
+		yVO.setId(id);
 		List<YonghyunVO> list = yDao.arrFriend(yVO);
 		mv.addObject("MYADDR", yVO);
 		mv.addObject("LIST", list);

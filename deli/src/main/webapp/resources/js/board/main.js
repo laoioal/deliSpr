@@ -143,4 +143,8 @@ $(document).ready(function(){
 	$('#mail').click(function(){
 		$('#mesfrm').submit();
 	});
+	
+	$('#friarr').click(function(){
+		$(location).attr('href', '/deli/board/friendArround.dlv');
+	});
 });

@@ -451,5 +451,6 @@
 		    member
 		WHERE
 		    substr(addr, 1, instr(addr,' ', 1, 2)) LIKE #{marea} || '%'
+		    AND id != #{id}
 	</select>
 </mapper>

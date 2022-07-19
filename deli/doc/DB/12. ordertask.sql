@@ -7,3 +7,9 @@ CREATE TABLE ordertask(
         CONSTRAINT OD_MNO_NN NOT NULL
 );
 
+
+alter table ordertask add(
+    isshow CHAR(1) DEFAULT 'Y'
+    CONSTRAINT ODT_SHOW_CK CHECK (isshow IN('Y', 'N'))
+    CONSTRAINT ODT_SHOW_NN NOT NULL
+);

@@ -16,3 +16,9 @@ CREATE TABLE orderlist(
         CONSTRAINT OL_PM_NN NOT NULL,
     requests VARCHAR2(100CHAR)
 );
+
+alter table orderlist add(
+    isshow CHAR(1) DEFAULT 'Y'
+    CONSTRAINT ODL_SHOW_CK CHECK (isshow IN('Y', 'N'))
+    CONSTRAINT ODL_SHOW_NN NOT NULL
+);

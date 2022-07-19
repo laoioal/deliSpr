@@ -163,6 +163,8 @@
 							</div>
 						</div>
 						<hr>	
+						<p class="memText mainBtn" id="friarr">주변친구보기</p>
+						<hr>	
 						<p class="memText">회원정보수정</p>
 						<br>
 					</div>
