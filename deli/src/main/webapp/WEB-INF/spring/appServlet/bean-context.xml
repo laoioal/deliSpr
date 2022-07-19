@@ -29,6 +29,8 @@
 	<bean id="CalculatorService" class="com.githrd.deli.service.CalculatorService" />
 	<bean id="MemberService" class="com.githrd.deli.service.MemberService" />
 	
+	<bean id="eSvc" class="com.githrd.deli.service.EunbeeService" />
+	
 	
 	
 </beans>
