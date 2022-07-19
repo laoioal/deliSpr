@@ -16,6 +16,13 @@
 		<org.aspectj-version>1.9.1</org.aspectj-version>
 		<org.slf4j-version>1.7.25</org.slf4j-version>
 	</properties>
+	<!-- jitpack -->
+	<repositories>
+		<repository>
+		    <id>jitpack.io</id>
+		    <url>https://jitpack.io</url>
+		</repository>
+	</repositories>
 	<dependencies>
 		<!-- Spring -->
 		<dependency>
@@ -182,6 +189,48 @@
 		    <artifactId>commons-io</artifactId>
 		    <version>2.11.0</version>
 		</dependency>
+		
+		<!-- 아임포트 관련 -->
+		<!-- http Client -->
+		<dependency>
+		      <groupId>org.apache.httpcomponents</groupId>
+		      <artifactId>httpclient</artifactId>
+		      <version>4.3.5</version>
+		  </dependency>
+		<!-- Jackson core -->
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-databind</artifactId>
+		    <version>2.13.3</version>
+		</dependency>
+		<!-- iamport rest client -->	
+		<dependency>
+		 	<groupId>com.github.iamport</groupId>
+		 	<artifactId>iamport-rest-client-java</artifactId>
+		 	<version>0.2.17</version>
+		</dependency>
+		<!-- retrofit -->
+		<dependency>
+		    <groupId>com.squareup.retrofit2</groupId>
+		    <artifactId>retrofit</artifactId>
+		    <version>2.9.0</version>
+		</dependency>
+		<!-- JSON In Java -->
+		<dependency>
+		    <groupId>org.json</groupId>
+		    <artifactId>json</artifactId>
+		    <version>20220320</version>
+		</dependency>
+		<!-- lombok -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.24</version>
+			<scope>provided</scope>
+		</dependency>
+
+		
+		
 		
 	</dependencies>
     <build>

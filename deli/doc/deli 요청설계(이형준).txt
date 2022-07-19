@@ -6,6 +6,30 @@
 컨트롤러	:	com.githrd.deli.controller.pay.BeforePay
 뷰			:	/WEB-INF/views/payment/beforePay.jsp
 ----------------------------------------------------------------------------------
+# 위변조 내용 확인
+요청내용	:	/deli/payment/complete.dlv
+파라미터	:	imp_merchant, imp_uid
+컨트롤러	:	com.githrd.deli.controller.pay.PayProc
+뷰			:	
+					    
+----------------------------------------------------------------------------------
+# 환불 처리 요청(오류 발생시)
+요청내용	:	/deli/payment/canclePay.dlv
+파라미터	:	imp_merchant, imp_uid
+컨트롤러	:	com.githrd.deli.controller.pay.PayProc
+뷰			:	성공 ) /deli/main.dlv
+				실패 ) /deli/payment/beforePay.dlv
+					    
+----------------------------------------------------------------------------------
+# 환불 처리 요청 내용 확인(환불 버튼 클릭 시)
+요청내용	:	/deli/payment/canClePay.dlv
+파라미터	:	imp_merchant, imp_uid
+컨트롤러	:	com.githrd.deli.controller.pay.PayProc
+뷰			:	성공 ) /deli/main.dlv
+				실패 ) /deli/payment/afterPay.dlv
+			
+					    
+----------------------------------------------------------------------------------
 # 결제 처리 요청
 요청내용	:	/deli/payment/payProc.dlv
 파라미터	:	무
