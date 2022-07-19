@@ -28,7 +28,6 @@
 	 <th class = "title">${list.title}</th>
 	 <th class = "content">${list.content}</th>
 	 <th class = wdate>${list.wdate}</th>
-	
 	</tr>
 	</c:forEach>
 	</table>
@@ -43,7 +42,7 @@
 	
 	<!-- list에 데이터가 없을경우 : str(에러메세지를 띄운다) -->
  	<c:if test="${empty admin}" >
-	   <a href="<c:url value='/faq/admin/board/login.dlv'/>"><button class = "btn" >관리자계정</button></a>
+	   <a href="<c:url value='/faq/admin/board/login.dlv'/>"><button id = "admin" >관리자계정</button></a>
 	</c:if>
 	
 	<c:if test="${not empty admin}">
@@ -54,8 +53,6 @@
 		<a href="<c:url value='/faq/admin/board/logout.dlv'/>"><button id = "logout">로그아웃</button></a>
 		
 	</c:if>
-	
-	
 	
 	</div>
 	</div>

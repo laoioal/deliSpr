@@ -24,8 +24,11 @@
 <div id = "buttonArea">
 <a href="<c:url value='/faq/admin/board/update.dlv?no=${faq.no}&id=${admin.id}'/>"><button class="btn">수정</button></a>
 <a href="<c:url value='/faq/admin/board/delete.dlv?no=${faq.no}&id=${admin.id}'/>"><button class="btn">삭제</button></a>
+<a href="<c:url value='/faq/board.dlv'/>"><button class="btn">뒤로가기</button></a>
 </c:if>
+<c:if test="${empty admin}">
 <a href="<c:url value='/faq/board.dlv'/>"><button id ="backBtn">뒤로가기</button></a>
+</c:if>
 </div>
 
 <!-- 
@@ -41,6 +44,6 @@
 <input type="submit" value="삭제">
 </form>
   -->
-
+	<script src="<c:url value="/js/faq/urlDelete.js"/>" type="text/javascript"></script>
 </body>
 </html>

@@ -16,15 +16,16 @@
 		<form action="<c:url value='/faq/admin/board/update2.dlv'/>" method="post">
 			<input type="hidden" name="no" value="${faq.no}" readonly> 
 			아이디 : <input type="text" name="id" id = "id" value="${faq.id}" readonly> <br>
-			제목 : <input type="text" name="title" id = "title" value="${faq.title}"><br> 
-			내용 : <input type="text" name="content" id = "content" value="${faq.content}"><br>
+			제 목 : <input type="text" name="title" id = "title" value="${faq.title}"><br> 
+			내 용 : <input type="text" name="content" id = "content" value="${faq.content}"><br>
 			<div id = "buttonArea"> 
 			<input type="submit" class = "btn" value="제출">
-			
 				<a href="<c:url value='/faq/board.dlv'/>"><button class = "btn" >취소	</button></a>
-		
+		</div>
 		</form>
 		</div>
-</div>
+	<script src="<c:url value="/js/faq/urlDelete.js"/>" type="text/javascript"></script>
+	
+
 </body>
 </html>

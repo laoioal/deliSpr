@@ -28,6 +28,8 @@
 	<br>
 </div>	
 	</div>
+	<script src="<c:url value="/js/faq/urlDelete.js"/>" type="text/javascript"></script>
+	
 	
 </body>
 </html>
