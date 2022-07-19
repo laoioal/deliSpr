@@ -20,7 +20,7 @@ import com.githrd.deli.vo.memberVO;
 import com.githrd.deli.vo.placeVO;
 /*
  * 이 클래스는 아이디를 입력 받으면 그 정보에 맞는 주소값을 가져온 뒤
- * 거리를 계산해서 그에 맞는 정보를 보여주는 controller
+ * 그에 맞는 정보를 보여주는 controller
  * 작성자 : 고하늘
  */
 @Controller
@@ -38,7 +38,7 @@ public class MemberController {
 		return "/search/1.mapSearch/insertId";
 	}
 	
-	//id 존재 여부 확인 : 아이디 값이 있으면 그 다음 페이지로 넘어가지만, 존재하지 않으면 경고 메세지 표시
+	//id 존재 여부 확인 : 아이디 값이 있으면 그 다음 페이지로 넘어가지만, 존재하지 않으면 하단에 경고 메세지 표시
 	@PostMapping("/insertId.dlv")
 	public String insertId(Model model, guestVO guest) {
 		String error =null;
@@ -56,23 +56,16 @@ public class MemberController {
 			//error 메세지가 존재하지 않는다면 그 다음 페이지로 넘어간다
 		}
 	}
+//	
 
 	//아이디 주소를 입력하면 주소값에 대한 위도값, 경도값을 자바스크립트를 통해 전달 받은 뒤
 	//등록된 pickup정보를 바탕으로 거리 계산하고 이를 view(placeView)에 뿌려주는 기능
 	@GetMapping("/placeView.dlv")
 	public String mapSearh(Model model, @Param("lat")double lat, @Param("lon")double lon) {
 		List<placeVO> place = mapper.selectList();	//픽업 리스트
-		List<calculatorVO> cal = new ArrayList<>(place.size()); 
-		for(int i = 0; i<place.size();i++) {
-			double distance = calculator.disCal(lon, lat, place.get(i).getPickuplat(), place.get(i).getPickuplon());
-			if(distance<1000) {
-			calculatorVO calculat = new calculatorVO(place.get(i).getName(),place.get(i).getAddress(),distance);
-			cal.add(calculat);
-			}
-		}
+		List<calculatorVO> cal = calculator.setArray(place, lat, lon);
 		placeVO myPlace = new placeVO(member.getId()+"의 위치",member.getAddr(),lon,lat);	//마커 표시를 위해 회원 정보도 list에 넣어줌
 		place.add(myPlace);
-		calculator.sortList(cal);	//가까운 순으로 정렬
 		model.addAttribute("lat",lat);
 		model.addAttribute("lon",lon);
 		model.addAttribute("place",place);
