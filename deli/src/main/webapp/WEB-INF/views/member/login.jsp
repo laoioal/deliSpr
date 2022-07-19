@@ -42,7 +42,10 @@
 	<div class="w3-content w3-center mxw500">
 		<h1 class="w3-black w3-padding w3-card-4" id="hbtn">Delivery</h1>
 		<div class="w3-col w3-padding w3-card-4 w3-margin-top">
-		<form method="POST" action="" id="frm" name="frm">
+		<form method="POST" action="" id="pcsfrm" name="pcsfrm">
+			<input type="hidden" name="nowPage" id="nowPage" value="${param.nowPage}">
+			<input type="hidden" name="vw" id="vw" value="${param.vw}">
+		
 			<div class="w3-col w3-margin-top">
 				<label for="id" class="w3-col s2 w3-right-align w3-text-grey">I D : &nbsp;</label>
 				<div class="w3-col m9 pdl10">
@@ -69,5 +72,18 @@
 		</div>
 		<div class="w3-col w3-padding w3-card-4 w3-hide"><span id="msg">${SID} 님은 이미 로그인했습니다!!!</span></div>
 	</div>
+<c:if test="${not empty param.modal}">
+	<div id="id01" class="w3-modal">
+		<div class="w3-modal-content w3-animate-top w3-card-4">
+			<header class="w3-container w3-black"> 
+				<span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+				<h2>Error</h2>
+			</header>
+			<div class="w3-container">
+				<p>${param.modal}</p>
+			</div>
+		</div>
+	</div>
+</c:if>
 </body>
 </html>

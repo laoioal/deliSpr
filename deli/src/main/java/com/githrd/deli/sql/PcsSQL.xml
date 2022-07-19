@@ -3,6 +3,16 @@
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="pcSQL">
+<!-- 
+  @author	박찬슬
+  @since	2022/06/11
+  @version 	v.1.0
+  
+  			작업이력 ]
+  					2022/06/30	- 담당자 : 박찬슬
+  									질의명령 xml 파일 제작
+ 
+ -->
 	<!-- 로그인 처리 질의명령 -->
 	<select id="login" resultType="int" parameterType="pcVO">
  		SELECT
@@ -18,7 +28,7 @@
  	<!-- 회원 정보조회 질의명령 -->
  	<select id="getIdInfo" resultType="pcVO" parameterType="string">
  		SELECT
- 			mno, name, id, esti, mail, kakaoid, tel, oriname, dir, addr
+ 			mno, name, id, esti, mail, kakaoid, tel, oriname, dir, addr, dti_addr
  		FROM
  			member m, imgfile
  		WHERE
@@ -48,15 +58,25 @@
  			id = #{id}
  	</select>
  	
+ 	<!-- 회원번호 조회 질의명령 --> 	
+ 	<select id="getMno" resultType="int" parameterType="string">
+ 		SELECT
+ 			mno
+ 		FROM
+ 			member
+ 		WHERE
+ 			id = #{id}
+ 	</select>
+ 	
  	<!-- 회원가입 처리 질의명령 -->
  	<insert id="addMember" parameterType="pcVO">
  		<selectKey keyProperty="mno" resultType="int" order="BEFORE">
  			SELECT NVL(max(mno) + 1, 1001) FROM member
  		</selectKey>
  		INSERT INTO
- 			MEMBER(mno, name, id, kakaoid, pw, mail, tel, addr)
+ 			MEMBER(mno, name, id, kakaoid, pw, mail, tel, addr, dti_addr)
  		VALUES(
- 			#{mno}, #{name}, #{id}, #{kakaoid}, #{pw}, #{mail}, #{tel}, #{addr}
+ 			#{mno}, #{name}, #{id}, #{kakaoid}, #{pw}, #{mail}, #{tel}, #{addr}, #{dti_addr}
  		)
  	</insert>
  	
@@ -74,6 +94,7 @@
  		)
  	</insert>
  	
+ 	<!-- 회원정보 수정 질의명령 -->
  	<update id="editMember" parameterType="pcVO">
  		UPDATE
  			member
@@ -88,14 +109,19 @@
 				tel = #{tel},
 			</if>
 			<if test="addr neq null">
-				addr = #{addr}
+				addr = #{addr},
 			</if>
+			<if test="dti_addr neq null">
+				dti_addr = #{dti_addr}
+			</if>
+			
 		</set>
  		WHERE
  			isshow = 'Y'
  			AND mno = #{mno}
  	</update>
  	
+ 	<!-- 프로필사진 수정 질의명령 -->
  	<update id="editProfile" parameterType="fVO">
  		UPDATE
  			imgfile
@@ -111,4 +137,73 @@
  			isshow = 'Y'
  			AND amno = #{amno}
  	</update>
+ 	
+ 	<!-- 지역(대)분류 가져오는 질의명령 -->
+ 	<select id="largeArea" resultType="pcVO">
+		SELECT
+			city, code
+		FROM
+			LARGEAREA
+ 	</select>
+ 	
+ 	<!-- 지역(중)분류 가져오는 질의명령 -->
+ 	<select id="middleArea" resultType="pcVO" parameterType="pcVO">
+ 		SELECT
+            city, code
+        FROM
+            middlearea
+        WHERE
+            lcode = #{code}
+ 	</select>
+ 	
+ 	<!-- 지역(소)분류 가져오는 질의명령  -->
+ 	<select id="smallArea" resultType="pcVO" parameterType="pcVO">
+		SELECT
+		    city, code
+		FROM
+		    smallarea
+		WHERE
+		    mcode = #{code}
+ 	</select>
+ 	
+ 	<!-- 메뉴 카테고리 가져오는 질의명령 -->
+ 	<select id="menu" resultType="pcVO">
+ 		SELECT
+ 			foodtype category, code
+ 		FROM
+ 			menucategory
+ 	</select>
+ 	
+ 	<!-- 음식점 리스트 가져오는 질의명령 -->
+ 	<select id="rest" resultType="pcVO" parameterType="pcVO">
+ 		SELECT
+ 			rname, restno rest
+ 		FROM
+ 			restaurant
+ 		WHERE
+ 			cname = #{code}
+ 	</select>
+ 	
+ 	<!-- 인증키 생성 질의명령 -->
+	 <insert id="createAuthKey">
+		insert into MEMBER_AUTH values(#{mail}, #{authKey})
+	</insert>
+	
+	<!-- 인증시 member_auth 컬럼을 기본값에서 1로 바꾸는 질의명령 -->
+	<update id="memberAuth" parameterType="pcVO">
+		<![CDATA[update MEMBER set MEMBER_AUTH = 1 where (select count(*) from MEMBER_AUTH where MMAIL = #{mail}) > 0]]>
+	</update>
+ 	
+ 	<!-- 글쓰기 처리요청 -->
+	<insert id="insertBoard" parameterType="pcVO">
+ 		<selectKey keyProperty="bno" resultType="int" order="BEFORE">
+ 			SELECT NVL(max(bno) + 1, 100000) FROM board
+ 		</selectKey>
+		INSERT INTO
+		    board(bno, bmno, title, body, larea, marea, sarea, end, category, rest)
+		VALUES(
+		    #{bno}, #{mno}, #{title}, #{body}, #{larea}, 
+		    #{marea}, #{sarea}, #{end}, #{category}, #{rest}
+		)
+	</insert>
 </mapper>

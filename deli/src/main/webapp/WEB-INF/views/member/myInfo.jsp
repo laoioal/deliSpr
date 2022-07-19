@@ -21,9 +21,11 @@
 <script type="text/javascript" src="/deli/resources/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="/deli/resources/js/member/myInfo.js"></script>
 <body>
-	 <form method="POST" action="" id="delfrm" name="delfrm">
+	 <form method="POST" action="" id="pcsfrm" name="pcsfrm">
 	 	<input type="hidden" name="mno" id="delmno">
 	 	<input type="hidden" name="id" id="delid">
+	 	<input type="hidden" name="nowPage" id="nowPage" value="${param.nowPage}">
+		<input type="hidden" name="vw" id="vw" value="${param.vw}">
 	 </form>
 
 <div class="w3-container">

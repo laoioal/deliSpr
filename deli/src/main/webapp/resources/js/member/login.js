@@ -3,6 +3,7 @@ $(document).ready(function(){
 	if(fail == 1){
 		alert('아이디 또는 비밀번호가 다릅니다.');
 	}
+	$('#id01').css('display', 'block');
 	
 	$('#lbtn').click(function(){
 		var sid = $('#id').val();
@@ -16,8 +17,8 @@ $(document).ready(function(){
 			return;
 		}
 		
-		$('#frm').attr('action', '/deli/member/loginProc.dlv');
-		$('#frm').submit();
+		$('#pcsfrm').attr('action', '/deli/member/loginProc.dlv');
+		$('#pcsfrm').submit();
 	});
 	
 	// 홈버튼 클릭이벤트

@@ -21,6 +21,7 @@
 		<typeAlias alias="guestVO" type="com.githrd.deli.vo.guestVO"/>
 		<typeAlias alias="calculatorVO" type="com.githrd.deli.vo.calculatorVO"/>
 		<typeAlias alias="categoryVO" type="com.githrd.deli.vo.categoryVO"/>
+		<typeAlias alias="bpVO" type="com.githrd.deli.vo.BphotoVO" />
 
 		<typeAlias alias="page" type="com.githrd.deli.util.PageUtil"/>
 		<typeAlias alias="file" type="com.githrd.deli.util.FileUtil"/>

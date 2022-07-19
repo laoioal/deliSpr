@@ -3,7 +3,9 @@ $(document).ready(function(){
 		$(location).attr('href','/deli/main.dlv')
 	});
 	$('#rbtn').click(function(){
-		document.frm.reset();
+		$('#pcsfrm').each(function() {
+			this.reset();
+		});
 		if($('#newpw').css('background-color', 'lightgray').prop('readonly', true)){
 			$('#newpw').css('background-color', 'white').prop('readonly', false);
 			$('#repwmsg').parent().stop().slideUp(500).stop().slideDown(500);
@@ -51,6 +53,44 @@ $(document).ready(function(){
 			}
 		});
 	});
+	
+	// 이메일 인증
+	$('#mcbtn').click(function() {
+		$('#mail_ck').css('display', 'block');
+		$('#mailcheck').attr('disabled', false);
+		const eamil = $('#mail').val() // 이메일 주소값 얻어오기!
+		console.log('완성된 이메일 : ' + eamil); // 이메일 오는지 확인
+		const checkInput = $('#mailcheck') // 인증번호 입력하는곳 
+		
+		$.ajax({
+			type : 'get',
+			url : '/deli/member/mailCheck?email='+eamil, // GET방식이라 Url 뒤에 email을 뭍힐수있다.
+			success : function (data) {
+				checkInput.attr('disabled',false);
+				code =data;
+				alert('인증번호가 전송되었습니다.')
+			}			
+		}); // end ajax
+	}); // end send eamil
+	
+	// 인증번호 비교
+	// blur -> focus가 벗어나는 경우 발생
+	$('#mailcheck').blur(function () {
+		const inputCode = $(this).val();
+		const $resultMsg = $('#mailcheckmsg');
+		
+		if(inputCode === code){
+			$resultMsg.html('인증번호가 일치합니다.');
+			$resultMsg.css('color','green');
+			$('#mailcheck').attr('disabled',true);
+			$('#mail').attr('readonly',true);
+			$('#mail').attr('onFocus', 'this.initialSelect = this.selectedIndex');
+		}else{
+			$resultMsg.html('인증번호가 불일치 합니다. 다시 확인해주세요!.');
+			$resultMsg.css('color','red');
+		}
+	});
+	
 	
 	// 비밀번호 입력 이벤트
 	$('#repw').keyup(function(){
@@ -123,7 +163,7 @@ $(document).ready(function(){
 		var pw = $('#pw').val();
 		var mail = $('#mail').val();
 		var tel = $('#tel').val();
-		var addr = $('#addr').val();
+		var addr = $('#sample6_address') + $('#sample6_detailAddress');
 		var oriname = $('#proimg').val();
 		
 		
@@ -161,7 +201,7 @@ $(document).ready(function(){
 		}
 		
 		
-		$('#frm').attr('action', '/deli/member/joinProc.dlv').submit();
+		$('#pcsfrm').attr('action', '/deli/member/joinProc.dlv').submit();
 	});
 	
 });

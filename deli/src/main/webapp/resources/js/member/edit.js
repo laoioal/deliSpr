@@ -2,13 +2,15 @@ $(document).ready(function(){
 	$('#name, #id, #kakaoid, #tel, #addr, #mail').css('background-color', 'lightgray').prop('readonly', true);
 	// reset 버튼 클릭 이벤트
 	$('#rbtn').click(function(){
-		document.frm.reset();
+		$('#pcsfrm').each(function() {
+			this.reset();
+		});
 		if($('#newpw').css('background-color', 'lightgray').prop('readonly', true)){
 			$('#newpw').css('background-color', 'white').prop('readonly', false);
 			$('#repwmsg').parent().stop().slideUp(500).stop().slideDown(500);
 		}
-		if($('#newpw, #repw, #newmail, #newtel, #newaddr').prop('disabled', true)){
-			$('#newpw, #repw, #newmail, #newtel, #newaddr').prop('disabled', false);
+		if($('#newpw, #repw, #newmail, #newtel, #sample6_address, #sample6_detailAddress').prop('disabled', true)){
+			$('#newpw, #repw, #newmail, #newtel, #sample6_address, #sample6_detailAddress').prop('disabled', false);
 		}
 	});
 	// 홈버튼 클릭이벤트
@@ -34,6 +36,7 @@ $(document).ready(function(){
 		}
 	});
 	
+	// 비밀번호 확인
 	$('#newpw').click(function(){
 		if($('#npwmsg').css('display', 'block')){
 			$('#npwmsg').css('display', 'none');
@@ -43,6 +46,42 @@ $(document).ready(function(){
 		return;
 	});
 
+	// 이메일 인증
+	$('#mcbtn').click(function() {
+		$('#mail_ck').css('display', 'block');
+		$('#mailcheck').attr('disabled', false);
+		const eamil = $('#newmail').val() // 이메일 주소값 얻어오기!
+		console.log('완성된 이메일 : ' + eamil); // 이메일 오는지 확인
+		const checkInput = $('#mailcheck') // 인증번호 입력하는곳 
+		
+		$.ajax({
+			type : 'get',
+			url : '/deli/member/mailCheck?email='+eamil, // GET방식이라 Url 뒤에 email을 뭍힐수있다.
+			success : function (data) {
+				checkInput.attr('disabled',false);
+				code =data;
+				alert('인증번호가 전송되었습니다.')
+			}			
+		}); // end ajax
+	}); // end send eamil
+	
+	// 인증번호 비교
+	// blur -> focus가 벗어나는 경우 발생
+	$('#mailcheck').blur(function () {
+		const inputCode = $(this).val();
+		const $resultMsg = $('#mailcheckmsg');
+		
+		if(inputCode === code){
+			$resultMsg.html('인증번호가 일치합니다.');
+			$resultMsg.css('color','green');
+			$('#mailcheck').attr('disabled',true);
+			$('#mail').attr('readonly',true);
+			$('#mail').attr('onFocus', 'this.initialSelect = this.selectedIndex');
+		}else{
+			$resultMsg.html('인증번호가 불일치 합니다. 다시 확인해주세요!.');
+			$resultMsg.css('color','red');
+		}
+	});
 	
 	// 정규 표현식 검사
 	var telPattern = /^([0-9]{2,3}(-))-?([0-9]{3,4}(-))-?([0-9]{4})$/;
@@ -72,7 +111,7 @@ $(document).ready(function(){
 		}
 	});
 	
-	
+	// 파일 업로드
 	$('#proimg').change(function(e){
 		var sfile = $(this).val();
 		var path = '/deli${DATA.dir}/${DATA.oriname}';
@@ -90,7 +129,8 @@ $(document).ready(function(){
 		var npw = $('#newpw').val();
 		var nmail = $('#newmail').val();
 		var ntel = $('#newtel').val();
-		var naddr = $('#newaddr').val();
+		var naddr = $('#sample6_address')
+		var dti_addr = $('#sample6_detailAddress');
 		var repw = $('#repw').val();
 		var sid = $('#id').val();
 		var sfile = $('#proimg').val();
@@ -111,6 +151,7 @@ $(document).ready(function(){
 			// 메일이 수정 안된경우
 			$('#newmail').prop('disabled', true);
 			$('#newmailmsg').css('display', 'none');
+			$('#mailcheck').prop('disabled', true);
 		}
 		
 		if(!ntel){
@@ -119,10 +160,16 @@ $(document).ready(function(){
 		}
 		
 		if(!naddr){
-			$('#newaddr').prop('disabled', true);
+			$('#sample6_postcode').prop('disabled', true);
+			$('#sample6_address').prop('disabled', true);
+			$('#sample6_detailAddress').prop('disabled', true);
+			$('#sample6_extraAddress').prop('disabled', true);
+		}
+		if(!sfile){
+			$('#proimg').prop('disabled', true);
 		}
 		
-		if(!npw && !nmail && !ntel && !naddr && !sfile){
+		if(!npw && !nmail && !ntel && !naddr && !sfile && !dti_addr){
 			// 수정을 한개도 하지 않는 경우..
 			alert('수정한 내용이 없습니다.');
 			return;
@@ -143,8 +190,8 @@ $(document).ready(function(){
 		}
 
 		// 보낼 주소 설정하고
-		$('#frm').attr('action', '/deli/member/editProc.dlv');
-		$('#frm').submit();
+		$('#pcsfrm').attr('action', '/deli/member/editProc.dlv');
+		$('#pcsfrm').submit();
 	});
 
 });

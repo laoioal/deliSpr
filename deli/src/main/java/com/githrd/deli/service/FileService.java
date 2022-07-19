@@ -1,5 +1,15 @@
 package com.githrd.deli.service;
 
+/**
+ * @author 	박찬슬
+ * @since	2022/06/30
+ * @version v.1.0
+ * 
+ * 			작업이력 ]
+ * 					2022/06/30	- 담당자 : 박찬슬
+ * 									파일 서비스 클래스 제작
+ */
+
 import java.io.File;
 import java.util.*;
 
@@ -80,6 +90,13 @@ public class FileService {
 		}
 		
 		return list;
+	}
+	@Transactional
+	public void se2Upload(FileVO fVO) {
+		if(fVO.getFile() != null) {
+			// 파일정보테이블에 파일정보들 입력하고(반복)
+			ArrayList<FileVO> list = uploadProc(fVO.getFile());
+		}
 	}
 	
 	// 데이터베이스 입력작업 전담 처리함수

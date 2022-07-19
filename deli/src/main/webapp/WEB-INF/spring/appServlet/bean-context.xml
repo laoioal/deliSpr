@@ -20,10 +20,6 @@
 	<bean id = "PlaceDao" class = "com.githrd.deli.dao.PlaceDao"/>
 	<bean id = "CategoryDao" class = "com.githrd.deli.dao.CategoryDao"/>
 	
-	
-	
-	
-	
 	<bean id="ySrvc" class="com.githrd.deli.service.YonghyunService" />
 	
 	<bean id="CalculatorService" class="com.githrd.deli.service.CalculatorService" />

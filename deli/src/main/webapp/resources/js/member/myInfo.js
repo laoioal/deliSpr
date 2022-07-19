@@ -11,12 +11,12 @@ $(document).ready(function(){
 		$('#delmno').val(sno);
 		$('#delid').val(sid);
 		// 보낼주소 수정하고
-		$('#delfrm').attr('action', '/deli/member/delMember.dlv');
+		$('#pcsfrm').attr('action', '/deli/member/delMember.dlv');
 		
 
 		if(confirm('정말 탈퇴합니까?')){
 			// form 태그가 완성이 됐으니 전송한다.
-			$('#delfrm').submit();
+			$('#pcsfrm').submit();
 		}
 	});
 	

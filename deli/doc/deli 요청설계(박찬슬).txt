@@ -88,3 +88,18 @@
 뷰			:	json
 
 --------------------------------------------------------------
+# 이메일인증 처리 요청
+요청내용	: 	/deli/member/mailCheck
+파라미터	:	email
+컨트롤러	: 	com.githrd.deli.controller.PcsController
+처리함수	:	mailCheck()
+뷰			:	json
+--------------------------------------------------------------
+# 글쓰기 처리 요청
+요청내용	:	/deli/member/boardWriteProc.dlv
+파라미터	:	무
+컨트롤러	:	com.githrd.deli.controller.PcsConstroller
+처리함수	: 	boardWriteProc()
+뷰			:	redirect ]
+					성공 : /deli/board/boardForm.dlv
+					실패 : /deli/member/boardWrite.dlv
