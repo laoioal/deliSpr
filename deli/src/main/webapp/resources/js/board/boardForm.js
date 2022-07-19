@@ -132,13 +132,15 @@ $(document).ready(function(){
 			}
 			$(this).parent().find('.inputprice').val(count);
 			o = parseInt($(this).parent().find('.inputprice').val()) * price; // 누적금액
-				$('#abc > div > [name="' + menu + '"]').val(o);
-		
+			$('#abc > div > [name="' + menu + '"]').val(o);
+			
 			var mprice = 0;
 			mprice = $(this).attr('id');
 			subprice = subprice - mprice;
-			return o;
+	//		return o;
 		}
+			var k = $('#abc > div > [name="' + menu + '"]').val();
+			alert(k);
 	});
 
 	$('.pricebtn2').click(function(){
@@ -157,8 +159,10 @@ $(document).ready(function(){
 			var mprice = 0;
 	         mprice = $(this).attr('id');
 	         subprice = subprice - (-mprice);
-			return i;
+//			return i;
 		}
+		var k = $('#abc > div > [name="' + menu + '"]').val();
+		alert(k);
 	});
 
 	$('.fbtn').click(function(){

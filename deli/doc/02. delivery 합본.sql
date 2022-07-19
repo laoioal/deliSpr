@@ -36,7 +36,7 @@ ADD(
 INSERT INTO
     member(mno, name, id, kakaoid, pw, mail, tel, addr)
 VALUES(
-    (SELECT NVL(MAX(mno) + 1, 1001) FROM member), '이용현', 'YHLEE', 'YHLEE12', '12345', 'YH@githrd.com', '010-0000-0000', '서울시 영등포구 신길동'
+    (SELECT NVL(MAX(mno) + 1, 1001) FROM member), '이용현', 'YHLEE', 'YHLEE12', '12345', 'YH@githrd.com', '010-0000-0000', '서울시 영등포구 신풍로 77'
 );
 
 INSERT INTO
@@ -73,6 +73,30 @@ INSERT INTO
     member(mno, name, id, kakaoid, pw, mail, tel, addr)
 VALUES(
     (SELECT NVL(MAX(mno) + 1, 1001) FROM member), '안은비', 'aeb320', '320aeb', '12345', 'dksdmsql320@gmail.com', '010-3232-3232', '서울시 영등포구 신길동'
+);
+
+INSERT INTO
+    member(mno, name, id, kakaoid, pw, mail, tel, addr)
+VALUES(
+    (SELECT NVL(MAX(mno) + 1, 1001) FROM member), '박찬슬', 'pcs', 'pcs', '12345', 'pcs@githrd.com', '010-8784-8874', '서울시 영등포구 신풍로 80'
+);
+
+INSERT INTO
+    member(mno, name, id, kakaoid, pw, mail, tel, addr)
+VALUES(
+    (SELECT NVL(MAX(mno) + 1, 1001) FROM member), '이형준', 'lhj', 'lhj', '12345', 'lhj@githrd.com', '010-8111-5484', '서울시 영등포구 신길로 89'
+);
+
+INSERT INTO
+    member(mno, name, id, kakaoid, pw, mail, tel, addr)
+VALUES(
+    (SELECT NVL(MAX(mno) + 1, 1001) FROM member), '고하늘', 'khn', 'khn', '12345', 'khn@githrd.com', '010-8420-1548', '서울시 영등포구 신풍로 46-1'
+);
+
+INSERT INTO
+    member(mno, name, id, kakaoid, pw, mail, tel, addr)
+VALUES(
+    (SELECT NVL(MAX(mno) + 1, 1001) FROM member), '김수미', 'ksm', 'ksm', '12345', 'ksm@githrd.com', '010-4520-1548', '서울시 영등포구 신풍로 74'
 );
 
 commit;

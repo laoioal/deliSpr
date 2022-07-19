@@ -17,7 +17,7 @@
     <input type="hidden" class="name" value="${data.id}">
 </c:forEach>
 
-<div id="map" style="width:100%;height:350px;"></div>
+<div id="map" style="width:60%;height:350px;"></div>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d6fb471c69858a04f22e5ff56c302f30&libraries=services"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d6fb471c69858a04f22e5ff56c302f30"></script>
 <script>
@@ -66,12 +66,12 @@
 				});
 				infowindow.open(map, marker);
 				// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-				map.setCenter(coords);
+//				map.setCenter(coords);
 			}
 		});
 		setTimeout(() => {
 		resolve(cen);
-		}, 2000);
+		}, 200);
 	});
 
 
@@ -92,7 +92,7 @@
 		}
 		setTimeout(() => {
 		resolve(markers);
-		}, 2000);
+		}, 200);
 	});
 	
 
@@ -132,13 +132,14 @@
 					
 			var dist = line.getLength();
 			if(dist <= radius) {
-				var marker = new kakao.maps.Marker({
-					position: markers[i].addr
-				});
+//				var marker = new kakao.maps.Marker({
+//					position: markers[i].addr
+//				});
 
 				var marker = new kakao.maps.Marker({
 					map: map,
-					position: markers[i].addr
+					position: markers[i].addr,
+					clickable: true
 				});
 							
 				var infowindow = new kakao.maps.InfoWindow({
@@ -150,6 +151,7 @@
 				infowindow.open(map, marker);
 			}
 		}
+		map.setCenter(cen);
 	}
 
 	mainAddr.then(cen => {

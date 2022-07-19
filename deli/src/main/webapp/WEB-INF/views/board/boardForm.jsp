@@ -115,21 +115,22 @@
 			</div>
 		</div>
 
-	<c:if test="${not empty PAY}">
+<c:if test="${not empty PAY}">
 		<form method="POST" action="/deli/payment/beforePay.dlv" id="payfrm" name="payfrm">
-		<div class="w3-col w3-border w3-margin-top w3-left w3-padding" id="abc">
-<c:forEach var="remenu" items="${MENU}">
-		<div class="w3-col menuinputfrm">
-			<div class="w3-col m4 w3-right-align">${remenu.mname} : &nbsp;&nbsp;</div>
-			<input class="w3-col m5 w3-center valueck" type="text" name="${remenu.mname}" disabled>
-		</div>	
-</c:forEach>
-		</div>
+			<div class="w3-col w3-border w3-margin-top w3-left w3-padding" id="abc">
+	<c:forEach var="remenu" items="${MENU}">
+				<div class="w3-col menuinputfrm">
+					<div class="w3-col m4 w3-right-align">${remenu.mname} : &nbsp;&nbsp;</div>
+					<input class="w3-col m5 w3-center valueck" type="text" name="${remenu.mname}" disabled>
+					<%-- <input class="w3-col m5 w3-center valueck" type="text" id="${remenu.mname}" disabled> --%>
+				</div>	
+	</c:forEach>
+			</div>
 		</form>
 		<div class="w3-col">
 		</div>
 		<div class="w3-col w3-button w3-border w3-margin-top" id="paybtn">결제하기</div>
-	</c:if>
+</c:if>
 
 </c:if>		
 <c:if test="${MAIN.endalert < 0}">
