@@ -19,8 +19,7 @@ import com.githrd.deli.vo.categoryVO;
 import com.githrd.deli.vo.placeVO;
 import com.githrd.deli.vo.restaurantVO;
 /*
- * 이 클래스는 회원이 선택한 내용을 토대로 순차적으로 전달해주는 클래스
- *  
+ * 이 클래스는 지도에 표시될 장소를 관리하는 컨트롤러???
  *  작성자 : 고하늘
  * */
 @Controller
@@ -40,7 +39,6 @@ public class PlaceController {
 	public String chooseCategory(Model model, @Param("name")String name) {
 		List<categoryVO> category = categorydao.selectList();		
 		placeVO place = placedao.selectOne(name);
-		System.out.println(name);
 		model.addAttribute("place", place);
 		model.addAttribute("category",category);
 		return "/search/2.SelectPlace/chooseMenuCategory";
