@@ -56,8 +56,7 @@ $(document).ready(function(){
 				    }
 	        	}).done(function(data) {
 	        		console.log(data);
-				if (rsp.paid_amount == data) {
-					
+				if (data.result == "y") {
 					let payVo = { 
 						m_email: m_email, rno : rno, s_id: s_id, ono: rsp.merchant_uid,
 						oprice: rsp.paid_amount, ompirce : omprice, paym: rsp.pay_method,
@@ -71,6 +70,10 @@ $(document).ready(function(){
 						dataType : "json",
 						success : function(result){
 							if(result.result == "y") {
+								alert(data.imp_uid);
+								$('#imp_uid').val(data.imp_uid);
+								$('#token').val(data.token);
+								$('#merchant_uid').val(data.merchant_uid);
 								$('#pageFrm').attr('action','/deli/payment/afterPay.dlv');
 								$('#pageFrm').submit();
 							}else{ 
@@ -84,8 +87,30 @@ $(document).ready(function(){
 						}
 					});
 				} else {
-					var msg = '결제에 실패하였습니다.';
-					msg += '에러내용 : ' + rsp.error_msg;
+					alert('결제에 오류가 발생했습니다. 환불 절차를 시작합니다.');
+					$.ajax({
+						url : "/deli/payment/canclePay.dlv",
+						type : "post",
+						data : {
+				        		"imp_uid" : rsp.imp_uid,
+							    "merchant_uid" : rsp.merchant_uid,
+							    "amount" : rsp.paid_amount
+					    },
+						dataType : "json",
+						success : function(cnt){
+							console.log(rsp);
+							if(cnt == 1) {
+								alert('환불 처리가 완료되었습니다. 메인 화면으로 이동합니다.');
+								$(location).attr('href','/deli/main.dlv');
+							}else{ 
+								alert("환불실패");
+							}
+						},
+						error : function(){
+							alert('### 통신 실패 ###');
+							return "/deli/payment/beforPay.dlv";
+						}
+					});
 				}
 			});
 		});
@@ -95,5 +120,32 @@ $(document).ready(function(){
 		$(location).attr('href','/deli/');
 	});
 	
+	$('#rfbtn').click(function() {
+		let token = $('#token').val();
+		let merchant_uid = $('#merchant_uid').val();
+		let imp_uid = $('#imp_uid').val();
+		$.ajax({
+			url : "/deli/payment/canClePay.dlv",
+			type : "post",
+			data : {
+				    "merchant_uid" : merchant_uid,
+				    "token" : token,
+				    "imp_uid" : imp_uid
+		    },
+			dataType : "json",
+			success : function(cnt){
+				if(cnt == 1) {
+					alert('환불 처리가 완료되었습니다. 메인 화면으로 이동합니다.');
+					$(location).attr('href','/deli/main.dlv');
+				}else{ 
+					alert("환불실패");
+				}
+			},
+			error : function(){
+				alert('### 통신 실패 ###');
+				return "/deli/payment/afterPay.dlv";
+			}
+		});
+	})
 	
 });

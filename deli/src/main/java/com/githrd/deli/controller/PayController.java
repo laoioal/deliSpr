@@ -24,7 +24,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.githrd.deli.dao.PayDao;
 import com.githrd.deli.dao.YonghyunDao;
-import com.githrd.deli.service.ImportPay;
 import com.githrd.deli.service.PayService;
 import com.githrd.deli.service.PaymentCheck;
 import com.githrd.deli.vo.MembVO;
@@ -47,8 +46,6 @@ public class PayController {
 	@Autowired
 	PayService paSrvc;
 
-	@Autowired
-	ImportPay ipay;
 	
 	public IamportClient api;
 	
@@ -56,7 +53,7 @@ public class PayController {
 	@RequestMapping("payPay.dlv")
 	public ModelAndView payPay(ModelAndView mv, HttpServletRequest req) {
 		String pay = req.getParameter("짜장면");
-		System.out.println(pay);
+		
 		return mv;
 	}
 	
@@ -72,8 +69,7 @@ public class PayController {
 		int mtprice = Integer.parseInt(mmprice);
 		
 		paVO.setAmname(mname);
-		paVO.setMyprice(mtprice);
-		
+		paVO.setMyprice(mtprice);		
 		
 		int cnt = paDao.abnoCnt(paVO.getBno());
 			
@@ -106,25 +102,53 @@ public class PayController {
 	
 	@RequestMapping("complete.dlv")
 	@ResponseBody
-	public int paymentComplete(@RequestParam("imp_uid")String imp_uid, String merchant_uid) {
+	public Map paymentComplete(@RequestParam("imp_uid")String imp_uid, String merchant_uid) {
 		String token = paSrvc.getImportToken();
-		
-		// int cancelPay = paSrvc.cancelPayment(token, merchant_uid);
-		
-		String smount = paSrvc.getAmount(token, merchant_uid);
-		int amount = Integer.parseInt(smount);
-		paSrvc.setHackCheck(smount, merchant_uid, token);
-		System.out.println(imp_uid);
-		return amount;
+		Map result = new HashMap<String, String>();
+		result.put("token", token);
+		result.put("imp_uid", imp_uid);
+		result.put("merchant_uid", merchant_uid);
+		try {
+			String smount = paSrvc.getAmount(token, merchant_uid);
+			paSrvc.setHackCheck(smount, merchant_uid, token);
+			result.put("result", "y");
+			// paSrvc.cancelPayment(token, imp_uid);
+		} catch (Exception e) {
+			e.printStackTrace();
+			result.put("result", "n");
+		}
+		// System.out.println("token : " + token);
+		return result;
 	}
 	
+	@RequestMapping("canclePay.dlv")
+	@ResponseBody
+	public int canclePay(@RequestParam("imp_uid")String imp_uid, String merchant_uid) {
+		String token = paSrvc.getImportToken();
+		// System.out.println("token : " + token);
+		int cnt = paSrvc.cancelPayment(token, merchant_uid);
+		return cnt;
+		
+	}
+	
+	@RequestMapping("canClePay.dlv")
+	@ResponseBody
+	public int canClePay(@RequestParam("imp_uid")String imp_uid, String merchant_uid, String token) {
+		// String token = paSrvc.getImportToken();
+		// System.out.println("token : " + token);
+		int cnt = paSrvc.cancelPayment(token, merchant_uid);
+		String ono = merchant_uid;
+		paSrvc.delAllM(ono);
+		
+		return cnt;
+		
+	}
+
 	@RequestMapping("payProc.dlv")
 	@ResponseBody
 	public Map payProc(HttpSession session, PayVO paVO, YonghyunVO yVO) {
 		
 		Map result = new HashMap<String, String>();
-		
-		System.out.println(paVO);
 		
 		try {
 			paSrvc.insertAllM(paVO);
@@ -139,12 +163,14 @@ public class PayController {
 	public ModelAndView afterPay(ModelAndView mv, HttpSession session, PayVO paVO, YonghyunVO yVO, HttpServletRequest req) {
 		String sid = (String) session.getAttribute("SID");
 		paVO = paDao.selPays(paVO);
-		String amname = (String) req.getParameter("mymenu");
-		String mmprice = (String)req.getParameter("amount");
+		String amname = (String) req.getParameter("mname1");
+		String mmprice = (String)req.getParameter("price1");
+		String imp_uid = (String)req.getParameter("imp_uid");
+		String merchant_uid = (String)req.getParameter("merchant_uid");
+		String token = (String)req.getParameter("token");
 		String rq = (String)req.getParameter("rq");
-		
+		// System.out.println(token);
 		int mtprice = Integer.parseInt(mmprice);
-		System.out.println("paVO" + paVO);
 		
 		paVO.setAmname(amname);
 		paVO.setMyprice(mtprice);
@@ -166,12 +192,15 @@ public class PayController {
 		mv.addObject("MENU", mVO);
 		mv.addObject("MEMBER", kVO);
 		mv.addObject("DLP", delpay);
+		mv.addObject("UID", imp_uid);
+		mv.addObject("MUID", merchant_uid);
+		mv.addObject("TK", token);
 		
 		mv.setViewName("payment/afterPay");
 		
 		return mv;
 	}
-	
+	/*
 	@ResponseBody
 	@RequestMapping(value="/verifyIamport/{imp_uid}")
 	public IamportResponse<Payment> paymentByImpUid(
@@ -182,4 +211,5 @@ public class PayController {
 			this.api = new IamportClient("5781100875728352", "fa6925fe5a8c23bc192ea5840d57ebc7b71168fedaf51c45f0d6aaae3a5798b229699e7e7692d485");
 			return api.paymentByImpUid(imp_uid);
 	}
+	*/
 }

@@ -70,6 +70,21 @@ public class PayDao {
 	public int abnoCnt(int abno) {
 		return sqlSession.selectOne("paSQL.selAbnoCnt", abno);
 	}
+	
+	//	ODT isshow N 처리 함수
+	public int delOdt(String ono) {
+		return sqlSession.update("paSQL.delOdt", ono);
+	}
+	
+	//	ODL isshow N 처리 함수
+	public int delOdl(String ono) {
+		return sqlSession.update("paSQL.delOdl", ono);
+	}
+	
+	//	ODM isshow N 처리 함수
+	public int delOdm(String ono) {
+		return sqlSession.update("paSQL.delOdm", ono);
+	}
 }
 
 

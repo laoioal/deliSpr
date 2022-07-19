@@ -7,6 +7,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Map.Entry;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
@@ -37,6 +39,8 @@ public class PayService {
 	@Autowired
 	PayDao paDao;
 	
+	@Autowired
+	PayService paSrvc;
 	
 	
 	public static final String IMPORT_TOKEN_URL = "https://api.iamport.kr/users/getToken";
@@ -84,12 +88,39 @@ public class PayService {
 		System.out.println("paramList : "+ token);
 		return token;
 	}
-
+	
+	// 결제취소
+	public int cancelPayment(String token, String merchant_uid) {
+		HttpClient client = HttpClientBuilder.create().build();
+		HttpPost post = new HttpPost(IMPORT_CANCEL_URL);
+		Map<String, String> map = new HashMap<String, String>();
+		post.setHeader("Authorization", token);
+		map.put("merchant_uid", merchant_uid);
+		String asd = "";
+		try {
+			post.setEntity(new UrlEncodedFormEntity(convertParameter(map)));
+			HttpResponse res = client.execute(post);
+			ObjectMapper mapper = new ObjectMapper();
+			String enty = EntityUtils.toString(res.getEntity());
+			JsonNode rootNode = mapper.readTree(enty);
+			asd = rootNode.get("response").asText();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		if (asd.equals("null")) {
+			System.err.println("환불실패");
+			return -1;
+		} else {
+			System.err.println("환불성공");
+			return 1;
+		}
+	}
+	
     // 아임포트 결제정보를 조회해서 결제금액을 뽑아주는 함수
-	public String getAmount(String token, String imp_uid) {
+	public String getAmount(String token, String merchant_uid) {
 		String amount = "";
 		HttpClient client = HttpClientBuilder.create().build();
-		HttpGet get = new HttpGet(IMPORT_PAYMENTINFO_URL + imp_uid + "/paid");
+		HttpGet get = new HttpGet(IMPORT_PAYMENTINFO_URL + merchant_uid + "/paid");
 		get.setHeader("Authorization", token);
 
 		try {
@@ -107,13 +138,13 @@ public class PayService {
 	}
 	
     // 아임포트 결제금액 변조를 방지하는 함수
-	public void setHackCheck(String amount,String imp_uid,String token) {
+	public void setHackCheck(String amount,String merchant_uid,String token) {
 		HttpClient client = HttpClientBuilder.create().build();
 		HttpPost post = new HttpPost(IMPORT_PREPARE_URL);
 		Map<String,String> m  = new HashMap<String,String>();
 		post.setHeader("Authorization", token);
 		m.put("amount", amount);
-		m.put("merchant_uid", imp_uid);
+		m.put("merchant_uid", merchant_uid);
 		try {
 			post.setEntity(new UrlEncodedFormEntity(convertParameter(m)));
 			HttpResponse res = client.execute(post);
@@ -136,31 +167,11 @@ public class PayService {
 		
 	}
 	
-	// 결제취소
-	public int cancelPayment(String token, String imp_uid) {
-		HttpClient client = HttpClientBuilder.create().build();
-		HttpPost post = new HttpPost(IMPORT_CANCEL_URL);
-		Map<String, String> map = new HashMap<String, String>();
-		post.setHeader("Authorization", token);
-		map.put("merchant_uid", imp_uid);
-		String asd = "";
-		try {
-			post.setEntity(new UrlEncodedFormEntity(convertParameter(map)));
-			HttpResponse res = client.execute(post);
-			ObjectMapper mapper = new ObjectMapper();
-			String enty = EntityUtils.toString(res.getEntity());
-			JsonNode rootNode = mapper.readTree(enty);
-			asd = rootNode.get("response").asText();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		if (asd.equals("null")) {
-			System.err.println("환불실패");
-			return -1;
-		} else {
-			System.err.println("환불성공");
-			return 1;
-		}
+	@Transactional
+	public void delAllM(String ono) {
+		paDao.delOdt(ono);
+		paDao.delOdl(ono);
+		paDao.delOdm(ono);
 	}
 	
 	@PostMapping("/confirmPay")

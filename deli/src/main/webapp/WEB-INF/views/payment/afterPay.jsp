@@ -32,8 +32,11 @@
 <body>
 	<div class="mxw700 w3-content w3-center">
 		<form method="POST" action="/deli/payment/InsertInfo.dlv" id="frm" name="frm">
-			<input type="hidden" id="ono" name="ono" value="${DATA.ono}">
-			<input type="hidden" id="tel" name="tel" value="${DATA.tel}">
+			<input type="hidden" id="ono" name="ono" value="${MUID}">
+			<input type="hidden" id="tel" name="tel" value="${MPO.tel}">
+			<input type="hidden" id="token" name="token" value="${TK}">
+			<input type="hidden" id="imp_uid" name="imp_uid" value="${UID}">
+			<input type="hidden" id="merchant_uid" name="merchant_uid" value="${MUID}">
 		<h1 class="w3-teal w3-padding" style="margin-bottom: 5px;">Delivery Project</h1>
 		<div class="w3-col w3-light-grey">
 			<div class="w3-col w3-border-bottom mgl10" align="left">
@@ -74,14 +77,15 @@
 			<div class="w3-col w3-border-bottom" align="left" >	
 				<h4 class="mgl10">${SID}님이 지불하신 배달비  : <span>${DLP}</span></h4>
 				<h4 class="mgl10">${SID}님이 지불하신 금액  : <span>${PO.mtprice}</span></h4>
-<c:forEach var="data" items="${MENU}" varStatus="status"  >
+<c:forEach var="data" items="${MENU}" varStatus="status" >
 <c:set var="memb" value="${MEMBER[status.index]}" />				
 </c:forEach>
 			</div>
 		</div>
 		</form>
 		<div class="w3-col w3-margin-top w3-card-4 w3-center" >
-			<div class="w3-col w3-button w3-deep-orange" id="cbtn">돌아가기</div>
+			<div class="w3-half w3-button w3-deep-orange" id="rfbtn">환불하기</div>
+			<div class="w3-half w3-button w3-green" id="cbtn">돌아가기</div>
 		</div>
 		</div>
 	

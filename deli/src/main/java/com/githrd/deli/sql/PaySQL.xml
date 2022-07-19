@@ -140,4 +140,31 @@
 		    AND abno = #{bno}
 	</select>
 	
+	<update id="delOdt" parameterType="String">
+		UPDATE 
+			ordertask
+		SET
+			isshow = 'N'
+		WHERE
+			ono = #{ono}
+	</update>
+	
+	<update id="delOdl" parameterType="String">
+		UPDATE 
+			orderlist
+		SET
+			isshow = 'N'
+		WHERE
+			ono = #{ono}
+	</update>
+	
+	<update id="delOdm" parameterType="String">
+		UPDATE 
+			ordermenu
+		SET
+			isshow = 'N'
+		WHERE
+			ono = #{ono}
+	</update>
+	
 </mapper>

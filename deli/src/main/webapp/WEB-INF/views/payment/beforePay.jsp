@@ -36,8 +36,8 @@ $(document).ready(function(){
 	<div class="mxw700 w3-content w3-center">
 		<form method="POST" action="/deli/payment/afterPay.dlv" id="pageFrm" name="pageFrm">
 			<input type="hidden" name="bno" id="bno" value="${PO.bno}">
-			<input type="hidden" name="1mname" id="1mname" value="${PO.amname}">
-			<input type="hidden" name="1price" id="1price" value="${PO.myprice}">
+			<input type="hidden" name="mname1" id="mname1" value="${PO.amname}">
+			<input type="hidden" name="price1" id="price1" value="${PO.myprice}">
 			<input type="hidden" id="tel" name="tel" value="${MPO.tel}">
 			<input type="hidden" id="mail" name="mail" value="${MPO.mail}">
 			<input type="hidden" id="name" name="name" value="${MPO.name}">
@@ -47,6 +47,11 @@ $(document).ready(function(){
 			<input type="hidden" id="mymenu" name="mymenu" value="${PO.amname}">
 			<input type="hidden" id="amount" name="amount" value="${PO.mtprice}">
 			<input type="hidden" id="restno" name="restno" value="${PO.restno}">
+			<input type="hidden" id="minPrice" name="minPrice" value="${PO.minprice}">
+			<input type="hidden" id="Aprice" name="Aprice" value="${APRICE}">
+			<input type="hidden" id="token" name="token" >
+			<input type="hidden" id="imp_uid" name="imp_uid" >
+			<input type="hidden" id="merchant_uid" name="merchant_uid" >
 		<h1 class="w3-teal w3-padding" style="margin-bottom: 5px;">Delivery Project</h1>
 		<div class="w3-col w3-light-grey">
 			<div class="w3-col w3-border-bottom " align="left">
@@ -76,10 +81,13 @@ $(document).ready(function(){
 			<h4 class="mgl10">${SID} 님 금 액 : <span>${PO.myprice}</span></h4><br>
 <c:forEach var="data" items="${MENU}" varStatus="status"  >
 <c:set var="memb" value="${MEMBER[status.index]}" />
-<c:if test="${SID ne memb.aid && memb.aid != null}">		
+<c:if test="${SID ne memb.aid && memb.aid != null}">
 				<h4 class="mgl10">${memb.aid} 님 금 액 : <span>${data.mprice}</span></h4><br>
 </c:if>
 </c:forEach>
+			</div>
+			<div class="w3-col w3-border-bottom" align="left" >	
+				<h4 class="mgl10">최소주문 금액 : ${PO.minprice}</h4>
 			</div>
 			<div class="w3-col w3-border-bottom" align="left" >	
 				<h4 class="mgl10">${SID}님이 지불하실 배달비  : <span>${DLP}</span></h4>
@@ -88,11 +96,30 @@ $(document).ready(function(){
 		</div>
 		</form>
 		<div class="w3-col w3-margin-top w3-card-4 w3-center" >
+		<c:if test="${PO.minprice+0 <= APRICE+0}">
 			<div class="w3-half w3-button w3-green" id="pbtn">결제</div>
 			<div class="w3-half w3-button w3-deep-orange" id="cbtn">취소</div>
+		</c:if>
+		<c:if test="${PO.minprice+0 > APRICE+0}">
+			<div class="w3-col" id="backbtn">최소주문금액에 도달하지 못했습니다.</div>
+			<div class="w3-half w3-button w3-green" id="pbtn">결제</div>
+			<div class="w3-half w3-button w3-deep-orange" id="cbtn">취소</div>
+		</c:if>
 		</div>
 		</div>
 		
-		
+<div class="w3-container" >
+	<div id="id01" class="w3-modal">
+	  <div class="w3-modal-content">
+	    <header class="w3-container w3-teal"> 
+	      <span onclick="document.getElementById('id01').style.display='none'" 
+	      class="w3-button w3-display-topright">&times;</span>
+	      <h2>Delivery Project</h2>
+	    </header>
+	    <div class="w3-container" id="id02">
+	    </div>
+	  </div>
+	</div>
+</div>
 </body>
 </html>
