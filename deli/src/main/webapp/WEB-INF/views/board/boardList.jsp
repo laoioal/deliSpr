@@ -150,7 +150,7 @@
 				<input type="hidden" name="nowPage" id="nowPage" value="${PAGE.nowPage}">
 				<input type="hidden" name="city" id="city" value="${param.city}">
 				<input type="hidden" name="search" id="search" value="${param.search}">
-				<input type="hidden" name="check" id="check" value="${param.check}">
+				<%-- <input type="hidden" name="check" id="check" value="${param.check}"> --%>
 				<input type="hidden" name="ccheck" id="ccheck" value="${param.ccheck}">
 				<input type="hidden" name="bno" id="bno">
 				<button id="searchbtn">검색</button>
