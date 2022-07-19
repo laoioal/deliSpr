@@ -1,9 +1,12 @@
 #faq {
-	margin-top:200px;
-	margin-left:400px;
+	margin-top:50px;
+	margin-left:28%;
+}
+h1{
+	margin-left:18%;
+	margin-bottom:5%;
 }
 #title {
-	margin-left:31px;
 	width: 500px;
 	height: 40px;
 	font-size: 20px;
@@ -11,20 +14,26 @@
 }
 
 #content {
-	margin-left:31px;
+
 	width: 500px;
 	height: 300px;   
 	font-size: 20px;
 }
 
 .faqInsert{
-	margin-left:5px;
 	font-size:30px;
 }
-#btn{
+.btn{
 	margin-top:20px;
-	margin-left:300px;
+	margin-left:21%;
 	width:80px;
 	height:30px;
 	font-size:15px;
+	
+}
+#btn2{
+	position: absolute;	
+	margin-top:-30px;
+	margin-left:360px;
+	float: left;
 }
