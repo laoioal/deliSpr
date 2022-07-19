@@ -36,9 +36,9 @@ $(document).ready(function() {
 	});
 	
 	$('#idbtn').click(function() {
-		var smail = $('#fmail').val();
+		var smail = $('#mail').val();
 		if(!smail) {
-			$('#fmail').focus();
+			$('#mail').focus();
 			alert('이메일을 입력해주세요.');
 			return;
 		}
@@ -46,20 +46,20 @@ $(document).ready(function() {
 	});
 	
 	$('#pwbtn').click(function() {
-		var smail = $('#fmail').val();
-		var sid = $('#fid').val();
-		const randomPassword = Math.random().toString(36).slice(2);
+		var smail = $('#mail').val();
+		var sid = $('#id').val();
+		const randomPw = Math.random().toString(36).slice(2);
 		if(!sid) {
-			$('#fid').focus();
+			$('#id').focus();
 			alert('아이디를 입력해주세요.');
 			return;
 		}
 		if(!smail) {
-			$('#fmail').focus();
+			$('#mail').focus();
 			alert('이메일을 입력해주세요.');
 			return;
 		}
-		$('#randomPw').val(randomPassword);
+		$('#npw').val(randomPw);
 		
 		$('#frm').submit();
 	});

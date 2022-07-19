@@ -52,17 +52,17 @@
     	</div>
     	<div class="w3-container w3-white w3-padding-16 mgt20">
       		<form method="POST" action="/deli/find/pwFindResult.dlv" name="frm" id="frm">
-      			<input type="hidden" name="randomPw" id="randomPw">
+      			<input type="hidden" name="npw" id="npw">
         		<div class="w3-row-padding" style="margin:0 -16px;">
         			<div class="w3-margin-bottom">
             			<label class="inblock" style="width: 20%; text-align: right;">ID : </label>
             			<input class="inblock w3-input w3-border w3-round-large w3-light-grey" style="width: 70%; text-align: left;"
-            					type="text" placeholder="아이디를 입력해주세요." name="fid" id="fid">
+            					type="text" placeholder="아이디를 입력해주세요." name="id" id="id">
           			</div>
           			<div class="w3-margin-bottom pb20">
             			<label class="inblock" style="width: 20%; text-align: right;">E-Mail : </label>
             			<input class="inblock w3-input w3-border w3-round-large w3-light-grey" style="width: 70%; text-align: left;"
-            					type="text" placeholder="회원가입에 사용한 이메일을 입력해주세요." name="fmail" id="fmail">
+            					type="text" placeholder="회원가입에 사용한 이메일을 입력해주세요." name="mail" id="mail">
           			</div>
         		</div>
       		</form>

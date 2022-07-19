@@ -10,7 +10,8 @@
 # 아이디 찾기 결과 페이지 보기 요청
 요청내용	:	/deli/find/idFindResult.dlv
 파라미터	:	mail
-컨트롤러	:	com.githrd.deli.controller.eunbee.IdFindResult
+컨트롤러	:	com.githrd.deli.controller.EbFind
+처리함수	:	idFindResult()
 뷰			:	/WEB-INF/views/find/idFindResult.jsp
 기타		: 	로그인 된 경우 ]
 					redirect : /deli/main.dlv
@@ -18,15 +19,17 @@
 # 비밀번호 찾기 페이지 보기 요청
 요청내용	:	/deli/find/pwFind.dlv
 파라미터	:	무
-컨트롤러	:	com.githrd.deli.controller.eunbee.PwFind
+컨트롤러	:	com.githrd.deli.controller.EbFind
+처리함수	:	pwFind()
 뷰			:	/WEB-INF/views/find/pwFind.jsp
 기타		: 	로그인 된 경우 ]
 					redirect : /deli/main.dlv
 ----------------------------------------------------------------------------------
-# 비밀번호 찾기 페이지 보기 요청
+# 비밀번호 찾기 결과 페이지 보기 요청
 요청내용	:	/deli/find/pwFindResult.dlv
 파라미터	:	id, mail
-컨트롤러	:	com.githrd.deli.controller.eunbee.PwFindResult
+컨트롤러	:	com.githrd.deli.controller.EbFind
+처리함수	:	pwFindResult()
 뷰			:	/WEB-INF/views/find/pwFindResult.jsp
 기타		: 	로그인 된 경우 ]
 					redirect : /deli/main.dlv
@@ -34,7 +37,8 @@
 # 후기 작성 대기 리스트 보기 요청
 요청내용	:	/deli/review/rvList.dlv
 파라미터	:	무
-컨트롤러	:	com.githrd.deli.controller.eunbee.RvList
+컨트롤러	:	com.githrd.deli.controller.EbEsti
+처리함수	:	rvList()
 뷰			:	/WEB-INF/views/review/rvList.jsp
 기타		: 	로그인 안 된 경우 ]
 					redirect : /deli/member/login.dlv
@@ -42,7 +46,8 @@
 # 후기 작성 페이지 보기 요청
 요청내용	:	/deli/review/rvWrite.dlv
 파라미터	:	무
-컨트롤러	:	com.githrd.deli.controller.eunbee.RvWrite
+컨트롤러	:	com.githrd.deli.controller.EbEsti
+처리함수	:	rvWrite()
 뷰			:	/WEB-INF/views/review/rvWrite.jsp
 기타		: 	로그인 안 된 경우 ]
 					redirect : /deli/member/login.dlv

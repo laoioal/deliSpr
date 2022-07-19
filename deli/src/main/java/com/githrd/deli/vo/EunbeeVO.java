@@ -6,7 +6,7 @@ import java.text.SimpleDateFormat;
 public class EunbeeVO {
 	private int bno, ano, cpts;
 	private double esti, point, spts;
-	private String id, idb, mail, pw, dir, savename, title, sdate, show, eshow;
+	private String id, idb, mail, pw, npw, dir, savename, title, sdate, show, eshow;
 	private Date wdate;
 	
 	public int getBno() {
@@ -73,6 +73,14 @@ public class EunbeeVO {
 		this.pw = pw;
 	}
 	
+	public String getNpw() {
+		return npw;
+	}
+
+	public void setNpw(String npw) {
+		this.npw = npw;
+	}
+
 	public String getDir() {
 		return dir;
 	}
@@ -153,9 +161,9 @@ public class EunbeeVO {
 	@Override
 	public String toString() {
 		return "EunbeeVO [bno=" + bno + ", ano=" + ano + ", cpts=" + cpts + ", esti=" + esti + ", point=" + point
-				+ ", spts=" + spts + ", id=" + id + ", idb=" + idb + ", mail=" + mail + ", pw=" + pw + ", dir=" + dir
-				+ ", savename=" + savename + ", title=" + title + ", sdate=" + sdate + ", show=" + show + ", eshow="
-				+ eshow + ", wdate=" + wdate + "]";
+				+ ", spts=" + spts + ", id=" + id + ", idb=" + idb + ", mail=" + mail + ", pw=" + pw + ", npw=" + npw
+				+ ", dir=" + dir + ", savename=" + savename + ", title=" + title + ", sdate=" + sdate + ", show=" + show
+				+ ", eshow=" + eshow + ", wdate=" + wdate + "]";
 	}
 
 

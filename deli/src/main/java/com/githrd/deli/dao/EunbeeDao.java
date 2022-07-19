@@ -3,6 +3,8 @@ package com.githrd.deli.dao;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.githrd.deli.vo.EunbeeVO;
+
 /**
  * 이 클래스는 데이터베이스 작업을 전담해서 처리하는 클래스
  * @author	안은비
@@ -28,5 +30,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class EunbeeDao {
 	@Autowired
 	SqlSessionTemplate sqlSession;
+	
+	public String getId(String mail) {
+		return sqlSession.selectOne("eSQL.selId", mail);
+	}
+	
+	public String getMail(EunbeeVO eVO) {
+		return sqlSession.selectOne("eSQL.selMail", eVO);
+	}
+	
+	public int editPw(EunbeeVO eVO) {
+		return sqlSession.update("eSQL.upPw", eVO);
+	}
 
 }

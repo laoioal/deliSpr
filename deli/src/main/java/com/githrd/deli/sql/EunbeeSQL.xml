@@ -10,6 +10,27 @@
 		    member
 		WHERE
 		    isshow = 'Y'
-		    AND mail = #{fmail}
+		    AND mail = #{mail}
 	</select>
+	
+	<select id="selMail" resultType="string" parameterType="eVO">
+		SELECT
+		    mail
+		FROM
+		    member
+		WHERE
+		    isshow = 'Y'
+		    AND id = #{id}
+		    AND mail = #{mail}
+	</select>
+	
+	<update id="upPw" parameterType="eVO">
+		UPDATE
+			member
+		SET
+			pw = #{npw}
+		WHERE
+			isshow = 'Y'
+			AND id = #{id}
+	</update>
 </mapper>
