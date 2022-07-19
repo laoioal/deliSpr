@@ -75,7 +75,9 @@ public class FaqController {
 		model.addAttribute("admin", admin);
 		}
 		//그렇지 않으면 admin 객체는 전달하지 않게 되면서 로그아웃
-		
+		else {
+			admin = null;
+		}
 		return faqService.findViewPage(uri);
 	}
 	
