@@ -453,4 +453,15 @@
 		    substr(addr, 1, instr(addr,' ', 1, 2)) LIKE #{marea} || '%'
 		    AND id != #{id}
 	</select>
+	
+	<!-- mno 불러오기 -->
+	<select id="getMno" resultType="int" parameterType="yVO">
+		SELECT
+		    mno
+		FROM
+		    member
+		WHERE
+		    id = #{id}
+	</select>
+	
 </mapper>

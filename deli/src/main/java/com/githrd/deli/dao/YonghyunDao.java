@@ -160,4 +160,9 @@ public class YonghyunDao {
 		return sqlSession.selectList("ySQL.arrFriend", yVO);
 	}
 	
+	// mno 불러오기 함수
+	public int getMno(YonghyunVO yVO) {
+		return sqlSession.selectOne("ySQL.getMno", yVO);
+	}
+	
 }

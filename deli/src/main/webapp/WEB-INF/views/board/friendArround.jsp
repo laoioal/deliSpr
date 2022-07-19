@@ -141,14 +141,42 @@
 					position: markers[i].addr,
 					clickable: true
 				});
+				
+				
+				
+				
 							
 				var infowindow = new kakao.maps.InfoWindow({
 					content: '<div style="width:150px;text-align:center;padding:6px 0;" class="fr">' + markers[i].na + '</div>'
 				}); 
+				
+				daum.maps.event.addListener(marker, 'click', function(){
+					if(confirm(markers[i].na + '님께 친구 신청을 하시겠습니까?')){
+						$.ajax({
+							url: '/deli/board/friend.dlv',
+							type: 'POST',
+							dataType: 'json',
+							data: {id:markers[i].na},
+							success: function(data){
+								if(data.result == 'OK'){
+									alert('친구 신청 처리 되었습니다.');
+								} else if(data.result == 'AL') {
+									alert('이미 친구 신청 요청되었습니다.');
+								} else {
+									alert('친구 신청 요청이 처리되지 않았습니다.');
+								}
+							},
+							error: function(){
+								alert('접속 에러');
+							}
+						})
+					}
+				});
+				
 				kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
 				kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
 				     
-				infowindow.open(map, marker);
+//				infowindow.open(map, marker);
 			}
 		}
 		map.setCenter(cen);
@@ -157,7 +185,9 @@
 	mainAddr.then(cen => {
 		cir(cen);
 	});
+	
 
+	
 	//인포윈도우를 표시하는 클로저를 만드는 함수입니다 
 	function makeOverListener(map, marker, infowindow) {
 	    return function() {
@@ -173,12 +203,13 @@
 	    
 	}
 	
-	    function zoomIn() {
-	        map.setLevel(map.getLevel() - 1);
-	    }
+    function zoomIn() {
+        map.setLevel(map.getLevel() - 1);
+    }
 	function zoomOut() {
 	    map.setLevel(map.getLevel() + 1);
 	}
+	
 
 
 </script>

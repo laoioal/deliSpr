@@ -153,11 +153,23 @@ public class YonghyunController {
 	@RequestMapping("/friend.dlv")
 	@ResponseBody
 	public String upFriend(YonghyunVO yVO, HttpSession session) {
+		if(yVO.getMno() == 0) {
+			yVO.setMno(yDao.getMno(yVO));
+		}
 		String id = (String) session.getAttribute("SID");
 		String result = ySrvc.selFriend(yVO, id);
 		return result;
 	}
-	
+/*	
+	// 지도창에서 친구추가 신청 함수
+	@RequestMapping("/mapFriend.dlv")
+	@ResponseBody
+	public String mapFriend(YonghyunVO yVO, HttpSession session) {
+		String id = (String) session.getAttribute("SID");
+		String result = ySrvc.selFriend(yVO, id);
+		return result;
+	}
+*/	
 	// 친구추가 수락 함수
 	@RequestMapping("/apFriend.dlv")
 	public ModelAndView apFriend(ModelAndView mv, YonghyunVO yVO, HttpSession session) {

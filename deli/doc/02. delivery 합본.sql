@@ -186,6 +186,37 @@ VALUES(
     'img_avatar2.png', '/resources/upload', 'img_avatar6.png'
 );
 
+INSERT INTO
+    imgfile(ano, amno, oriname, dir, savename)
+VALUES(
+    (SELECT NVL(MAX(ano) + 1, 100000) FROM imgfile), 1008,
+    'img_avatar2.png', '/resources/upload', 'img_avatar6.png'
+);
+
+
+INSERT INTO
+    imgfile(ano, amno, oriname, dir, savename)
+VALUES(
+    (SELECT NVL(MAX(ano) + 1, 100000) FROM imgfile), 109,
+    'img_avatar2.png', '/resources/upload', 'img_avatar6.png'
+);
+
+
+INSERT INTO
+    imgfile(ano, amno, oriname, dir, savename)
+VALUES(
+    (SELECT NVL(MAX(ano) + 1, 100000) FROM imgfile), 1010,
+    'img_avatar2.png', '/resources/upload', 'img_avatar6.png'
+);
+
+
+INSERT INTO
+    imgfile(ano, amno, oriname, dir, savename)
+VALUES(
+    (SELECT NVL(MAX(ano) + 1, 100000) FROM imgfile), 1011,
+    'img_avatar2.png', '/resources/upload', 'img_avatar6.png'
+);
+
 commit;
 
 CREATE TABLE largearea(
