@@ -28,12 +28,13 @@ public class FaqController {
 	@Autowired 	private FaqService faqService;
 	
 	private static adminVO admin;
+	private static List<faqVO> list;
 	
 	// faq 테이블 보기
 	@GetMapping("/board.dlv")
 	public String boardView(HttpServletRequest request,Model model) {
 		String uri = request.getRequestURI();
-		List<faqVO> list =	faqService.cutContent(faqService.selectList());
+		list =	faqService.cutContent(faqService.selectList());
 		model.addAttribute("list", list);
 		model.addAttribute("admin",admin);
 		return faqService.findViewPage(uri);
@@ -43,6 +44,7 @@ public class FaqController {
 	//faq 페이지를 수정하기 위해서는 관리자계정 로그인을 해야함
 	@GetMapping("/admin/board/login.dlv")
 	public String login() {
+		System.out.println("호출");
 		return	"/faq/admin/adminLogin";
 	}
 	
@@ -53,7 +55,7 @@ public class FaqController {
 		String msg = adminService.LoginMsg(id, pw);
 		if(msg==null) {
 			admin = adminService.selectId(id);
-			List<faqVO> list =	faqService.cutContent(faqService.selectList());
+		//	List<faqVO> list =	faqService.cutContent(faqService.selectList());
 			model.addAttribute("list", list);
 			model.addAttribute("admin",admin);
 		}
@@ -61,20 +63,23 @@ public class FaqController {
 			uri="/deli/faq/admin/board/login.dlv";
 			
 		}
-		return faqService.findViewPage(uri);
+		return	faqService.findViewPage(uri);
 	}
 	
 	//테이블을 추가하거나,  logout 버튼을 누르게되면 faq 테이블이 있는 페이지로 이동
 	@RequestMapping(value={"/admin/board/insert.dlv","/admin/board/logout.dlv"})
 	public String beforeInsert(HttpServletRequest request,Model model) {
 		String uri = request.getRequestURI();
-		List<faqVO> list =	faqService.cutContent(faqService.selectList());
+		
+	//	List<faqVO> list =	faqService.cutContent(faqService.selectList());
+		
 		model.addAttribute("list", list);
+		
 		if(uri.contains("insert")) {
 			//테이블 추가하면 admin 객체를 전달
 		model.addAttribute("admin", admin);
 		}
-		//그렇지 않으면 admin 객체는 전달하지 않게 되면서 로그아웃
+		//그렇지 않으면 admin 객체는 null값으로 반환
 		else {
 			admin = null;
 		}
@@ -87,7 +92,7 @@ public class FaqController {
 	public String afterInsert(Model model, @Param("id")String id, @Param("pw")String pw, @Param("title")String title,@Param("content")String content) {
 		faqVO faq = new faqVO(id,pw,title,content);
 		faqService.insert(faq);
-		List<faqVO> list =	faqService.cutContent(faqService.selectList());
+		//List<faqVO> list =	faqService.cutContent(faqService.selectList());
 		model.addAttribute("list", list);
 		return "/faq/faqList";
 	}
