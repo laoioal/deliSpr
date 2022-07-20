@@ -15,15 +15,15 @@ import com.githrd.deli.vo.faqVO;
 /*
  * faq 페이지 관련 서비스 클래스
  * 작성자 : 고하늘
- */
+ */	
 public class FaqService {
-	
+	///
 	@Autowired private FaqDao fdao;	
 	public Map<String,String> controllerMap = new HashMap<>(); //key : url , value : view 주소 
 	public FaqService() {
 		controllerMap.put("/deli/faq/board.dlv", "/faq/faqList");
-		controllerMap.put("/deli/faq/admin/board/login.dlv", "/faq/admin/adminLogin");
-//		controllerMap.put("/deli/faq/admin/board/login.dlv", "/faq/faqList");
+		controllerMap.put("/deli/faq/admin/board/login.dlv", "redirect:/faq/board.dlv");
+		//controllerMap.put("/deli/faq/admin/board/login2.dlv", "redirect:/faq/board.dlv");
 		controllerMap.put("/deli/faq/board/detail.dlv", "/faq/faqDetail");
 		controllerMap.put("/deli/faq/admin/board/insert.dlv", "/faq/admin/faqInsert");
 		controllerMap.put("/deli/faq/admin/board/logout.dlv", "redirect:/faq/board.dlv");
@@ -51,7 +51,6 @@ public class FaqService {
 				StringTokenizer token = new StringTokenizer(list.get(i).getContent());
 				String content = token.nextToken(".");
 				list.get(i).setContent(content+"...");
-				System.out.println("content : "  +content);
 			}		
 			faqlist.add(list.get(i));
 		}
@@ -63,7 +62,6 @@ public class FaqService {
 		if(uri.contains(";")) {
 			StringTokenizer token = new StringTokenizer(uri);
 			uri = token.nextToken(";");
-			System.out.println("cut : "  +uri);
 		}
 		return uri;
 	}
@@ -115,6 +113,9 @@ public class FaqService {
 	public int delete(int no) {
 		return fdao.delete(no);
 	}
-
+	
+	
+	
+	
 	
 }
