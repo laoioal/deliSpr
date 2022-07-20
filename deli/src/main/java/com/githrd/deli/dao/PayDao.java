@@ -1,8 +1,11 @@
 package com.githrd.deli.dao;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.githrd.deli.util.PageUtil;
 import com.githrd.deli.vo.MembVO;
 import com.githrd.deli.vo.PayVO;
 
@@ -84,6 +87,11 @@ public class PayDao {
 	//	ODM isshow N 처리 함수
 	public int delOdm(String ono) {
 		return sqlSession.update("paSQL.delOdm", ono);
+	}
+	
+	//	주문내역 조회 처리 함수
+	public List<PayVO> selOdH(PageUtil page) {
+		return sqlSession.selectList("paSQL.selOdH", page);
 	}
 }
 

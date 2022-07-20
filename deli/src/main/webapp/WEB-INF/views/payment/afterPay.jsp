@@ -37,7 +37,7 @@
 			<input type="hidden" id="token" name="token" value="${TK}">
 			<input type="hidden" id="imp_uid" name="imp_uid" value="${UID}">
 			<input type="hidden" id="merchant_uid" name="merchant_uid" value="${MUID}">
-		<h1 class="w3-teal w3-padding" style="margin-bottom: 5px;">Delivery Project</h1>
+		<h1 class="mgb10 w3-border pdAll10" style="margin-bottom: 5px;"><strong>Delivery Project</strong></h1>
 		<div class="w3-col w3-light-grey">
 			<div class="w3-col w3-border-bottom mgl10" align="left">
 				<h3 class="w3-center w3-col">결제가 완료되었습니다.</h3>

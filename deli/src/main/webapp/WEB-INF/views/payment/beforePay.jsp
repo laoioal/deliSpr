@@ -52,7 +52,8 @@ $(document).ready(function(){
 			<input type="hidden" id="token" name="token" >
 			<input type="hidden" id="imp_uid" name="imp_uid" >
 			<input type="hidden" id="merchant_uid" name="merchant_uid" >
-		<h1 class="w3-teal w3-padding" style="margin-bottom: 5px;">Delivery Project</h1>
+			<input type="hidden" id="paym" name="paym" >
+		<h1 class="mgb10 w3-border pdAll10" style="margin-bottom: 5px;"><strong>Delivery Project</strong></h1>
 		<div class="w3-col w3-light-grey">
 			<div class="w3-col w3-border-bottom " align="left">
 				<h4 class="w3-center w3-col mgl10">식당 이름 : <span id="rsname">${PO.rname}</span></h4><br><br>

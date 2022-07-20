@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import com.githrd.deli.dao.PayDao;
 import com.githrd.deli.dao.YonghyunDao;
@@ -53,7 +54,8 @@ public class PayController {
 	@RequestMapping("payPay.dlv")
 	public ModelAndView payPay(ModelAndView mv, HttpServletRequest req) {
 		String pay = req.getParameter("짜장면");
-		
+		System.out.println(pay);
+
 		return mv;
 	}
 	
@@ -100,6 +102,7 @@ public class PayController {
 		return mv;
 	}
 	
+	//	결제 정보 확인 -> 오류 발생 시 환불 조치 실행
 	@RequestMapping("complete.dlv")
 	@ResponseBody
 	public Map paymentComplete(@RequestParam("imp_uid")String imp_uid, String merchant_uid) {
@@ -121,9 +124,10 @@ public class PayController {
 		return result;
 	}
 	
-	@RequestMapping("canclePay.dlv")
+	//	환불 절차
+	@RequestMapping("cancelPay.dlv")
 	@ResponseBody
-	public int canclePay(@RequestParam("imp_uid")String imp_uid, String merchant_uid) {
+	public int cancelPay(String merchant_uid) {
 		String token = paSrvc.getImportToken();
 		// System.out.println("token : " + token);
 		int cnt = paSrvc.cancelPayment(token, merchant_uid);
@@ -131,10 +135,12 @@ public class PayController {
 		
 	}
 	
-	@RequestMapping("canClePay.dlv")
+	//	token 없어도 실행되는 거 확인
+	
+	@RequestMapping("canCelPay.dlv")
 	@ResponseBody
-	public int canClePay(@RequestParam("imp_uid")String imp_uid, String merchant_uid, String token) {
-		// String token = paSrvc.getImportToken();
+	public int canCelPay(String merchant_uid) {
+		String token = paSrvc.getImportToken();
 		// System.out.println("token : " + token);
 		int cnt = paSrvc.cancelPayment(token, merchant_uid);
 		String ono = merchant_uid;
@@ -143,7 +149,8 @@ public class PayController {
 		return cnt;
 		
 	}
-
+	
+	/*
 	@RequestMapping("payProc.dlv")
 	@ResponseBody
 	public Map payProc(HttpSession session, PayVO paVO, YonghyunVO yVO) {
@@ -158,10 +165,16 @@ public class PayController {
 		}
 		return result;
 	}
-	
+	*/
+	//	결제 후 페이지 폼보기 처리 함수
 	@RequestMapping("afterPay.dlv")
-	public ModelAndView afterPay(ModelAndView mv, HttpSession session, PayVO paVO, YonghyunVO yVO, HttpServletRequest req) {
+	public ModelAndView afterPay(ModelAndView mv, HttpSession session, PayVO paVO, YonghyunVO yVO, HttpServletRequest req, RedirectView rv) {
+		System.out.println(paVO);
+		
+		Map result = new HashMap<String, String>();
+
 		String sid = (String) session.getAttribute("SID");
+		MembVO membVO = paDao.selMinfo(sid);
 		paVO = paDao.selPays(paVO);
 		String amname = (String) req.getParameter("mname1");
 		String mmprice = (String)req.getParameter("price1");
@@ -182,10 +195,27 @@ public class PayController {
 		List<YonghyunVO> mVO = yDao.getMenu(yVO);
 		
 		List<YonghyunVO> kVO = yDao.selRegimem(yVO);
-		
+		paVO.setOno((String)req.getParameter("merchant_uid"));
 		paVO.setMtprice(mtprice + delpay);
+		paVO.setRno(paVO.getRestno());
+		paVO.setOprice(paVO.getMtprice());
+		paVO.setOlmenu(amname);
+		paVO.setMno(membVO.getMno());
+		paVO.setPaym((String)req.getParameter("paym"));
+		paVO.setRequest(rq);
+		//	각 메뉴 이름 및 가격, 수량(후에 수정 필요)
+		paVO.setOmenu(amname);
+		paVO.setOmprice(paVO.getMtprice());
 		
-		MembVO membVO = paDao.selMinfo(sid);
+		try {
+			paSrvc.insertAllM(paVO);
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+			mv.setViewName("payment/beforePay");
+			return mv;
+		}
+		
 		mv.addObject("RQ", rq);
 		mv.addObject("PO", paVO);
 		mv.addObject("MPO", membVO);
@@ -197,19 +227,23 @@ public class PayController {
 		mv.addObject("TK", token);
 		
 		mv.setViewName("payment/afterPay");
-		
 		return mv;
 	}
 	/*
-	@ResponseBody
-	@RequestMapping(value="/verifyIamport/{imp_uid}")
-	public IamportResponse<Payment> paymentByImpUid(
-			Model model
-			, Locale locale
-			, HttpSession session
-			, @PathVariable(value= "imp_uid") String imp_uid) throws IamportResponseException, IOException{	
-			this.api = new IamportClient("5781100875728352", "fa6925fe5a8c23bc192ea5840d57ebc7b71168fedaf51c45f0d6aaae3a5798b229699e7e7692d485");
-			return api.paymentByImpUid(imp_uid);
+	//	주문 내역 조회 폼보기 함수
+	@RequestMapping("orderHistory.dlv")
+	public ModelAndView orderHistory(ModelAndView mv, HttpServletRequest req, RedirectView rv) {
+		String sid = (String) req.getParameter("SID");
+		if(sid == null) {
+			rv.setUrl("/deli/member/login.dlv");
+			mv.setView(rv);
+			return mv;
+		}
+		MembVO membVO = paDao.selMinfo(sid);
+		
+		mv.setViewName("payment/orderHistory");
+		
+		return mv;
 	}
 	*/
 }

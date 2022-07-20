@@ -14,12 +14,12 @@
 	<insert id="insertOdl" parameterType="paVO">
 	
 		INSERT INTO
-			orderlist(olno, ono, rno, oprice, paym, requests)
+			orderlist(olno, ono, rno, oprice, paym, requests, olmenu)
 		VALUES(
 			(SELECT NVL(MAX(olno) +1, 1) FROM orderlist),
-			#{ono}, #{rno}, #{oprice}, #{paym}, NVL(#{request}, '없음')
+			#{ono}, #{rno}, #{oprice}, #{paym}, NVL(#{request}, '없음'), #{olmenu}
 		)
-		 
+		
 	</insert>
 	
 	<!-- 추후 수정 예정
@@ -166,5 +166,36 @@
 		WHERE
 			ono = #{ono}
 	</update>
+	
+	<select id="selOdH" parameterType="page" resultType="paVO">
+		SELECT
+		    ronum, ono, mno, odate, oprice, paym, requests, rno, rname, addr
+		FROM
+		    (
+		    SELECT
+		        ROWNUM ronum, ono, mno, odate, oprice, paym, requests, rno, rname, addr
+		    FROM   
+		       ( 
+		        SELECT
+		            odt.ono, mno, odate, oprice, paym, odl.requests requests, rno,
+		            (SELECT rname FROM RESTAURANT WHERE restno = odl.rno) rname,
+		            (SELECT addr FROM RESTAURANT WHERE restno = odl.rno) addr
+		        FROM
+		            ordertask odt, orderlist odl, ordermenu odm
+		        WHERE
+		            odt.isshow = 'Y'
+		            AND odl.isshow = 'Y'
+		            AND odm.isshow = 'Y'
+		            AND odt.ono = odl.ono
+		            AND odt.ono = odm.ono
+		            AND odt.mno = #{mno}
+		        ORDER BY
+		            odate desc
+		        )
+		        )
+		WHERE
+		    ronum BETWEEN #{startCont} AND #{endCont}
+	</select>
+	
 	
 </mapper>

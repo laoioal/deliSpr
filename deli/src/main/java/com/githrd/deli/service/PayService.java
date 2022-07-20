@@ -161,10 +161,13 @@ public class PayService {
 	public void insertAllM(PayVO paVO) {
 		//	할일
 		//	데이터 입력
+		try {
 		paDao.insertOdt(paVO);
 		paDao.insertOdl(paVO);
 		paDao.insertOdm(paVO);
-		
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	@Transactional
@@ -195,11 +198,5 @@ public class PayService {
 			body.clear();
 		}
 	}
-	/*
-	//	결제내역 조회
-	public boolean getBuyerInfo(String imp_uid) {
-		System.out.println("getBuyinfo");
-		
-	}
-	*/
+
 }
