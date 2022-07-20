@@ -113,7 +113,7 @@ $(document).ready(function(){
 		$(location).attr('href', '/deli/member/login.dlv');
 	});
 
-
+/*
 	var price = 0;
 
 	
@@ -133,14 +133,15 @@ $(document).ready(function(){
 			}
 			$(this).parent().find('.inputprice').val(count);
 			o = parseInt($(this).parent().find('.inputprice').val()) * price; // 누적금액
-			$('#abc > div > [name="' + menu + '"]').val(o);
+//			$('#abc > div > [name="' + menu + '"]').val(o);
+			$('#abc > div > [name="1"]').val(o);
 			
 			var mprice = 0;
 			mprice = $(this).attr('id');
 			subprice = subprice - mprice;
 
 		}
-			var k = $('#abc > div > [name="' + menu + '"]').val();
+			var k = $('#abc > div > [name="1"]').val();
 			alert(k);
 	});
 
@@ -152,16 +153,72 @@ $(document).ready(function(){
 			count += 1;
 			$(this).parent().find('.inputprice').val(count);
 			i = parseInt($(this).parent().find('.inputprice').val()) * price; // 누적금액
-			$('#abc > div > [name="' + menu + '"]').val(i);
+//			$('#abc > div > [name="' + menu + '"]').val(i);
+			$('#abc > div > [name="1"]').val(i);
 
 			var mprice = 0;
 	         mprice = $(this).attr('id');
 	         subprice = subprice - (-mprice);
 
 		}
-		var k = $('#abc > div > [name="' + menu + '"]').val();
+		var k = $('#abc > div > [name="1"]').val();
 		alert(k);
 	});
+
+*/
+
+
+
+//	let count = 0;
+
+	$('.pricebtn1').click(function(){
+		menu = $(this).attr('id');
+		price = $(this).find('input').attr('id');
+		let count = $(this).parent().find('.inputprice').val();
+		if(count <= 0) {
+			alert('구매하신 수량이 없습니다.');
+			return;
+		}
+		count = count - 1;
+		 $(this).parent().find('.inputprice').val(count);
+		var total = price * count;
+		total = Number(total);
+		$('#abc > div > input').val(total);
+		alert($('#abc > div > [name="'+ menu +'"]').val());
+	});
+	
+	
+	$('.pricebtn2').click(function(){
+		menu = $(this).attr('id');
+		price = $(this).find('input').attr('id');
+		let count = $(this).parent().find('.inputprice').val();
+		count = count - (-1);
+		$(this).parent().find('.inputprice').val(count);
+		var total = price * count;
+		total = Number(total);
+		$('#abc > div > [name="'+ menu +'"]').val(total);
+		alert($('#abc > div > [name="'+ menu +'"]').val());
+	});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
