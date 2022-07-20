@@ -37,4 +37,11 @@
 		<property name="dataSource" ref="dataSource"/>
 	</bean>
 	
+	<!-- mail -->
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl"> 
+		 <property name="host" value="smtp.google.com"/> 
+	</bean>
+
+	
+	
 </beans>

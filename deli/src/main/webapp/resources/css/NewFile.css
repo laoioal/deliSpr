@@ -1,0 +1,28 @@
+.selArea {
+	color: black;
+	text-shadow: -2px 0 white, 0 2px white, 2px 0 white, 0 -2px white;
+}
+
+.selArea:hover {
+	cursor: pointer;
+	color: white;
+	text-shadow: -3px 0 black, 0 3px black, 3px 0 black, 0 -3px black;
+	background-color: white;
+}
+
+.mt100 {
+	margin-top: 100px;
+}
+
+.mt75 {
+	margin-top: 75px;
+}
+
+.mt50 {
+	margin-top: 50px;
+}
+
+.w75p {
+	display: inline-block;
+	width: 75%;
+}

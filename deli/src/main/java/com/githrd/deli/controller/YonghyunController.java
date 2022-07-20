@@ -62,8 +62,6 @@ public class YonghyunController {
 				System.out.println("조회수 업데이트 실패");
 			}
 		}
-		
-	
 		yVO = yDao.getBoard(yVO);
 		List<YonghyunVO> kVO = yDao.selRegimem(yVO);
 		if(session.getAttribute("SID") != null) {
@@ -88,12 +86,6 @@ public class YonghyunController {
 	// 게시판 공구신청 처리요청 함수
 	@RequestMapping("/applyProc.dlv")
 	public ModelAndView regiMem(ModelAndView mv, YonghyunVO yVO, HttpSession session) {
-/* 로그인 처리 명령 확인 후 넣기
-		if(session.getAttribute("SID") == null) {
-			mv.setViewName("");
-			return mv;
-		}
-*/		
 		yVO.setId((String) session.getAttribute("SID"));
 
 		// 공구 신청요청
@@ -160,16 +152,7 @@ public class YonghyunController {
 		String result = ySrvc.selFriend(yVO, id);
 		return result;
 	}
-/*	
-	// 지도창에서 친구추가 신청 함수
-	@RequestMapping("/mapFriend.dlv")
-	@ResponseBody
-	public String mapFriend(YonghyunVO yVO, HttpSession session) {
-		String id = (String) session.getAttribute("SID");
-		String result = ySrvc.selFriend(yVO, id);
-		return result;
-	}
-*/	
+
 	// 친구추가 수락 함수
 	@RequestMapping("/apFriend.dlv")
 	public ModelAndView apFriend(ModelAndView mv, YonghyunVO yVO, HttpSession session) {

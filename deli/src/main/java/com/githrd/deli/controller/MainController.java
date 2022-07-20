@@ -43,7 +43,8 @@ public class MainController {
 			mv.addObject("CHATLOG", chatLog);
 			
 		}
-		mv.setViewName("remain");
+		//mv.setViewName("remain");
+		mv.setViewName("NewFile");
 		return mv;
 	}
 	
