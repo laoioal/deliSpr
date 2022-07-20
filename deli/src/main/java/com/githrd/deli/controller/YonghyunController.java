@@ -306,4 +306,5 @@ public class YonghyunController {
 		mv.setViewName("board/friendArround");
 		return mv;
 	}
+	
 }

@@ -113,99 +113,62 @@ $(document).ready(function(){
 		$(location).attr('href', '/deli/member/login.dlv');
 	});
 
-/*
-	var price = 0;
-
-	
-	let i = 0;
-	let o = 0;
-	var menu = '';
-	var subprice = 0;
-	$('.pricebtn1').click(function(){
-		var count = parseInt($(this).parent().find('.inputprice').val()); // 수량
-		menu = $(this).parent().attr('id'); // 메뉴
-		price = $(this).attr('id'); // 가격
-		if(confirm(menu + ' 을/를 제외하시겠습니까?')) {
-			count -= 1;
-			if(count < 0) {
-				alert('구매하신 수량이 없습니다.');
-				return;
-			}
-			$(this).parent().find('.inputprice').val(count);
-			o = parseInt($(this).parent().find('.inputprice').val()) * price; // 누적금액
-//			$('#abc > div > [name="' + menu + '"]').val(o);
-			$('#abc > div > [name="1"]').val(o);
-			
-			var mprice = 0;
-			mprice = $(this).attr('id');
-			subprice = subprice - mprice;
-
-		}
-			var k = $('#abc > div > [name="1"]').val();
-			alert(k);
-	});
-
-	$('.pricebtn2').click(function(){
-		var count = parseInt($(this).parent().find('.inputprice').val());
-		menu = $(this).parent().attr('id');
-		price = $(this).attr('id'); // 가격
-		if(confirm(menu + ' 을/를 추가하시겠습니까?')) {
-			count += 1;
-			$(this).parent().find('.inputprice').val(count);
-			i = parseInt($(this).parent().find('.inputprice').val()) * price; // 누적금액
-//			$('#abc > div > [name="' + menu + '"]').val(i);
-			$('#abc > div > [name="1"]').val(i);
-
-			var mprice = 0;
-	         mprice = $(this).attr('id');
-	         subprice = subprice - (-mprice);
-
-		}
-		var k = $('#abc > div > [name="1"]').val();
-		alert(k);
-	});
-
-*/
-
-
-
-//	let count = 0;
 
 	$('.pricebtn1').click(function(){
-		menu = $(this).attr('id');
-		price = $(this).find('input').attr('id');
-		let count = $(this).parent().find('.inputprice').val();
+		var mid = $(this).parent().attr('id');
 		if(count <= 0) {
 			alert('구매하신 수량이 없습니다.');
 			return;
 		}
-		count = count - 1;
-		 $(this).parent().find('.inputprice').val(count);
-		var total = price * count;
-		total = Number(total);
-		$('#abc > div > input').val(total);
-		alert($('#abc > div > [name="'+ menu +'"]').val());
+		if(confirm(mid + '를 제외하시겠습니까?')) {
+			menu = $(this).attr('id');
+			price = $(this).find('input').attr('id');
+			let count = $(this).parent().find('.inputprice').val();
+			count = count - 1;
+			 $(this).parent().find('.inputprice').val(count);
+			var total = price * count;
+			total = Number(total);
+			$('#abc > div > [name="'+ menu +'"]').val(total);	
+			$('#pageFrm > [name="' + mid + '"]').val(total);
+		}
 	});
 	
 	
 	$('.pricebtn2').click(function(){
-		menu = $(this).attr('id');
-		price = $(this).find('input').attr('id');
-		let count = $(this).parent().find('.inputprice').val();
-		count = count - (-1);
-		$(this).parent().find('.inputprice').val(count);
-		var total = price * count;
-		total = Number(total);
-		$('#abc > div > [name="'+ menu +'"]').val(total);
-		alert($('#abc > div > [name="'+ menu +'"]').val());
+		var mid = $(this).parent().attr('id');
+		if(confirm(mid + '를 추가하시겠습니까?')) {
+			menu = $(this).attr('id');
+			price = $(this).find('input').attr('id');
+			let count = $(this).parent().find('.inputprice').val();
+			count = count - (-1);
+			$(this).parent().find('.inputprice').val(count);
+			var total = price * count;
+			total = Number(total);
+			$('#abc > div > [name="'+ menu +'"]').val(total);
+			$('#pageFrm > [name="' + mid + '"]').val(total);
+		}
+		
 	});
 
 
 
 
+	$('#paybtn').click(function(){
+	
+	
+		$('#res').prop('disabled', true);
+		$('#upno').prop('disabled', true);
+		$('#1mname').val(menu);
+		$('#1price').val(subprice);
+		//$('#pageFrm').attr('action','/deli/payment/beforePay.dlv');
+		$('#pageFrm').submit();
+		
+		
+	});
 
 
 
+	
 
 
 
@@ -245,15 +208,6 @@ $(document).ready(function(){
 		})
 	})
 	
-
-	$('#paybtn').click(function(){
-		$('#res').prop('disabled', true);
-		$('#upno').prop('disabled', true);
-		$('#1mname').val(menu);
-		$('#1price').val(subprice);
-		$('#pageFrm').attr('action','/deli/payment/beforePay.dlv');
-		$('#pageFrm').submit();
-	});
 
 	$('.reboard').click(function(){
 		$(this).parent().parent().next().find('textarea').val('');
