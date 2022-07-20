@@ -154,16 +154,12 @@ $(document).ready(function(){
 
 
 	$('#paybtn').click(function(){
-	
-	
 		$('#res').prop('disabled', true);
 		$('#upno').prop('disabled', true);
 		$('#1mname').val(menu);
 		$('#1price').val(subprice);
-		//$('#pageFrm').attr('action','/deli/payment/beforePay.dlv');
+		$('#pageFrm').attr('action','/deli/payment/beforePay.dlv');
 		$('#pageFrm').submit();
-		
-		
 	});
 
 
