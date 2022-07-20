@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.githrd.deli.service.AdminService;
 import com.githrd.deli.service.FaqService;
@@ -39,14 +40,31 @@ public class FaqController {
 		model.addAttribute("admin",admin);
 		return faqService.findViewPage(uri);
 	}
-	
-	
-	//faq 페이지를 수정하기 위해서는 관리자계정 로그인을 해야함
+//	
+//	@GetMapping("/board.dlv")
+//	public String boardView2(Model model) {
+//	//	list =	faqService.cutContent(faqService.selectList());
+//		model.addAttribute("list", list);
+//		model.addAttribute("admin",admin);
+//		return "/faq/faqList";
+//	}
+//	/faq/faqList
+//	
 	@GetMapping("/admin/board/login.dlv")
-	public String login() {
-		System.out.println("호출");
-		return	"/faq/admin/adminLogin";
+	public ModelAndView content() {
+		String url = "/deli/faq/admin/adminLogin";
+		System.out.println("url : "+url);
+		ModelAndView mv = new ModelAndView();
+		String viewPage = faqService.findViewPage(url);
+		mv.setViewName(viewPage);
+		return mv;
 	}
+	
+//	//faq 페이지를 수정하기 위해서는 관리자계정 로그인을 해야함
+//	@GetMapping("/admin/board/login.dlv")
+//	public String login() {
+//		return	"/faq/admin/adminLogin";
+//	}
 	
 	//로그인에 성공하면 수정,삭제,입력 버튼이 보이고 아니면 메세지가 하단에 표시됨.
 	@PostMapping("/admin/board/login.dlv")
@@ -61,7 +79,6 @@ public class FaqController {
 		}
 		else {
 			uri="/deli/faq/admin/board/login.dlv";
-			
 		}
 		return	faqService.findViewPage(uri);
 	}
