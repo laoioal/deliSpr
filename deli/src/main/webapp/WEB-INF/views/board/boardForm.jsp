@@ -194,5 +194,6 @@
 		<input type="hidden" name="upno" id="upno">
 		<input type="hidden" name="body" id="body">
 	</form>
+	<input type="hidden" id="abcdef" value="">
 </body>
 </html>

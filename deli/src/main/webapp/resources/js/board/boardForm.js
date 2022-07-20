@@ -112,7 +112,8 @@ $(document).ready(function(){
 	$('#lbtn').click(function(){
 		$(location).attr('href', '/deli/member/login.dlv');
 	});
-	
+
+
 	var price = 0;
 
 	
@@ -137,7 +138,7 @@ $(document).ready(function(){
 			var mprice = 0;
 			mprice = $(this).attr('id');
 			subprice = subprice - mprice;
-	//		return o;
+
 		}
 			var k = $('#abc > div > [name="' + menu + '"]').val();
 			alert(k);
@@ -153,18 +154,18 @@ $(document).ready(function(){
 			i = parseInt($(this).parent().find('.inputprice').val()) * price; // 누적금액
 			$('#abc > div > [name="' + menu + '"]').val(i);
 
-			if(count > 1) {
-				menu = menu + '외' + count + '건';
-			}
 			var mprice = 0;
 	         mprice = $(this).attr('id');
 	         subprice = subprice - (-mprice);
-//			return i;
+
 		}
 		var k = $('#abc > div > [name="' + menu + '"]').val();
 		alert(k);
 	});
 
+
+
+	
 	$('.fbtn').click(function(){
 		var fmno = $(this).attr('id');
 		$.ajax({

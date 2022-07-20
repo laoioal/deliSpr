@@ -32,22 +32,14 @@
 	
 	//지도를 생성합니다    
 	var map = new kakao.maps.Map(mapContainer, mapOption); 
-	
-	
-	
+
 	//주소-좌표 변환 객체를 생성합니다
 	var geocoder = new kakao.maps.services.Geocoder();
-	
-	
-//	var position = [];
+
 	
 	var el = document.getElementsByClassName('address');
 	var el2 = document.getElementsByClassName('name');
-//	for(var i = 0; i < el.length; i++ ){
-//		var con = el[i].value;
-//		var name = el2[i].value;
-//		position.push({address: con, text: name});
-//	}
+
 	var myaddr = document.getElementById('myaddr').value;
 	const mainAddr = new Promise((resolve,reject) => {
 		geocoder.addressSearch(myaddr , function(result, status) {
@@ -75,8 +67,6 @@
 	});
 
 
-/*-------------------------------------------------------------------------------------------*/
-
 	var friarr = new Promise((resolve,reject) => {
 		for(let i = 0; i < el.length; i++){
 			var name = el[i].value;
@@ -95,8 +85,6 @@
 		}, 200);
 	});
 	
-
-/*-------------------------------------------------------------------------------------------*/
 
 	var cir = function(cen) {
 		var circle = new kakao.maps.Circle({
@@ -117,7 +105,6 @@
 		circle.setMap(map);
 		
 		for(let i = 0; i < el.length; i++) {
-			//alert(markers[i].text);
 			var path = [markers[i].addr, center];
 			
 			var line = new kakao.maps.Polyline({
@@ -132,20 +119,13 @@
 					
 			var dist = line.getLength();
 			if(dist <= radius) {
-//				var marker = new kakao.maps.Marker({
-//					position: markers[i].addr
-//				});
 
 				var marker = new kakao.maps.Marker({
 					map: map,
 					position: markers[i].addr,
 					clickable: true
 				});
-				
-				
-				
-				
-							
+					
 				var infowindow = new kakao.maps.InfoWindow({
 					content: '<div style="width:150px;text-align:center;padding:6px 0;" class="fr">' + markers[i].na + '</div>'
 				}); 
@@ -176,7 +156,6 @@
 				kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
 				kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
 				     
-//				infowindow.open(map, marker);
 			}
 		}
 		map.setCenter(cen);
