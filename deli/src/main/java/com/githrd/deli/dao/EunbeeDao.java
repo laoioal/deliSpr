@@ -1,9 +1,11 @@
 package com.githrd.deli.dao;
 
-import org.mybatis.spring.SqlSessionTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
+import java.util.*;
 
-import com.githrd.deli.vo.EunbeeVO;
+import org.mybatis.spring.*;
+import org.springframework.beans.factory.annotation.*;
+
+import com.githrd.deli.vo.*;
 
 /**
  * 이 클래스는 데이터베이스 작업을 전담해서 처리하는 클래스
@@ -41,6 +43,22 @@ public class EunbeeDao {
 	
 	public int editPw(EunbeeVO eVO) {
 		return sqlSession.update("eSQL.upPw", eVO);
+	}
+	
+	public List<EunbeeVO> getBinfo(String id) {
+		return sqlSession.selectList("eSQL.selBinfo", id);
+	}
+	
+	public int insEtableA(EunbeeVO eVO) {
+		return sqlSession.insert("eSQL.insEtableA", eVO);
+	}
+	
+	public int insEtableB(EunbeeVO eVO) {
+		return sqlSession.insert("eSQL.insEtableB", eVO);
+	}
+	
+	public List<EunbeeVO> getEinfo(EunbeeVO eVO) {
+		return sqlSession.selectList("eSQL.selEinfo", eVO);
 	}
 
 }

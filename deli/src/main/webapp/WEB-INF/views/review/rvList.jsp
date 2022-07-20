@@ -56,7 +56,7 @@
 		<h1 class="w3-center"><b>Delivery Project</b></h1>
 	</div>
 	<form method="POST" action="/deli/review/rvWrite.dlv" name="rfrm" id="rfrm">
-		<input type="hidden" name="ridb" id="ridb">
+		<input type="hidden" name="bno" id="bno">
 	</form>
 	<div class="w3-display-middle w3-border w3-padding w3-col m8">
     	<div class="w3-container mgt10 mgb20 w3-black">

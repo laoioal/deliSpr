@@ -4,19 +4,20 @@ import java.sql.Date;
 import java.text.SimpleDateFormat;
 
 public class EunbeeVO {
-	private int bno, ano, cpts;
+	private int ano, cpts;
 	private double esti, point, spts;
-	private String id, idb, mail, pw, npw, dir, savename, title, sdate, show, eshow;
+	private String bno, id, idb, mail, pw, npw, dir, savename, title, sdate, show, eshow;
 	private Date wdate;
 	
-	public int getBno() {
+
+	public String getBno() {
 		return bno;
 	}
-	
-	public void setBno(int bno) {
+
+	public void setBno(String bno) {
 		this.bno = bno;
 	}
-	
+
 	public int getAno() {
 		return ano;
 	}
@@ -127,6 +128,7 @@ public class EunbeeVO {
 	
 	public void setWdate(Date wdate) {
 		this.wdate = wdate;
+		setSdate();
 	}
 
 	public String getSdate() {
@@ -134,8 +136,8 @@ public class EunbeeVO {
 	}
 
 	public void setSdate() {
-		SimpleDateFormat form1 = new SimpleDateFormat("yyyy/MM/dd");
-		sdate = form1.format(wdate);
+		SimpleDateFormat form = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		sdate = form.format(wdate);
 	}
 	
 	public void setSdate(String sdate) {

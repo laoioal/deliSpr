@@ -50,7 +50,7 @@ $(document).ready(function() {
 	$('.rlist').click(function() {
 		let bid = $(this).attr('id');
 		
-		$('#ridb').val(bid);
+		$('#bno').val(bid);
 		$('#rfrm').submit();
 	});
 	
