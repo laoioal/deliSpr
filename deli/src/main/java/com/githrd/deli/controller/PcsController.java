@@ -136,9 +136,9 @@ public class PcsController {
 		pcVO.setMno(PcDao.getMno(sid));
 		
 		int cnt = PcDao.addBoard(pcVO);
-		System.out.println("pcVO : " + pcVO);
 		if(cnt == 1) {
 			System.out.println("pcVO : " + pcVO);
+			PcDao.addRegimem(pcVO);
 			nowPage = "1";
 			mv.addObject("NOWPAGE", nowPage);
 			mv.addObject("VIEW", view);
@@ -146,7 +146,6 @@ public class PcsController {
 		} else {
 			mv.setViewName("member/boardWrite");
 		}
-		System.out.println("pcVO : " + pcVO);
 		return mv;
 	}
 

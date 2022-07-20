@@ -42,7 +42,7 @@ function save(){
 </c:if>
 		<form method="POST" action="/deli/boardList.dlv" id="frm" name="frm">
 			<input type="hidden" id="city" name="city" value="">
-		
+	
 			<div class="w3-col mgt0">
 				<h1 class="mgb10 w3-border pdAll10"><strong>Delivery Project</strong></h1>
 				<hr>

@@ -120,4 +120,9 @@ public class PcsDao {
 	public int getMno(String id) {
 		return sqlSession.selectOne("pcSQL.getMno", id);
 	}
+	
+	// 공동구매 등록 처리요청
+	public int addRegimem(PcsVO pcVO) {
+		return sqlSession.insert("pcSQL.insertRegimem", pcVO);
+	}
 }

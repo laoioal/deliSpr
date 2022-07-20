@@ -206,4 +206,13 @@
 		    #{marea}, #{sarea}, #{end}, #{category}, #{rest}
 		)
 	</insert>
+	
+	<!-- 공동구매 신청 테이블 -->
+	<insert id="insertRegimem" parameterType="pcVO">
+		INSERT INTO
+			regimem(abno, aid)
+		VALUES(
+			#{bno}, #{id}
+		)
+	</insert>
 </mapper>
