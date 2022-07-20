@@ -33,56 +33,42 @@ public class FaqController {
 	
 	// faq 테이블 보기
 	@GetMapping("/board.dlv")
-	public String boardView(HttpServletRequest request,Model model) {
-		String uri = request.getRequestURI();
+	public String boardView(Model model) {
+		String uri = "/deli/faq/board.dlv";
+		List<faqVO> list = faqService.selectList();
 		list =	faqService.cutContent(faqService.selectList());
 		model.addAttribute("list", list);
 		model.addAttribute("admin",admin);
 		return faqService.findViewPage(uri);
 	}
-//	
-//	@GetMapping("/board.dlv")
-//	public String boardView2(Model model) {
-//	//	list =	faqService.cutContent(faqService.selectList());
-//		model.addAttribute("list", list);
-//		model.addAttribute("admin",admin);
-//		return "/faq/faqList";
-//	}
-//	/faq/faqList
-//	
+	
+//	faq 페이지를 수정하기 위해서는 관리자계정 로그인을 해야함
 	@GetMapping("/admin/board/login.dlv")
 	public ModelAndView content() {
-		String url = "/deli/faq/admin/adminLogin";
-		System.out.println("url : "+url);
+
 		ModelAndView mv = new ModelAndView();
-		String viewPage = faqService.findViewPage(url);
-		mv.setViewName(viewPage);
-		return mv;
+	
+		mv.setViewName("faq/admin/adminLogin");
+			return mv;
 	}
 	
-//	//faq 페이지를 수정하기 위해서는 관리자계정 로그인을 해야함
-//	@GetMapping("/admin/board/login.dlv")
-//	public String login() {
-//		return	"/faq/admin/adminLogin";
-//	}
+
 	
 	//로그인에 성공하면 수정,삭제,입력 버튼이 보이고 아니면 메세지가 하단에 표시됨.
 	@PostMapping("/admin/board/login.dlv")
 	public String login(Model model, @Param("id")String id, @Param("pw")String pw) {
-		String uri ="/deli/faq/board.dlv";
+	
 		String msg = adminService.LoginMsg(id, pw);
 		if(msg==null) {
 			admin = adminService.selectId(id);
-		//	List<faqVO> list =	faqService.cutContent(faqService.selectList());
-			model.addAttribute("list", list);
 			model.addAttribute("admin",admin);
+			return "redirect:/faq/board.dlv";
 		}
 		else {
-			uri="/deli/faq/admin/board/login.dlv";
+			return	faqService.findViewPage("/deli/faq/admin/board/login.dlv");
 		}
-		return	faqService.findViewPage(uri);
 	}
-	
+
 	//테이블을 추가하거나,  logout 버튼을 누르게되면 faq 테이블이 있는 페이지로 이동
 	@RequestMapping(value={"/admin/board/insert.dlv","/admin/board/logout.dlv"})
 	public String beforeInsert(HttpServletRequest request,Model model) {
