@@ -25,6 +25,7 @@ $(document).ready(function(){
 		let mno = $('#mymno').val();
 		let omprice = $('#amount').val();
 		let omenu = $('#mymenu').val();
+		let olmenu = $('#mymenu').val();
 		let quantity = 1;
 		let request = $('#rq').val();
 		
@@ -45,35 +46,23 @@ $(document).ready(function(){
 			m_redirect_url: '/payment/afterPay'
 			}, function (rsp) {
 				console.log(rsp);
-				
-				$.ajax({
-	        	type : "POST",
-	        	url : "/deli/payment/complete.dlv",
-	        	data : {
-	        		"imp_uid" : rsp.imp_uid,
-				    "merchant_uid" : rsp.merchant_uid,
-				    "amount" : rsp.paid_amount
-				    }
-	        	}).done(function(data) {
-	        		console.log(data);
-				if (data.result == "y") {
-					let payVo = { 
-						m_email: m_email, rno : rno, s_id: s_id, ono: rsp.merchant_uid,
-						oprice: rsp.paid_amount, ompirce : omprice, paym: rsp.pay_method,
-						mno : mno, omenu : omenu,quantity : quantity, request : request
-						}
+				if (rsp.success) {
 					// 컨트롤러에 데이터를 전달하여 DB에 입력하는 로직
-	               			$.ajax({
-						url : "/deli/payment/payProc.dlv",
-						type : "post",
-						data : payVo,
-						dataType : "json",
+					$.ajax({
+			        	type : "POST",
+			        	url : "/deli/payment/complete.dlv",
+			        	data : {
+			        		"imp_uid" : rsp.imp_uid,
+						    "merchant_uid" : rsp.merchant_uid,
+						    "amount" : rsp.paid_amount
+						    },
 						success : function(result){
 							if(result.result == "y") {
-								alert(data.imp_uid);
-								$('#imp_uid').val(data.imp_uid);
-								$('#token').val(data.token);
-								$('#merchant_uid').val(data.merchant_uid);
+								alert(rsp.pay_method);
+								$('#imp_uid').val(rsp.imp_uid);
+								$('#token').val(rsp.token);
+								$('#merchant_uid').val(rsp.merchant_uid);
+								$('#paym').val(rsp.pay_method);
 								$('#pageFrm').attr('action','/deli/payment/afterPay.dlv');
 								$('#pageFrm').submit();
 							}else{ 
@@ -89,7 +78,7 @@ $(document).ready(function(){
 				} else {
 					alert('결제에 오류가 발생했습니다. 환불 절차를 시작합니다.');
 					$.ajax({
-						url : "/deli/payment/canclePay.dlv",
+						url : "/deli/payment/cancelPay.dlv",
 						type : "post",
 						data : {
 				        		"imp_uid" : rsp.imp_uid,
@@ -112,7 +101,6 @@ $(document).ready(function(){
 						}
 					});
 				}
-			});
 		});
 	});
 	
@@ -125,12 +113,48 @@ $(document).ready(function(){
 		let merchant_uid = $('#merchant_uid').val();
 		let imp_uid = $('#imp_uid').val();
 		$.ajax({
-			url : "/deli/payment/canClePay.dlv",
+			url : "/deli/payment/canCelPay.dlv",
 			type : "post",
 			data : {
 				    "merchant_uid" : merchant_uid,
 				    "token" : token,
 				    "imp_uid" : imp_uid
+		    },
+			dataType : "json",
+			success : function(cnt){
+				if(cnt == 1) {
+					alert('환불 처리가 완료되었습니다. 메인 화면으로 이동합니다.');
+					$(location).attr('href','/deli/main.dlv');
+				}else{ 
+					alert("환불실패");
+				}
+			},
+			error : function(){
+				alert('### 통신 실패 ###');
+				return "/deli/payment/afterPay.dlv";
+			}
+		});
+	})
+	
+	$('.citytitle').click(function(){
+		$('#search').val('');
+		var city = $(this).val();
+		$('#maincity').val(city);
+		$('#frm').submit();
+	});
+	
+	$('#obtn').click(function(){
+		$(location).attr('href', '/deli/member/logout.dlv');
+	});
+	
+	$('#rbtn').click(function() {
+		let merchant_uid = $('.dataono').html();
+		alert(merchant_uid);
+		$.ajax({
+			url : "/deli/payment/canCelPay.dlv",
+			type : "post",
+			data : {
+				    "merchant_uid" : merchant_uid,
 		    },
 			dataType : "json",
 			success : function(cnt){
