@@ -1,5 +1,7 @@
 package com.githrd.deli.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.githrd.deli.dao.MiddleareaDao;
@@ -23,5 +25,15 @@ public class PlaceService {
 	public int getCode(placeVO place) {
 		return mdao.selectCode(substrPickupPlace(place)).getCode();
 	}
+
+	
+	public placeVO selectOne(String name) {
+		return dao.selectOne(name);
+	}
+	
+	public List<placeVO> selectList(){
+		return dao.selectList();
+	}
+	
 	
 }
