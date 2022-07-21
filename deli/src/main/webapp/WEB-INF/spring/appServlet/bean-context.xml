@@ -29,6 +29,8 @@
 	<bean id="CalculatorService" class="com.githrd.deli.service.CalculatorService" />
 	<bean id="MemberService" class="com.githrd.deli.service.MemberService" />
 	
-	
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl"> 
+		<property name="host" value="smtp.google.com"/> 
+	</bean>
 	
 </beans>
