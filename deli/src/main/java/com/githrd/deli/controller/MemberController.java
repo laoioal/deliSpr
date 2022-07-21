@@ -31,13 +31,22 @@ public class MemberController {
 	@Autowired private CalculatorService calculator;
 	
 	private memberVO member;
-	
+/*	
 	//insertId라는 주소가 url에 들어오면 해당 페이지를 보여줌
 	@GetMapping("/insertId.dlv")
 	public String start() {
 		return "/search/1.mapSearch/insertId";
 	}
+*/	
+	@GetMapping("/insertId.dlv")
+	public String insertID(@Param("id")String id,Model model) {
+		member = service.searchById(id);
+		model.addAttribute("member",member);	//member객체 넘긴다.
+		return "/search/1.mapSearch/myPositionSearch";
+ 
+	}
 	
+	/*
 	//id 존재 여부 확인 : 아이디 값이 있으면 그 다음 페이지로 넘어가지만, 존재하지 않으면 하단에 경고 메세지 표시
 	@PostMapping("/insertId.dlv")
 	public String insertId(Model model, guestVO guest) {
@@ -56,6 +65,7 @@ public class MemberController {
 			//error 메세지가 존재하지 않는다면 그 다음 페이지로 넘어간다
 		}
 	}
+	*/
 //	
 
 	//아이디 주소를 입력하면 주소값에 대한 위도값, 경도값을 자바스크립트를 통해 전달 받은 뒤
