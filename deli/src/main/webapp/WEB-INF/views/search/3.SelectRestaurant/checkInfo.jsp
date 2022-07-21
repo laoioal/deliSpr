@@ -18,7 +18,15 @@
 <ul>카테고리 : ${category.foodtype}<br></ul>
 <ul>식당명 : ${restaurant.rname}</ul>
 (${restaurant.addr})<br><br>
-<a href = "#"><button>확인</button></a>
+
+<form action = "/deli/member/boardWrite.dlv">
+	<input type="hidden" name="placeName" value="${place.name}"/>
+	<input type="hidden" name="category" value="${category.foodtype}"/>
+	<input type="hidden" name="resName" value="${restaurant.rname}"/>
+	<input type="hidden" name="resAddr" value="${restaurant.addr}"/>
+	<input type="submit" value="확인"/>
+</form>
+
 <a href = "<c:url value='/member/insertId.dlv'/>"><button>처음으로</button></a>
 </center>
 </body>
