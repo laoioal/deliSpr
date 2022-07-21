@@ -8,6 +8,8 @@
 <head>
     <meta charset="utf-8">
     <title>식당 선택 확인창</title>
+    	<link rel="stylesheet" type="text/css" href="<c:url value="/css/map/checkInfo.css"/>" >
+    
 </head>                           
 
 <body>
@@ -27,7 +29,10 @@
 	<input type="submit" value="확인"/>
 </form>
 
-<a href = "<c:url value='/member/insertId.dlv'/>"><button>처음으로</button></a>
+
+<a href = "<c:url value='/member/insertId.dlv'/>"><button id = "btn2">처음으로</button></a>
 </center>
+	<script src="<c:url value="/js/faq/urlDelete.js"/>" type="text/javascript"></script>
+
 </body>
 </html>
