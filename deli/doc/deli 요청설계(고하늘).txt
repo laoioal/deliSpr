@@ -1,10 +1,9 @@
 MAP
 # 회원 정보(아이디) 
 요청내용	:	/deli/member/insertId.dlv
-파라미터	:	유
+파라미터	:	id
 컨트롤러	:	com.githrd.deli.controller.MemberController
-뷰		:	/WEB-INF/views/search/1.mapSearch/insertId.jsp(아이디 입력)
-			/WEB-INF/views/search/1.mapSearch/myPositionSearch.jsp(나의 정보 표시)
+뷰		: /WEB-INF/views/search/1.mapSearch/myPositionSearch.jsp(나의 정보 표시)
 ----------------------------------------------------------------------------------
 # 픽업장소 관련 정보
 요청내용	:	/deli/member/place/placeView.dlv
