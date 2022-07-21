@@ -57,6 +57,15 @@
  		WHERE
  			id = #{id}
  	</select>
+ 	<!-- 이메일체크 질의명령 -->
+ 	<select id="mailCnt" resultType="int" parameterType="string">
+ 		SELECT
+ 			COUNT(*)
+ 		FROM
+ 			member
+ 		WHERE
+ 			mail = #{mail}
+ 	</select>
  	
  	<!-- 회원번호 조회 질의명령 --> 	
  	<select id="getMno" resultType="int" parameterType="string">

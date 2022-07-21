@@ -119,7 +119,7 @@ function save(){
 				<div class="w3-col w3-padding">
 					<div class=" w3-left-align w3-padding">
 						<label class="w3-margin-right" style="width: 20%" >글 제목 : </label>
-						<input class="w3-margin-left" name="title" type="text" style="width: 80%;">
+						<input class="w3-margin-left" name="title" id="title" type="text" style="width: 80%;">
 					</div>
 				</div>
 				<textarea name="body" id="ir1" rows="10" cols="100" style="width: 100%;"></textarea>

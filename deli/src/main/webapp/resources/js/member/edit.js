@@ -48,21 +48,60 @@ $(document).ready(function(){
 
 	// 이메일 인증
 	$('#mcbtn').click(function() {
-		$('#mail_ck').css('display', 'block');
-		$('#mailcheck').attr('disabled', false);
-		const eamil = $('#newmail').val() // 이메일 주소값 얻어오기!
-		console.log('완성된 이메일 : ' + eamil); // 이메일 오는지 확인
-		const checkInput = $('#mailcheck') // 인증번호 입력하는곳 
-		
+		var smail = $('#newmail').val();
+				
+		if(!smail){
+			// 입력내용이 없는 경우
+			$('#newmail').focus();
+			$('#newmailmsg').css('display', 'block');
+			$('#newmailmsg').addClass('w3-text-red');
+			$('#newmailmsg').html('아이디를 입력하세요!');
+			return;
+		}
+		// 전달해서 사용가능 유무 판단하고
 		$.ajax({
-			type : 'get',
-			url : '/deli/member/mailCheck?email='+eamil, // GET방식이라 Url 뒤에 email을 뭍힐수있다.
-			success : function (data) {
-				checkInput.attr('disabled',false);
-				code =data;
-				alert('인증번호가 전송되었습니다.')
-			}			
-		}); // end ajax
+			url:'/deli/member/mailCheck.dlv',
+			type: 'post',
+			dataType: 'json',
+			data: {
+				mail : smail
+			},
+			success: function(data){
+				var result = data.result;
+				$('#newmailmsg').removeClass('w3-text-green w3-text-red');
+				
+				// 뷰에 보여주고
+				if(result == 'OK'){
+					// 입력한 아이디가 사용가능한 경우
+					$('#newmailmsg').html('* 사용 가능한 아이디 입니다! *');
+					$('#newmailmsg').addClass('w3-text-green');
+					$('#mail_ck').css('display', 'block');
+					$('#mailcheck').attr('disabled', false);
+					const eamil = $('#newmail').val() // 이메일 주소값 얻어오기!
+					console.log('완성된 이메일 : ' + eamil); // 이메일 오는지 확인
+					const checkInput = $('#mailcheck') // 인증번호 입력하는곳 
+					
+					$.ajax({
+						type : 'get',
+						url : '/deli/member/mailSertified?email='+eamil, // GET방식이라 Url 뒤에 email을 뭍힐수있다.
+						success : function (data) {
+							checkInput.attr('disabled',false);
+							code =data;
+							alert('인증번호가 전송되었습니다.')
+						}			
+					}); // end ajax
+					
+				} else {
+					// 입력한 아이디가 사용불가능한 경우
+					$('#newmailmsg').html('* 사용 불가능한 아이디 입니다! *');
+					$('#newmailmsg').addClass('w3-text-red');
+				}
+				$('#newmailmsg').css('display', 'block');
+			},
+			error: function(){
+				alert('### 통신 에러 ###');
+			}
+		});
 	}); // end send eamil
 	
 	// 인증번호 비교

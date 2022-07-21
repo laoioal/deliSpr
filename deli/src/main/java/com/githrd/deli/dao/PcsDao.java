@@ -23,6 +23,8 @@ import com.githrd.deli.vo.*;
  * 									담당자 ] 박찬슬
  * 				2022.06.30  -   회원, 글쓰기 테이블 전담 함수 추가
  * 									담당자 ] 박찬슬
+ * 				2022.07.21  -	파일 업로드, 이메일 인증, 글쓰기 처리 전담 함수 추가
+ * 									담당자 ] 박찬슬
  * 
  *
  */
@@ -49,6 +51,11 @@ public class PcsDao {
 	// 아이디체크 처리
 	public int idCnt(String id) {
 		return sqlSession.selectOne("pcSQL.idCnt", id);
+	}
+	
+	// 이메일체크 처리
+	public int mailCnt(String mail) {
+		return sqlSession.selectOne("pcSQL.mailCnt", mail);
 	}
 	
 	// 회원가입 처리

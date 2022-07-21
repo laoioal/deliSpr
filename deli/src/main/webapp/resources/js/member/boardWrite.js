@@ -98,6 +98,14 @@ $(document).ready(function(){
 	
 	// 글 등록 버튼 클릭
 	$('#wbtn').click(function(){
+		var title = $('#title').val();
+		var larea = $('#large').val();
+		var marea = $('#middle').val();
+		var sarea = $('#small').val();
+		var end = $('#end').val();
+		var category = $('#menu').val();
+
+		
 		oEditors.getById['ir1'].exec('UPDATE_CONTENTS_FIELD', []);
 		let content = $('#ir1').val();
 		
@@ -107,6 +115,21 @@ $(document).ready(function(){
 			return;
 		} else {
 			console.log(content);
+		}
+		
+		if(content.length > 3000){
+			alert("입력가능한 글자수를 초과 하였거나, 또는 비 정상적인 접근입니다.");
+			return;
+		}
+		var el = $('#title, #large, #middle, #small, #end, #menu, #ir1');
+		
+		for(var i = 0; i < el.length; i++){
+			var txt = $(el).eq(i).val();
+			if(!txt){
+				alert('# 선택하지 않거나, 작성하지 않은 항목이 있습니다!');
+				$(el).eq(i).focus();
+				return;
+			}
 		}
 		
 		$('#bfrm').submit();

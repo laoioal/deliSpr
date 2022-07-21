@@ -106,6 +106,7 @@ public class PcsController {
 		return mv;
 	}
 	
+	// 음식점 카테고리
 	@RequestMapping("/rest.dlv")
 	@ResponseBody
 	public List<PcsVO> rest(PcsVO pcVO){
@@ -113,6 +114,7 @@ public class PcsController {
 		return list;
 	}
 	
+	// 지역 중분류
 	@RequestMapping("/mArea.dlv")
 	@ResponseBody
 	public List<PcsVO> mArea(PcsVO pcVO){
@@ -120,6 +122,7 @@ public class PcsController {
 		return list;
 	}
 
+	// 지역 소분류
 	@RequestMapping("/sArea.dlv")
 	@ResponseBody
 	public List<PcsVO> sArea(PcsVO pcVO){
@@ -219,9 +222,9 @@ public class PcsController {
 	}
 
 	// 이메일 인증
-	@GetMapping("/mailCheck")
+	@GetMapping("/mailCertified")
 	@ResponseBody
-	public String mailCheck(String email) {
+	public String mailCertified(String email) {
 		System.out.println("이메일 인증 요청이 들어옴!");
 		System.out.println("이메일 인증 이메일 : " + email);
 		return mailService.joinEmail(email);		
@@ -316,6 +319,23 @@ public class PcsController {
 		return map;
 	}
 	
+	// 이메일체크 함수
+	@RequestMapping(path="/mailCheck.dlv", method=RequestMethod.POST, params="mail")
+	@ResponseBody
+	public Map<String, String> mailCheck(String mail){
+		HashMap<String, String> map = new HashMap<String, String>();
+		String result = "NO";
+		
+		int cnt = PcDao.mailCnt(mail);
+		
+		if(cnt == 0) {
+			result = "OK";
+		}
+		
+		map.put("result", result);
+		return map;
+	}
+	
 	// 스마트에디터 단일파일 업로드
 	@RequestMapping("/bWriteProc.dlv")
 	public String photoUpload(HttpServletRequest req, BphotoVO bpVO) {
@@ -355,16 +375,6 @@ public class PcsController {
 	}
 	
 	// 다중파일업로드
-	@RequestMapping("/eMultiWriteProc.dlv")
-	public void eMultiWriteProc(FileVO fVO) {
-		try{
-			fSrvc.se2Upload(fVO);
-			System.out.println("fVO : " + fVO);
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-	}
-	
 	@RequestMapping("/bMulitWriteProc.dlv")
 	public void bMulitWriteProc(HttpServletRequest req, HttpServletResponse resp) {
 		try {

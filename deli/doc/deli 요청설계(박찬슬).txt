@@ -86,13 +86,19 @@
 컨트롤러	: 	com.githrd.deli.controller.PcsController
 처리함수	:	idCheck()
 뷰			:	json
-
 --------------------------------------------------------------
-# 이메일인증 처리 요청
-요청내용	: 	/deli/member/mailCheck
-파라미터	:	email
+# 이메일체크 처리 요청 
+요청내용	: 	/deli/member/mailCheck.dlv
+파라미터	:	mail
 컨트롤러	: 	com.githrd.deli.controller.PcsController
 처리함수	:	mailCheck()
+뷰			:	json
+--------------------------------------------------------------
+# 이메일인증 처리 요청
+요청내용	: 	/deli/member/mailSertified
+파라미터	:	email
+컨트롤러	: 	com.githrd.deli.controller.PcsController
+처리함수	:	mailSertified()
 뷰			:	json
 --------------------------------------------------------------
 # 글쓰기 처리 요청
