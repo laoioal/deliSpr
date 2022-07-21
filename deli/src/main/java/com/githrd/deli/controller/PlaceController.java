@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.githrd.deli.dao.CategoryDao;
-import com.githrd.deli.dao.PlaceDao;
 import com.githrd.deli.dao.RestaurantDao;
 import com.githrd.deli.service.PlaceService;
 import com.githrd.deli.service.RestaurantService;
@@ -25,20 +24,18 @@ import com.githrd.deli.vo.restaurantVO;
 @Controller
 @RequestMapping("/place")
 public class PlaceController {
-	@Autowired private PlaceDao placedao;	// 픽업장소 관련
 	@Autowired private CategoryDao categorydao;	//음식 카테고리 관련 
 	@Autowired private RestaurantService restaurantService;
 	@Autowired private RestaurantDao restaurantdao;
 	@Autowired private PlaceService placeservice;
 	
-	//@Autowired private CalculatorService calculator;
 
 	
 	//음식 카테고리 정보 요청
 	@GetMapping("/category.dlv")
 	public String chooseCategory(Model model, @Param("name")String name) {
 		List<categoryVO> category = categorydao.selectList();		
-		placeVO place = placedao.selectOne(name);
+		placeVO place = placeservice.selectOne(name);
 		model.addAttribute("place", place);
 		model.addAttribute("category",category);
 		return "/search/2.SelectPlace/chooseMenuCategory";
@@ -49,7 +46,7 @@ public class PlaceController {
 	//카테고리를 바탕으로 식당 조회, 이를 선택
 	@GetMapping("/restaurant.dlv")	//code:카테고리 코드, place_name : 장소명
 	public String chooseMenuCategory(Model model,@Param("code")int code,@Param("place_name")String place_name) {
-		placeVO place = placedao.selectOne(place_name);
+		placeVO place = placeservice.selectOne(place_name);
 
 		int mcode = placeservice.getCode(place);
 		categoryVO category = categorydao.selectNum(code);
@@ -67,10 +64,9 @@ public class PlaceController {
 	@GetMapping("/restaurant/selectfinish.dlv")
 	public String restaurantChoose(Model model,@Param("restno")int restno,@Param("place_name")String place_name) {
 	
-		placeVO place = placedao.selectOne(place_name);
+		placeVO place = placeservice.selectOne(place_name);
 		restaurantVO restaurant = restaurantdao.selectRestno(restno);
 		categoryVO category = categorydao.selectNum(restaurant.getCname());
-	//	calculator.disCal(place.getPickuplat(), place.getPickuplon(), lat2, lon2)
 		model.addAttribute("place",place);
 		model.addAttribute("category",category);
 		model.addAttribute("restaurant",restaurant);
