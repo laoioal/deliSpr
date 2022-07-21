@@ -27,6 +27,7 @@ import com.githrd.deli.dao.PayDao;
 import com.githrd.deli.dao.YonghyunDao;
 import com.githrd.deli.service.PayService;
 import com.githrd.deli.service.PaymentCheck;
+import com.githrd.deli.util.PageUtil;
 import com.githrd.deli.vo.MembVO;
 import com.githrd.deli.vo.PayVO;
 import com.githrd.deli.vo.YonghyunVO;
@@ -52,10 +53,48 @@ public class PayController {
 	
 	//	실험 페이지
 	@RequestMapping("payPay.dlv")
-	public ModelAndView payPay(ModelAndView mv, HttpServletRequest req) {
+	public ModelAndView payPay(ModelAndView mv, HttpServletRequest req, PayVO paVO, YonghyunVO yVO, HttpSession session) {
 		String pay = req.getParameter("짜장면");
 		System.out.println(pay);
-
+		String pay2 = req.getParameter("짬뽕");
+		System.out.println(pay2);
+		
+		String sid = (String) session.getAttribute("SID");
+		paVO = paDao.selPays(paVO);
+		String mname = (String)req.getParameter("mname1");
+		String mmprice = (String)req.getParameter("price1");
+		int mtprice = Integer.parseInt(mmprice);
+		
+		paVO.setAmname(mname);
+		paVO.setMyprice(mtprice);		
+		
+		int cnt = paDao.abnoCnt(paVO.getBno());
+			
+		int delpay = (paVO.getDelpay() != 0) ? paVO.getDelpay() / cnt : 0;
+		paVO.setMtprice(mtprice + delpay);
+		
+		
+		List<YonghyunVO> mVO = yDao.getMenu(yVO);
+		int aprice = 0;
+		for(int i = 0 ; i < mVO.size() ; i ++) {
+			aprice = aprice + mVO.get(i).getMprice();
+		}
+		
+		aprice = aprice + paVO.getMyprice();
+		
+		List<YonghyunVO> kVO = yDao.selRegimem(yVO);
+		
+		MembVO membVO = paDao.selMinfo(sid);
+		mv.addObject("DLP", delpay);
+		mv.addObject("PO", paVO);
+		mv.addObject("MPO", membVO);
+		mv.addObject("MENU", mVO);
+		mv.addObject("MEMBER", kVO);		
+		mv.addObject("APRICE", aprice);
+		
+		mv.setViewName("payment/beforePay");
+		
+		
 		return mv;
 	}
 	
@@ -141,7 +180,7 @@ public class PayController {
 	@ResponseBody
 	public int canCelPay(String merchant_uid) {
 		String token = paSrvc.getImportToken();
-		// System.out.println("token : " + token);
+		System.out.println("token : " + token);
 		int cnt = paSrvc.cancelPayment(token, merchant_uid);
 		String ono = merchant_uid;
 		paSrvc.delAllM(ono);
@@ -229,21 +268,30 @@ public class PayController {
 		mv.setViewName("payment/afterPay");
 		return mv;
 	}
-	/*
+	
 	//	주문 내역 조회 폼보기 함수
 	@RequestMapping("orderHistory.dlv")
-	public ModelAndView orderHistory(ModelAndView mv, HttpServletRequest req, RedirectView rv) {
-		String sid = (String) req.getParameter("SID");
+	public ModelAndView orderHistory(ModelAndView mv, HttpSession session, RedirectView rv, PayVO paVO, PageUtil page) {
+		String sid = (String) session.getAttribute("SID");
+		System.out.println(sid);
+		
 		if(sid == null) {
 			rv.setUrl("/deli/member/login.dlv");
 			mv.setView(rv);
 			return mv;
 		}
+		
 		MembVO membVO = paDao.selMinfo(sid);
+		
+		paVO.setMno(membVO.getMno());
+		
+		List<PayVO> list = paDao.selOdH(paVO);
+
+		mv.addObject("LIST", list);
 		
 		mv.setViewName("payment/orderHistory");
 		
 		return mv;
 	}
-	*/
+	
 }

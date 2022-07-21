@@ -1,6 +1,8 @@
 package com.githrd.deli.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -90,8 +92,13 @@ public class PayDao {
 	}
 	
 	//	주문내역 조회 처리 함수
-	public List<PayVO> selOdH(PageUtil page) {
-		return sqlSession.selectList("paSQL.selOdH", page);
+	public List<PayVO> selOdH(PayVO paVO) {
+		return sqlSession.selectList("paSQL.selOdH", paVO);
+	}
+	
+	//	주문 총 개수 조회 처리 함수
+	public int odtCnt(int mno) {
+		return sqlSession.selectOne("paSQL.odtCnt", mno);
 	}
 }
 

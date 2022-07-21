@@ -6,17 +6,43 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
+import com.githrd.deli.util.PageUtil;
+
 public class PayVO {
 	private int membmno, mno, rno, mimg, mprice, mino, olno,  oprice, omprice, quantity, esti, cname, omno, gorder, delpay, cnt, mtprice, myprice, bno, restno, minprice;
-	private String mname1, result, membname, membmail, mname, mintro, miname, sname, dir, omenu, rname, addr, tel, stime, ono, sdate, paym, request, amname, id, membaddr, membtel, olmenu;
+	private String oodate, mname1, result, membname, membmail, mname, mintro, miname, sname, dir, omenu, rname, addr, tel, stime, ono, sdate, paym, request, amname, id, membaddr, membtel, olmenu;
 	private List<PayVO> menu;
-	
+	private PageUtil page;
 	private List<PayVO>[] mmenu;
-	
 	private int[] orprice;
 	private String[] ormname;
 	private int[] orq;
+	private Time rtime;
+	private Date rdate, odate;
 	
+	public String getOodate() {
+		return oodate;
+	}
+	public void setOodate(String oodate) {
+		this.oodate = oodate;
+	}
+	public void setOodate() {
+		SimpleDateFormat form = new SimpleDateFormat("yyyy년 MM월 dd일 HH시 mm분");
+		oodate = form.format(odate);
+	}
+	public Date getOdate() {
+		return odate;
+	}
+	public void setOdate(Date odate) {
+		this.odate = odate;
+		setOodate();
+	}
+	public PageUtil getPage() {
+		return page;
+	}
+	public void setPage(PageUtil page) {
+		this.page = page;
+	}
 	public int getMinprice() {
 		return minprice;
 	}
@@ -86,10 +112,6 @@ public class PayVO {
 		this.mmenu = mmenu;
 	}
 
-
-
-	private Time rtime;
-	private Date rdate;
 	
 	public int getMno() {
 		return mno;
@@ -359,13 +381,13 @@ public class PayVO {
 				+ ", miname=" + miname + ", sname=" + sname + ", dir=" + dir + ", omenu=" + omenu + ", rname=" + rname
 				+ ", addr=" + addr + ", tel=" + tel + ", stime=" + stime + ", ono=" + ono + ", sdate=" + sdate
 				+ ", paym=" + paym + ", request=" + request + ", amname=" + amname + ", id=" + id + ", membaddr="
-				+ membaddr + ", membtel=" + membtel + ", olmenu=" + olmenu + ", menu=" + menu + ", mmenu="
-				+ Arrays.toString(mmenu) + ", orprice=" + Arrays.toString(orprice) + ", ormname="
+				+ membaddr + ", membtel=" + membtel + ", olmenu=" + olmenu + ", menu=" + menu + ", page=" + page
+				+ ", mmenu=" + Arrays.toString(mmenu) + ", orprice=" + Arrays.toString(orprice) + ", ormname="
 				+ Arrays.toString(ormname) + ", orq=" + Arrays.toString(orq) + ", rtime=" + rtime + ", rdate=" + rdate
-				+ ", getMinprice()=" + getMinprice() + ", getMname1()=" + getMname1() + ", getOrprice()="
-				+ Arrays.toString(getOrprice()) + ", getOrmname()=" + Arrays.toString(getOrmname()) + ", getOrq()="
-				+ Arrays.toString(getOrq()) + ", getResult()=" + getResult() + ", getMenu()=" + getMenu()
-				+ ", getMembname()=" + getMembname() + ", getMembmail()=" + getMembmail() + ", getOlmenu()="
+				+ ", getPage()=" + getPage() + ", getMinprice()=" + getMinprice() + ", getMname1()=" + getMname1()
+				+ ", getOrprice()=" + Arrays.toString(getOrprice()) + ", getOrmname()=" + Arrays.toString(getOrmname())
+				+ ", getOrq()=" + Arrays.toString(getOrq()) + ", getResult()=" + getResult() + ", getMenu()="
+				+ getMenu() + ", getMembname()=" + getMembname() + ", getMembmail()=" + getMembmail() + ", getOlmenu()="
 				+ getOlmenu() + ", getMmenu()=" + Arrays.toString(getMmenu()) + ", getMno()=" + getMno() + ", getRno()="
 				+ getRno() + ", getMimg()=" + getMimg() + ", getMprice()=" + getMprice() + ", getMino()=" + getMino()
 				+ ", getMembmno()=" + getMembmno() + ", getMembaddr()=" + getMembaddr() + ", getMembtel()="

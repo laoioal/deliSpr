@@ -3,6 +3,8 @@
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="paSQL">
+
+	<!-- odt 입력 -->
 	<insert id="insertOdt" parameterType="paVO">
 		INSERT INTO
 			ordertask(ono, mno)
@@ -11,6 +13,7 @@
 		) 
 	</insert>
 	
+	<!-- odl 입력 -->
 	<insert id="insertOdl" parameterType="paVO">
 	
 		INSERT INTO
@@ -40,6 +43,7 @@
 	</insert>
 	 -->
 	
+	<!-- odm 입력 -->
 	<insert id="insertOdm" parameterType="paVO">
 	<selectKey keyProperty="omno" resultType="int" order="BEFORE">
 		SELECT NVL(MAX(omno) + 1, 1) FROM ordermenu
@@ -55,6 +59,7 @@
 		)
 	</insert>
 	
+	<!-- 게시판 번호로 식당정보 조회 -->
 	<select id="selPays" parameterType="paVO" resultType="paVO">
 		SELECT
 			DISTINCT restno, delpay, rname, bno, minprice
@@ -69,6 +74,7 @@
 			 AND bno = #{bno}
 	</select>
 	
+	<!-- 아이디로 내정보 조회 -->
 	<select id="selMinfo" parameterType="string" resultType="membVO">
 		SELECT
 			mno, id, tel, addr, mail, name
@@ -79,16 +85,7 @@
 			 AND id = #{sid}
 	</select>
 	
-	<select id="abnoCnt" parameterType="int" resultType="int">
-		SELECT
-			COUNT(*) cnt
-		FROM
-			regimem
-		WHERE
-			 isshow = 'Y'
-			 AND abno = #{abno}
-	</select>
-	
+	<!-- 게시판 번호로 조회 -->
 	<select id="selRest" parameterType="int" resultType="paVO">
 		SELECT
 			rname, restno, mname, mprice, quantity
@@ -102,6 +99,7 @@
 			 AND bno = #{bno}
 	</select>
 	
+	<!-- 메뉴 번호 탐색 -->
 	<select id="selMenuMno" parameterType="paVO" resultType="paVO">
 		SELECT
 		    mno
@@ -120,6 +118,7 @@
 				    )
 	</select>
 	
+	<!-- 메뉴번호로 메뉴 정보 찾기 -->
 	<select id="selMenu" parameterType="int" resultType="paVO">
 		SELECT
 			mno, rno, mname, mprice
@@ -130,6 +129,7 @@
 			AND mno = #{mno}
 	</select>
 	
+	<!-- 게시판 참여자 수 -->
 	<select id="selAbnoCnt" parameterType="int" resultType="int">
 		SELECT
 		    COUNT(*) cnt
@@ -140,6 +140,7 @@
 		    AND abno = #{bno}
 	</select>
 	
+	<!-- odt 변경 -->
 	<update id="delOdt" parameterType="String">
 		UPDATE 
 			ordertask
@@ -149,6 +150,7 @@
 			ono = #{ono}
 	</update>
 	
+	<!-- odl 변경 -->
 	<update id="delOdl" parameterType="String">
 		UPDATE 
 			orderlist
@@ -158,6 +160,7 @@
 			ono = #{ono}
 	</update>
 	
+	<!-- odm 변경 -->
 	<update id="delOdm" parameterType="String">
 		UPDATE 
 			ordermenu
@@ -167,19 +170,20 @@
 			ono = #{ono}
 	</update>
 	
-	<select id="selOdH" parameterType="page" resultType="paVO">
+	<!-- 주문내역 확인 -->
+	<select id="selOdH" parameterType="paVO" resultType="paVO">
 		SELECT
-		    ronum, ono, mno, odate, oprice, paym, requests, rno, rname, addr
+		    ronum, ono, mno, odate, oprice, paym, requests, rno, rname, addr, olmenu
 		FROM
 		    (
 		    SELECT
-		        ROWNUM ronum, ono, mno, odate, oprice, paym, requests, rno, rname, addr
+		        ROWNUM ronum, ono, mno, odate, oprice, paym, requests, rno, rname, addr, olmenu
 		    FROM   
 		       ( 
 		        SELECT
-		            odt.ono, mno, odate, oprice, paym, odl.requests requests, rno,
+		            odt.ono, mno, odate, oprice, paym, odl.requests requests, rno, 
 		            (SELECT rname FROM RESTAURANT WHERE restno = odl.rno) rname,
-		            (SELECT addr FROM RESTAURANT WHERE restno = odl.rno) addr
+		            (SELECT addr FROM RESTAURANT WHERE restno = odl.rno) addr, olmenu
 		        FROM
 		            ordertask odt, orderlist odl, ordermenu odm
 		        WHERE
@@ -193,9 +197,17 @@
 		            odate desc
 		        )
 		        )
-		WHERE
-		    ronum BETWEEN #{startCont} AND #{endCont}
 	</select>
 	
+	<!-- 주문 내역 총 개수 조회 -->
+	<select id="odtCnt" parameterType="int" resultType="int">
+		SELECT
+		    COUNT(*)
+		FROM
+		    ordertask
+		WHERE
+		    isshow = 'Y'
+		    AND mno = #{mno}
+	</select>
 	
 </mapper>
