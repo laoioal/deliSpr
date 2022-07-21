@@ -24,9 +24,9 @@
 	</tr>
 	<tr>
 		<c:forEach items="${list}" var="list" >
-	<th class = "no"> <a href="<c:url value='/faq/board/detail.dlv?no=${list.no}'/>">${list.no}</a></th>
+	<th class = "no"> ${list.no}</th>
 	 <th class = "title">${list.title}</th>
-	 <th class = "content">${list.content}</th>
+	 <th class = "content"><a href="<c:url value='/faq/board/detail.dlv?no=${list.no}'/>">${list.content}</a></th>
 	 <th class = wdate>${list.wdate}</th>
 	</tr>
 	</c:forEach>
