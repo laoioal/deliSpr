@@ -7,7 +7,7 @@ MAP
 			/WEB-INF/views/search/1.mapSearch/myPositionSearch.jsp(나의 정보 표시)
 ----------------------------------------------------------------------------------
 # 픽업장소 관련 정보
-요청내용	:	/deli/place/placeView.dlv
+요청내용	:	/deli/member/place/placeView.dlv
 파라미터	:	유
 컨트롤러	:	com.githrd.deli.controller.MemberController
 뷰		:	/WEB-INF/views/search/2.SelectPlace/pickUpPlaceChoose.jsp (픽업장소 표시)
@@ -26,7 +26,7 @@ MAP
 뷰		: 	/WEB-INF/views/search/3.SelectRestaurant/restaurantChoose.jsp(음식점 선택)
 ----------------------------------------------------------------------------------
 # 최종 확인 정보
-요청내용	:	/deli/restaurant/selectfinish.dlv
+요청내용	:	/deli/place/restaurant/selectfinish.dlv
 파라미터	:	
 컨트롤러	:	com.githrd.deli.controller.PlaceController
 뷰		: 	/WEB-INF/views/search/3.SelectRestaurant/checkInfo.jsp(total 정보 제공 확인용)
