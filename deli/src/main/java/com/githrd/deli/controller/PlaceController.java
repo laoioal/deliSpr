@@ -18,7 +18,7 @@ import com.githrd.deli.vo.categoryVO;
 import com.githrd.deli.vo.placeVO;
 import com.githrd.deli.vo.restaurantVO;
 /*
- * 이 클래스는 지도에 표시될 장소를 관리하는 컨트롤러???
+ * 이 클래스는 지도에 표시될 장소 관련 컨트롤러
  *  작성자 : 고하늘
  * */
 @Controller
