@@ -37,7 +37,7 @@
 		    	<div class="w3-button w3-block w3-black" id="hbtn">HOME</div>
 		    </div>
 		    <div class="w3-col s8">
-		      	<div class="w3-block w3-black w3-center">&nbsp;</div>
+		      	<div class="w3-block w3-black w3-center ft18">Delivery Project</div>
 		    </div>
 <c:if test="${SID eq null}">
 		    <div class="w3-col s2">
@@ -52,9 +52,6 @@
 	  	</div>
 	</div>
 	
-	<div class="w85p w3-display-middle border3px" style="position: relative; top: 95px;">
-		<h1 class="w3-center"><b>Delivery Project</b></h1>
-	</div>
 	<form method="POST" action="/deli/review/rvWrite.dlv" name="rfrm" id="rfrm">
 		<input type="hidden" name="bno" id="bno">
 	</form>

@@ -34,6 +34,30 @@
 			AND id = #{id}
 	</update>
 	
+	<insert id="insEtableA" parameterType="eVO">
+		INSERT ALL
+		    WHEN
+		        abno = #{bno} AND aid != #{id} THEN
+		    INTO
+		        estitable
+		    VALUES(
+		        #{bno}, #{id}, aid, isshow
+		    )
+		    SELECT * FROM regimem
+	</insert>
+	
+	<insert id="insEtableB" parameterType="eVO">
+		INSERT ALL
+		    WHEN
+		        abno = #{bno} AND aid != #{id} THEN
+		    INTO
+		        estitable
+		    VALUES(
+		        #{bno}, aid, #{id}, isshow
+		    )
+		    SELECT * FROM regimem
+	</insert>
+	
 	<select id="selBinfo" resultType="eVO" parameterType="string">
 		SELECT
 		    bno, title, sdate
@@ -70,27 +94,46 @@
 		    AND m.id = idb
 	</select>
 	
-	<insert id="insEtableA" parameterType="eVO">
-		INSERT ALL
-		    WHEN
-		        abno = #{bno} AND aid != #{id} THEN
-		    INTO
-		        estitable
-		    VALUES(
-		        #{bno}, #{id}, aid, isshow
-		    )
-		    SELECT * FROM regimem
+	<insert id="insEsti" parameterType="eVO">
+		INSERT INTO
+		    estimate
+		VALUES(
+		    #{bno}, #{id}, #{idb}, #{nesti}
+		)
 	</insert>
 	
-	<insert id="insEtableB" parameterType="eVO">
-		INSERT ALL
-		    WHEN
-		        abno = #{bno} AND aid != #{id} THEN
-		    INTO
-		        estitable
-		    VALUES(
-		        #{bno}, aid, #{id}, isshow
+	<update id="upEtable" parameterType="eVO">
+		UPDATE
+		    estitable
+		SET
+		    isshow = 'N'
+		WHERE
+		    etbno = #{bno}
+		    AND etida = #{id}
+		    AND etidb = #{idb}
+	</update>
+	
+	<select id="selPoint" resultType="eVO" parameterType="string">
+		SELECT
+		    spts, cpts
+		FROM
+		    (
+		        SELECT
+		            SUM(epoint) spts, count(epoint) cpts
+		        FROM
+		            estimate
+		        WHERE
+		            eidb = #{idb}
 		    )
-		    SELECT * FROM regimem
-	</insert>
+	</select>
+	
+	<update id="upEsti" parameterType="eVO">
+		UPDATE
+		    member
+		SET
+		    esti = #{esti}
+		WHERE
+		    id = #{idb}
+	</update>
+	
 </mapper>

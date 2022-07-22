@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 
 public class EunbeeVO {
 	private int ano, cpts;
-	private double esti, point, spts;
+	private double esti, nesti, point, spts;
 	private String bno, id, idb, mail, pw, npw, dir, savename, title, sdate, show, eshow;
 	private Date wdate;
 	
@@ -34,6 +34,14 @@ public class EunbeeVO {
 		this.esti = esti;
 	}
 	
+	public double getNesti() {
+		return nesti;
+	}
+
+	public void setNesti(double nesti) {
+		this.nesti = nesti;
+	}
+
 	public double getPoint() {
 		return point;
 	}
@@ -162,12 +170,10 @@ public class EunbeeVO {
 
 	@Override
 	public String toString() {
-		return "EunbeeVO [bno=" + bno + ", ano=" + ano + ", cpts=" + cpts + ", esti=" + esti + ", point=" + point
-				+ ", spts=" + spts + ", id=" + id + ", idb=" + idb + ", mail=" + mail + ", pw=" + pw + ", npw=" + npw
-				+ ", dir=" + dir + ", savename=" + savename + ", title=" + title + ", sdate=" + sdate + ", show=" + show
-				+ ", eshow=" + eshow + ", wdate=" + wdate + "]";
+		return "EunbeeVO [ano=" + ano + ", cpts=" + cpts + ", esti=" + esti + ", nesti=" + nesti + ", point=" + point
+				+ ", spts=" + spts + ", bno=" + bno + ", id=" + id + ", idb=" + idb + ", mail=" + mail + ", pw=" + pw
+				+ ", npw=" + npw + ", dir=" + dir + ", savename=" + savename + ", title=" + title + ", sdate=" + sdate
+				+ ", show=" + show + ", eshow=" + eshow + ", wdate=" + wdate + "]";
 	}
-
-
 
 }

@@ -60,5 +60,21 @@ public class EunbeeDao {
 	public List<EunbeeVO> getEinfo(EunbeeVO eVO) {
 		return sqlSession.selectList("eSQL.selEinfo", eVO);
 	}
+	
+	public int insEsti(EunbeeVO eVO) {
+		return sqlSession.insert("eSQL.insEsti", eVO);
+	}
+	
+	public int upEtable(EunbeeVO eVO) {
+		return sqlSession.update("eSQL.upEtable", eVO);
+	}
+	
+	public EunbeeVO getPoint(String idb) {
+		return sqlSession.selectOne("eSQL.selPoint", idb);
+	}
+	
+	public int upEsti(EunbeeVO eVO) {
+		return sqlSession.update("eSQL.upEsti", eVO);
+	}
 
 }

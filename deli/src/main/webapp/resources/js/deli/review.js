@@ -30,13 +30,13 @@ $(document).ready(function() {
 	$('label').mouseup(function() {
 		let point = $(this).prev().val();
 		let idb = $(this).siblings().first().attr('id');
-		let abno = $(this).parent().attr('id');
+		let bno = $(this).parent().attr('id');
 		
 		$(this).siblings().first().text(point);
 		
 		$('#nesti').val(point);
 		$('#idb').val(idb);
-		$('#abno').val(abno);
+		$('#bno').val(bno);
 		
 		$('.sbtn').click(function() {
 			$('#frm').submit();
