@@ -25,22 +25,22 @@ public class AdminService {
 	}
 
 	
-	public String LoginMsg(String id, String pw) {
-		String msg;
-		adminVO vo = adao.selectId(id);
-		System.out.println(vo);
-		if(vo==null) {
-			msg = "아이디를 잘못 입력했습니다.";
-		}
-		else {
-			if(vo.getPw().equals(pw)) {
-				msg = null;
-			}
-			else {
-				msg = "비밀번호를 잘못 입력했습니다.";
-			}
-		}
-		return msg;
-	}
+// 	public String LoginMsg(String id, String pw) {
+// 		String msg;
+// 		adminVO vo = adao.selectId(id);
+// 		System.out.println(vo);
+// 		if(vo==null) {
+// 			msg = "아이디를 잘못 입력했습니다.";
+// 		}
+// 		else {
+// 			if(vo.getPw().equals(pw)) {
+// 				msg = null;
+// 			}
+// 			else {
+// 				msg = "비밀번호를 잘못 입력했습니다.";
+// 			}
+// 		}
+// 		return msg;
+// 	}
 	
 }
