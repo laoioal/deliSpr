@@ -12,25 +12,8 @@
 	<context:annotation-config />
 
 	<bean id="eDao" class="com.githrd.deli.dao.EunbeeDao"/>
-	<bean id="paDao" class="com.githrd.deli.dao.PayDao"/>
-	<bean id="pcDao" class="com.githrd.deli.dao.PcsDao"/>
-	<bean id="yDao" class="com.githrd.deli.dao.YonghyunDao"/>
-	
-	<bean id = "MemberDao" class = "com.githrd.deli.dao.MemberDao"/>
-	<bean id = "PlaceDao" class = "com.githrd.deli.dao.PlaceDao"/>
-	<bean id = "CategoryDao" class = "com.githrd.deli.dao.CategoryDao"/>
-	
-	
-	
-	
-	
-	<bean id="ySrvc" class="com.githrd.deli.service.YonghyunService" />
-	
-	<bean id="CalculatorService" class="com.githrd.deli.service.CalculatorService" />
-	<bean id="MemberService" class="com.githrd.deli.service.MemberService" />
-	
+				
 	<bean id="eSvc" class="com.githrd.deli.service.EunbeeService" />
-	
 	
 	
 </beans>
