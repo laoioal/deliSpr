@@ -9,10 +9,13 @@ import org.springframework.web.servlet.ModelAndView;
 public class PayInterceptor implements HandlerInterceptor {
 
 	@Override
-	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
+	public boolean preHandle(HttpServletRequest req, HttpServletResponse resp, Object handler)
 			throws Exception {
-		// TODO Auto-generated method stub
-		return false;
+		if(req.getSession().getAttribute("SID") == null) {
+			resp.sendRedirect("/deli/member/login.dlv");
+			return false;
+		}
+		return true;
 	}
 
 	@Override

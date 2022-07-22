@@ -14,6 +14,7 @@ $(document).ready(function(){
 		}
 		
 		
+		
 		let m_email = $('#mail').val();
 		let s_name = $('#name').val();;
 		let s_id = $('#myid').val();
@@ -58,7 +59,6 @@ $(document).ready(function(){
 						    },
 						success : function(result){
 							if(result.result == "y") {
-								alert(rsp.pay_method);
 								$('#imp_uid').val(rsp.imp_uid);
 								$('#token').val(rsp.token);
 								$('#merchant_uid').val(rsp.merchant_uid);
@@ -149,7 +149,6 @@ $(document).ready(function(){
 	
 	$('#rbtn').click(function() {
 		let merchant_uid = $('.dataono').html();
-		alert(merchant_uid);
 		$.ajax({
 			url : "/deli/payment/canCelPay.dlv",
 			type : "post",

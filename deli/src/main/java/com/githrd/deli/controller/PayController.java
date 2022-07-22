@@ -1,10 +1,12 @@
 package com.githrd.deli.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import org.slf4j.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -47,23 +49,77 @@ public class PayController {
 	YonghyunDao yDao;
 	@Autowired
 	PayService paSrvc;
-
+	@Autowired
+	
+	
+	
+	private static final Logger payLog = LoggerFactory.getLogger(PayController.class);
+	private static final Logger PayLog = LoggerFactory.getLogger("payLog");
 	
 	public IamportClient api;
-	
 	//	실험 페이지
+	/*
 	@RequestMapping("payPay.dlv")
 	public ModelAndView payPay(ModelAndView mv, HttpServletRequest req, PayVO paVO, YonghyunVO yVO, HttpSession session) {
-		String pay = req.getParameter("짜장면");
-		System.out.println(pay);
-		String pay2 = req.getParameter("짬뽕");
-		System.out.println(pay2);
 		
 		String sid = (String) session.getAttribute("SID");
 		paVO = paDao.selPays(paVO);
-		String mname = (String)req.getParameter("mname1");
-		String mmprice = (String)req.getParameter("price1");
-		int mtprice = Integer.parseInt(mmprice);
+		
+		String pay = req.getParameter("짜장면");
+		int opay = Integer.parseInt(pay);
+		
+		String pay2 = req.getParameter("짬뽕");
+		int opay2 = Integer.parseInt(pay2);
+		
+		String[] menuArr = new String[2];
+		menuArr[0] = "짜장면";
+		menuArr[1] = "짬뽕";
+		
+		int[] payArr = new int[2];	
+		payArr[0] = opay;	
+		payArr[1] = opay2;
+		
+		
+		int[] menuPrice = new int[2];
+		for(int i =0 ; i< payArr.length; i++) {
+			Map<String, String> map = new HashMap<String, String>();
+			map.put(menuArr[i], paVO.getRname());
+			menuPrice[i] = paDao.selMenuPrice(map);
+		}
+		
+		System.out.println(menuPrice);
+
+		int[] cntArr = new int[2];
+		int countCnt = 0;
+		for(int i = 0; i < cntArr.length ; i++) {
+			cntArr[i] = ((payArr[i] !=0) ? payArr[i] / 6000 : 0);
+			countCnt = cntArr[i];
+		}
+		
+		int[] priceArr = new int[2];
+		for(int i =0 ;i< priceArr.length; i++) {
+			priceArr[i] = payArr[i] / cntArr[i];
+		}
+		
+		List<PayVO> mlist = new ArrayList<PayVO>();
+		
+		for(int i =0 ; i< 2; i++) {
+			if(cntArr[i] == 0) {
+				break;
+			} else {
+				PayVO pVO = new PayVO();
+				pVO.setMname(menuArr[i]);
+				pVO.setMprice(priceArr[i]);
+				pVO.setQuantity(cntArr[i]);
+				mlist.add(pVO);
+			}
+		}
+
+		System.out.println(paVO);
+		
+		String mname = "짜장면";
+		
+		int mtprice = opay + opay2;
 		
 		paVO.setAmname(mname);
 		paVO.setMyprice(mtprice);		
@@ -91,13 +147,16 @@ public class PayController {
 		mv.addObject("MENU", mVO);
 		mv.addObject("MEMBER", kVO);		
 		mv.addObject("APRICE", aprice);
+		mv.addObject("COUNCNT", countCnt);
+		mv.addObject("MLIST", mlist);
+		
 		
 		mv.setViewName("payment/beforePay");
 		
 		
 		return mv;
 	}
-	
+	*/
 	
 	//	결제전 페이지 폼 보기 처리함수
 	@RequestMapping("beforePay.dlv")
@@ -207,13 +266,13 @@ public class PayController {
 	*/
 	//	결제 후 페이지 폼보기 처리 함수
 	@RequestMapping("afterPay.dlv")
-	public ModelAndView afterPay(ModelAndView mv, HttpSession session, PayVO paVO, YonghyunVO yVO, HttpServletRequest req, RedirectView rv) {
+	public ModelAndView afterPay(ModelAndView mv, HttpSession session, PayVO paVO, YonghyunVO yVO, HttpServletRequest req, RedirectView rv, MembVO membVO) {
 		System.out.println(paVO);
 		
 		Map result = new HashMap<String, String>();
 
 		String sid = (String) session.getAttribute("SID");
-		MembVO membVO = paDao.selMinfo(sid);
+		membVO = paDao.selMinfo(sid);
 		paVO = paDao.selPays(paVO);
 		String amname = (String) req.getParameter("mname1");
 		String mmprice = (String)req.getParameter("price1");
@@ -248,13 +307,13 @@ public class PayController {
 		
 		try {
 			paSrvc.insertAllM(paVO);
+			payLog.info(membVO.getId() + " 님이 "+ amname +" 주문을 완료했습니다.");
 		} catch (Exception e) {
 			e.printStackTrace();
-			
 			mv.setViewName("payment/beforePay");
 			return mv;
 		}
-		
+		membVO.setResult("OK");
 		mv.addObject("RQ", rq);
 		mv.addObject("PO", paVO);
 		mv.addObject("MPO", membVO);

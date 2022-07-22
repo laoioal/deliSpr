@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class MembVO {
 	private int mno;
-	private String name, id, kakaoid, pw, mail, tel, addr, sdate;
+	private String name, id, kakaoid, pw, mail, tel, addr, sdate, result;
 	private Date jdate;
 	public int getMno() {
 		return mno; 
@@ -72,15 +72,21 @@ public class MembVO {
 		this.jdate = jdate;
 		setSdate();
 	}
+	public String getResult() {
+		return result;
+	}
+	public void setResult(String result) {
+		this.result = result;
+	}
 	@Override
 	public String toString() {
 		return "MembVO [mno=" + mno + ", name=" + name + ", id=" + id + ", kakaoid=" + kakaoid + ", pw=" + pw
-				+ ", mail=" + mail + ", tel=" + tel + ", addr=" + addr + ", sdate=" + sdate + ", jdate=" + jdate
-				+ ", getMno()=" + getMno() + ", getName()=" + getName() + ", getId()=" + getId() + ", getKakaoid()="
-				+ getKakaoid() + ", getPw()=" + getPw() + ", getMail()=" + getMail() + ", getTel()=" + getTel()
-				+ ", getAddr()=" + getAddr() + ", getSdate()=" + getSdate() + ", getJdate()=" + getJdate()
-				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
-				+ "]";
+				+ ", mail=" + mail + ", tel=" + tel + ", addr=" + addr + ", sdate=" + sdate + ", result=" + result
+				+ ", jdate=" + jdate + ", getMno()=" + getMno() + ", getName()=" + getName() + ", getId()=" + getId()
+				+ ", getKakaoid()=" + getKakaoid() + ", getPw()=" + getPw() + ", getMail()=" + getMail() + ", getTel()="
+				+ getTel() + ", getAddr()=" + getAddr() + ", getSdate()=" + getSdate() + ", getJdate()=" + getJdate()
+				+ ", getResult()=" + getResult() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
+				+ ", toString()=" + super.toString() + "]";
 	}
 	
 }

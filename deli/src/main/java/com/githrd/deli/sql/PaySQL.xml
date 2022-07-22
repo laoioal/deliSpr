@@ -210,4 +210,24 @@
 		    AND mno = #{mno}
 	</select>
 	
+	<!-- 메뉴 가격 알아내는 함수 -->
+	<!--
+	<select id="selMenuPrice" parameterType="Map" resultType="int">
+	SELECT
+   		mprice
+	FROM
+	    menu
+	WHERE
+	    mname = #{mname}
+	    AND isshow = 'Y'
+	    AND rno = (
+	                SELECT
+	                    restno
+	                FROM
+	                    restaurant
+	                WHERE
+	                    rname = #{rname}
+	                )
+	</select>
+	-->
 </mapper>
