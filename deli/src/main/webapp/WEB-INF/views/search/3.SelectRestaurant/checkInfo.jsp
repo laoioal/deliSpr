@@ -24,8 +24,8 @@
 <form action = "/deli/member/boardWrite.dlv">
 	<input type="hidden" name="placeName" value="${place.name}"/>
 	<input type="hidden" name="category" value="${category.foodtype}"/>
-	<input type="hidden" name="resName" value="${restaurant.rname}"/>
-	<input type="hidden" name="resAddr" value="${restaurant.addr}"/>
+	<input type="hidden" name="rest" value="${restaurant.rname}"/>
+	<input type="hidden" name="parea" value="${restaurant.addr}"/>
 	<input type="submit" value="확인"/>
 </form>
 
