@@ -1,0 +1,33 @@
+fieldset {
+	display : inline-block;
+	direction: rtl;
+	border : 0;
+}
+
+fieldset input[type=radio] {
+	display: none;
+}
+
+fieldset input[type=radio]:checked ~ label {
+	text-shadow: 0 0 0 #ffd700;
+}
+
+fieldset label {
+	font-size: 2em;
+	color: transparent;
+	text-shadow: 0 0 0 #f0f0f0;
+}
+
+fieldset label:hover {
+	text-shadow: 0 0 0 #ffd700;
+	cursor: pointer;
+}
+
+fieldset label:hover ~ label {
+	text-shadow: 0 0 0 #ffd700;
+}
+
+.spanft {
+	font-size: 25px;
+	font-weight: bold;
+}

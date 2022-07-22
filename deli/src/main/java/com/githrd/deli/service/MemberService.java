@@ -1,7 +1,6 @@
 package com.githrd.deli.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import com.githrd.deli.dao.MemberDao;
 import com.githrd.deli.vo.guestVO;
@@ -12,6 +11,12 @@ import com.githrd.deli.vo.memberVO;
 public class MemberService {
 	@Autowired
 	private MemberDao dao;
+	
+	
+	public memberVO selectById(String id) {
+		return dao.selectOne(id);
+	}
+	
 	
 	public void searchById(guestVO guest) {
 		memberVO memb = dao.selectOne(guest.getId());

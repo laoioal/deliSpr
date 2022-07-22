@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+	PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+			"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<setting name="cacheEnabled" value="false" />
+		<setting name="useGeneratedKeys" value="true" />
+		<setting name="defaultExecutorType" value="REUSE" />
+	</settings>
+	
+	<typeAliases>
+		<typeAlias alias="eVO" type="com.githrd.deli.vo.EunbeeVO"/>
+		<typeAlias alias="fVO" type="com.githrd.deli.vo.FileVO"/>
+		<typeAlias alias="paVO" type="com.githrd.deli.vo.PayVO"/>
+		<typeAlias alias="pcVO" type="com.githrd.deli.vo.PcsVO"/>
+		<typeAlias alias="yVO" type="com.githrd.deli.vo.YonghyunVO"/>
+
+		
+		<typeAlias alias="memberVO" type="com.githrd.deli.vo.memberVO"/>
+		<typeAlias alias="placeVO" type="com.githrd.deli.vo.placeVO"/>
+		<typeAlias alias="guestVO" type="com.githrd.deli.vo.guestVO"/>
+		<typeAlias alias="calculatorVO" type="com.githrd.deli.vo.calculatorVO"/>
+		<typeAlias alias="categoryVO" type="com.githrd.deli.vo.categoryVO"/>
+		<typeAlias alias="restaurantVO" type="com.githrd.deli.vo.restaurantVO"/>
+		<typeAlias alias="middleareaVO" type="com.githrd.deli.vo.middleareaVO"/>
+		<typeAlias alias="faqVO" type="com.githrd.deli.vo.faqVO"/>
+		<typeAlias alias="adminVO" type="com.githrd.deli.vo.adminVO"/>
+
+		<typeAlias alias="page" type="com.githrd.deli.util.PageUtil"/>
+		<typeAlias alias="file" type="com.githrd.deli.util.FileUtil"/>
+		<typeAlias alias="dbu" type="com.githrd.deli.util.DButil"/>
+	</typeAliases>
+	
+	<mappers>
+		<mapper resource="com/githrd/deli/sql/EunbeeSQL.xml"/>
+		<mapper resource="com/githrd/deli/sql/PaySQL.xml"/>
+		<mapper resource="com/githrd/deli/sql/PcsSQL.xml"/>
+		<mapper resource="com/githrd/deli/sql/YonghyunSQL.xml"/>
+		
+		
+		
+		<mapper resource="com/githrd/deli/sql/memberSQL.xml"/>
+		<mapper resource="com/githrd/deli/sql/placeSQL.xml"/>
+		<mapper resource="com/githrd/deli/sql/categorySQL.xml"/>
+		<mapper resource="com/githrd/deli/sql/restaurantSQL.xml"/>
+		<mapper resource="com/githrd/deli/sql/middleareaSQL.xml"/>
+		<mapper resource="com/githrd/deli/sql/faqSQL.xml"/>
+		<mapper resource="com/githrd/deli/sql/adminSQL.xml"/>
+		
+		
+		
+	</mappers>
+</configuration>

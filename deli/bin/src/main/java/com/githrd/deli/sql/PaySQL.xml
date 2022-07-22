@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+			"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="paSQL">
+	<insert id="insertOdt" parameterType="paVO">
+		INSERT INTO
+			ordertask(ono, mno)
+		VALUES(
+			#{ono}, #{mno}		
+		)
+	</insert>
+	
+	<insert id="insertOdl" parameterType="paVO">
+	
+		INSERT INTO
+			orderlist(olno, ono, rno, oprice, paym, requests)
+		VALUES(
+			(SELECT NVL(MAX(olno) +1, 1) FROM orderlist),
+			#{ono}, #{rno}, #{oprice}, #{paym}, #{requests}
+		)
+		
+	</insert>
+	
+	<insert id="insertOdm" parameterType="paVO">
+	<selectKey keyProperty="omno" resultType="int" order="BEFORE">
+		SELECT NVL(MAX(omno) + 1, 1) FROM ordermenu
+	</selectKey>
+		INSERT INTO
+			ordermenu(omno, olno, omenu, omprice, quantity, ono)
+		VALUES(
+			#{omno},
+			(SELECT olno FROM orderlist WHERE ono = #{ono}),
+			#{omenu}, #{omprice}, #{quantity}, #{ono}
+		)
+	</insert>
+	
+	<select id="selPays" parameterType="int" resultType="paVO">
+		SELECT
+			restno, delpay, mprice, mname, rname
+		FROM
+			board b, restaurant r, menu m
+		WHERE
+			 b.isshow = 'Y' 
+			 AND r.isshow = 'Y'
+			 AND m.isshow = 'Y'
+			 AND m.rno = r.restno
+			 AND bno = #{bno}
+	</select>
+	
+	<select id="selMinfo" parameterType="paVO" resultType="paVO">
+		SELECT
+			mno, id, tel, addr, mail, name
+		FROM
+			member 
+		WHERE
+			 isshow = 'Y'
+			 AND id = #{id}
+	</select>
+	
+	<select id="abnoCnt" parameterType="int" resultType="int">
+		SELECT
+			COUNT(*) cnt
+		FROM
+			regimem
+		WHERE
+			 isshow = 'Y'
+			 AND abno = #{abno}
+	</select>
+	
+	<select id="selRest" parameterType="int" resultType="paVO">
+		SELECT
+			rname, restno, mname, mprice, quantity
+		FROM
+			board b, restaurant r, menu m, orderlist ol, ordermenu om
+		WHERE
+			 b.rest = r.restno
+			 AND m.rno = r.restno
+			 AND r.restno = ol.rno
+			 AND ol.olno = om.olno
+			 AND bno = #{bno}
+	</select>
+</mapper>

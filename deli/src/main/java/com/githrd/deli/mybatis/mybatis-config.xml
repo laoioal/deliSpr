@@ -15,18 +15,19 @@
 		<typeAlias alias="paVO" type="com.githrd.deli.vo.PayVO"/>
 		<typeAlias alias="pcVO" type="com.githrd.deli.vo.PcsVO"/>
 		<typeAlias alias="yVO" type="com.githrd.deli.vo.YonghyunVO"/>
-
-		
+					
+					
+					<!-- vo 클래스(고하늘) -->		
 		<typeAlias alias="memberVO" type="com.githrd.deli.vo.memberVO"/>
 		<typeAlias alias="placeVO" type="com.githrd.deli.vo.placeVO"/>
-		<typeAlias alias="guestVO" type="com.githrd.deli.vo.guestVO"/>
 		<typeAlias alias="calculatorVO" type="com.githrd.deli.vo.calculatorVO"/>
 		<typeAlias alias="categoryVO" type="com.githrd.deli.vo.categoryVO"/>
 		<typeAlias alias="restaurantVO" type="com.githrd.deli.vo.restaurantVO"/>
 		<typeAlias alias="middleareaVO" type="com.githrd.deli.vo.middleareaVO"/>
 		<typeAlias alias="faqVO" type="com.githrd.deli.vo.faqVO"/>
 		<typeAlias alias="adminVO" type="com.githrd.deli.vo.adminVO"/>
-
+						<!--    END    -->
+							
 		<typeAlias alias="page" type="com.githrd.deli.util.PageUtil"/>
 		<typeAlias alias="file" type="com.githrd.deli.util.FileUtil"/>
 		<typeAlias alias="dbu" type="com.githrd.deli.util.DButil"/>
@@ -39,7 +40,7 @@
 		<mapper resource="com/githrd/deli/sql/YonghyunSQL.xml"/>
 		
 		
-		
+						<!--SQL 설정파일(고하늘) -->
 		<mapper resource="com/githrd/deli/sql/memberSQL.xml"/>
 		<mapper resource="com/githrd/deli/sql/placeSQL.xml"/>
 		<mapper resource="com/githrd/deli/sql/categorySQL.xml"/>
@@ -47,6 +48,7 @@
 		<mapper resource="com/githrd/deli/sql/middleareaSQL.xml"/>
 		<mapper resource="com/githrd/deli/sql/faqSQL.xml"/>
 		<mapper resource="com/githrd/deli/sql/adminSQL.xml"/>
+						<!--    END    -->
 		
 		
 		

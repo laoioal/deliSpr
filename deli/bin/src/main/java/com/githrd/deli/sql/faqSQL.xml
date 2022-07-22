@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+			"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="FDao">
+
+
+	<select id="selectNum" resultType="faqVO" parameterType="int">
+	select * from faq where no = #{no}
+	</select>
+	
+    <select id="selectList" resultType="faqVO">
+    select * from faq order by no asc
+	</select>
+	
+	<insert id = "insert" parameterType="faqVO">
+	insert into faq(no,id,pw,title,content) values(faq_seq.nextval,#{id},#{pw},#{title},#{content})
+	</insert>
+	
+	<update id = "update" parameterType="faqVO">
+	update faq set title = #{title}, content=#{content} 
+	where no = #{no} 
+	</update>
+	
+	<delete id = "delete" parameterType="int">
+	delete from faq where no=#{no}
+	</delete>
+	
+</mapper>
+

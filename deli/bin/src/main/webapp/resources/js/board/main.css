@@ -1,0 +1,70 @@
+/**
+ * @author	이용현
+ * @since	2022/05/25
+ * @version	v.1.0
+ * 
+ * 			작업이력 ]
+ * 				2022.05.25	-	클래스제작
+ * 								담당자 : 이용현
+ */
+
+.w33 {
+	width: 14.285%;
+}
+.h500 {
+	height: 500px;
+	padding-left: 10px!important;
+	padding-right: 10px!important;
+	overflow: auto;
+}
+.member {
+	font-size: 8px;
+	border: 0px;
+	background-color: white;
+}
+.w230 {
+	width: 230px;
+	margin-bottom: 3px;
+}
+textarea {
+	resize: none;
+	height: 500px;
+}
+.hotclick {
+	overflow : hidden;
+}
+.hotclickhr {
+	margin-top : 0px;
+}
+small {
+	font-size: 7px;
+}
+.fbtn {
+	padding: 0px 8px!important;
+	font-size: 11px;
+	
+}
+#fribox{
+	display: none;
+}
+.delbtn, .canbtn, .agrbtn{
+	border: 0px;
+	background-color: white;
+	padding: 0px!important;
+}
+#spoon{
+	font-size: 1em;
+	color: transparent;
+	text-shadow: 0 0 0 grey;
+}
+
+.ctiybtn {
+	width: 100%;
+	cursor:pointer;
+	background-color: white;
+}
+.faq {
+	width: 100%;
+	cursor:pointer;
+	background-color: white;
+}

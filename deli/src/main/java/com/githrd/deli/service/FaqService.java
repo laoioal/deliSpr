@@ -23,23 +23,18 @@ public class FaqService {
 	public FaqService() {
 		controllerMap.put("/deli/faq/board.dlv", "/faq/faqList");
 		controllerMap.put("/deli/faq/admin/board/login.dlv", "redirect:/faq/board.dlv");
-		//controllerMap.put("/deli/faq/admin/board/login2.dlv", "redirect:/faq/board.dlv");
 		controllerMap.put("/deli/faq/board/detail.dlv", "/faq/faqDetail");
 		controllerMap.put("/deli/faq/admin/board/insert.dlv", "/faq/admin/faqInsert");
 		controllerMap.put("/deli/faq/admin/board/logout.dlv", "redirect:/faq/board.dlv");
 		controllerMap.put("/deli/faq/admin/board/delete.dlv", "redirect:/faq/board.dlv");
-//		controllerMap.put("/deli/faq/admin/board/delete.dlv", "/faq/board.dlv");
 		controllerMap.put("/deli/faq/admin/board/update.dlv", "/faq/admin/faqUpdate");
 		controllerMap.put("/deli/faq/admin/board/update2.dlv", "redirect:/faq/board.dlv");
-//		controllerMap.put("/deli/faq/admin/board/update2.dlv", "/faq/board.dlv");
-
 	}
 	
 	//해당 객체가 생성되면 자연스럽게 findViewPage 메소드로 호출 가능하도록 생성자에 key/value 값 담아줌
 	public String findViewPage(String uri) {
 		String viewPage = controllerMap.get(uri);
 		viewPage = cutUri(viewPage);
-
 		return viewPage;
 	}
 	

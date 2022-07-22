@@ -25,9 +25,11 @@ import com.githrd.deli.vo.faqVO;
 @RequestMapping("/faq")
 public class FaqController {
 	
+	//admin 계정 로그인을 처리해주는 서비스함수
 	@Autowired	private AdminService adminService;
+	//faq 테이블의 생성,수정,삭제를 처리해주는 서비스함수
 	@Autowired 	private FaqService faqService;
-	
+
 	private static adminVO admin;
 	private static List<faqVO> list;
 	
