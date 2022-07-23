@@ -21,7 +21,6 @@ import com.githrd.deli.vo.faqVO;
 			return list;
 		}
 		public int insert(faqVO vo) {
-			System.out.println("***insert");
 			return sqlSession.insert("FDao.insert", vo);
 		}
 		
