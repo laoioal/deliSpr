@@ -19,7 +19,6 @@ public class MemberService {
 			guest.setError("아이디를 다시 확인해주세요");
 		}
 		else {
-			System.out.println(memb.getId()+" "+memb.getAddr());
 			guest.setError(null);
 			guest.setId(memb.getId());
 			guest.setAddr(memb.getAddr());
